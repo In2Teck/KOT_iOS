@@ -20,6 +20,7 @@
 -(IBAction)productosKOT:(id)sender;
 -(IBAction)metodoKot:(id)sender;
 -(IBAction)progresoKot:(id)sender;
+-(IBAction)restaurantesKOT:(id)sender;
 
 -(void)loadMiMetodoKot;
 @end

@@ -35,10 +35,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5">
-                    <rect key="frame" x="189" y="182" width="110" height="110"/>
+                    <rect key="frame" x="189" y="180" width="110" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" backgroundImage="KOT-23.png">
+                    <state key="normal" backgroundImage="restaurant_icon.png">
                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -46,7 +46,7 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="productosKOT:" destination="-1" eventType="touchUpInside" id="13"/>
+                        <action selector="restaurantesKOT:" destination="-1" eventType="touchUpInside" id="tSq-oP-qRr"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6">
@@ -100,7 +100,7 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Productos KOT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="11">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Restaurantes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="11">
                     <rect key="frame" x="187" y="293" width="114" height="51"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -117,9 +117,9 @@
     </objects>
     <resources>
         <image name="KOT-22.png" width="390" height="401"/>
-        <image name="KOT-23.png" width="390" height="401"/>
         <image name="KOT-24.png" width="390" height="401"/>
         <image name="KOT-25.png" width="390" height="401"/>
         <image name="bg_menu.png" width="640" height="1136"/>
+        <image name="restaurant_icon.png" width="25" height="25"/>
     </resources>
 </document>

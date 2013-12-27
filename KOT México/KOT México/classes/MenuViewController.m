@@ -8,7 +8,7 @@
 
 #import "MenuViewController.h"
 #import "AlimentosViewController.h"
-#import "ProductosViewController.h"
+#import "ListRestaurantesViewController.h"
 #import "MetodoKotViewController.h"
 #import "ProgresoViewController.h"
 #import "CommonDAO.h"
@@ -62,8 +62,14 @@
 }
 
 -(IBAction)productosKOT:(id)sender{
-    ProductosViewController *productos = [[[ProductosViewController alloc]initWithNibName:@"ProductosViewController" bundle:nil]autorelease];
+/*    ProductosViewController *productos = [[[ProductosViewController alloc]initWithNibName:@"ProductosViewController" bundle:nil]autorelease];
     [self.navigationController pushViewController:productos animated:YES];
+ */
+}
+
+- (IBAction)restaurantesKOT:(id)sender {
+    ListRestaurantesViewController *restaurantes = [[[ListRestaurantesViewController alloc]initWithNibName:@"ListRestaurantesViewController" bundle:nil]autorelease];
+    [self.navigationController pushViewController:restaurantes animated:YES];
 }
 
 -(IBAction)metodoKot:(id)sender{

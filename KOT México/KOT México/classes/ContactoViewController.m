@@ -125,7 +125,7 @@
     if(indexPath.row ==3)
         [cell.textLabel setText:@"Twitter"];
     
-    [cell.textLabel setBackgroundColor:[UIColor redColor]];
+    //[cell.textLabel setBackgroundColor:[UIColor redColor]];
     [cell.textLabel setTextColor:[UIColor whiteColor]];
     [cell.textLabel setTextAlignment:UITextAlignmentCenter];
     

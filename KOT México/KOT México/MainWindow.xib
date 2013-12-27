@@ -30,7 +30,7 @@
             <extendedEdge key="edgesForExtendedLayout"/>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
-            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <nil key="simulatedDestinationMetrics"/>
             <tabBar key="tabBar" autoresizesSubviews="NO" contentMode="scaleToFill" id="8">
@@ -41,49 +41,33 @@
             <viewControllers>
                 <viewController nibName="HomeViewController" id="9" customClass="HomeViewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="" image="home_icon.png" id="12"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home_icon.png" id="12"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <nil key="simulatedDestinationMetrics"/>
                 </viewController>
-                <viewController id="10" customClass="RestaurantesNavigationController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="" image="restaurant_icon.png" id="11"/>
-                    <nil key="simulatedStatusBarMetrics"/>
+                <viewController id="L3d-QY-pY2" customClass="ConoceViewController">
+                    <tabBarItem key="tabBarItem" title="Conoce" id="Wcx-LM-mOw"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
-                <viewController id="17" customClass="NutriologosViewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="" image="user_icon.png" id="16"/>
-                    <toolbarItems/>
-                    <nil key="simulatedStatusBarMetrics"/>
+                <viewController id="Lef-Cc-xX6" customClass="AyudaViewController">
+                    <tabBarItem key="tabBarItem" title="Ayuda" id="9Gv-M5-yal"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
-                </viewController>
-                <viewController nibName="PreferencesNavigationViewController" id="19" customClass="PreferencesNavigationViewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="" image="settings_icon.png" id="18"/>
-                    <toolbarItems/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
             </viewControllers>
         </tabBarController>
     </objects>
     <resources>
         <image name="home_icon.png" width="25" height="25"/>
-        <image name="restaurant_icon.png" width="25" height="25"/>
-        <image name="settings_icon.png" width="25" height="25"/>
-        <image name="user_icon.png" width="25" height="25"/>
     </resources>
 </document>
