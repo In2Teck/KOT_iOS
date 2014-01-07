@@ -118,7 +118,7 @@
     [cell setBackgroundColor:[UIColor clearColor]];
     
     [cell.textLabel setText:[[alimentosList objectAtIndex:indexPath.row] objectAtIndex:1]];
-    [cell.textLabel setBackgroundColor:[UIColor redColor]];
+    //[cell.textLabel setBackgroundColor:[UIColor redColor]];
     [cell.textLabel setTextColor:[UIColor whiteColor]];
     [cell.textLabel setTextAlignment:UITextAlignmentCenter];
     

@@ -7,7 +7,7 @@
 //
 
 #import "MenuConoceViewController.h"
-#import "NutriologosViewController.h"
+#import "CollapsableTableViewViewController.h"
 #import "ProductosViewController.h"
 
 @interface MenuConoceViewController ()
@@ -49,8 +49,8 @@
 }
 
 - (IBAction)especialistaKOT:(id)sender {
-    NutriologosViewController *nutriologos = [[[NutriologosViewController alloc]initWithNibName:@"NutriologosViewController" bundle:nil]autorelease];
-    [self.navigationController pushViewController:nutriologos animated:YES];
+    CollapsableTableViewViewController *control = [[[CollapsableTableViewViewController alloc]initWithNibName:@"CollapsableTableViewViewController" bundle:nil]autorelease];
+    [self.navigationController pushViewController:control animated:YES];
 }
 
 

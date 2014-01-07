@@ -19,6 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.tabBarItem.image = [UIImage imageNamed:@"home_icon.png"];
     }
     return self;
 }
@@ -27,6 +28,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self.view addSubview:self.navigationController.view];
+}
+
+- (void)viewDidUnload
+{
+    [self setNavigationController:nil];
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +45,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    //    return YES;
+}
+
+- (void)dealloc {
+    [_navigationController release];
+    [super dealloc];
+}
 @end

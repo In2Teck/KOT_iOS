@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>59F5EFE6-6A6D-452A-914F-9F6CD6943487</string>
+	<string>436A7421-F820-43A3-BF9D-6F0DFB707BFB</string>
 	<key>IDESourceControlProjectName</key>
 	<string>KOT México</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>63566C07-3CAF-4F86-A9C0-8A10A436ADA7</key>
-		<string>ssh://github.com/tonklis/KOT_iOS.git</string>
+		<key>79E456D0-854C-47DD-9458-100F75A8CDFB</key>
+		<string>ssh://github.com/In2Teck/KOT_iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>KOT México.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>63566C07-3CAF-4F86-A9C0-8A10A436ADA7</key>
+		<key>79E456D0-854C-47DD-9458-100F75A8CDFB</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/tonklis/KOT_iOS.git</string>
+	<string>ssh://github.com/In2Teck/KOT_iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>63566C07-3CAF-4F86-A9C0-8A10A436ADA7</string>
+	<string>79E456D0-854C-47DD-9458-100F75A8CDFB</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>63566C07-3CAF-4F86-A9C0-8A10A436ADA7</string>
+			<string>79E456D0-854C-47DD-9458-100F75A8CDFB</string>
 			<key>IDESourceControlWCCName</key>
 			<string>KOT_iOS</string>
 		</dict>

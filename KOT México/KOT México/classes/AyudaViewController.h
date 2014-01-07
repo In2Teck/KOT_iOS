@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AyudaViewController : UIViewController
+@property (retain, nonatomic) IBOutlet UINavigationController *navigationController;
 
 @end

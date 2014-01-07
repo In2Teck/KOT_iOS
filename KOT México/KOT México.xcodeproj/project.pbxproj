@@ -240,6 +240,8 @@
 		C7DFC2D6186E12D00034EBFB /* AyudaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DFC2D4186E12D00034EBFB /* AyudaViewController.xib */; };
 		C7DFC2DA186E330E0034EBFB /* MenuConoceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DFC2D8186E330E0034EBFB /* MenuConoceViewController.m */; };
 		C7DFC2DB186E330E0034EBFB /* MenuConoceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DFC2D9186E330E0034EBFB /* MenuConoceViewController.xib */; };
+		C7DFC2DF187B78970034EBFB /* MenuAyudaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DFC2DD187B78970034EBFB /* MenuAyudaViewController.m */; };
+		C7DFC2E0187B78970034EBFB /* MenuAyudaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DFC2DE187B78970034EBFB /* MenuAyudaViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -608,6 +610,9 @@
 		C7DFC2D7186E330E0034EBFB /* MenuConoceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuConoceViewController.h; sourceTree = "<group>"; };
 		C7DFC2D8186E330E0034EBFB /* MenuConoceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuConoceViewController.m; sourceTree = "<group>"; };
 		C7DFC2D9186E330E0034EBFB /* MenuConoceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuConoceViewController.xib; path = "../KOT México/classes/MenuConoceViewController.xib"; sourceTree = "<group>"; };
+		C7DFC2DC187B78970034EBFB /* MenuAyudaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuAyudaViewController.h; sourceTree = "<group>"; };
+		C7DFC2DD187B78970034EBFB /* MenuAyudaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuAyudaViewController.m; sourceTree = "<group>"; };
+		C7DFC2DE187B78970034EBFB /* MenuAyudaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuAyudaViewController.xib; path = "../KOT México/classes/MenuAyudaViewController.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -819,6 +824,7 @@
 				33EB3AB814F4688B00555755 /* Icon@2x.png */,
 				C7DFC2D4186E12D00034EBFB /* AyudaViewController.xib */,
 				C7DFC2CF186E10820034EBFB /* ConoceViewController.xib */,
+				C7DFC2DE187B78970034EBFB /* MenuAyudaViewController.xib */,
 				C7DFC2D9186E330E0034EBFB /* MenuConoceViewController.xib */,
 				33EB3AB614F4688000555755 /* Icon.png */,
 				3330154B14BF519B00F92EC0 /* HomeViewController.xib */,
@@ -983,6 +989,8 @@
 				332A845F14DA19DC0071A416 /* RestauranteMenuViewController.xib */,
 				33315BD314DB0CD90034E69E /* PlatilloViewController.h */,
 				33315BD414DB0CD90034E69E /* PlatilloViewController.m */,
+				C7DFC2DC187B78970034EBFB /* MenuAyudaViewController.h */,
+				C7DFC2DD187B78970034EBFB /* MenuAyudaViewController.m */,
 				33315BD514DB0CD90034E69E /* PlatilloViewController.xib */,
 				3314765714DC5B28002AF3ED /* VideosKOTViewController.h */,
 				3314765814DC5B28002AF3ED /* VideosKOTViewController.m */,
@@ -1339,6 +1347,7 @@
 				33C471A714F5442700A1835A /* Icon.png in Resources */,
 				33C471A914F5467A00A1835A /* iTunesArtwork in Resources */,
 				3393199A14F69BD900E91657 /* AboutViewController.xib in Resources */,
+				C7DFC2E0187B78970034EBFB /* MenuAyudaViewController.xib in Resources */,
 				339319A014F69E0700E91657 /* PreferencesNavigationViewController.xib in Resources */,
 				3308CAB91607AFA50043AC9F /* btn_picker.png in Resources */,
 				3308CABA1607AFA50043AC9F /* btn_picker@2x.png in Resources */,
@@ -1359,6 +1368,7 @@
 			files = (
 				3330147A14BF49C100F92EC0 /* main.m in Sources */,
 				3330147E14BF49C100F92EC0 /* AppDelegate.m in Sources */,
+				C7DFC2DF187B78970034EBFB /* MenuAyudaViewController.m in Sources */,
 				3330154714BF50FC00F92EC0 /* AlimentosViewController.m in Sources */,
 				3330154C14BF519B00F92EC0 /* HomeViewController.m in Sources */,
 				3330155114BF57EC00F92EC0 /* MenuViewController.m in Sources */,
