@@ -10,7 +10,6 @@
 #import "AlimentoDetailViewController.h"
 #import "Flurry.h"
 
-
 @implementation AlimentosViewController
 @synthesize myTableViewController;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
