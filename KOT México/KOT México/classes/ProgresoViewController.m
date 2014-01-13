@@ -66,8 +66,6 @@
     
     updateViews = YES;
     
-    
-    
     [actual setHidden:YES];
     [meta setHidden:YES];
     
@@ -112,26 +110,31 @@
 //        [add.titleLabel setText:@"Nueva Medida"];
 //    }
     
-    if(updateViews)
+    if(updateViews){
         [self loadJSONDataService];
+    }
     
     updateViews = FALSE;
     float dif;
     if(isPeso){  
         
-        [metaLabel setText:[NSString stringWithFormat:@"Meta: %@ Kg", pesoMeta]];
+        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f Kg", ([peso_inicio floatValue] - [pesoActual floatValue])]];
         dif = ([pesoMeta floatValue] - [pesoActual floatValue]);
         dif = (dif>=0?dif:-dif);
-        [llevasLabel setText:[NSString stringWithFormat:@"Peso Actual: %.1f Kg", [pesoActual floatValue]]];
+        [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f Kg", [pesoActual floatValue]]];
         [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Kilos para tu meta!", dif]];
+        [banderaImageView setHidden:false];
+        [faltanteLabel setHidden:false];
         [add.titleLabel setText:@"Nuevo Peso"];
         [add reloadInputViews];
     }else{
         dif = ([medidaMeta floatValue] - [medidaActual floatValue]);
         dif = (dif>=0?dif:-dif);
-        [metaLabel setText:[NSString stringWithFormat:@"Meta: %.1f cm", [medidaMeta floatValue]]];
-        [llevasLabel setText:[NSString stringWithFormat:@"Peso Actual: %.1f cm", medidaActual]];
-        [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Centimetros para tu meta!", dif]];
+        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f cm", ([medida_inicio floatValue] - [medidaActual floatValue] )]];
+        [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f cm", medidaActual]];
+        //[faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Centimetros para tu meta!", dif]];
+        [banderaImageView setHidden:true];
+        [faltanteLabel setHidden:true];
         [add.titleLabel setText:@"Nueva Medida"];
         [add reloadInputViews];
     }
@@ -177,12 +180,13 @@
         [actual setPlaceholder:@"Ingresa tu peso actual"];
         [meta setPlaceholder:@"Ingresa tu peso meta"];
         
-        [metaLabel setText:[NSString stringWithFormat:@"Meta: %@ Kg", pesoMeta]];
+        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f Kg", ([peso_inicio floatValue] - [pesoActual floatValue])]];
 //        if(![pesoMeta isEqualToString:@"0"]&&![pesoActual isEqualToString:@"0"])
             dif = ([pesoMeta floatValue] - [pesoActual floatValue]);
         dif = (dif>=0?dif:-dif);
-        [llevasLabel setText:[NSString stringWithFormat:@"Peso Actual: %.1f Kg", [pesoActual floatValue]]];
-
+        [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f Kg", [pesoActual floatValue]]];
+        [banderaImageView setHidden:false];
+        [faltanteLabel setHidden:false];
         [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Kilos para tu meta!", dif]];
         [add.titleLabel setText:@"Nuevo Peso"];
         [Flurry logEvent:@"Mi Progreso Grafica Peso" timed:YES];
@@ -194,12 +198,14 @@
         
         dif = ([medidaMeta floatValue] - [medidaActual floatValue]);
         dif = (dif>=0?dif:-dif);
-        [metaLabel setText:[NSString stringWithFormat:@"Meta: %.1f cm", [medidaMeta floatValue]]];
+        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f cm", ([medida_inicio floatValue] - [medidaActual floatValue] )]];
 //        if(![medidaMeta isEqualToString:@"0"]&&![medidaActual isEqualToString:@"0"])
             
-        [llevasLabel setText:[NSString stringWithFormat:@"Peso Actual: %.1f cm", [medidaActual floatValue]]];
+        [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f cm", [medidaActual floatValue]]];
         
-        [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Centimetros para tu meta!", dif]];
+        //[faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Centimetros para tu meta!", dif]];
+        [banderaImageView setHidden:true];
+        [faltanteLabel setHidden:true];
         [add.titleLabel setText:@"Nueva Medida"];
         [Flurry logEvent:@"Mi Progreso Grafica Medida" timed:YES];
     }
@@ -336,21 +342,32 @@
     NSMutableArray *tempPoints = [[NSMutableArray alloc] init];
     NSMutableArray *tempPoints2 = [[NSMutableArray alloc] init];
 //    if([pesoList count]==1){
-        [tempPoints2 addObject:[NSNumber numberWithFloat:0.0]];//[peso_inicio floatValue]]];
+//      [tempPoints2 addObject:[NSNumber numberWithFloat:60.0]];//[peso_inicio floatValue]]];
 //        [tempSemanas addObject:@""];
 //    }
     for (NSString *json in pesoList) {
         NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
         [tempSemanas addObject:[NSString stringWithFormat:@"%@ sem",[itemJSon objectForKey:@"Semana"]]];
         [tempPoints addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
-        [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
         pesoActual = [[NSString stringWithFormat:@"%.2f",[[itemJSon objectForKey:@"kilos"]floatValue]]retain];
     }
 //    if([tempPoints count]>1){
 //        [tempPoints removeObjectAtIndex:0];
 //        [tempSemanas removeObjectAtIndex:0];
 //    }
-    float rates[2] = {90.0, 0.0}; 
+    
+    float min = [[tempPoints valueForKeyPath:@"@min.self"] floatValue];
+    float max = [[tempPoints valueForKeyPath:@"@max.self"] floatValue];
+    
+    [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[peso_inicio floatValue]]];
+    for (NSString *json in pesoList) {
+        NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
+        [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
+        
+    }
+    
+    //float rates[1] = {0.0};
+    float rates[2] = {max + 2, min - 2};
     //24.8, 40.3, 36.7, 48.6, 48.3,
     //               41.8, 47.4, 44.6, 56.2, 44.4, 66.8};
     ctrl1.dataD = [WSData dataWithValues:[WSData arrayWithFloat:rates withLen:2]];
@@ -365,12 +382,13 @@
     axis.gridStyleY = kGridDotted;//kGridDotted
     [axis.ticksX setTickLabelsWithStrings:tempSemanas];
     axis.ticksX.ticksStyle = kTicksLabelsSlanted;
-    
+    axis.axisArrowLength = 2.0;
     
     axis.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     
     axis.axisStrokeWidth = 0.5;
-    [axis.ticksY autoTicksWithRange:NARangeMake(0.0, 200.0) withNumber:10];
+
+    [axis.ticksY autoTicksWithRange:NARangeMake((min - 2), (max + 2)) withNumber:((max+2)-(min-2))];
 
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -401,16 +419,18 @@
     [self.chart autoscaleAllAxisX];
     [self.chart autoscaleAllAxisY];
     [self.chart setAllAxisLocationXD:0.0];
-    [self.chart setAllAxisLocationYD:0.0];
+    [self.chart setAllAxisLocationYD:(min-2)];
     
     [axis release];
     [line1 release];
     [line2 release];
     [line3 release];
     [ctrlA release];
+    [ctrl1 release];
     [ctrl2 release];
     [ctrl3 release];
 }
+
 -(void)initChartMedida{
     // Do any additional setup after loading the view from its nib
     // Create a few line plots with their controllers.
@@ -432,14 +452,13 @@
     NSMutableArray *tempPoints = [[NSMutableArray alloc] init];
     NSMutableArray *tempPoints2 = [[NSMutableArray alloc] init];
 //    if([pesoList count]==1){
-    [tempPoints2 addObject:[NSNumber numberWithFloat:0.0]];//[medida_inicio floatValue]]];
+//    [tempPoints2 addObject:[NSNumber numberWithFloat:0.0]];//[medida_inicio floatValue]]];
 //        [tempSemanas addObject:@""];
 //    }
     for (NSString *json in medidaList) {
         NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
         [tempSemanas addObject:[NSString stringWithFormat:@"%@ sem",[itemJSon objectForKey:@"Semana"]]];
         [tempPoints addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"medida"] floatValue]]];
-        [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"medida"] floatValue]]];
         medidaActual = [[NSString stringWithFormat:@"%.2f",[[itemJSon objectForKey:@"medida"]floatValue]]retain];
     }
 //    if([tempPoints count]>1){
@@ -447,7 +466,17 @@
 //        [tempSemanas removeObjectAtIndex:0];
 //    }
     
-    float rates[2] = {(90.0), 40.0};
+    float min = [[tempPoints valueForKeyPath:@"@min.self"] floatValue];
+    float max = [[tempPoints valueForKeyPath:@"@max.self"] floatValue];
+    
+    [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[medida_inicio floatValue]]];
+    for (NSString *json in medidaList) {
+        NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
+        [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"medida"] floatValue]]];
+    }
+    
+    //float rates[2] = {(90.0), 0.0};
+    float rates[2] = {max + 2, min - 2};
     
     ctrl1.dataD = [WSData dataWithValues:[WSData arrayWithFloat:rates withLen:2]];
     ctrl2.dataD = [[WSData dataWithValues:tempPoints2] indexedData];
@@ -458,16 +487,16 @@
     axis.axisStyleX = kAxisPlain;//kAxisPlain
     axis.gridStyleX = kGridDotted;//Delete line
     axis.axisStyleY = kAxisPlain;//kAxisNone
-    axis.gridStyleY = kGridDotted;//kGridDotte
+    axis.gridStyleY = kGridDotted;//kGridDotted
     
     [axis.ticksX setTickLabelsWithStrings:tempSemanas];
     axis.ticksX.ticksStyle = kTicksLabelsSlanted;
-    
+    axis.axisArrowLength = 2.0;
     
     axis.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     
     axis.axisStrokeWidth = 0.5;
-    [axis.ticksY autoTicksWithRange:NARangeMake(0.0, 200.0) withNumber:10];
+    [axis.ticksY autoTicksWithRange:NARangeMake((min - 2), (max + 2)) withNumber:((max+2)-(min-2))];
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -498,10 +527,11 @@
     [self.chartMedida autoscaleAllAxisX];
     [self.chartMedida autoscaleAllAxisY];
     [self.chartMedida setAllAxisLocationXD:0.0];
-    [self.chartMedida setAllAxisLocationYD:0.0];
+    [self.chartMedida setAllAxisLocationYD:(min-2)];
     
     [axis release];
     [line1 release];
+    [line2 release];
     [line3 release];
     [ctrlA release];
     [ctrl1 release];
