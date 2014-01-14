@@ -242,6 +242,8 @@
 		C7DFC2DB186E330E0034EBFB /* MenuConoceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DFC2D9186E330E0034EBFB /* MenuConoceViewController.xib */; };
 		C7DFC2DF187B78970034EBFB /* MenuAyudaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DFC2DD187B78970034EBFB /* MenuAyudaViewController.m */; };
 		C7DFC2E0187B78970034EBFB /* MenuAyudaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DFC2DE187B78970034EBFB /* MenuAyudaViewController.xib */; };
+		C7F80D6F18846A9300ABFF5F /* MenuAlimentosPermitidosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F80D6D18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.m */; };
+		C7F80D7018846A9300ABFF5F /* MenuAlimentosPermitidosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F80D6E18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -613,6 +615,9 @@
 		C7DFC2DC187B78970034EBFB /* MenuAyudaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuAyudaViewController.h; sourceTree = "<group>"; };
 		C7DFC2DD187B78970034EBFB /* MenuAyudaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuAyudaViewController.m; sourceTree = "<group>"; };
 		C7DFC2DE187B78970034EBFB /* MenuAyudaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuAyudaViewController.xib; path = "../KOT México/classes/MenuAyudaViewController.xib"; sourceTree = "<group>"; };
+		C7F80D6C18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuAlimentosPermitidosViewController.h; sourceTree = "<group>"; };
+		C7F80D6D18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuAlimentosPermitidosViewController.m; sourceTree = "<group>"; };
+		C7F80D6E18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuAlimentosPermitidosViewController.xib; path = "../KOT México/classes/MenuAlimentosPermitidosViewController.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -825,6 +830,7 @@
 				C7DFC2D4186E12D00034EBFB /* AyudaViewController.xib */,
 				C7DFC2CF186E10820034EBFB /* ConoceViewController.xib */,
 				C7DFC2DE187B78970034EBFB /* MenuAyudaViewController.xib */,
+				C7F80D6E18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.xib */,
 				C7DFC2D9186E330E0034EBFB /* MenuConoceViewController.xib */,
 				33EB3AB614F4688000555755 /* Icon.png */,
 				3330154B14BF519B00F92EC0 /* HomeViewController.xib */,
@@ -1003,6 +1009,8 @@
 				3339CC5714E1A9F40041C9C6 /* AddMedidaPesoView.xib */,
 				C7DFC2CD186E10820034EBFB /* ConoceViewController.h */,
 				C7DFC2CE186E10820034EBFB /* ConoceViewController.m */,
+				C7F80D6C18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.h */,
+				C7F80D6D18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.m */,
 				3339CC6E14E1E9FC0041C9C6 /* MiMetodoKOTViewController.h */,
 				C7DFC2D2186E12D00034EBFB /* AyudaViewController.h */,
 				C7DFC2D3186E12D00034EBFB /* AyudaViewController.m */,
@@ -1263,6 +1271,7 @@
 				333014F014BF4C5E00F92EC0 /* 20.png in Resources */,
 				333014F114BF4C5E00F92EC0 /* 21.png in Resources */,
 				333014F214BF4C5E00F92EC0 /* 22.png in Resources */,
+				C7F80D7018846A9300ABFF5F /* MenuAlimentosPermitidosViewController.xib in Resources */,
 				333014F314BF4C5E00F92EC0 /* 23.png in Resources */,
 				333014F414BF4C5E00F92EC0 /* 24.png in Resources */,
 				333014F514BF4C5E00F92EC0 /* 25.png in Resources */,
@@ -1423,6 +1432,7 @@
 				33584F1E14C4E687001B287E /* WSPlotTemplate.m in Sources */,
 				33584F1F14C4E687001B287E /* WSTicks.m in Sources */,
 				33584F2014C4E687001B287E /* WSVersion.m in Sources */,
+				C7F80D6F18846A9300ABFF5F /* MenuAlimentosPermitidosViewController.m in Sources */,
 				33584F2114C4E687001B287E /* WSView.m in Sources */,
 				3311FEB114C7363000E6400D /* RestaurantesNavigationController.m in Sources */,
 				3311FEB614C7387500E6400D /* RestaurantViewController.m in Sources */,

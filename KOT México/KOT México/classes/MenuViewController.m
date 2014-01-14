@@ -7,7 +7,7 @@
 //
 
 #import "MenuViewController.h"
-#import "AlimentosViewController.h"
+#import "MenuAlimentosPermitidosViewController.h"
 #import "ListRestaurantesViewController.h"
 #import "MetodoKotViewController.h"
 #import "ProgresoViewController.h"
@@ -56,7 +56,7 @@
 }
 
 -(IBAction)alimentosKOT:(id)sender{
-    AlimentosViewController *alimentos = [[[AlimentosViewController alloc] initWithNibName:@"AlimentosViewController" bundle:nil]autorelease];
+    MenuAlimentosPermitidosViewController *alimentos = [[[MenuAlimentosPermitidosViewController alloc] initWithNibName:@"MenuAlimentosPermitidosViewController" bundle:nil]autorelease];
     
     [self.navigationController pushViewController:alimentos animated:YES];
 }

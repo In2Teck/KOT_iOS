@@ -45,7 +45,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.title = @"Alimentos Permitidos";
+ 
     [Flurry logEvent:@"Alimentos Permitidos" timed:YES];
 }
 
@@ -175,10 +175,10 @@
      // Pass the selected object to the new view controller.
      detailViewController.alimentoDetail = [alimentosList objectAtIndex:indexPath.row];
     
-    UIBarButtonItem *barButton = [[[UIBarButtonItem alloc] init]autorelease];
+    /*UIBarButtonItem *barButton = [[[UIBarButtonItem alloc] init]autorelease];
     barButton.title = @"Regresar";
     
-    self.navigationItem.backBarButtonItem = barButton;
+    self.navigationItem.backBarButtonItem = barButton;*/
     
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
