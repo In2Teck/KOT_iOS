@@ -16,4 +16,5 @@
 @property (nonatomic,retain) NSMutableArray *alimentoDetail;
 @property (nonatomic,retain) IBOutlet UITableView *myTableView;
 @property (assign,nonatomic) int type;
+@property BOOL isMujerIntensivo;
 @end

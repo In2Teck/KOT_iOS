@@ -11,7 +11,7 @@
 #import "Flurry.h"
 
 @implementation AlimentosViewController
-@synthesize myTableViewController;
+@synthesize myTableViewController, isMujerIntensivo, isVegetariano;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -19,9 +19,6 @@
         // Custom initialization
         if(!sqlite)
             sqlite = [[CommonDAO alloc] init];
-        
-        alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
-        
     }
     return self;
 }
@@ -45,6 +42,12 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if (isVegetariano){
+        alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos WHERE vegetariano IN (1,3) ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
+    } else {
+        alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos WHERE vegetariano IN (0,3) ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
+    }
  
     [Flurry logEvent:@"Alimentos Permitidos" timed:YES];
 }
@@ -115,8 +118,13 @@
     [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Element-04.png"]]];
     
     [cell setBackgroundColor:[UIColor clearColor]];
+    NSString *textoCelda = [[alimentosList objectAtIndex:indexPath.row] objectAtIndex:1];
     
-    [cell.textLabel setText:[[alimentosList objectAtIndex:indexPath.row] objectAtIndex:1]];
+    if (isMujerIntensivo && [@"Pan/Cereales/Leguminosas" isEqualToString:textoCelda]){
+        [cell.textLabel setText:@"Pan/Cereales"];
+    } else {
+        [cell.textLabel setText:textoCelda];
+    }
     //[cell.textLabel setBackgroundColor:[UIColor redColor]];
     [cell.textLabel setTextColor:[UIColor whiteColor]];
     [cell.textLabel setTextAlignment:UITextAlignmentCenter];
@@ -173,12 +181,26 @@
     AlimentoDetailViewController *detailViewController = [[AlimentoDetailViewController alloc] initWithNibName:@"AlimentoDetailViewController" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
-     detailViewController.alimentoDetail = [alimentosList objectAtIndex:indexPath.row];
+    detailViewController.alimentoDetail = [alimentosList objectAtIndex:indexPath.row];
     
-    /*UIBarButtonItem *barButton = [[[UIBarButtonItem alloc] init]autorelease];
+    NSString *textoCelda = [[alimentosList objectAtIndex:indexPath.row] objectAtIndex:1];
+    
+    if (isMujerIntensivo && [@"Pan/Cereales/Leguminosas" isEqualToString:textoCelda]){
+        detailViewController.title = @"Pan/Cereales";
+    } else {
+        if([@"Pan/Cereales/Leguminosas" isEqualToString:textoCelda]) {
+            NSDictionary *size = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:15<=12],UITextAttributeFont, nil];
+            self.navigationController.navigationBar.titleTextAttributes = size;
+        }
+        detailViewController.title = textoCelda;
+    }
+    
+    detailViewController.isMujerIntensivo = self.isMujerIntensivo;
+    
+    UIBarButtonItem *barButton = [[[UIBarButtonItem alloc] init]autorelease];
     barButton.title = @"Regresar";
     
-    self.navigationItem.backBarButtonItem = barButton;*/
+    self.navigationItem.backBarButtonItem = barButton;
     
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];

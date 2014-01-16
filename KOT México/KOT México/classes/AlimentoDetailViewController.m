@@ -15,7 +15,7 @@
 @implementation AlimentoDetailViewController
 
 @synthesize alimentoDetail;
-@synthesize myTableView,type;
+@synthesize myTableView,type, isMujerIntensivo;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -45,11 +45,18 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    descripcion = [sqlite 
-                   select: [[NSString alloc] initWithFormat:
-                            @"SELECT id_alimento, id_cat_alimento, alimento, descripcion FROM alimentos WHERE id_cat_alimento = %@ ORDER BY alimento ASC;", [alimentoDetail objectAtIndex:0]]
-                   keys:[[NSArray alloc] initWithObjects:@"id_alimento",@"id_cat_alimento",@"alimento",@"descripcion", nil]];
+    if (self.isMujerIntensivo) {
+        descripcion = [sqlite
+                       select: [[NSString alloc] initWithFormat:
+                                @"SELECT id_alimento, id_cat_alimento, alimento, descripcion FROM alimentos WHERE id_cat_alimento = %@ AND mujer_intensiva = 1 ORDER BY alimento ASC;", [alimentoDetail objectAtIndex:0]]
+                       keys:[[NSArray alloc] initWithObjects:@"id_alimento",@"id_cat_alimento",@"alimento",@"descripcion", nil]];
+        
+    } else {
+        descripcion = [sqlite
+                       select: [[NSString alloc] initWithFormat:
+                                @"SELECT id_alimento, id_cat_alimento, alimento, descripcion FROM alimentos WHERE id_cat_alimento = %@ ORDER BY alimento ASC;", [alimentoDetail objectAtIndex:0]]
+                       keys:[[NSArray alloc] initWithObjects:@"id_alimento",@"id_cat_alimento",@"alimento",@"descripcion", nil]];
+    }
     
     switch (self.type) {
         case 1:
@@ -77,7 +84,7 @@
             break;
     }
     
-    self.title = [alimentoDetail objectAtIndex:1];
+    //self.title = [alimentoDetail objectAtIndex:1];
     
     [super viewDidLoad];
 }
@@ -115,10 +122,10 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @"Los alimentos que tenga * no se permiten en la fase de mujer intensivo";
+/*-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    //return @"Los alimentos que tenga * no se permiten en la fase de mujer intensivo";
    return [alimentoDetail objectAtIndex:1];
-}
+}*/
 
 #pragma mark - Table view data source
 
@@ -150,7 +157,7 @@
         title = [[UILabel alloc] initWithFrame:CGRectMake(7.0, 0.0, 230.0, 44.0)];
         title.tag = TITLE_LABEL;
         title.numberOfLines = 3;
-        title.font = [UIFont systemFontOfSize:14.0];
+        title.font = [UIFont systemFontOfSize:12.0];
         title.textAlignment = UITextAlignmentLeft;
         title.textColor = [UIColor blackColor];
         title.backgroundColor = [UIColor clearColor];

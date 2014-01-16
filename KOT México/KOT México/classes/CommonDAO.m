@@ -32,7 +32,7 @@
 }
 
 -(void)initDataBaseSource{
-    databaseName = @"db_kot_v6.sql";
+    databaseName = @"db_kot_v7.sql";
     
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDir = [documentPaths objectAtIndex:0];

@@ -14,5 +14,7 @@
 - (IBAction)hombreIntensivo:(id)sender;
 - (IBAction)mujerProgresivo:(id)sender;
 - (IBAction)hombreProgresivo:(id)sender;
+- (IBAction)vegetariano:(id)sender;
+@property (retain, nonatomic) IBOutlet UISwitch *isVegetariano;
 
 @end

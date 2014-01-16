@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuAlimentosPermitidosViewController">
             <connections>
+                <outlet property="isVegetariano" destination="Tqm-Fu-fy7" id="lvO-FV-2bF"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -75,6 +76,20 @@
                         <action selector="hombreIntensivo:" destination="-1" eventType="touchUpInside" id="VJw-6U-VQK"/>
                     </connections>
                 </button>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Tqm-Fu-fy7">
+                    <rect key="frame" x="136" y="302" width="51" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="vegetariano:" destination="-1" eventType="valueChanged" id="XjR-em-XDJ"/>
+                    </connections>
+                </switch>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vegetariano" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8a0-e2-IzB">
+                    <rect key="frame" x="209" y="307" width="91" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
