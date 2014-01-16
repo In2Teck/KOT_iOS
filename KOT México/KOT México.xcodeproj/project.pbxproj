@@ -234,7 +234,7 @@
 		33EB3AAE14F43FD900555755 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EB3AAC14F43FD900555755 /* facebook_icon.png */; };
 		33EB3AAF14F43FD900555755 /* twitter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EB3AAD14F43FD900555755 /* twitter_icon.png */; };
 		33F1C2BE14DEE3730069EBB3 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3314769B14DCA740002AF3ED /* libSDWebImage.a */; };
-		C79ED366188707AB00555601 /* db_kot_v7.sql in Resources */ = {isa = PBXBuildFile; fileRef = C79ED365188707AB00555601 /* db_kot_v7.sql */; };
+		C7DF856C1888543F0016404A /* db_kot_v7.sql in Resources */ = {isa = PBXBuildFile; fileRef = C7DF856B1888543F0016404A /* db_kot_v7.sql */; };
 		C7DFC2D0186E10820034EBFB /* ConoceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DFC2CE186E10820034EBFB /* ConoceViewController.m */; };
 		C7DFC2D1186E10820034EBFB /* ConoceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DFC2CF186E10820034EBFB /* ConoceViewController.xib */; };
 		C7DFC2D5186E12D00034EBFB /* AyudaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DFC2D3186E12D00034EBFB /* AyudaViewController.m */; };
@@ -604,7 +604,7 @@
 		33EB3AAD14F43FD900555755 /* twitter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_icon.png; sourceTree = "<group>"; };
 		33EB3AB614F4688000555755 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		33EB3AB814F4688B00555755 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
-		C79ED365188707AB00555601 /* db_kot_v7.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = db_kot_v7.sql; sourceTree = "<group>"; };
+		C7DF856B1888543F0016404A /* db_kot_v7.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = db_kot_v7.sql; sourceTree = "<group>"; };
 		C7DFC2CD186E10820034EBFB /* ConoceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConoceViewController.h; sourceTree = "<group>"; };
 		C7DFC2CE186E10820034EBFB /* ConoceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConoceViewController.m; sourceTree = "<group>"; };
 		C7DFC2CF186E10820034EBFB /* ConoceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConoceViewController.xib; path = "../KOT México/classes/ConoceViewController.xib"; sourceTree = "<group>"; };
@@ -1029,7 +1029,7 @@
 		3330152214BF4DA400F92EC0 /* Sqlite */ = {
 			isa = PBXGroup;
 			children = (
-				C79ED365188707AB00555601 /* db_kot_v7.sql */,
+				C7DF856B1888543F0016404A /* db_kot_v7.sql */,
 				3363CA5A17A02BB4003809A0 /* db_kot_v6.sql */,
 				3330157514BF9A9E00F92EC0 /* CommonDAO.m */,
 				3330157614BF9A9E00F92EC0 /* CommonDAO.h */,
@@ -1289,7 +1289,7 @@
 				333014FE14BF4C5E00F92EC0 /* 33.png in Resources */,
 				333014FF14BF4C5E00F92EC0 /* 34.png in Resources */,
 				3330150014BF4C5E00F92EC0 /* 35.png in Resources */,
-				C79ED366188707AB00555601 /* db_kot_v7.sql in Resources */,
+				C7DF856C1888543F0016404A /* db_kot_v7.sql in Resources */,
 				3330150114BF4C5E00F92EC0 /* 4.png in Resources */,
 				3330150214BF4C5E00F92EC0 /* 5.png in Resources */,
 				3330150314BF4C5E00F92EC0 /* 6.png in Resources */,
@@ -1535,8 +1535,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jorge Benjamin Hernandez Zetter (U7443L5ZBL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jorge Benjamin Hernandez Zetter (Z9C27FZ69G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Naranya App House, S.A. de C.V.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Naranya App House, S.A. de C.V.";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1549,8 +1549,8 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "9837FAEC-93D5-46C7-8989-7389CEAF6C8A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9837FAEC-93D5-46C7-8989-7389CEAF6C8A";
+				PROVISIONING_PROFILE = "54B344C5-61C6-402D-B232-2B99D8FD8024";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54B344C5-61C6-402D-B232-2B99D8FD8024";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1591,8 +1591,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jorge Benjamin Hernandez Zetter (U7443L5ZBL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jorge Benjamin Hernandez Zetter (U7443L5ZBL)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KOT México/KOT México-Prefix.pch";
@@ -1609,8 +1609,8 @@
 					"\"$(SRCROOT)/../../../Flurry iPhone SDK viPhone 4.2.2/Flurry-iOS-4.2.2/FlurryAnalytics\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9837FAEC-93D5-46C7-8989-7389CEAF6C8A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9837FAEC-93D5-46C7-8989-7389CEAF6C8A";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
