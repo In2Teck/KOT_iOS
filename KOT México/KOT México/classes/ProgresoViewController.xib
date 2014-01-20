@@ -10,6 +10,7 @@
                 <outlet property="actual" destination="8" id="10"/>
                 <outlet property="banderaImageView" destination="47" id="51"/>
                 <outlet property="chart" destination="37" id="38"/>
+                <outlet property="chartGrasa" destination="au2-kB-iwD" id="4x8-gI-2Fy"/>
                 <outlet property="chartMedida" destination="45" id="46"/>
                 <outlet property="faltanteLabel" destination="50" id="52"/>
                 <outlet property="llevasLabel" destination="48" id="53"/>
@@ -32,11 +33,12 @@
                         <navigationItem id="5">
                             <nil key="title"/>
                             <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="7">
-                                <rect key="frame" x="94" y="7" width="133" height="30"/>
+                                <rect key="frame" x="60" y="8" width="200" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Peso"/>
                                     <segment title="Medidas"/>
+                                    <segment title="% Grasa"/>
                                 </segments>
                                 <color key="tintColor" red="0.088460486490000004" green="0.55189311839999999" blue="0.88654891300000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -70,6 +72,11 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="45" customClass="WSChart">
+                    <rect key="frame" x="0.0" y="171" width="320" height="198"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="au2-kB-iwD" customClass="WSChart">
                     <rect key="frame" x="0.0" y="171" width="320" height="198"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

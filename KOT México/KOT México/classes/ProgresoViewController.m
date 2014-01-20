@@ -19,8 +19,7 @@
 @synthesize actual;
 @synthesize meta;
 @synthesize segmented;
-@synthesize chart;
-@synthesize chartMedida;
+@synthesize chart, chartGrasa, chartMedida;
 @synthesize banderaImageView;
 @synthesize llevasLabel;
 @synthesize metaLabel;
@@ -69,16 +68,23 @@
     [actual setHidden:YES];
     [meta setHidden:YES];
     
-    isPeso = YES;
+    estado = @"peso";
 
-    if(isPeso){
+    if([estado isEqualToString:@"peso"]){
         [self.chart setHidden:NO];
         [self.chartMedida setHidden:YES];
+        [self.chartGrasa setHidden:YES];
         [Flurry logEvent:@"Mi Progreso Grafica Peso" timed:YES];
-    }else{
+    }else if([estado isEqualToString:@"medida"]){
         [self.chart setHidden:YES];
         [self.chartMedida setHidden:NO];
+        [self.chartGrasa setHidden:YES];
         [Flurry logEvent:@"Mi Progreso Grafica Medida" timed:YES];
+    }else {
+        [self.chart setHidden:YES];
+        [self.chartMedida setHidden:YES];
+        [self.chartGrasa setHidden:NO];
+        [Flurry logEvent:@"Mi Progreso Grafica Grasa" timed:YES];
     }
     
 //    float dif = 0.0;
@@ -116,7 +122,7 @@
     
     updateViews = FALSE;
     float dif;
-    if(isPeso){  
+    if([estado isEqualToString:@"peso"]){
         
         [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f Kg", ([peso_inicio floatValue] - [pesoActual floatValue])]];
         dif = ([pesoMeta floatValue] - [pesoActual floatValue]);
@@ -127,7 +133,7 @@
         [faltanteLabel setHidden:false];
         [add.titleLabel setText:@"Nuevo Peso"];
         [add reloadInputViews];
-    }else{
+    }else if([estado isEqualToString:@"medida"]){
         dif = ([medidaMeta floatValue] - [medidaActual floatValue]);
         dif = (dif>=0?dif:-dif);
         [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f cm", ([medida_inicio floatValue] - [medidaActual floatValue] )]];
@@ -137,6 +143,17 @@
         [faltanteLabel setHidden:true];
         [add.titleLabel setText:@"Nueva Medida"];
         [add reloadInputViews];
+    } else {
+        //TODO: ARREGLAR VALORES
+        dif = ([medidaMeta floatValue] - [medidaActual floatValue]);
+        dif = (dif>=0?dif:-dif);
+        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f %%", ([medida_inicio floatValue] - [medidaActual floatValue] )]];
+        [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f %%", medidaActual]];
+        //[faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Centimetros para tu meta!", dif]];
+        [banderaImageView setHidden:true];
+        [faltanteLabel setHidden:true];
+        //[add.titleLabel setText:@"Nueva Medida"];
+        [add reloadInputViews];
     }
     
     [super viewDidLoad];
@@ -144,6 +161,7 @@
 
 - (void)viewDidUnload
 {
+    [self setChartGrasa:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -170,13 +188,17 @@
 //////////////////////////// UISegmentedControll Methods ////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 -(IBAction)changeView:(id)sender{
-    isPeso = (isPeso?NO:YES);
+    
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    NSString *title = [segmentedControl titleForSegmentAtIndex: [segmentedControl selectedSegmentIndex]];
+
     LoadingView *splashLoading = [LoadingView loadingViewInView:self.navigationController.view];
     float dif = 0.0;
     
-    if(isPeso){
+    if([title isEqualToString:@"Peso"]){
         [self.chart setHidden:NO];
         [self.chartMedida setHidden:YES];
+        [self.chartGrasa setHidden:YES];
         [actual setPlaceholder:@"Ingresa tu peso actual"];
         [meta setPlaceholder:@"Ingresa tu peso meta"];
         
@@ -190,8 +212,10 @@
         [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Kilos para tu meta!", dif]];
         [add.titleLabel setText:@"Nuevo Peso"];
         [Flurry logEvent:@"Mi Progreso Grafica Peso" timed:YES];
-    }else{
+        estado = @"peso";
+    }else if([title isEqualToString:@"Medidas"]){
         [self.chart setHidden:YES];
+        [self.chartGrasa setHidden:YES];
         [self.chartMedida setHidden:NO];
         [actual setPlaceholder:@"Ingresa tu medida actual"];
         [meta setPlaceholder:@"Ingresa tu medida meta"];
@@ -206,8 +230,30 @@
         //[faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Centimetros para tu meta!", dif]];
         [banderaImageView setHidden:true];
         [faltanteLabel setHidden:true];
-        [add.titleLabel setText:@"Nueva Medida"];
+        //[add.titleLabel setText:@"Nueva Medida"];
         [Flurry logEvent:@"Mi Progreso Grafica Medida" timed:YES];
+        estado = @"medida";
+    } else {
+        // TODO: Modificar a parámetros con % grasa
+        [self.chart setHidden:YES];
+        [self.chartGrasa setHidden:NO];
+        [self.chartMedida setHidden:YES];
+        [actual setPlaceholder:@"Ingresa tu % grasa actual"];
+        [meta setPlaceholder:@"Ingresa tu % grasa meta"];
+        
+        dif = ([medidaMeta floatValue] - [medidaActual floatValue]);
+        dif = (dif>=0?dif:-dif);
+        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f %%", ([medida_inicio floatValue] - [medidaActual floatValue] )]];
+        //        if(![medidaMeta isEqualToString:@"0"]&&![medidaActual isEqualToString:@"0"])
+        
+        [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f %%", [medidaActual floatValue]]];
+        
+        //[faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Centimetros para tu meta!", dif]];
+        [banderaImageView setHidden:true];
+        [faltanteLabel setHidden:true];
+        //[add.titleLabel setText:@"Nuevo %"];
+        [Flurry logEvent:@"Mi Progreso Grafica Medida" timed:YES];
+        estado = @"grasa";
     }
     [splashLoading performSelector:@selector(removeView) withObject:nil afterDelay:1.0];
 }
@@ -321,6 +367,137 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+-(int) gcdM:(int)m N:(int)n {
+    
+    int t, r;
+    if (m < n) {
+        t = m;
+        m = n;
+        n = t;
+    }
+    
+    r = m % n;
+    if (r == 0) {
+        return n;
+    } else {
+        return [self gcdM:n N:r];
+    }
+}
+
+-(void)initChartGrasa{
+    
+    // Create a few line plots with their controllers.
+    WSPlotAxis *axis = [[WSPlotAxis alloc] initWithFrame:self.chart.frame];
+    WSPlotData *line1 = [[WSPlotData alloc] initWithFrame:self.chart.frame];
+    WSPlotData *line2 = [[WSPlotData alloc] initWithFrame:self.chart.frame];
+    WSPlotData *line3 = [[WSPlotData alloc] initWithFrame:self.chart.frame];
+    WSPlotController *ctrlA = [WSPlotController new];
+    WSPlotController *ctrl1 = [WSPlotController new];
+    WSPlotController *ctrl2 = [WSPlotController new];
+    WSPlotController *ctrl3 = [WSPlotController new];
+    ctrlA.view = axis;
+    ctrl1.view = line1;
+    ctrl2.view = line2;
+    ctrl3.view = line3;
+    // DATA CHAR AT
+    NSMutableArray *tempSemanas = [[NSMutableArray alloc] init];
+    NSMutableArray *tempPoints = [[NSMutableArray alloc] init];
+    NSMutableArray *tempPoints2 = [[NSMutableArray alloc] init];
+    //    if([pesoList count]==1){
+    //      [tempPoints2 addObject:[NSNumber numberWithFloat:60.0]];//[peso_inicio floatValue]]];
+    //        [tempSemanas addObject:@""];
+    //    }
+    for (NSString *json in pesoList) {
+        NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
+        [tempSemanas addObject:[NSString stringWithFormat:@"%@ sem",[itemJSon objectForKey:@"Semana"]]];
+        [tempPoints addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
+        pesoActual = [[NSString stringWithFormat:@"%.2f",[[itemJSon objectForKey:@"kilos"]floatValue]]retain];
+    }
+    //    if([tempPoints count]>1){
+    //        [tempPoints removeObjectAtIndex:0];
+    //        [tempSemanas removeObjectAtIndex:0];
+    //    }
+    
+    float min = [[tempPoints valueForKeyPath:@"@min.self"] floatValue];
+    float max = [[tempPoints valueForKeyPath:@"@max.self"] floatValue];
+    
+    [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[peso_inicio floatValue]]];
+    for (NSString *json in pesoList) {
+        NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
+        [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
+    }
+    
+    // max min to plot
+    max += 2;
+    min -= 2;
+    int diff = [self gcdM:max N:min];
+    
+    //float rates[1] = {0.0};
+    float rates[2] = {max, min};
+    
+    //24.8, 40.3, 36.7, 48.6, 48.3,
+    //               41.8, 47.4, 44.6, 56.2, 44.4, 66.8};
+    ctrl1.dataD = [WSData dataWithValues:[WSData arrayWithFloat:rates withLen:2]];
+    ctrl2.dataD = [[WSData dataWithValues:tempPoints2] indexedData];
+    ctrl3.dataD = [[WSData dataWithValues:tempPoints] indexedData];
+    
+    // Configure the appearance of the plots.
+    
+    axis.axisStyleX = kAxisPlain;//kAxisPlain
+    axis.gridStyleX = kGridDotted;//Delete line
+    axis.axisStyleY = kAxisPlain;//kAxisNone
+    axis.gridStyleY = kGridDotted;//kGridDotted
+    [axis.ticksX setTickLabelsWithStrings:tempSemanas];
+    axis.ticksX.ticksStyle = kTicksLabelsSlanted;
+    axis.axisArrowLength = 2.0;
+    
+    axis.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    
+    axis.axisStrokeWidth = 0.5;
+    
+    [axis.ticksY autoTicksWithRange:NARangeMake((min), (max)) withNumber:diff];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [axis.ticksY setTickLabelsWithFormatter:formatter];
+    axis.ticksY.ticksStyle = kTicksLabels;
+    
+    axis.gridStrokeWidth = 1.0;
+    line1.lineColor = [UIColor clearColor];
+    line2.lineColor = [UIColor clearColor];
+    line3.lineColor = [UIColor blueColor];
+    line1.symbolStyle = kSymbolDisk;
+    line2.symbolStyle = kSymbolDisk;
+    line3.symbolStyle = kSymbolDisk;
+    line1.symbolColor = line1.lineColor;
+    line2.symbolColor = line1.lineColor;
+    line3.symbolColor = line3.lineColor;
+    line3.symbolSize = 8.0;
+    line3.hasShadow = YES;
+    line1.intStyle = kInterpolationSpline;
+    line2.intStyle = kInterpolationSpline;
+    line3.intStyle = kInterpolationSpline;
+    
+    // Finally, add them to the chart.
+    [self.chartGrasa addPlot:ctrlA];
+    [self.chartGrasa addPlot:ctrl1];
+    [self.chartGrasa addPlot:ctrl2];
+    [self.chartGrasa addPlot:ctrl3];
+    [self.chartGrasa autoscaleAllAxisX];
+    [self.chartGrasa autoscaleAllAxisY];
+    [self.chartGrasa setAllAxisLocationXD:0.0];
+    [self.chartGrasa setAllAxisLocationYD:min];
+    
+    [axis release];
+    [line1 release];
+    [line2 release];
+    [line3 release];
+    [ctrlA release];
+    [ctrl1 release];
+    [ctrl2 release];
+    [ctrl3 release];
+}
+
 -(void)initChartPeso{
     // Do any additional setup after loading the view from its nib
     
@@ -363,11 +540,16 @@
     for (NSString *json in pesoList) {
         NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
         [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
-        
     }
     
+    // max min to plot
+    max += 2;
+    min -= 2;
+    int diff = [self gcdM:max N:min];
+    
     //float rates[1] = {0.0};
-    float rates[2] = {max + 2, min - 2};
+    float rates[2] = {max, min};
+    
     //24.8, 40.3, 36.7, 48.6, 48.3,
     //               41.8, 47.4, 44.6, 56.2, 44.4, 66.8};
     ctrl1.dataD = [WSData dataWithValues:[WSData arrayWithFloat:rates withLen:2]];
@@ -387,8 +569,8 @@
     axis.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     
     axis.axisStrokeWidth = 0.5;
-
-    [axis.ticksY autoTicksWithRange:NARangeMake((min - 2), (max + 2)) withNumber:((max+2)-(min-2))];
+    
+    [axis.ticksY autoTicksWithRange:NARangeMake((min), (max)) withNumber:diff];
 
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -419,7 +601,7 @@
     [self.chart autoscaleAllAxisX];
     [self.chart autoscaleAllAxisY];
     [self.chart setAllAxisLocationXD:0.0];
-    [self.chart setAllAxisLocationYD:(min-2)];
+    [self.chart setAllAxisLocationYD:min];
     
     [axis release];
     [line1 release];
@@ -475,8 +657,18 @@
         [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"medida"] floatValue]]];
     }
     
+    // max min to plot
+    max += 2;
+    min -= 2;
+    
+    int diff = [self gcdM:max N:min];
+    if (diff > 12 || diff < 3){
+        max -= 1;
+        diff = [self gcdM:max N:min];
+    }
+    
     //float rates[2] = {(90.0), 0.0};
-    float rates[2] = {max + 2, min - 2};
+    float rates[2] = {max, min};
     
     ctrl1.dataD = [WSData dataWithValues:[WSData arrayWithFloat:rates withLen:2]];
     ctrl2.dataD = [[WSData dataWithValues:tempPoints2] indexedData];
@@ -496,7 +688,7 @@
     axis.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     
     axis.axisStrokeWidth = 0.5;
-    [axis.ticksY autoTicksWithRange:NARangeMake((min - 2), (max + 2)) withNumber:((max+2)-(min-2))];
+    [axis.ticksY autoTicksWithRange:NARangeMake((min), (max)) withNumber:diff];
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -527,7 +719,7 @@
     [self.chartMedida autoscaleAllAxisX];
     [self.chartMedida autoscaleAllAxisY];
     [self.chartMedida setAllAxisLocationXD:0.0];
-    [self.chartMedida setAllAxisLocationYD:(min-2)];
+    [self.chartMedida setAllAxisLocationYD:min];
     
     [axis release];
     [line1 release];
@@ -597,6 +789,7 @@
                 
                 [self initChartPeso];
                 [self initChartMedida];
+                [self initChartGrasa];
                 
             }else{
                 UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
@@ -619,7 +812,8 @@
     }
     [splashLoading performSelector:@selector(removeView) withObject:nil afterDelay:1.0];
 }
--(IBAction)nuevPesoMedida:(id)sender{
+/* Removida funcionalidad para agregar nuevo peso desde la APP
+ -(IBAction)nuevPesoMedida:(id)sender{
     NSString *semanaSiguiente =[NSString stringWithString: @"0"];
     NSString *typeMedida;
     AddMedidaPesoView *apm = [[AddMedidaPesoView alloc] initWithNibName:@"AddMedidaPesoView" bundle:nil];
@@ -649,7 +843,7 @@
     apm.myProgresoSelf = self;
     [self.navigationController pushViewController:apm animated:YES];
     updateViews = YES;
-}
+}*/
 
 - (void)dealloc {
     [super dealloc];
@@ -659,12 +853,15 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated{
-    if(isPeso){
+    if([estado isEqualToString:@"peso"]){
         [add.titleLabel setText:@"Nuevo Peso"];
         [add.titleLabel setTextAlignment:UITextAlignmentCenter];
     }
-    else{
+    else if ([estado isEqualToString:@"medida"]){
         [add.titleLabel setText:@"Nueva Medida"];
+        [add.titleLabel setTextAlignment:UITextAlignmentCenter];
+    } else {
+        [add.titleLabel setText:@"Nuevo %"];
         [add.titleLabel setTextAlignment:UITextAlignmentCenter];
     }
     

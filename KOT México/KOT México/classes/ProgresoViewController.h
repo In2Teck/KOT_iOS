@@ -17,7 +17,7 @@
 @interface ProgresoViewController : UIViewController <FBSessionDelegate, FBRequestDelegate,MFMailComposeViewControllerDelegate>{
     
     CommonDAO *sqlite;
-    BOOL isPeso;
+    NSString *estado;
     
     NSMutableArray *pesoList;
     NSMutableArray *medidaList;
@@ -35,6 +35,7 @@
 @property(nonatomic,retain)IBOutlet UISegmentedControl *segmented;
 @property(nonatomic,retain)IBOutlet UIView *chart;
 @property(nonatomic,retain)IBOutlet UIView *chartMedida;
+@property(nonatomic,retain)IBOutlet UIView *chartGrasa;
 @property(nonatomic,retain)IBOutlet UIImageView *banderaImageView;
 @property(nonatomic,retain)IBOutlet UILabel *llevasLabel;
 @property(nonatomic,retain)IBOutlet UILabel *metaLabel;
