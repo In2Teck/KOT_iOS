@@ -39,15 +39,6 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </tabBar>
             <viewControllers>
-                <viewController nibName="HomeViewController" id="9" customClass="HomeViewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Home" image="home_icon.png" id="12"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
-                </viewController>
                 <viewController id="L3d-QY-pY2" customClass="ConoceViewController">
                     <tabBarItem key="tabBarItem" title="Conoce" id="Wcx-LM-mOw"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -55,6 +46,15 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <viewController nibName="HomeViewController" id="9" customClass="HomeViewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" title="Mi método" image="home_icon.png" id="12"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <nil key="simulatedDestinationMetrics"/>
                 </viewController>
                 <viewController id="Lef-Cc-xX6" customClass="AyudaViewController">
                     <tabBarItem key="tabBarItem" title="Ayuda" id="9Gv-M5-yal"/>
