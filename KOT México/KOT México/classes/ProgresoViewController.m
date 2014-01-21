@@ -418,8 +418,8 @@
     //        [tempSemanas removeObjectAtIndex:0];
     //    }
     
-    float min = [[tempPoints valueForKeyPath:@"@min.self"] floatValue];
-    float max = [[tempPoints valueForKeyPath:@"@max.self"] floatValue];
+    float min = ceil([[tempPoints valueForKeyPath:@"@min.self"] floatValue]);
+    float max = ceil([[tempPoints valueForKeyPath:@"@max.self"] floatValue]);
     
     [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[peso_inicio floatValue]]];
     for (NSString *json in pesoList) {
@@ -431,6 +431,10 @@
     max += 2;
     min -= 2;
     int diff = [self gcdM:max N:min];
+    if (diff > 12 || diff < 3){
+        max -= 1;
+        diff = [self gcdM:max N:min];
+    }
     
     //float rates[1] = {0.0};
     float rates[2] = {max, min};
@@ -465,7 +469,7 @@
     axis.gridStrokeWidth = 1.0;
     line1.lineColor = [UIColor clearColor];
     line2.lineColor = [UIColor clearColor];
-    line3.lineColor = [UIColor blueColor];
+    line3.lineColor = [UIColor greenColor];
     line1.symbolStyle = kSymbolDisk;
     line2.symbolStyle = kSymbolDisk;
     line3.symbolStyle = kSymbolDisk;
@@ -533,8 +537,8 @@
 //        [tempSemanas removeObjectAtIndex:0];
 //    }
     
-    float min = [[tempPoints valueForKeyPath:@"@min.self"] floatValue];
-    float max = [[tempPoints valueForKeyPath:@"@max.self"] floatValue];
+    float min = ceil([[tempPoints valueForKeyPath:@"@min.self"] floatValue]);
+    float max = ceil([[tempPoints valueForKeyPath:@"@max.self"] floatValue]);
     
     [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[peso_inicio floatValue]]];
     for (NSString *json in pesoList) {
@@ -546,6 +550,10 @@
     max += 2;
     min -= 2;
     int diff = [self gcdM:max N:min];
+    if (diff > 12 || diff < 3){
+        max -= 1;
+        diff = [self gcdM:max N:min];
+    }
     
     //float rates[1] = {0.0};
     float rates[2] = {max, min};
@@ -648,8 +656,8 @@
 //        [tempSemanas removeObjectAtIndex:0];
 //    }
     
-    float min = [[tempPoints valueForKeyPath:@"@min.self"] floatValue];
-    float max = [[tempPoints valueForKeyPath:@"@max.self"] floatValue];
+    float min = ceil([[tempPoints valueForKeyPath:@"@min.self"] floatValue]);
+    float max = ceil([[tempPoints valueForKeyPath:@"@max.self"] floatValue]);
     
     [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[medida_inicio floatValue]]];
     for (NSString *json in medidaList) {

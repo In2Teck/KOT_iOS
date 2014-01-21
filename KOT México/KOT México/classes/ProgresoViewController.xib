@@ -33,7 +33,7 @@
                         <navigationItem id="5">
                             <nil key="title"/>
                             <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="7">
-                                <rect key="frame" x="60" y="8" width="200" height="29"/>
+                                <rect key="frame" x="59" y="8" width="203" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Peso"/>
