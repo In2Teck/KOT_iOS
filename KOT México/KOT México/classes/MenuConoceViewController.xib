@@ -37,6 +37,9 @@
                     <state key="highlighted">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="imc:" destination="-1" eventType="touchUpInside" id="uVH-Aj-oYb"/>
+                    </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Especialista" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="euV-Gk-i4b" userLabel="Label - Especialista">
                     <rect key="frame" x="184" y="129" width="119" height="51"/>

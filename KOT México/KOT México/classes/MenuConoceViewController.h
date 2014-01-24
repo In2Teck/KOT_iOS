@@ -12,4 +12,5 @@
 
 - (IBAction)productosKOT:(id)sender;
 - (IBAction)especialistaKOT:(id)sender;
+- (IBAction)imc:(id)sender;
 @end

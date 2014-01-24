@@ -9,6 +9,7 @@
 #import "MenuConoceViewController.h"
 #import "CollapsableTableViewViewController.h"
 #import "ProductosViewController.h"
+#import "IMCViewController.h"
 
 @interface MenuConoceViewController ()
 
@@ -51,6 +52,11 @@
 - (IBAction)especialistaKOT:(id)sender {
     CollapsableTableViewViewController *control = [[[CollapsableTableViewViewController alloc]initWithNibName:@"CollapsableTableViewViewController" bundle:nil]autorelease];
     [self.navigationController pushViewController:control animated:YES];
+}
+
+- (IBAction)imc:(id)sender {
+    IMCViewController *imc = [[[IMCViewController alloc]initWithNibName:@"IMCViewController" bundle:nil]autorelease];
+    [self.navigationController pushViewController:imc animated:YES];
 }
 
 
