@@ -14,7 +14,7 @@
 @end
 
 @implementation IMCViewController
-@synthesize leyendaInformativa, sexoSelector, arrStatus, estaturaTextInput, pesoTextInput, semanas, IMC, isHombre;
+@synthesize leyendaInformativa, sexoSelector, arrStatus, estaturaTextInput, pesoTextInput, semanas, IMC, isHombre, sexoLabel, queEsImcButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,9 +43,9 @@
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar.barStyle = UIBarStyleDefault;
     numberToolbar.items = [NSArray arrayWithObjects:
-                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad)],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Cancela" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad)],
                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                           [[UIBarButtonItem alloc]initWithTitle:@"Apply" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Ok" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)],
                            nil];
     [numberToolbar sizeToFit];
     estaturaTextInput.inputAccessoryView = numberToolbar;
@@ -53,12 +53,15 @@
     UIToolbar* numberToolbar2 = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar2.barStyle = UIBarStyleDefault;
     numberToolbar2.items = [NSArray arrayWithObjects:
-                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad2)],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Cancela" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad2)],
                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                           [[UIBarButtonItem alloc]initWithTitle:@"Apply" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad2)],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Ok" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad2)],
                            nil];
     [numberToolbar2 sizeToFit];
     pesoTextInput.inputAccessoryView = numberToolbar2;
+    
+    [self.view addSubview:queEsImcButton];
+    [self.view addSubview:sexoLabel];
 }
 
 -(void)cancelNumberPad{
@@ -92,6 +95,8 @@
     [sexoSelector release];
     [pesoTextInput release];
     [estaturaTextInput release];
+    [queEsImcButton release];
+    [sexoLabel release];
     [super dealloc];
 }
 - (void)viewDidUnload {
@@ -99,6 +104,8 @@
     [self setSexoSelector:nil];
     [self setPesoTextInput:nil];
     [self setEstaturaTextInput:nil];
+    [self setQueEsImcButton:nil];
+    [self setSexoLabel:nil];
     [super viewDidUnload];
 }
 - (IBAction)queEsIMC:(id)sender {
@@ -148,8 +155,19 @@
         } else {
             semanas = round((([pesoTextInput.text floatValue]) - ((21)*([estaturaTextInput.text floatValue]*[estaturaTextInput.text floatValue])))/1.3);
         }
-    
-        message = [[UIAlertView alloc]initWithTitle:@"Resultado" message:[NSString stringWithFormat:@"IMC: %.2f\n Semanas en KOT para peso ideal: %d", IMC, semanas] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        NSString *mensajeIMC = [[NSString alloc] init];
+        if (IMC < 18.5 ) {
+            mensajeIMC = @"No necesitas bajar de peso";
+        }else if(IMC <=24.9 && IMC >= 18.6){
+            mensajeIMC = @"Estás en peso normal";
+        }else if(IMC <=29.9 && IMC >=25){
+            mensajeIMC = @"Tienes sobrepeso, te recomendamos ir con un Especialista KOT para ayudarte a llegar a tu peso ideal";
+        }else{
+            mensajeIMC = @"Tienes obesidad, te recomendamos ir con un Especialista KOT para ayudarte a llegar a tu peso ideal";
+        }
+        
+        message = [[UIAlertView alloc]initWithTitle:@"Resultado" message:[NSString stringWithFormat:@"IMC: %.2f\n\n %@ \n\nSemanas en KOT para peso ideal: %d", IMC, mensajeIMC, semanas] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        
     } else {
          message = [[UIAlertView alloc]initWithTitle:@"Atención" message:@"Favor de introducir tu peso y tu estatura." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     }

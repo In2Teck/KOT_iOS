@@ -338,14 +338,14 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         menu = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 0.0, (cell.frame.size.width * 0.7), cell.frame.size.height)];
-        [menu setFont:[UIFont systemFontOfSize:12.0]];
+        [menu setFont:[UIFont systemFontOfSize:14.0]];
         [menu setNumberOfLines:2];
         [menu setBackgroundColor:[UIColor clearColor]];
         [menu setTag:LABEL_MENU_TAG];
         [cell addSubview:menu];
         
         
-        rating = [[RateView alloc] initWithFrame:CGRectMake((cell.frame.size.width * 0.73), 0.0, (cell.frame.size.width * 0.25), cell.frame.size.height)];
+        rating = [[RateView alloc] initWithFrame:CGRectMake((cell.frame.size.width * 0.65), 0.0, (cell.frame.size.width * 0.35), cell.frame.size.height)];
         [rating setTag:VIEW_IMAGE_TAG];
         [cell addSubview:rating];
         

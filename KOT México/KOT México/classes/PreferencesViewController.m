@@ -71,6 +71,25 @@
     [generoButton.titleLabel setTextAlignment:UITextAlignmentLeft];
     [generoButton.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
     
+    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    numberToolbar.barStyle = UIBarStyleDefault;
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithTitle:@"Cancela" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelCodigo)],
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Ok" style:UIBarButtonItemStyleDone target:self action:@selector(doneCodigo)],
+                           nil];
+    [numberToolbar sizeToFit];
+    codigo.inputAccessoryView = numberToolbar;
+    
+    UIToolbar* numberToolbar2 = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    numberToolbar2.barStyle = UIBarStyleDefault;
+    numberToolbar2.items = [NSArray arrayWithObjects:
+                            [[UIBarButtonItem alloc]initWithTitle:@"Cancela" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelCorreo)],
+                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                            [[UIBarButtonItem alloc]initWithTitle:@"Ok" style:UIBarButtonItemStyleDone target:self action:@selector(doneCorreo)],
+                            nil];
+    [numberToolbar2 sizeToFit];
+    correo.inputAccessoryView = numberToolbar2;
     
     if(!sqlite)
         sqlite = [[CommonDAO alloc] init];
@@ -87,6 +106,24 @@
     
     [sqlite release];
     [super viewDidLoad];
+}
+
+-(void)cancelCodigo{
+    [codigo resignFirstResponder];
+    codigo.text = @"";
+}
+
+-(void)doneCodigo{
+    [codigo resignFirstResponder];
+}
+
+-(void)cancelCorreo{
+    [correo resignFirstResponder];
+    correo.text = @"";
+}
+
+-(void)doneCorreo{
+    [correo resignFirstResponder];
 }
 
 -(IBAction)infoButtonPressed:(id)sender{
@@ -165,7 +202,7 @@
     
     // Return the number of sections.
     if(!isLoged)
-        return 2;
+        return 1;
     else
         return 1;
 }

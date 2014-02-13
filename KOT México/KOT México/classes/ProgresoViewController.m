@@ -409,7 +409,7 @@
     //    }
     for (NSString *json in pesoList) {
         NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
-        [tempSemanas addObject:[NSString stringWithFormat:@"%@ sem",[itemJSon objectForKey:@"Semana"]]];
+        [tempSemanas addObject:[NSString stringWithFormat:@"%i sem",([[itemJSon objectForKey:@"Semana"] integerValue]-1)]];
         [tempPoints addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
         pesoActual = [[NSString stringWithFormat:@"%.2f",[[itemJSon objectForKey:@"kilos"]floatValue]]retain];
     }
@@ -528,7 +528,7 @@
 //    }
     for (NSString *json in pesoList) {
         NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
-        [tempSemanas addObject:[NSString stringWithFormat:@"%@ sem",[itemJSon objectForKey:@"Semana"]]];
+        [tempSemanas addObject:[NSString stringWithFormat:@"%i sem",([[itemJSon objectForKey:@"Semana"] integerValue]-1)]];
         [tempPoints addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
         pesoActual = [[NSString stringWithFormat:@"%.2f",[[itemJSon objectForKey:@"kilos"]floatValue]]retain];
     }

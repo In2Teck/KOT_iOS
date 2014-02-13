@@ -17,7 +17,7 @@
 	
     IBOutlet UISearchBar *searchBar;
 	IBOutlet UIView *selectCity;
-    IBOutlet UIButton *comboButton;
+    //IBOutlet UIButton *comboButton;
     
 	BOOL searching;
 	BOOL letUserSelectRow;
@@ -32,7 +32,7 @@
 - (void) searchTableView;
 - (void) doneSearching_Clicked:(id)sender;
 
-
+@property(nonatomic,retain)IBOutlet UIButton *comboButton;
 -(void) loadJSONService;
 -(void) showSplashScrean;
 -(NSMutableArray *)loadJSONDetail:(NSString*)idRestaurante;

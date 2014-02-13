@@ -314,11 +314,11 @@
         
         if([listNutriologos count]>0 && [ciudades count]>0){
             [selectPicker setEnabled:YES];
-            NSDictionary *ciudadDictionary = [[[ciudades objectAtIndex:0]JSONRepresentation]JSONValue];
+            /*NSDictionary *ciudadDictionary = [[[ciudades objectAtIndex:0]JSONRepresentation]JSONValue];
             NSString *titelString = [NSString stringWithFormat:@"  %@",[ciudadDictionary valueForKey:@"nombre"]];
             [self.selectPicker setTitle:titelString forState:UIControlStateNormal];
             [self cargarNutriologos:[ciudadDictionary valueForKey:@"id"]];
-            [self.myTableView reloadData];
+            [self.myTableView reloadData];*/
         }else{
             [self.selectPicker setEnabled:NO];
         }

@@ -10,6 +10,8 @@
                 <outlet property="estaturaTextInput" destination="u64-Ad-9At" id="8Ic-NA-BzR"/>
                 <outlet property="leyendaInformativa" destination="aXq-Pg-EfH" id="ffG-Gk-XY9"/>
                 <outlet property="pesoTextInput" destination="zvx-Vg-GJj" id="0Xq-e3-hcg"/>
+                <outlet property="queEsImcButton" destination="T8w-kc-g72" id="aSM-bX-yAK"/>
+                <outlet property="sexoLabel" destination="8xO-RD-1pB" id="CQT-0B-Sxp"/>
                 <outlet property="sexoSelector" destination="sWw-gw-1QL" id="EaE-gj-SKv"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -19,6 +21,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <pickerView tag="1" contentMode="scaleToFill" id="sWw-gw-1QL">
+                    <rect key="frame" x="54" y="122" width="320" height="162"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </pickerView>
                 <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" bouncesZoom="NO" editable="NO" text="Calcula cuál es tu IMC y conoce con cuántas semanas llegarás a tu peso meta con la ayuda de KOT." selectable="NO" id="aXq-Pg-EfH">
                     <rect key="frame" x="11" y="67" width="299" height="71"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +36,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T8w-kc-g72">
-                    <rect key="frame" x="84" y="137" width="130" height="30"/>
+                    <rect key="frame" x="90" y="137" width="130" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="¿Qué es el IMC?">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,10 +63,6 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <pickerView tag="1" contentMode="scaleToFill" id="sWw-gw-1QL">
-                    <rect key="frame" x="54" y="122" width="320" height="162"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                </pickerView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="zvx-Vg-GJj" userLabel="Text Input - Peso Actual">
                     <rect key="frame" x="166" y="240" width="97" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

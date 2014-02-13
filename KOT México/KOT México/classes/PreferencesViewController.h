@@ -13,7 +13,7 @@
 
 
 
-@interface PreferencesViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>{
+@interface PreferencesViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>{
     NSMutableArray *arrayNo;
     UIDatePicker *datePickerView;
     BOOL isLoged;

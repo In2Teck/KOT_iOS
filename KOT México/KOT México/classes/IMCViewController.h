@@ -21,5 +21,7 @@
 @property (retain, nonatomic) IBOutlet UITextField *estaturaTextInput;
 - (IBAction)calcularAction:(id)sender;
 - (IBAction)especialistaKOTAction:(id)sender;
+@property (retain, nonatomic) IBOutlet UIButton *queEsImcButton;
+@property (retain, nonatomic) IBOutlet UILabel *sexoLabel;
 
 @end

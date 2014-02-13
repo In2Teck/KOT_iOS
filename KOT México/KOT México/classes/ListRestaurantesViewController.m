@@ -13,6 +13,7 @@
 
 
 @implementation ListRestaurantesViewController
+@synthesize comboButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +41,7 @@
     [self performSelectorInBackground:@selector(loadJSONService) withObject:nil];
     //[self loadJSONService];
     
-    [comboButton setEnabled:NO];
+    [self.comboButton setEnabled:NO];
 }
 
 - (void)viewDidUnload
@@ -373,12 +374,15 @@
         [dataSourceList retain];
         [ciudades retain];
         
-        if([ciudades count] && [dataSourceList count]){
-            [comboButton setEnabled:YES];
+        if([ciudades count]>0 && [dataSourceList count]>0){
+            [self.comboButton setEnabled:YES];
             NSDictionary *ciudadDictionary = [[[ciudades objectAtIndex:0]JSONRepresentation]JSONValue];
-            NSString *titelString = [NSString stringWithFormat:@"  %@",[ciudadDictionary valueForKey:@"area"]];
-            [comboButton setTitle:titelString forState:UIControlStateNormal];
-            [self cargarRestaurantes:[ciudadDictionary valueForKey:@"id_area"]];
+            //NSString *titelString = [NSString stringWithFormat:@"  %@",[ciudadDictionary valueForKey:@"area"]];
+            //[comboButton setTitle:titelString forState:UIControlStateNormal];
+            self.tableView.tableHeaderView = selectCity;
+            [self.tableView reloadData];
+        }else{
+            [self.comboButton setEnabled:NO];
         }
     }
 }
@@ -462,7 +466,7 @@
     
     NSDictionary *ciudadDictionary = [[[ciudades objectAtIndex:0]JSONRepresentation]JSONValue];
     NSString *titelString = [NSString stringWithFormat:@"  %@",[ciudadDictionary valueForKey:@"area"]];
-    [comboButton setTitle:titelString forState:UIControlStateNormal];
+    [self.comboButton setTitle:titelString forState:UIControlStateNormal];
     [self cargarRestaurantes:[ciudadDictionary valueForKey:@"id_area"]];
     
     [menu addSubview:pickerView];
@@ -502,7 +506,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSDictionary *ciudadDictionary = [[[ciudades objectAtIndex:row]JSONRepresentation]JSONValue];
     NSString *titelString = [NSString stringWithFormat:@"  %@",[ciudadDictionary valueForKey:@"area"]];
-    [comboButton setTitle:titelString forState:UIControlStateNormal];
+    [self.comboButton setTitle:titelString forState:UIControlStateNormal];
     [self cargarRestaurantes:[ciudadDictionary valueForKey:@"id_area"]];
 }
 

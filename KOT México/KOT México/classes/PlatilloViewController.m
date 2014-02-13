@@ -169,23 +169,23 @@
 
     if (indexPath.row == 0) 
         return header;
-    
-    if (indexPath.row == 1) 
-        return proteinas;
-    if (indexPath.row == 2) 
-        return cereales;
-    if (indexPath.row == 3) 
-        return v_cosidas;
-    if (indexPath.row == 4) 
-        return v_crudas;
-    if (indexPath.row == 5) 
-        return proteinasCell;
-    if (indexPath.row == 6) 
-        return frutasCell;
-    if (indexPath.row == 7) 
-        return lacteosCell;
-    if (indexPath.row == 8) 
+    if (indexPath.row == 1)
         return recomendaciones;
+    if (indexPath.row == 2)
+        return proteinas;
+    if (indexPath.row == 3)
+        return cereales;
+    if (indexPath.row == 4)
+        return v_cosidas;
+    if (indexPath.row == 5)
+        return v_crudas;
+    if (indexPath.row == 6)
+        return proteinasCell;
+    if (indexPath.row == 7)
+        return frutasCell;
+    if (indexPath.row == 8)
+        return lacteosCell;
+    
     
     return cell;
     
@@ -201,10 +201,11 @@
 
 -(CGFloat)tableView: (UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row==0)
-        return 200.0;
-    if(indexPath.row >= 1 && indexPath.row <= 7)
+        return 175.0;
+    if(indexPath.row==1)
+        return 135.0;
+    if(indexPath.row >= 2 && indexPath.row <= 8)
         return 40.0;
-    return 100.0;
 }
 
 - (void)rateView:(RateView *)rateView ratingDidChange:(float)rating {
