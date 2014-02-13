@@ -25,7 +25,7 @@
         if(!sqlite)
             sqlite = [[CommonDAO alloc] init];
         
-        items = [sqlite select:@"SELECT id_video, url_video, recetario, titulo, descripcion, key_video FROM videos;" keys:[[NSArray alloc]initWithObjects:@"id_video",@"url_video",@"recetario",@"titulo",@"descripcion",@"key_video", nil]];
+        items = [sqlite select:@"SELECT id_video, url_video, recetario, titulo, descripcion, key_video, img FROM videos;" keys:[[NSArray alloc]initWithObjects:@"id_video",@"url_video",@"recetario",@"titulo",@"descripcion",@"key_video", @"img", nil]];
     }
     return self;
 }
@@ -133,9 +133,9 @@
 //    [subTituloLabel setText:[[items objectAtIndex:indexPath.row]objectAtIndex:4]];
     
     
-    
-    [imageYoutube setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://img.youtube.com/vi/%@/0.jpg",[[items objectAtIndex:indexPath.row]objectAtIndex:5]]]
-                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    [imageYoutube setImage:[UIImage imageNamed:[[items objectAtIndex:indexPath.row]objectAtIndex:6]]];
+    /*[imageYoutube setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://img.youtube.com/vi/%@/0.jpg",[[items objectAtIndex:indexPath.row]objectAtIndex:5]]]
+                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]];*/
     
     cell.accessoryType = UITableViewCellAccessoryNone;
     

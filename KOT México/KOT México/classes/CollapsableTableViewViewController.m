@@ -200,7 +200,7 @@
     
     
     
-    [direccion setText:[[NSString alloc]initWithFormat:@"%@",[itemJSon objectForKey:@"direccion"]]];
+    [direccion setText:[[NSString alloc]initWithFormat:@"%@\nTel: %@",[itemJSon objectForKey:@"direccion"],[itemJSon objectForKey:@"telefono"]]];
     
     [call.titleLabel setText:[[NSString alloc]initWithFormat:@"%@",[itemJSon objectForKey:@"telefono"]]];
     [dir.titleLabel setText:[[NSString alloc]initWithFormat:@"%i",indexPath.section]];
