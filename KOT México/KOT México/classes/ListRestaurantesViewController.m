@@ -371,6 +371,10 @@
         // create a filtered list that will contain products for the search results table.
         dataSourceList = [[contentJSON mutableArrayValueForKey:@"restaurante"]retain];
         ciudades = [[contentJSON mutableArrayValueForKey:@"areas_metropolitanas"]retain];
+        
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"area" ascending:YES];
+        [ciudades sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+        
         [dataSourceList retain];
         [ciudades retain];
         

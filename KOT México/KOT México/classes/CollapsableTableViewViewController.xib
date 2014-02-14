@@ -30,7 +30,7 @@
                     <rect key="frame" x="0.0" y="64" width="320" height="88"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Encuentra nuestros productos con el especialista KOT de tu preferencia." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="17">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Comienza tu método KOT con el especialista       de tu preferencia." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="17">
                     <rect key="frame" x="0.0" y="101" width="320" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>

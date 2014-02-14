@@ -310,6 +310,10 @@
         listNutriologos = [[contentJSON mutableArrayValueForKey:@"nutriologos"]retain];
         [listNutriologos retain];
         ciudades = [[contentJSON mutableArrayValueForKey:@"municipios"]retain];
+        
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"nombre" ascending:YES];
+        [ciudades sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+        
         [ciudades retain];
         
         if([listNutriologos count]>0 && [ciudades count]>0){
