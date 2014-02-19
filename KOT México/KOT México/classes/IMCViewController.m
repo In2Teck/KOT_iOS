@@ -139,10 +139,21 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
      return [arrStatus objectAtIndex:row];
 }
+    
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    UILabel *retval = (id)view;
+    if (!retval) {
+        retval= [[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [pickerView rowSizeForComponent:component].width, [pickerView rowSizeForComponent:component].height)] autorelease];
+    }
+    
+    retval.text = [arrStatus objectAtIndex:row];
+    retval.font = [UIFont systemFontOfSize:16];
+    return retval;
+}
 
 // tell the picker the width of each row for a given component
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    int sectionWidth = 200;
+    int sectionWidth = 80;
     return sectionWidth;}
 - (IBAction)calcularAction:(id)sender {
     UIAlertView *message;
@@ -165,7 +176,7 @@
         }else{
             mensajeIMC = @"Tienes obesidad, te recomendamos ir con un Especialista KOT para ayudarte a llegar a tu peso ideal";
         }
-        
+        semanas = semanas < 0 ? 0 : semanas;
         message = [[UIAlertView alloc]initWithTitle:@"Resultado" message:[NSString stringWithFormat:@"IMC: %.2f\n\n %@ \n\nSemanas en KOT para peso ideal: %d", IMC, mensajeIMC, semanas] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         
     } else {

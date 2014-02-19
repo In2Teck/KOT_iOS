@@ -647,7 +647,7 @@
 //    }
     for (NSString *json in medidaList) {
         NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
-        [tempSemanas addObject:[NSString stringWithFormat:@"%@ sem",[itemJSon objectForKey:@"Semana"]]];
+        [tempSemanas addObject:[NSString stringWithFormat:@"%i sem",([[itemJSon objectForKey:@"Semana"] integerValue]-1)]];
         [tempPoints addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"medida"] floatValue]]];
         medidaActual = [[NSString stringWithFormat:@"%.2f",[[itemJSon objectForKey:@"medida"]floatValue]]retain];
     }
