@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    /*NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if([defaults objectForKey:@"isVegetariano"] != nil) {
         if ([defaults boolForKey:@"isVegetariano"]) {
             [self.isVegetariano setOn:YES animated:YES];
@@ -37,15 +37,15 @@
     } else {
         [defaults setBool:NO forKey:@"isVegetariano"];
         [defaults synchronize];
-        [self.isVegetariano setOn:NO animated:YES];
-    }
+        //[self.isVegetariano setOn:NO animated:YES];
+    }*/
     // Do any additional setup after loading the view from its nib.
     self.title = @"Alimentos";
 }
 
 - (void) viewDidUnload
 {
-    [self setIsVegetariano:nil];
+    //[self setIsVegetariano:nil];
     [super viewDidUnload];
 }
 
@@ -65,7 +65,7 @@
     AlimentosViewController *alimentos = [[[AlimentosViewController alloc] initWithNibName:@"AlimentosViewController" bundle:nil]autorelease];
     alimentos.title = @"Mujer Intensivo";
     alimentos.isMujerIntensivo = true;
-    alimentos.isVegetariano = self.isVegetariano.on;
+    //alimentos.isVegetariano = self.isVegetariano.on;
     
     [self.navigationController pushViewController:alimentos animated:YES];
 }
@@ -74,7 +74,7 @@
     AlimentosViewController *alimentos = [[[AlimentosViewController alloc] initWithNibName:@"AlimentosViewController" bundle:nil]autorelease];
     alimentos.title = @"Hombre Intensivo";
     alimentos.isMujerIntensivo = false;
-    alimentos.isVegetariano = self.isVegetariano.on;
+    //alimentos.isVegetariano = self.isVegetariano.on;
     
     [self.navigationController pushViewController:alimentos animated:YES];
 }
@@ -83,7 +83,7 @@
     AlimentosViewController *alimentos = [[[AlimentosViewController alloc] initWithNibName:@"AlimentosViewController" bundle:nil]autorelease];
     alimentos.title = @"Mujer Progresivo";
     alimentos.isMujerIntensivo = false;
-    alimentos.isVegetariano = self.isVegetariano.on;
+    //alimentos.isVegetariano = self.isVegetariano.on;
     
     [self.navigationController pushViewController:alimentos animated:YES];
 }
@@ -92,7 +92,7 @@
     AlimentosViewController *alimentos = [[[AlimentosViewController alloc] initWithNibName:@"AlimentosViewController" bundle:nil]autorelease];
     alimentos.title = @"Hombre Progresivo";
     alimentos.isMujerIntensivo = false;
-    alimentos.isVegetariano = self.isVegetariano.on;
+    //alimentos.isVegetariano = self.isVegetariano.on;
     
     [self.navigationController pushViewController:alimentos animated:YES];
 }
@@ -104,7 +104,7 @@
 }
 
 - (void)dealloc {
-    [_isVegetariano release];
+    //[_isVegetariano release];
     [super dealloc];
 }
 @end

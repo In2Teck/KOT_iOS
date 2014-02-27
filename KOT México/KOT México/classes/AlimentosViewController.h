@@ -14,5 +14,5 @@
 }
 @property(nonatomic,retain) IBOutlet  UITableView *myTableViewController;
 @property BOOL isMujerIntensivo;
-@property BOOL isVegetariano;
+//@property BOOL isVegetariano;
 @end

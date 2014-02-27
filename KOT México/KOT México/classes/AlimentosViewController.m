@@ -11,7 +11,7 @@
 #import "Flurry.h"
 
 @implementation AlimentosViewController
-@synthesize myTableViewController, isMujerIntensivo, isVegetariano;
+@synthesize myTableViewController, isMujerIntensivo;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,12 +43,16 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    if (isVegetariano){
+    /*if (isVegetariano){
         alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos WHERE vegetariano IN (1,3) ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
     } else {
         alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos WHERE vegetariano IN (0,3) ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
     }
  
+    alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];*/
+    
+    alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos WHERE vegetariano IN (0,3) ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
+    
     [Flurry logEvent:@"Alimentos Permitidos" timed:YES];
 }
 
