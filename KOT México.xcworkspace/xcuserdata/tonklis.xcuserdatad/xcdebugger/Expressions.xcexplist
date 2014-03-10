@@ -3,10 +3,13 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[VideosKOTViewController tableView:cellForRowAtIndexPath:]:VideosKOTViewController.m">
+         contextName = "-[ProgresoViewController initChartPeso]:ProgresoViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MenuAlimentosPermitidosViewController vegetariano:]:MenuAlimentosPermitidosViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "[NSString stringWithFormat:@&quot;http://img.youtube.com/vi/%@/0.jpg&quot;,[[items objectAtIndex:indexPath.row]objectAtIndex:5]]">
+               value = "self.isVegetariano">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

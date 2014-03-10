@@ -169,9 +169,9 @@
         NSString *mensajeIMC = [[NSString alloc] init];
         if (IMC < 18.5 ) {
             mensajeIMC = @"No necesitas bajar de peso";
-        }else if(IMC <=24.9 && IMC >= 18.6){
+        }else if(IMC <= 24.9 && IMC >= 18.5){
             mensajeIMC = @"Estás en peso normal";
-        }else if(IMC <=29.9 && IMC >=25){
+        }else if(IMC <= 29.9 && IMC > 24.9){
             mensajeIMC = @"Tienes sobrepeso, te recomendamos ir con un Especialista KOT para ayudarte a llegar a tu peso ideal";
         }else{
             mensajeIMC = @"Tienes obesidad, te recomendamos ir con un Especialista KOT para ayudarte a llegar a tu peso ideal";
