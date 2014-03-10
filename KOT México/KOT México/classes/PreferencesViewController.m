@@ -50,11 +50,11 @@
 - (void)viewDidLoad
 {
     
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    /*UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
     infoButton.backgroundColor = [UIColor clearColor];
     [infoButton addTarget:self action:@selector(infoButtonPressed:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *info = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-    self.navigationItem.rightBarButtonItem = info;
+    self.navigationItem.rightBarButtonItem = info;*/
 //    self.myNavigationBar.topItem.rightBarButtonItem = info;
     
 //    [self.myNavigationBar setHidden:isHiddenNavigationBar];
@@ -126,11 +126,11 @@
     [correo resignFirstResponder];
 }
 
--(IBAction)infoButtonPressed:(id)sender{
+/*-(IBAction)infoButtonPressed:(id)sender{
     AboutViewController *aboutInfo = [[AboutViewController alloc] initWithNibName:@"AboutViewController" bundle:[NSBundle mainBundle]];
     aboutInfo.navigationItem.title = @"Acerca de";
     [self.navigationController pushViewController:aboutInfo animated:YES];
-}
+}*/
 - (void)viewDidUnload
 {
     [super viewDidUnload];
