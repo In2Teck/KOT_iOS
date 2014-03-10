@@ -125,10 +125,15 @@
     if([estado isEqualToString:@"peso"]){
         
         [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f Kg", ([peso_inicio floatValue] - [pesoActual floatValue])]];
-        dif = ([pesoMeta floatValue] - [pesoActual floatValue]);
-        dif = (dif>=0?dif:-dif);
+        dif = ([pesoActual floatValue] - [pesoMeta floatValue]);
+        //dif = (dif>=0?dif:-dif);
         [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f Kg", [pesoActual floatValue]]];
-        [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Kilos para tu meta!", dif]];
+        if (dif <= 0) {
+            [faltanteLabel setText:@"¡Felicidades, llegaste a tu meta!"];
+        } else {
+            [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Kilos para tu meta!", dif]];
+        }
+        
         [banderaImageView setHidden:false];
         [faltanteLabel setHidden:false];
         [add.titleLabel setText:@"Nuevo Peso"];
@@ -204,12 +209,17 @@
         
         [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f Kg", ([peso_inicio floatValue] - [pesoActual floatValue])]];
 //        if(![pesoMeta isEqualToString:@"0"]&&![pesoActual isEqualToString:@"0"])
-            dif = ([pesoMeta floatValue] - [pesoActual floatValue]);
-        dif = (dif>=0?dif:-dif);
+            dif = ([pesoActual floatValue] - [pesoMeta floatValue]);
+        //dif = (dif>=0?dif:-dif);
         [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f Kg", [pesoActual floatValue]]];
         [banderaImageView setHidden:false];
         [faltanteLabel setHidden:false];
-        [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Kilos para tu meta!", dif]];
+        
+        if (dif <= 0) {
+            [faltanteLabel setText:@"¡Felicidades, llegaste a tu meta!"];
+        } else {
+            [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Kilos para tu meta!", dif]];
+        }
         [add.titleLabel setText:@"Nuevo Peso"];
         [Flurry logEvent:@"Mi Progreso Grafica Peso" timed:YES];
         estado = @"peso";
