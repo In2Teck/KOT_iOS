@@ -9,6 +9,7 @@
 #import "MenuAyudaViewController.h"
 #import "NutriologosViewController.h"
 #import "PreferencesViewController.h"
+#import "FaqMenuViewController.h"
 
 @interface MenuAyudaViewController ()
 
@@ -59,6 +60,11 @@
 - (IBAction)contacto:(id)sender {
     NutriologosViewController *contactos = [[[NutriologosViewController alloc]initWithNibName:@"NutriologosViewController" bundle:nil]autorelease];
     [self.navigationController pushViewController:contactos animated:YES];
+}
+
+- (IBAction)faq:(id)sender {
+    FaqMenuViewController *faq = [[[FaqMenuViewController alloc]initWithNibName:@"FaqMenuViewController" bundle:nil]autorelease];
+    [self.navigationController pushViewController:faq animated:YES];
 }
 
 

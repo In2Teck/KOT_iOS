@@ -239,6 +239,11 @@
 		C79C71D418AD78C600366258 /* pasta.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C79C71CF18AD78C600366258 /* pasta.jpg */; };
 		C79C71D518AD78C600366258 /* purepapa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C79C71D018AD78C600366258 /* purepapa.jpg */; };
 		C79C71D618AD78C600366258 /* smoothie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C79C71D118AD78C600366258 /* smoothie.jpg */; };
+		C7CC8FA118CF9B8D005E1E57 /* FaqMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CC8F9F18CF9B8D005E1E57 /* FaqMenuViewController.m */; };
+		C7CC8FA218CF9B8D005E1E57 /* FaqMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CC8FA018CF9B8D005E1E57 /* FaqMenuViewController.xib */; };
+		C7CC8FAB18CFF122005E1E57 /* FaqViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CC8FA918CFF122005E1E57 /* FaqViewController.m */; };
+		C7CC8FAC18CFF122005E1E57 /* FaqViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CC8FAA18CFF122005E1E57 /* FaqViewController.xib */; };
+		C7CC8FB218D119A6005E1E57 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7CC8FB118D119A6005E1E57 /* CoreText.framework */; };
 		C7DF856C1888543F0016404A /* db_kot_v7.sql in Resources */ = {isa = PBXBuildFile; fileRef = C7DF856B1888543F0016404A /* db_kot_v7.sql */; };
 		C7DF8571188EEB4C0016404A /* IMCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DF856F188EEB4C0016404A /* IMCViewController.m */; };
 		C7DF8572188EEB4C0016404A /* IMCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DF8570188EEB4C0016404A /* IMCViewController.xib */; };
@@ -616,6 +621,13 @@
 		C79C71CF18AD78C600366258 /* pasta.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pasta.jpg; sourceTree = "<group>"; };
 		C79C71D018AD78C600366258 /* purepapa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = purepapa.jpg; sourceTree = "<group>"; };
 		C79C71D118AD78C600366258 /* smoothie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smoothie.jpg; sourceTree = "<group>"; };
+		C7CC8F9E18CF9B8D005E1E57 /* FaqMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqMenuViewController.h; sourceTree = "<group>"; };
+		C7CC8F9F18CF9B8D005E1E57 /* FaqMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqMenuViewController.m; sourceTree = "<group>"; };
+		C7CC8FA018CF9B8D005E1E57 /* FaqMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FaqMenuViewController.xib; path = "../KOT México/classes/FaqMenuViewController.xib"; sourceTree = "<group>"; };
+		C7CC8FA818CFF122005E1E57 /* FaqViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqViewController.h; sourceTree = "<group>"; };
+		C7CC8FA918CFF122005E1E57 /* FaqViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqViewController.m; sourceTree = "<group>"; };
+		C7CC8FAA18CFF122005E1E57 /* FaqViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FaqViewController.xib; path = "../KOT México/classes/FaqViewController.xib"; sourceTree = "<group>"; };
+		C7CC8FB118D119A6005E1E57 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		C7DF856B1888543F0016404A /* db_kot_v7.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = db_kot_v7.sql; sourceTree = "<group>"; };
 		C7DF856E188EEB4C0016404A /* IMCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMCViewController.h; sourceTree = "<group>"; };
 		C7DF856F188EEB4C0016404A /* IMCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMCViewController.m; sourceTree = "<group>"; };
@@ -642,6 +654,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7CC8FB218D119A6005E1E57 /* CoreText.framework in Frameworks */,
 				338C8E1B17A0820000FAC325 /* SystemConfiguration.framework in Frameworks */,
 				338C8E1817A0811300FAC325 /* libFlurry_4.2.2.a in Frameworks */,
 				33AC02C5166D160E00F3F042 /* MediaPlayer.framework in Frameworks */,
@@ -801,6 +814,7 @@
 		3330146C14BF49C100F92EC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7CC8FB118D119A6005E1E57 /* CoreText.framework */,
 				3330155C14BF874100F92EC0 /* libsqlite3.0.dylib */,
 				338C8E1A17A0820000FAC325 /* SystemConfiguration.framework */,
 				33AC02C4166D160E00F3F042 /* MediaPlayer.framework */,
@@ -848,6 +862,8 @@
 				C7DFC2CF186E10820034EBFB /* ConoceViewController.xib */,
 				C7DFC2DE187B78970034EBFB /* MenuAyudaViewController.xib */,
 				C7F80D6E18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.xib */,
+				C7CC8FAA18CFF122005E1E57 /* FaqViewController.xib */,
+				C7CC8FA018CF9B8D005E1E57 /* FaqMenuViewController.xib */,
 				C7DFC2D9186E330E0034EBFB /* MenuConoceViewController.xib */,
 				33EB3AB614F4688000555755 /* Icon.png */,
 				3330154B14BF519B00F92EC0 /* HomeViewController.xib */,
@@ -1032,6 +1048,10 @@
 				C7DFC2CE186E10820034EBFB /* ConoceViewController.m */,
 				C7F80D6C18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.h */,
 				C7F80D6D18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.m */,
+				C7CC8F9E18CF9B8D005E1E57 /* FaqMenuViewController.h */,
+				C7CC8F9F18CF9B8D005E1E57 /* FaqMenuViewController.m */,
+				C7CC8FA818CFF122005E1E57 /* FaqViewController.h */,
+				C7CC8FA918CFF122005E1E57 /* FaqViewController.m */,
 				3339CC6E14E1E9FC0041C9C6 /* MiMetodoKOTViewController.h */,
 				C7DFC2D2186E12D00034EBFB /* AyudaViewController.h */,
 				C7DFC2D3186E12D00034EBFB /* AyudaViewController.m */,
@@ -1357,6 +1377,7 @@
 				33250B6814C099CA006667E2 /* KOT-37.png in Resources */,
 				33250B6914C099CA006667E2 /* KOT-38.png in Resources */,
 				33250B7314C09F71006667E2 /* ProgresoViewController.xib in Resources */,
+				C7CC8FAC18CFF122005E1E57 /* FaqViewController.xib in Resources */,
 				33584E9C14C4E4EC001B287E /* MultiLines.xib in Resources */,
 				3311FEB214C7363000E6400D /* RestaurantesNavigationController.xib in Resources */,
 				C79C71D318AD78C600366258 /* hotcake.jpg in Resources */,
@@ -1397,6 +1418,7 @@
 				33C471A714F5442700A1835A /* Icon.png in Resources */,
 				33C471A914F5467A00A1835A /* iTunesArtwork in Resources */,
 				3393199A14F69BD900E91657 /* AboutViewController.xib in Resources */,
+				C7CC8FA218CF9B8D005E1E57 /* FaqMenuViewController.xib in Resources */,
 				C7DFC2E0187B78970034EBFB /* MenuAyudaViewController.xib in Resources */,
 				339319A014F69E0700E91657 /* PreferencesNavigationViewController.xib in Resources */,
 				3308CAB91607AFA50043AC9F /* btn_picker.png in Resources */,
@@ -1435,6 +1457,7 @@
 				C7DFC2D0186E10820034EBFB /* ConoceViewController.m in Sources */,
 				33584E9A14C4E4CF001B287E /* MultiLines.m in Sources */,
 				33584E9F14C4E4F8001B287E /* DemoData.m in Sources */,
+				C7CC8FAB18CFF122005E1E57 /* FaqViewController.m in Sources */,
 				33584EFB14C4E687001B287E /* NAArrow.c in Sources */,
 				33584EFC14C4E687001B287E /* NABezierControlPoints.c in Sources */,
 				33584EFD14C4E687001B287E /* NADashing.c in Sources */,
@@ -1503,6 +1526,7 @@
 				3314769214DCA740002AF3ED /* SDImageCache.m in Sources */,
 				3314769314DCA740002AF3ED /* SDWebImageDecoder.m in Sources */,
 				3314769414DCA740002AF3ED /* SDWebImageDownloader.m in Sources */,
+				C7CC8FA118CF9B8D005E1E57 /* FaqMenuViewController.m in Sources */,
 				3314769514DCA740002AF3ED /* SDWebImageManager.m in Sources */,
 				C7DFC2DA186E330E0034EBFB /* MenuConoceViewController.m in Sources */,
 				3314769614DCA740002AF3ED /* SDWebImagePrefetcher.m in Sources */,
@@ -1616,6 +1640,7 @@
 					"\"$(SRCROOT)/Developer/Flurry iPhone SDK v3.0.9/FlurryAppCircle\"",
 					"\"$(SRCROOT)/../../../Flurry iPhone SDK viPhone 4.2.2/Flurry-iOS-4.2.2/FlurryAnalytics\"",
 				);
+				"OTHER_CFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ACA1350A-4201-446F-88AA-0B2EBB717066";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ACA1350A-4201-446F-88AA-0B2EBB717066";

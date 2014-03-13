@@ -12,5 +12,6 @@
 
 - (IBAction)ajustes:(id)sender;
 - (IBAction)contacto:(id)sender;
+- (IBAction)faq:(id)sender;
 
 @end
