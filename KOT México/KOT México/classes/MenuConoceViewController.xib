@@ -15,22 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bg_menu.png" id="qd6-h3-U1C">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="IMC" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="At5-gF-XrO" userLabel="Label - IMC">
-                    <rect key="frame" x="18" y="129" width="114" height="51"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="CALCULA     TU IMC" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="At5-gF-XrO" userLabel="Label - IMC">
+                    <rect key="frame" x="23" y="126" width="114" height="51"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jnp-NY-EZU" userLabel="Button - IMC">
                     <rect key="frame" x="27" y="11" width="110" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" backgroundImage="facebook_icon.png">
+                    <state key="normal" backgroundImage="imc.png">
                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -41,18 +37,18 @@
                         <action selector="imc:" destination="-1" eventType="touchUpInside" id="uVH-Aj-oYb"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Especialista" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="euV-Gk-i4b" userLabel="Label - Especialista">
-                    <rect key="frame" x="184" y="129" width="119" height="51"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="ESPECIALISTAS KOT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="euV-Gk-i4b" userLabel="Label - Especialista">
+                    <rect key="frame" x="179" y="126" width="131" height="51"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FW7-UO-dBd" userLabel="Button - Especialista">
                     <rect key="frame" x="188" y="11" width="110" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" backgroundImage="user_icon.png">
+                    <state key="normal" backgroundImage="especialistas.png">
                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -63,18 +59,18 @@
                         <action selector="especialistaKOT:" destination="-1" eventType="touchUpInside" id="2H8-aa-Pdi"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Videos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="dCj-vz-RMd" userLabel="Label - Videos">
-                    <rect key="frame" x="19" y="293" width="119" height="51"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="VIDEOS TESTIMONIALES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="dCj-vz-RMd" userLabel="Label - Videos">
+                    <rect key="frame" x="23" y="293" width="126" height="51"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bzl-qq-Xk1" userLabel="Button - Videos">
                     <rect key="frame" x="28" y="182" width="110" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" backgroundImage="facebook_icon.png">
+                    <state key="normal" backgroundImage="videos.png">
                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -82,18 +78,18 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Productos KOT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="8qh-7m-WxB" userLabel="Label - Productos KOT">
-                    <rect key="frame" x="187" y="293" width="119" height="51"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="PRODUCTOS KOT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="8qh-7m-WxB" userLabel="Label - Productos KOT">
+                    <rect key="frame" x="185" y="293" width="119" height="51"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oYh-4q-kYf" userLabel="Button - Productos KOT">
                     <rect key="frame" x="189" y="180" width="110" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" backgroundImage="KOT-23.png">
+                    <state key="normal" backgroundImage="productos.png">
                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -105,7 +101,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="backgroundColor" red="0.36078431370000003" green="0.75686274509999996" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -113,9 +109,9 @@
         </view>
     </objects>
     <resources>
-        <image name="KOT-23.png" width="390" height="401"/>
-        <image name="bg_menu.png" width="640" height="1136"/>
-        <image name="facebook_icon.png" width="38" height="36"/>
-        <image name="user_icon.png" width="25" height="25"/>
+        <image name="especialistas.png" width="390" height="401"/>
+        <image name="imc.png" width="390" height="401"/>
+        <image name="productos.png" width="390" height="401"/>
+        <image name="videos.png" width="390" height="401"/>
     </resources>
 </document>

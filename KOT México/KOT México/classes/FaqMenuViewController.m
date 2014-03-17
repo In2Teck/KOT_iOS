@@ -72,7 +72,7 @@
             
             for(NSDictionary *pregunta in preguntas){
                 
-                NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[pregunta objectForKey:@"Pregunta"], @"Pregunta", [pregunta objectForKey:@"Respuesta"], @"Respuesta", nil];
+                NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[pregunta objectForKey:@"Pregunta"], @"Pregunta", [pregunta objectForKey:@"Respuesta_Plano"], @"Respuesta_Plano", nil];
                 
                 if ([[pregunta objectForKey:@"id_categoria"] integerValue] == 1){
                     [categoria_1 addObject:dict];

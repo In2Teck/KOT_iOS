@@ -98,7 +98,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 120.0;
+    return 130.0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -120,8 +120,8 @@
     {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         
-        respuesta = [[[UILabel alloc] initWithFrame:CGRectMake(10.0, 0.0, 290.0, 50.0)]autorelease];
-        [respuesta setTag:@"Respuesta"];
+        respuesta = [[[UILabel alloc] initWithFrame:CGRectMake(5.0, -10.0, 300.0, 50.0)]autorelease];
+        [respuesta setTag:@"Respuesta_Plano"];
         [respuesta setBackgroundColor:[UIColor clearColor]];
         [respuesta setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
         [respuesta setNumberOfLines:8];
@@ -129,11 +129,11 @@
         [respuesta setTextAlignment:UITextAlignmentLeft];
         [cell.contentView addSubview:respuesta];
     }else{
-        respuesta = (UILabel*)[cell viewWithTag:@"Respuesta"];
+        respuesta = (UILabel*)[cell viewWithTag:@"Respuesta_Plano"];
     }
     
 	// Configure the cell.
-    [respuesta setText:[item objectForKey:@"Respuesta"]];
+    [respuesta setText:[item objectForKey:@"Respuesta_Plano"]];
     
     return cell;
 }

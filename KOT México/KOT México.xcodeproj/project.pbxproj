@@ -244,6 +244,21 @@
 		C7CC8FAB18CFF122005E1E57 /* FaqViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CC8FA918CFF122005E1E57 /* FaqViewController.m */; };
 		C7CC8FAC18CFF122005E1E57 /* FaqViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CC8FAA18CFF122005E1E57 /* FaqViewController.xib */; };
 		C7CC8FB218D119A6005E1E57 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7CC8FB118D119A6005E1E57 /* CoreText.framework */; };
+		C7DB2A9D18D77BBD009911FA /* ajustes.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A8E18D77BBD009911FA /* ajustes.png */; };
+		C7DB2A9E18D77BBD009911FA /* alimentos_permitidos.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A8F18D77BBD009911FA /* alimentos_permitidos.png */; };
+		C7DB2A9F18D77BBD009911FA /* conoce.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9018D77BBD009911FA /* conoce.png */; };
+		C7DB2AA018D77BBD009911FA /* especialistas.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9118D77BBD009911FA /* especialistas.png */; };
+		C7DB2AA118D77BBD009911FA /* icono_ayuda.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9218D77BBD009911FA /* icono_ayuda.png */; };
+		C7DB2AA218D77BBD009911FA /* icono_conoce.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9318D77BBD009911FA /* icono_conoce.png */; };
+		C7DB2AA318D77BBD009911FA /* icono_mi_metodo.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9418D77BBD009911FA /* icono_mi_metodo.png */; };
+		C7DB2AA418D77BBD009911FA /* imc.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9518D77BBD009911FA /* imc.png */; };
+		C7DB2AA518D77BBD009911FA /* mi_metodo.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9618D77BBD009911FA /* mi_metodo.png */; };
+		C7DB2AA618D77BBD009911FA /* mi_progreso.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9718D77BBD009911FA /* mi_progreso.png */; };
+		C7DB2AA718D77BBD009911FA /* preguntas_frecuentes.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9818D77BBD009911FA /* preguntas_frecuentes.png */; };
+		C7DB2AA818D77BBD009911FA /* productos.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9918D77BBD009911FA /* productos.png */; };
+		C7DB2AA918D77BBD009911FA /* restaurantes_permitidos.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9A18D77BBD009911FA /* restaurantes_permitidos.png */; };
+		C7DB2AAA18D77BBD009911FA /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9B18D77BBD009911FA /* tutorial.png */; };
+		C7DB2AAB18D77BBD009911FA /* videos.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DB2A9C18D77BBD009911FA /* videos.png */; };
 		C7DF856C1888543F0016404A /* db_kot_v7.sql in Resources */ = {isa = PBXBuildFile; fileRef = C7DF856B1888543F0016404A /* db_kot_v7.sql */; };
 		C7DF8571188EEB4C0016404A /* IMCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DF856F188EEB4C0016404A /* IMCViewController.m */; };
 		C7DF8572188EEB4C0016404A /* IMCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DF8570188EEB4C0016404A /* IMCViewController.xib */; };
@@ -628,6 +643,21 @@
 		C7CC8FA918CFF122005E1E57 /* FaqViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqViewController.m; sourceTree = "<group>"; };
 		C7CC8FAA18CFF122005E1E57 /* FaqViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FaqViewController.xib; path = "../KOT México/classes/FaqViewController.xib"; sourceTree = "<group>"; };
 		C7CC8FB118D119A6005E1E57 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		C7DB2A8E18D77BBD009911FA /* ajustes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ajustes.png; sourceTree = "<group>"; };
+		C7DB2A8F18D77BBD009911FA /* alimentos_permitidos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alimentos_permitidos.png; sourceTree = "<group>"; };
+		C7DB2A9018D77BBD009911FA /* conoce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conoce.png; sourceTree = "<group>"; };
+		C7DB2A9118D77BBD009911FA /* especialistas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = especialistas.png; sourceTree = "<group>"; };
+		C7DB2A9218D77BBD009911FA /* icono_ayuda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icono_ayuda.png; sourceTree = "<group>"; };
+		C7DB2A9318D77BBD009911FA /* icono_conoce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icono_conoce.png; sourceTree = "<group>"; };
+		C7DB2A9418D77BBD009911FA /* icono_mi_metodo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icono_mi_metodo.png; sourceTree = "<group>"; };
+		C7DB2A9518D77BBD009911FA /* imc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imc.png; sourceTree = "<group>"; };
+		C7DB2A9618D77BBD009911FA /* mi_metodo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mi_metodo.png; sourceTree = "<group>"; };
+		C7DB2A9718D77BBD009911FA /* mi_progreso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mi_progreso.png; sourceTree = "<group>"; };
+		C7DB2A9818D77BBD009911FA /* preguntas_frecuentes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preguntas_frecuentes.png; sourceTree = "<group>"; };
+		C7DB2A9918D77BBD009911FA /* productos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = productos.png; sourceTree = "<group>"; };
+		C7DB2A9A18D77BBD009911FA /* restaurantes_permitidos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurantes_permitidos.png; sourceTree = "<group>"; };
+		C7DB2A9B18D77BBD009911FA /* tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial.png; sourceTree = "<group>"; };
+		C7DB2A9C18D77BBD009911FA /* videos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videos.png; sourceTree = "<group>"; };
 		C7DF856B1888543F0016404A /* db_kot_v7.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = db_kot_v7.sql; sourceTree = "<group>"; };
 		C7DF856E188EEB4C0016404A /* IMCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMCViewController.h; sourceTree = "<group>"; };
 		C7DF856F188EEB4C0016404A /* IMCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMCViewController.m; sourceTree = "<group>"; };
@@ -856,6 +886,7 @@
 		3330149A14BF4C5E00F92EC0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C7DB2A8D18D77BBD009911FA /* new_design */,
 				33C471A814F5467A00A1835A /* iTunesArtwork */,
 				33EB3AB814F4688B00555755 /* Icon@2x.png */,
 				C7DFC2D4186E12D00034EBFB /* AyudaViewController.xib */,
@@ -1227,6 +1258,28 @@
 			path = videos;
 			sourceTree = "<group>";
 		};
+		C7DB2A8D18D77BBD009911FA /* new_design */ = {
+			isa = PBXGroup;
+			children = (
+				C7DB2A8E18D77BBD009911FA /* ajustes.png */,
+				C7DB2A8F18D77BBD009911FA /* alimentos_permitidos.png */,
+				C7DB2A9018D77BBD009911FA /* conoce.png */,
+				C7DB2A9118D77BBD009911FA /* especialistas.png */,
+				C7DB2A9218D77BBD009911FA /* icono_ayuda.png */,
+				C7DB2A9318D77BBD009911FA /* icono_conoce.png */,
+				C7DB2A9418D77BBD009911FA /* icono_mi_metodo.png */,
+				C7DB2A9518D77BBD009911FA /* imc.png */,
+				C7DB2A9618D77BBD009911FA /* mi_metodo.png */,
+				C7DB2A9718D77BBD009911FA /* mi_progreso.png */,
+				C7DB2A9818D77BBD009911FA /* preguntas_frecuentes.png */,
+				C7DB2A9918D77BBD009911FA /* productos.png */,
+				C7DB2A9A18D77BBD009911FA /* restaurantes_permitidos.png */,
+				C7DB2A9B18D77BBD009911FA /* tutorial.png */,
+				C7DB2A9C18D77BBD009911FA /* videos.png */,
+			);
+			path = new_design;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1306,6 +1359,7 @@
 				3330147814BF49C100F92EC0 /* InfoPlist.strings in Resources */,
 				333014DA14BF4C5E00F92EC0 /* Element-05.png in Resources */,
 				333014DD14BF4C5E00F92EC0 /* KOT-01.png in Resources */,
+				C7DB2AAB18D77BBD009911FA /* videos.png in Resources */,
 				333014DE14BF4C5E00F92EC0 /* KOT-28.png in Resources */,
 				333014DF14BF4C5E00F92EC0 /* KOT-32.png in Resources */,
 				C7DFC2D1186E10820034EBFB /* ConoceViewController.xib in Resources */,
@@ -1314,6 +1368,7 @@
 				333014E314BF4C5E00F92EC0 /* new-12.png in Resources */,
 				333014E414BF4C5E00F92EC0 /* 1.png in Resources */,
 				333014E514BF4C5E00F92EC0 /* 10.png in Resources */,
+				C7DB2AA718D77BBD009911FA /* preguntas_frecuentes.png in Resources */,
 				333014E614BF4C5E00F92EC0 /* 11.png in Resources */,
 				333014E714BF4C5E00F92EC0 /* 12.png in Resources */,
 				333014E814BF4C5E00F92EC0 /* 13.png in Resources */,
@@ -1327,6 +1382,7 @@
 				333014F014BF4C5E00F92EC0 /* 20.png in Resources */,
 				333014F114BF4C5E00F92EC0 /* 21.png in Resources */,
 				333014F214BF4C5E00F92EC0 /* 22.png in Resources */,
+				C7DB2A9F18D77BBD009911FA /* conoce.png in Resources */,
 				C7F80D7018846A9300ABFF5F /* MenuAlimentosPermitidosViewController.xib in Resources */,
 				333014F314BF4C5E00F92EC0 /* 23.png in Resources */,
 				333014F414BF4C5E00F92EC0 /* 24.png in Resources */,
@@ -1348,6 +1404,7 @@
 				C79C71D418AD78C600366258 /* pasta.jpg in Resources */,
 				3330150314BF4C5E00F92EC0 /* 6.png in Resources */,
 				3330150414BF4C5E00F92EC0 /* 7.png in Resources */,
+				C7DB2AA818D77BBD009911FA /* productos.png in Resources */,
 				3330150514BF4C5E00F92EC0 /* 8.png in Resources */,
 				C79C71D618AD78C600366258 /* smoothie.jpg in Resources */,
 				3330150614BF4C5E00F92EC0 /* 9.png in Resources */,
@@ -1359,21 +1416,27 @@
 				3330150C14BF4C5E00F92EC0 /* KOT-23.png in Resources */,
 				3330150D14BF4C5E00F92EC0 /* KOT-24.png in Resources */,
 				3330150E14BF4C5E00F92EC0 /* KOT-25.png in Resources */,
+				C7DB2A9E18D77BBD009911FA /* alimentos_permitidos.png in Resources */,
 				3330151214BF4C5E00F92EC0 /* restaurant_icon.png in Resources */,
 				3330151314BF4C5E00F92EC0 /* settings_icon.png in Resources */,
 				3330151514BF4C5E00F92EC0 /* user_icon.png in Resources */,
 				3330154814BF50FC00F92EC0 /* AlimentosViewController.xib in Resources */,
+				C7DB2AA418D77BBD009911FA /* imc.png in Resources */,
 				3330154D14BF519B00F92EC0 /* HomeViewController.xib in Resources */,
 				3330155214BF57EC00F92EC0 /* MenuViewController.xib in Resources */,
 				3330155F14BF889A00F92EC0 /* Element-04.png in Resources */,
+				C7DB2AA618D77BBD009911FA /* mi_progreso.png in Resources */,
 				3330156414BF8B6100F92EC0 /* AlimentoDetailViewController.xib in Resources */,
 				3330156914BF912300F92EC0 /* ProductosViewController.xib in Resources */,
 				3330156F14BF99BB00F92EC0 /* ProductoViewCell.xib in Resources */,
 				3330157414BF9A0F00F92EC0 /* ProductoDetailViewController.xib in Resources */,
+				C7DB2AA118D77BBD009911FA /* icono_ayuda.png in Resources */,
+				C7DB2AAA18D77BBD009911FA /* tutorial.png in Resources */,
 				33250B5414C07D29006667E2 /* MetodoKotViewController.xib in Resources */,
 				33250B5E14C08FCB006667E2 /* MetodoEjemploViewController.xib in Resources */,
 				33250B6614C099CA006667E2 /* infoCellBkg.png in Resources */,
 				33250B6714C099CA006667E2 /* KOT-36.png in Resources */,
+				C7DB2A9D18D77BBD009911FA /* ajustes.png in Resources */,
 				33250B6814C099CA006667E2 /* KOT-37.png in Resources */,
 				33250B6914C099CA006667E2 /* KOT-38.png in Resources */,
 				33250B7314C09F71006667E2 /* ProgresoViewController.xib in Resources */,
@@ -1389,10 +1452,13 @@
 				3355F42614CFA10A00C00965 /* MainWindow.xib in Resources */,
 				3347D64614D6FEC400A05B50 /* CollapsableTableViewHeaderViewGrouped.xib in Resources */,
 				3347D64714D6FEC400A05B50 /* CollapsableTableViewHeaderViewPlain.xib in Resources */,
+				C7DB2AA018D77BBD009911FA /* especialistas.png in Resources */,
 				3347D64814D6FEC400A05B50 /* plaintableheader.png in Resources */,
 				338DBBA514D707CB00352E6F /* CollapsableTableViewViewController.xib in Resources */,
 				3315043514D9B886005D3765 /* PreferencesViewController.xib in Resources */,
+				C7DB2AA318D77BBD009911FA /* icono_mi_metodo.png in Resources */,
 				3315043E14D9E4CA005D3765 /* ListRestaurantesViewController.xib in Resources */,
+				C7DB2AA518D77BBD009911FA /* mi_metodo.png in Resources */,
 				3315044314D9E745005D3765 /* OverlayView.xib in Resources */,
 				332A846114DA19DC0071A416 /* RestauranteMenuViewController.xib in Resources */,
 				C7DF8572188EEB4C0016404A /* IMCViewController.xib in Resources */,
@@ -1411,6 +1477,7 @@
 				3357727514E32FDD0095DEE5 /* ElementsKOT-13.png in Resources */,
 				3357727614E32FDD0095DEE5 /* ElementsKOT-14.png in Resources */,
 				33373B5C14E96F0A00CD1E46 /* FBDialog.bundle in Resources */,
+				C7DB2AA218D77BBD009911FA /* icono_conoce.png in Resources */,
 				3388718214EEC3AB001F8962 /* loading.png in Resources */,
 				33EB3AAE14F43FD900555755 /* facebook_icon.png in Resources */,
 				33EB3AAF14F43FD900555755 /* twitter_icon.png in Resources */,
@@ -1423,6 +1490,7 @@
 				339319A014F69E0700E91657 /* PreferencesNavigationViewController.xib in Resources */,
 				3308CAB91607AFA50043AC9F /* btn_picker.png in Resources */,
 				3308CABA1607AFA50043AC9F /* btn_picker@2x.png in Resources */,
+				C7DB2AA918D77BBD009911FA /* restaurantes_permitidos.png in Resources */,
 				33C316C11628C0C1004CC622 /* bg_menu.png in Resources */,
 				337C31E216F24898003FEA4C /* Default.png in Resources */,
 				337C31E416F248A2003FEA4C /* Default@2x.png in Resources */,

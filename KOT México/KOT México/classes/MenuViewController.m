@@ -40,6 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Mi Método";
 }
 
 - (void)viewDidUnload
