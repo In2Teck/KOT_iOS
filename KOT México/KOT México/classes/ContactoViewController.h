@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ContactoViewController : UIViewController
+
+- (IBAction)paginaKot:(id)sender;
+- (IBAction)telefonoDF:(id)sender;
+- (IBAction)telefonoProvincia:(id)sender;
+- (IBAction)correoKOT:(id)sender;
+- (IBAction)facebookKOT:(id)sender;
+- (IBAction)twitterKOT:(id)sender;
+
+
 
 @end
