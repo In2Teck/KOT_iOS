@@ -10,6 +10,7 @@
 #import "CollapsableTableViewViewController.h"
 #import "ProductosViewController.h"
 #import "IMCViewController.h"
+#import "VideoMenuViewController.h"
 
 @interface MenuConoceViewController ()
 
@@ -58,6 +59,11 @@
 - (IBAction)imc:(id)sender {
     IMCViewController *imc = [[[IMCViewController alloc]initWithNibName:@"IMCViewController" bundle:nil]autorelease];
     [self.navigationController pushViewController:imc animated:YES];
+}
+
+- (IBAction)videosTestimoniales:(id)sender {
+    VideoMenuViewController *videos = [[[VideoMenuViewController alloc]initWithNibName:@"VideoMenuViewController" bundle:nil]autorelease];
+    [self.navigationController pushViewController:videos animated:YES];
 }
 
 

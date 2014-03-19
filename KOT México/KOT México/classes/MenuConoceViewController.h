@@ -13,4 +13,6 @@
 - (IBAction)productosKOT:(id)sender;
 - (IBAction)especialistaKOT:(id)sender;
 - (IBAction)imc:(id)sender;
+- (IBAction)videosTestimoniales:(id)sender;
+
 @end

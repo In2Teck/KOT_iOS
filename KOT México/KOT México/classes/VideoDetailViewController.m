@@ -129,9 +129,12 @@
     
     [self.descripcion setText:[videoDetail objectAtIndex:2]];
     
-    return myTableViewCell;
-    
-    return cell;
+    if ([[videoDetail objectAtIndex:2] length] == 0){
+        [cell setHidden:YES];
+        return cell;
+    }else{
+        return myTableViewCell;
+    }
 }
 
 /*
