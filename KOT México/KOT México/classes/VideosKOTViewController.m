@@ -10,6 +10,7 @@
 #import "../../rs-SDWebImage-b207dcc/UIImageView+WebCache.h"
 #import "VideoDetailViewController.h"
 #import "Flurry.h"
+#import "Json.h"
 
 #define LBL_TITULO      1
 #define LBL_SUBTITULO   2
@@ -25,9 +26,60 @@
         if(!sqlite)
             sqlite = [[CommonDAO alloc] init];
         
-        items = [sqlite select:@"SELECT id_video, url_video, recetario, titulo, descripcion, key_video, img FROM videos;" keys:[[NSArray alloc]initWithObjects:@"id_video",@"url_video",@"recetario",@"titulo",@"descripcion",@"key_video", @"img", nil]];
+        items = [[NSMutableArray alloc] init];
+        items_fotos = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+-(void)loadVideos{
+    NSString *urlConnection = @"http://desarrollo.sysop26.com/kot/nuevo/WS/kotVideos.php";
+    NSURL *url = [[[NSURL alloc] initWithString:urlConnection] autorelease];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:180.0];
+    // Fetch the JSON response
+	NSData *urlData;
+	NSURLResponse *response;
+	NSError *error;
+    
+	// Make synchronous request
+	urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+    NSString *jsonData = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
+    
+    NSError *jsonError;
+    SBJSON *json = [[SBJSON new] autorelease];
+    NSDictionary *contentJSON = [json objectWithString:jsonData error:&jsonError];
+    if (contentJSON==nil) {
+        NSString *text = [[NSString alloc] initWithFormat:@"%@", [error localizedDescription]];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:text delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+    }else{
+        NSString *messageError = [contentJSON objectForKey:@"mensaje_error"];
+        if([messageError length]==0){
+            NSArray *videos  = [[[contentJSON objectForKey:@"videos"]JSONRepresentation]JSONValue];
+            
+            for(NSDictionary *video in videos){
+                
+                NSArray *videoArray = [NSArray arrayWithObjects:[video objectForKey:@"Id"], [video objectForKey:@"Url"],@"", [video objectForKey:@"Nombre"], [video objectForKey:@"Nombre"], [[[video objectForKey:@"Url"] componentsSeparatedByString:@"?v="] lastObject], [video objectForKey:@"thumbnail"], nil];
+                
+                NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[video objectForKey:@"thumbnail"]]];
+                
+                if ([[video objectForKey:@"id_categoria"] integerValue] == 4 ){
+                    [items addObject:videoArray];
+                    if (imageData){
+                        [items_fotos addObject: imageData];
+                    }else{
+                        [items_fotos addObject: [[NSData alloc] init]];
+                    }
+                }
+            }
+        }else{
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            [message show];
+            [message release];
+            message = nil;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,6 +97,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self loadVideos];
     [Flurry logEvent:@"Videos de los Productos" withParameters:nil timed:YES];
 }
 
@@ -132,10 +185,8 @@
     [tituloLabel setText:[[items objectAtIndex:indexPath.row]objectAtIndex:3]];
 //    [subTituloLabel setText:[[items objectAtIndex:indexPath.row]objectAtIndex:4]];
     
+    [imageYoutube setImage: [UIImage imageWithData:[items_fotos objectAtIndex:indexPath.row]]];
     
-    [imageYoutube setImage:[UIImage imageNamed:[[items objectAtIndex:indexPath.row]objectAtIndex:6]]];
-    /*[imageYoutube setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://img.youtube.com/vi/%@/0.jpg",[[items objectAtIndex:indexPath.row]objectAtIndex:5]]]
-                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]];*/
     
     cell.accessoryType = UITableViewCellAccessoryNone;
     

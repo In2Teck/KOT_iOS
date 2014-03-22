@@ -19,7 +19,7 @@
 
 @implementation VideoMenuViewController
 
-@synthesize items_especialistas, items_pacientes, myTableView;
+@synthesize items_especialistas, items_pacientes, myTableView, fotos_especialistas, fotos_pacientes;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,8 +36,9 @@
     // Do any additional setup after loading the view from its nib.
     items_pacientes =[[NSMutableArray alloc] init];
     items_especialistas =[[NSMutableArray alloc] init];
+    fotos_pacientes =[[NSMutableArray alloc] init];
+    fotos_especialistas =[[NSMutableArray alloc] init];
     [self loadVideos];
-    [[self myTableView] reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,10 +77,15 @@
             
                 NSArray *videoArray = [NSArray arrayWithObjects:[video objectForKey:@"Id"], [video objectForKey:@"Url"],@"", [video objectForKey:@"Nombre"], [video objectForKey:@"Nombre"], [[[video objectForKey:@"Url"] componentsSeparatedByString:@"?v="] lastObject], [video objectForKey:@"thumbnail"], nil];
                 
+                NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[video objectForKey:@"thumbnail"]]];
+                
                 if ([[video objectForKey:@"id_categoria"] integerValue] == 1 ){
                     [items_pacientes addObject:videoArray];
+                    [fotos_pacientes addObject: imageData];
+                    
                 }else if ([[video objectForKey:@"id_categoria"] integerValue] == 2 ){
                     [items_especialistas addObject:videoArray];
+                    [fotos_especialistas addObject: imageData];
                 }
             }
         }else{
@@ -145,7 +151,7 @@
         [tituloLabel setTextColor:[UIColor blackColor]];
         [cell.contentView addSubview:tituloLabel];
         
-        imageYoutube = [[UIImageView alloc] initWithFrame:CGRectMake((cell.frame.size.width*0.45), 0.0, (cell.frame.size.width*0.55),(cell.frame.size.width*0.31))];
+        imageYoutube = [[UIImageView alloc] initWithFrame:CGRectMake((cell.frame.size.width*0.45), 0.0, 175,100)];
         [imageYoutube setTag:IMG_TAG];
         [cell.contentView addSubview:imageYoutube];
         
@@ -158,13 +164,11 @@
      if (indexPath.section==0) {
          [tituloLabel setText:[[items_pacientes objectAtIndex:indexPath.row]objectAtIndex:3]];
          
-         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[items_pacientes objectAtIndex:indexPath.row]objectAtIndex:6]]];
-         [imageYoutube setImage: [UIImage imageWithData:imageData]];
+         [imageYoutube setImage: [UIImage imageWithData:[fotos_pacientes objectAtIndex:indexPath.row]]];
      } else {
          [tituloLabel setText:[[items_especialistas objectAtIndex:indexPath.row]objectAtIndex:3]];
          
-         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[items_especialistas objectAtIndex:indexPath.row]objectAtIndex:6]]];
-         [imageYoutube setImage: [UIImage imageWithData:imageData]];
+         [imageYoutube setImage: [UIImage imageWithData:[fotos_especialistas objectAtIndex:indexPath.row]]];
      }
     
     cell.accessoryType = UITableViewCellAccessoryNone;

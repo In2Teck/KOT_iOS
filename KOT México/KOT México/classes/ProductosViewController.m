@@ -11,6 +11,7 @@
 #import "VideosKOTViewController.h"
 #import "CollapsableTableViewViewController.h"
 #import "Flurry.h"
+#import "VideoDetailViewController.h"
 
 @implementation ProductosViewController
 
@@ -61,6 +62,8 @@
     
     [Flurry logEvent:@"Productos Kot Home" withParameters:nil timed:YES];
     
+    [self loadVideos];
+    
 }
 
 - (void)viewDidUnload
@@ -109,7 +112,53 @@
 {
 
     // Return the number of rows in the section.
-    return [items count ]+1;
+    return [items count ]+3;
+}
+
+-(void)loadVideos{
+    NSString *urlConnection = @"http://desarrollo.sysop26.com/kot/nuevo/WS/kotVideos.php";
+    NSURL *url = [[[NSURL alloc] initWithString:urlConnection] autorelease];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:180.0];
+    // Fetch the JSON response
+	NSData *urlData;
+	NSURLResponse *response;
+	NSError *error;
+    
+	// Make synchronous request
+	urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+    NSString *jsonData = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
+    
+    NSError *jsonError;
+    SBJSON *json = [[SBJSON new] autorelease];
+    NSDictionary *contentJSON = [json objectWithString:jsonData error:&jsonError];
+    if (contentJSON==nil) {
+        NSString *text = [[NSString alloc] initWithFormat:@"%@", [error localizedDescription]];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:text delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+    }else{
+        NSString *messageError = [contentJSON objectForKey:@"mensaje_error"];
+        if([messageError length]==0){
+            NSArray *videos  = [[[contentJSON objectForKey:@"videos"]JSONRepresentation]JSONValue];
+            
+            for(NSDictionary *video in videos){
+                
+                NSArray *videoArray = [NSArray arrayWithObjects:[video objectForKey:@"Id"], [video objectForKey:@"Url"],@"", [video objectForKey:@"Nombre"], [video objectForKey:@"Nombre"], [[[video objectForKey:@"Url"] componentsSeparatedByString:@"?v="] lastObject], [video objectForKey:@"thumbnail"], nil];
+                
+                if ([[video objectForKey:@"id_categoria"] integerValue] == 3 ){
+                    [video_items addObject:videoArray];
+                     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[video objectForKey:@"thumbnail"]]];
+                    [video_thumb addObject: imageData];
+                    
+                }
+            }
+        }else{
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            [message show];
+            [message release];
+            message = nil;
+        }
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -123,73 +172,37 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        /*
-        if(indexPath.row != 3){
-            
-            background = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0)];
-            [background setTag:IMAGE_TAG];
-            background.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-            if (indexPath.row!=5) {
-                [cell.contentView addSubview:background];
-            }else{
-                cell.contentView.backgroundColor = [UIColor yellowColor];
-            }
-            
-            mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0)];
-            [mainLabel setTag:TITLE_LABEL];
-            mainLabel.font = [UIFont systemFontOfSize:20.0];
-            mainLabel.textAlignment = UITextAlignmentCenter;
-            if(indexPath.row!=5)
-                mainLabel.textColor = [UIColor whiteColor];
-            else
-                mainLabel.textColor = [UIColor blackColor];
-            mainLabel.backgroundColor = [UIColor clearColor];
-            mainLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-            [cell.contentView addSubview:mainLabel];
-         */
-        }
-    /*else{
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-    }else{
-        if(indexPath.row != 3 || indexPath.row == 3){
-            mainLabel =  (UILabel *)[cell viewWithTag:TITLE_LABEL];
-            background = (UIImageView *) [cell viewWithTag:IMAGE_TAG];
-        }
     }
-    
-    // Configure the cell...
-    if(indexPath.row<3){
-        [mainLabel setText:[[items objectAtIndex:indexPath.row]objectAtIndex:1]];
-        [background setImage:[UIImage imageNamed:@"Element-05.png"]];
-    }
-    else
-        [mainLabel setText:[[items objectAtIndex:(indexPath.row -1)]objectAtIndex:1]];
-    */
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     [cell.textLabel setBackgroundColor:[UIColor clearColor]];
     [cell.textLabel setTextColor:[UIColor whiteColor]];
     
-    if(indexPath.row < 3){
-        [cell.textLabel setText:[[items objectAtIndex:indexPath.row]objectAtIndex:1]];
+    if (indexPath.row == 0){
+        [cell.textLabel setText:@"El Método KOT"];
         [cell.textLabel setTextAlignment:UITextAlignmentCenter];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         [cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
-    }
-    if(indexPath.row == 3)
+    }else if (indexPath.row==1){
         cell.accessoryType = UITableViewCellAccessoryNone;
-    if(indexPath.row > 3){
+    } else if ( indexPath.row < 5){
+        [cell.textLabel setText:[[items objectAtIndex:indexPath.row-2]objectAtIndex:1]];
+        [cell.textLabel setTextAlignment:UITextAlignmentCenter];
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        [cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
+    } else if(indexPath.row == 5){
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    } else if(indexPath.row > 5){
         
-        if(indexPath.row == 4){
-            [cell.textLabel setText:[[items objectAtIndex:indexPath.row-1]objectAtIndex:1]];
+        if(indexPath.row == 6){
+            [cell.textLabel setText:[[items objectAtIndex:indexPath.row-3]objectAtIndex:1]];
             [cell.textLabel setTextAlignment:UITextAlignmentCenter];
             [cell.contentView setBackgroundColor:[UIColor clearColor]];
             [cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
             cell.selectionStyle = UITableViewCellSelectionStyleGray;
         }else{
-            [cell.textLabel setText:[[items objectAtIndex:indexPath.row -1]objectAtIndex:1]];
+            [cell.textLabel setText:[[items objectAtIndex:indexPath.row -3]objectAtIndex:1]];
             [cell.textLabel setTextAlignment:UITextAlignmentCenter];
             [cell.contentView setBackgroundColor:[UIColor clearColor]];
             [cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"barra amarilla.png"]]];
@@ -248,24 +261,36 @@
     
     self.navigationItem.backBarButtonItem = barButton;
     
-    if(indexPath.row == 3)
+    if (indexPath.row == 0){
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        VideoDetailViewController *vdvc = [[VideoDetailViewController alloc] initWithNibName:@"VideoDetailViewController" bundle:nil];
+        vdvc.videoDetail = [video_items objectAtIndex:0];
+        vdvc.title = [[video_items objectAtIndex:0]objectAtIndex:3];
+        
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+        barButton.title = @"Regresar";
+        
+        self.navigationItem.backBarButtonItem = barButton;
+        
+        [self.navigationController pushViewController:vdvc animated:YES];
+    } else if (indexPath.row  == 1){
+        
+    } else if(indexPath.row == 5){
         [[tableView cellForRowAtIndexPath:indexPath] setSelectionStyle:UITableViewCellSelectionStyleNone];
-
-    if(indexPath.row<3){
+    } else if(indexPath.row<5){
         
         ProductoDetailViewController *prod = [[ProductoDetailViewController alloc] initWithNibName:@"ProductoDetailViewController" bundle:nil];
-        prod.productoDetail = [items objectAtIndex:indexPath.row];
+        prod.productoDetail = [items objectAtIndex:indexPath.row-2];
         
-        prod.title = [[items objectAtIndex:indexPath.row]objectAtIndex:1];
+        prod.title = [[items objectAtIndex:indexPath.row-2]objectAtIndex:1];
         
         [self.navigationController pushViewController:prod animated:YES];
-    }
-    if(indexPath.row==4){
+    } else if(indexPath.row==6){
         VideosKOTViewController *videos = [[VideosKOTViewController alloc]initWithNibName:@"VideosKOTViewController" bundle:nil];
-        videos.title = [[items objectAtIndex:indexPath.row-1]objectAtIndex:1];
+        videos.title = [[items objectAtIndex:indexPath.row-3]objectAtIndex:1];
         [self.navigationController pushViewController:videos animated:YES];
-    }
-    if(indexPath.row==5){
+    } else if(indexPath.row==7){
         CollapsableTableViewViewController *control = [[[CollapsableTableViewViewController alloc]initWithNibName:@"CollapsableTableViewViewController" bundle:nil]autorelease];
         [self.navigationController pushViewController:control animated:YES];
     }

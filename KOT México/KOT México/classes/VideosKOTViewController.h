@@ -12,6 +12,7 @@
 @interface VideosKOTViewController : UIViewController{
     CommonDAO *sqlite;
     NSMutableArray *items;
+    NSMutableArray *items_fotos;
 }
 
 @end

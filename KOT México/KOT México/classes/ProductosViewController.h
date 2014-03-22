@@ -12,6 +12,8 @@
 @interface ProductosViewController : UITableViewController{
     CommonDAO *sqlite;
     NSMutableArray *items;
+    NSMutableArray *video_items;
+    NSMutableArray *video_thumb;
 }
 
 @end

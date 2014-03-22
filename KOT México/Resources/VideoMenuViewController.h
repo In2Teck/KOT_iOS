@@ -11,7 +11,7 @@
 
 @interface VideoMenuViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
-@property (retain, nonatomic) NSMutableArray *items_pacientes, *items_especialistas;
+@property (retain, nonatomic) NSMutableArray *items_pacientes, *items_especialistas, *fotos_especialistas, *fotos_pacientes;
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
 @end

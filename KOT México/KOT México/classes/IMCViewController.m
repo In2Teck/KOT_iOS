@@ -34,6 +34,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.view addSubview:leyendaInformativa];
+    //sexoSelector.transform = CGAffineTransformMakeScale(0.8, 0.5);
     sexoSelector.delegate = self;
     sexoSelector.showsSelectionIndicator = YES;
     [self.view addSubview:sexoSelector];
@@ -62,6 +63,9 @@
     
     [self.view addSubview:queEsImcButton];
     [self.view addSubview:sexoLabel];
+    
+    [self.view addSubview:pesoTextInput];
+    [self.view addSubview:estaturaTextInput];
 }
 
 -(void)cancelNumberPad{
@@ -154,7 +158,9 @@
 // tell the picker the width of each row for a given component
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
     int sectionWidth = 80;
-    return sectionWidth;}
+    return sectionWidth;
+}
+
 - (IBAction)calcularAction:(id)sender {
     UIAlertView *message;
     
