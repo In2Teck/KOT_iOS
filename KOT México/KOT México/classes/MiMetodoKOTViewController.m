@@ -13,13 +13,12 @@
 #import "CommonDAO.h"
 #import "ProductosViewController.h"
 #import "Flurry.h"
+#import "MiMetodoCellViewController.h"
 
 @implementation MiMetodoKOTViewController
 @synthesize myTableView;
 @synthesize intensivo;
 @synthesize progresivo;
-@synthesize desayuno,comida,colacion,cena;
-@synthesize cerealD, proteinasD, vegetalesD, frutasD, lacteosD, productosKotD, cerealC, proteinasC, v_crudoC, v_cocidoC, aceiteC, frutaCol, productosKotCol, cerealesCe, proteinaCe, v_crudoCe, v_cocidoCe, frutaCe, lacteosCe,productosKotCe,aceiteCe;
 @synthesize semanasUsuario, titleSemanas;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -50,6 +49,8 @@
     [titleSemanas setText:[NSString stringWithFormat:@"Llevas %@ semanas en el método KOT.", semanasUsuario]];
     if(isIntensivo)
         [Flurry logEvent:@"My Método KOT Intensivo" timed:YES];
+    
+    //[self.myTableView registerNib:[UINib nibWithNibName:@"MiMetodoCellViewController" bundle:nil] forCellReuseIdentifier:@"MiMetodoCellViewController"];
 }
 
 - (void)viewDidUnload
@@ -83,11 +84,12 @@
     return @"";
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section <2)
+    /*if(indexPath.section <2)
         return 70.0;
     if(indexPath.section ==2)
         return 45.0;
-    return 100.0;
+    return 100.0;*/
+    return 50.0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -101,8 +103,21 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    if([intensivo count] >0 && [progresivo count] >0)
-        return 1;
+    NSDictionary *arrayData;
+    
+    if(isIntensivo)
+        arrayData = intensivo;
+    else
+        arrayData = progresivo;
+    
+    if(section == 0)
+        return [[arrayData objectForKey:@"desayuno"] count];
+    if(section == 1)
+        return [[arrayData objectForKey:@"comida"] count];
+    if(section == 2)
+        return [[arrayData objectForKey:@"colacion"] count];
+    if(section == 3)
+        return [[arrayData objectForKey:@"cena"] count];
     return 0;
 }
 
@@ -117,96 +132,140 @@
     
     NSDictionary *data;
     
+    //static NSString *CellIdentifier = @"MiMetodoCellViewController";
+    
+    //MiMetodoCellViewController *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    //[self.tableView registerNib:[UINib nibWithNibName:@"MyCell" bundle:nil]
+    //     forCellReuseIdentifier:@"Cell"];
+    
+    //if (cell == nil) {
+        
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MiMetodoCellViewController" owner:self options:nil];
+        MiMetodoCellViewController *cell = [nib objectAtIndex:0];
+    //}
     
     if(indexPath.section == 0){
-        data = [[[arrayData objectForKey:@"desayuno"]JSONRepresentation]JSONValue];
-        [cerealD setText:[data objectForKey:@"cereal"]];
-        [proteinasD setText:[data objectForKey:@"proteinas_vegetales"]];
-//        [vegetalesD setText:[data objectForKey:@"vegetales"]];
-        [frutasD setText:[data objectForKey:@"frutas"]];
-        [lacteosD setText:[data objectForKey:@"lacteos"]];
-        [productosKotD setText:[data objectForKey:@"productosKot"]];
+        data = [[arrayData objectForKey:@"desayuno"] objectAtIndex:indexPath.row];
+        NSArray *internal_keys = [data allKeys];
+        NSArray *components = [[data objectForKey:internal_keys[0]] componentsSeparatedByString:@"_"];
+        BOOL *on = [[components objectAtIndex:0] boolValue];
+        int progressive_index =  [[NSString stringWithFormat:@"%i%@", indexPath.section, [components objectAtIndex:1]] integerValue];
         
-        return desayuno;
-    }
-    if(indexPath.section == 1){
-        data = [[[arrayData objectForKey:@"comida"]JSONRepresentation]JSONValue];
-        [cerealC setText:[data objectForKey:@"cereal"]];
-        [proteinasC setText:[data objectForKey:@"proteinas"]];
-        [v_crudoC setText:[data objectForKey:@"vegetales_crudo"]];
-        [v_cocidoC setText:[data objectForKey:@"cereal"]];
-        [aceiteC setText:[data objectForKey:@"cucharadas_aceite"]];
+        NSString *text = internal_keys[0];
         
+        if ([text isEqualToString:@"cereal"]){
+            text = @"cereal";            
+            [cell.buttonLabel addTarget:self action:@selector(cerealAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"proteinas_vegetales"]){
+            text = @"proteína vegetal";
+            [cell.buttonLabel addTarget:self action:@selector(proteinaVegetalAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"frutas"]){
+            text = @"fruta";
+            [cell.buttonLabel addTarget:self action:@selector(frutasAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"lacteos"]){
+            text = @"lácteo";
+            [cell.buttonLabel addTarget:self action:@selector(lacteosAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"productosKot"]){
+            text = @"producto KOT";
+            [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
+        }
         
-        return comida;
+        [cell.buttonLabel setTitle:text forState:UIControlStateNormal];
+        [cell.checkSwitch setOn:on];
+        [cell.checkSwitch setTag:progressive_index];
+      
+    } else if (indexPath.section == 1){
+        data = [[arrayData objectForKey:@"comida"] objectAtIndex:indexPath.row];
+        NSArray *internal_keys = [data allKeys];
+        NSArray *components = [[data objectForKey:internal_keys[0]] componentsSeparatedByString:@"_"];
+        BOOL *on = [[components objectAtIndex:0] boolValue];
+        int progressive_index =  [[NSString stringWithFormat:@"%i%@", indexPath.section, [components objectAtIndex:1]] integerValue];
+        
+        NSString *text = internal_keys[0];
+        
+        if ([text isEqualToString:@"cereal"]){
+            text = @"cereal";
+            [cell.buttonLabel addTarget:self action:@selector(cerealAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"proteinas"]){
+            text = @"proteína animal";
+            [cell.buttonLabel addTarget:self action:@selector(proteinaAnimalAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"vegetales_crudo"]){
+            text = @"vegetales crudos";
+            [cell.buttonLabel addTarget:self action:@selector(v_crudosAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"vegetales_cocidas"]){
+            text = @"vegetales cocidos";
+            [cell.buttonLabel addTarget:self action:@selector(v_cocidosAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"cucharadas_aceite"]){
+            text = @"cucharadas de aceite";
+            [cell.buttonLabel addTarget:self action:@selector(aceiteAction:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        
+        [cell.buttonLabel setTitle:text forState:UIControlStateNormal];
+        [cell.checkSwitch setOn:on];
+        [cell.checkSwitch setTag:progressive_index];
+        
+    } else if (indexPath.section == 2){
+        data = [[arrayData objectForKey:@"colacion"] objectAtIndex:indexPath.row];
+        NSArray *internal_keys = [data allKeys];
+        NSArray *components = [[data objectForKey:internal_keys[0]] componentsSeparatedByString:@"_"];
+        BOOL *on = [[components objectAtIndex:0] boolValue];
+        int progressive_index =  [[NSString stringWithFormat:@"%i%@", indexPath.section, [components objectAtIndex:1]] integerValue];
+        
+        NSString *text = internal_keys[0];
+        
+        if ([text isEqualToString:@"fruta"]){
+            text = @"fruta";
+            [cell.buttonLabel addTarget:self action:@selector(frutasAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"productosKot"]){
+            text = @"productos KOT";
+            [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        
+        [cell.buttonLabel setTitle:text forState:UIControlStateNormal];
+        [cell.checkSwitch setOn:on];
+        [cell.checkSwitch setTag:progressive_index];
+        
+    }else if (indexPath.section == 3){
+        data = [[arrayData objectForKey:@"cena"] objectAtIndex:indexPath.row];
+        NSArray *internal_keys = [data allKeys];
+        NSArray *components = [[data objectForKey:internal_keys[0]] componentsSeparatedByString:@"_"];
+        BOOL *on = [[components objectAtIndex:0] boolValue];
+        int progressive_index =  [[NSString stringWithFormat:@"%i%@", indexPath.section, [components objectAtIndex:1]] integerValue];
+        
+        NSString *text = internal_keys[0];
+        
+        if ([text isEqualToString:@"cereal"]){
+            text = @"cereal";
+            [cell.buttonLabel addTarget:self action:@selector(cerealAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"proteinas"]){
+            text = @"proteína animal";
+            [cell.buttonLabel addTarget:self action:@selector(proteinaAnimalAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"vegetales_crudo"]){
+            text = @"vegetales crudos";
+            [cell.buttonLabel addTarget:self action:@selector(v_crudosAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"vegetales_cocidas"]){
+            text = @"vegetales cocidos";
+            [cell.buttonLabel addTarget:self action:@selector(v_cocidosAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"frutas"]){
+            text = @"fruta";
+            [cell.buttonLabel addTarget:self action:@selector(frutasAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"lacteos"]){
+            text = @"lácteo";
+            [cell.buttonLabel addTarget:self action:@selector(lacteosAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"productosKot"]){
+            text = @"producto KOT";
+            [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        
+        [cell.buttonLabel setTitle:text forState:UIControlStateNormal];
+        [cell.checkSwitch setOn:on];
+        [cell.checkSwitch setTag:progressive_index];
     }
     
-    if(indexPath.section == 2){
-        data = [[[arrayData objectForKey:@"colacion"]JSONRepresentation]JSONValue];
-        
-        if(isIntensivo)
-            [frutaCol setText:[data objectForKey:@"fruta"]];
-        else
-            [frutaCol setText:[data objectForKey:@"frutas"]];
-        
-        [productosKotCol setText:[data objectForKey:@"productosKot"]];
-        
-        return colacion;
-    }else{
-        data = [[[arrayData objectForKey:@"cena"]JSONRepresentation]JSONValue];
-        [cerealesCe setText:[data objectForKey:@"cereal"]];
-        [proteinaCe setText:[data objectForKey:@"proteinas"]];
-        [v_crudoCe setText:[data objectForKey:@"vegetales_crudo"]];
-        [v_cocidoCe setText:[data objectForKey:@"vegetales_cocidas"]];
-        [frutaCe setText:[data objectForKey:@"frutas"]];
-        [lacteosCe setText:[data objectForKey:@"lacteos"]];
-        [productosKotCe setText:[data objectForKey:@"productosKot"]];
-        [aceiteCe setText:[data objectForKey:@"cereal"]];
-        [productosKotCe setText:[data objectForKey:@"productosKot"]];
-        
-        
-        return cena;
-    }
+    [cell.checkSwitch addTarget:self action:@selector(changeOnOff:) forControlEvents:UIControlEventValueChanged];
+    return cell;
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tax   bleView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 #pragma mark - Table view delegate
 
@@ -217,16 +276,112 @@
     
 }
 
-
 -(IBAction)changeSection:(id)sender{
     LoadingView *myLoadingView = [LoadingView loadingViewInView:self.navigationController.view];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     isIntensivo = (isIntensivo?NO:YES);
     if(isIntensivo)
         [Flurry logEvent:@"My Método KOT Intensivo" timed:YES];
     else
         [Flurry logEvent:@"My Método KOT Progresivo" timed:YES];
+    /* TODO REPOBLAR INTENSIVO Y PROGRESIVO*/
+    
+    NSArray *keys =  [[NSArray alloc] initWithObjects:@"desayuno", @"comida", @"colacion", @"cena", nil];
+    NSArray *intensivoArray = [[NSArray alloc] initWithObjects:[defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"intensivo"]], nil];
+    
+    NSArray *progresivoArray = [[NSArray alloc] initWithObjects:[defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"progresivo"]], nil];
+    
+    intensivo = [[NSMutableDictionary alloc] initWithObjects:intensivoArray forKeys:keys];
+    progresivo = [[NSMutableDictionary alloc] initWithObjects:progresivoArray forKeys:keys];
+    
+    //[defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"progresivo"]]
+    
     [myTableView reloadData];
     [myLoadingView performSelector:@selector(removeView) withObject:nil afterDelay:1.0];
+}
+
+-(IBAction)changeOnOff:(UISwitch*)sender{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    NSString *postfix;
+    
+    if (isIntensivo){
+        postfix = @"intensivo";
+    } else {
+        postfix = @"progresivo";
+    }
+    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    int index = sender.tag;
+    if (sender.tag >= 30){ // cena
+        index = index - 30;
+        
+        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
+        NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
+        
+        NSString *value;
+        if(sender.on == 1){
+            value = [NSString stringWithFormat:@"YES_%i", index];
+        }else{
+            value = [NSString stringWithFormat:@"NO_%i", index];
+        }
+        [dict setObject:value forKey:internal_keys[0]];
+        [defaultsArray replaceObjectAtIndex:index withObject:dict];
+        
+        [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
+        
+    } else if (sender.tag >= 20) { // colacion
+        index = index - 20;
+        
+        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion", postfix]];
+        NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
+        
+        NSString *value;
+        if(sender.on == 1){
+            value = [NSString stringWithFormat:@"YES_%i", index];
+        }else{
+            value = [NSString stringWithFormat:@"NO_%i", index];
+        }
+        [dict setObject:value forKey:internal_keys[0]];
+        [defaultsArray replaceObjectAtIndex:index withObject:dict];
+        
+        [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"colacion", postfix]];
+        
+    } else if (sender.tag >= 10) { // comida
+        index = index - 10;
+        
+        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
+        NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
+        
+        NSString *value;
+        if(sender.on == 1){
+            value = [NSString stringWithFormat:@"YES_%i", index];
+        }else{
+            value = [NSString stringWithFormat:@"NO_%i", index];
+        }
+        [dict setObject:value forKey:internal_keys[0]];
+        [defaultsArray replaceObjectAtIndex:index withObject:dict];
+        
+        [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
+    } else { // desayuno
+        
+        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", postfix]];
+        NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
+        
+        NSString *value;
+        if(sender.on == 1){
+            value = [NSString stringWithFormat:@"YES_%i", index];
+        }else{
+            value = [NSString stringWithFormat:@"NO_%i", index];
+        }
+        [dict setObject:value forKey:internal_keys[0]];
+        [defaultsArray replaceObjectAtIndex:index withObject:dict];
+        
+        [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", postfix]];
+    }
+    
+    [defaults synchronize];
 }
 
 -(IBAction)cerealAction:(id)sender{
@@ -235,7 +390,7 @@
     [ad setType:5];
     NSMutableArray *alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
     
-    ad.alimentoDetail = [alimentosList objectAtIndex:2];
+    ad.alimentoDetail = [alimentosList objectAtIndex:6];
     
     [self.navigationController pushViewController:ad animated:YES];
     [ad release];
@@ -250,7 +405,7 @@
     [ad setType:5];
     NSMutableArray *alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
     
-    ad.alimentoDetail = [alimentosList objectAtIndex:6];
+    ad.alimentoDetail = [alimentosList objectAtIndex:7];
     
     [self.navigationController pushViewController:ad animated:YES];
     [ad release];
@@ -258,7 +413,8 @@
     [sqlite release];
     sqlite = nil;
 }
--(IBAction)vegetalesAction:(id)sender{
+
+-(IBAction)proteinaAnimalAction:(id)sender{
     AlimentoDetailViewController *ad = [[AlimentoDetailViewController alloc] initWithNibName:@"AlimentoDetailViewController" bundle:nil];
     CommonDAO *sqlite = [[CommonDAO alloc] init];
     [ad setType:5];
@@ -270,23 +426,9 @@
     [ad release];
     ad = nil;
     [sqlite release];
-    sqlite = nil;
 }
--(IBAction)v_crudosAction:(id)sender{
-    AlimentoDetailViewController *ad = [[AlimentoDetailViewController alloc] initWithNibName:@"AlimentoDetailViewController" bundle:nil];
-    CommonDAO *sqlite = [[CommonDAO alloc] init];
-    [ad setType:5];
-    NSMutableArray *alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
-    
-    ad.alimentoDetail = [alimentosList objectAtIndex:9];
-    
-    [self.navigationController pushViewController:ad animated:YES];
-    [ad release];
-    ad = nil;
-    [sqlite release];
-    sqlite = nil;
-}
--(IBAction)v_cocidosAction:(id)sender{
+
+-(IBAction)proteinaVegetalAction:(id)sender{
     AlimentoDetailViewController *ad = [[AlimentoDetailViewController alloc] initWithNibName:@"AlimentoDetailViewController" bundle:nil];
     CommonDAO *sqlite = [[CommonDAO alloc] init];
     [ad setType:5];
@@ -300,13 +442,42 @@
     [sqlite release];
     sqlite = nil;
 }
--(IBAction)frutasAction:(id)sender{
+
+-(IBAction)v_crudosAction:(id)sender{
     AlimentoDetailViewController *ad = [[AlimentoDetailViewController alloc] initWithNibName:@"AlimentoDetailViewController" bundle:nil];
     CommonDAO *sqlite = [[CommonDAO alloc] init];
     [ad setType:5];
     NSMutableArray *alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
     
-    ad.alimentoDetail = [alimentosList objectAtIndex:4];
+    ad.alimentoDetail = [alimentosList objectAtIndex:10];
+    
+    [self.navigationController pushViewController:ad animated:YES];
+    [ad release];
+    ad = nil;
+    [sqlite release];
+    sqlite = nil;
+}
+-(IBAction)v_cocidosAction:(id)sender{
+    AlimentoDetailViewController *ad = [[AlimentoDetailViewController alloc] initWithNibName:@"AlimentoDetailViewController" bundle:nil];
+    CommonDAO *sqlite = [[CommonDAO alloc] init];
+    [ad setType:5];
+    NSMutableArray *alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
+    
+    ad.alimentoDetail = [alimentosList objectAtIndex:9];
+    
+    [self.navigationController pushViewController:ad animated:YES];
+    [ad release];
+    ad = nil;
+    [sqlite release];
+    sqlite = nil;
+}
+-(IBAction)frutasAction:(id)sender{
+    AlimentoDetailViewController *ad = [[AlimentoDetailViewController alloc] initWithNibName:@"AlimentoDetailViewController" bundle:nil];
+    CommonDAO *sqlite = [[CommonDAO alloc] init];
+    [ad setType:5];
+    NSMutableArray *alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
+
+    [ad setAlimentoDetail:[alimentosList objectAtIndex:3]];
     
     [self.navigationController pushViewController:ad animated:YES];
     [ad release];
@@ -320,7 +491,7 @@
     [ad setType:5];
     NSMutableArray *alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
     
-    ad.alimentoDetail = [alimentosList objectAtIndex:5];
+    ad.alimentoDetail = [alimentosList objectAtIndex:4];
     
     [self.navigationController pushViewController:ad animated:YES];
     [ad release];
@@ -328,6 +499,7 @@
     [sqlite release];
     sqlite = nil;
 }
+
 -(IBAction)aceiteAction:(id)sender{
     AlimentoDetailViewController *ad = [[AlimentoDetailViewController alloc] initWithNibName:@"AlimentoDetailViewController" bundle:nil];
     CommonDAO *sqlite = [[CommonDAO alloc] init];
@@ -348,4 +520,8 @@
     [pvc release];
     pvc = nil;
 }
+- (void)dealloc {
+    [super dealloc];
+}
+
 @end

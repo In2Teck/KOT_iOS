@@ -11,8 +11,8 @@
 
 @interface MenuViewController : UIViewController{
     NSArray *user;
-    NSDictionary *intensivo;
-    NSDictionary *progresivo;
+    NSMutableDictionary *intensivo;
+    NSMutableDictionary *progresivo;
     NSString     *semanas;
 }
 

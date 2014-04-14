@@ -55,6 +55,7 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 /************************************************************************/
 /************************************************************************/
 /************************** TABLE DELEGATE ******************************/
@@ -183,51 +184,6 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-}
-
--(IBAction)watchVideo:(id)sender{
-    
-    NSLog(@"Segun entra al play %@", [videoDetail objectAtIndex:1]);
-    
-    /*
-    UIWindow *backgroundWindow = [[UIApplication sharedApplication] keyWindow];
-    CustomMPMoviePlayerViewController* moviePlayer =
-    [[CustomMPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString: //[videoDetail objectAtIndex:1]
-                                                                   //@"http://staging.mepaparazzo.com/media/original/deau5drxmx.mp4"
-                                                                   //@"http://apphouse.naranya.com/log/apphouse/kot/instalador/example.mov"
-                                                                   //@"http://pandablog.s3.amazonaws.com/videos/site/panda.mp4"
-                                                                   @"http://showbox-tr.dropbox.com/transcode_video/t/jlf8v1yd6gkxobp/1.mp4"
-                                                                   ]];
-    
-    [moviePlayer showAndPlayOver:backgroundWindow.rootViewController];
-    */
-    
-    /*
-    UIViewController *videoViewController = [[UIViewController alloc] init];
-    
-//    [videoViewController setTitle:@""];
-    
-    MPMoviePlayerController *player =[[MPMoviePlayerController alloc] initWithContentURL:
-                                      //[NSURL URLWithString:[videoDetail objectAtIndex:2]]
-                                      [NSURL URLWithString:
-                                      @"http://apphouse.naranya.com/log/apphouse/kot/instalador/1.mov"]];
-    [player setControlStyle:MPMovieControlModeDefault];
-    [[player view] setFrame: self.view.frame];  // frame must match parent view
-    [videoViewController.view addSubview: [player view]];
-    [player play];
-    
-    [self.navigationController pushViewController:videoViewController animated:YES];
-        */
-    
-    
-    YouTubeView *video = [[YouTubeView alloc] initWithStringAsURL:
-                                @"https://showbox-tr.dropbox.com/transcode_video/t/jlf8v1yd6gkxobp/1.mp4"
-                                                            frame:self.view.frame];
-    [self.view addSubview:video];
-    
-/*
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.youtube.com/watch?v=NUtrAxtaHsE"]];
-    */
 }
 
 -(void)moviePlayerPlaybackDidFinish:(NSNotification*)notification 

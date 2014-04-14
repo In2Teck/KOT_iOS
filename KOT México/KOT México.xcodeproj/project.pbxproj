@@ -234,6 +234,7 @@
 		33EB3AAE14F43FD900555755 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EB3AAC14F43FD900555755 /* facebook_icon.png */; };
 		33EB3AAF14F43FD900555755 /* twitter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EB3AAD14F43FD900555755 /* twitter_icon.png */; };
 		33F1C2BE14DEE3730069EBB3 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3314769B14DCA740002AF3ED /* libSDWebImage.a */; };
+		C7041F4118F5B375006E8A40 /* MiMetodoCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7041F4018F5B375006E8A40 /* MiMetodoCellViewController.xib */; };
 		C72B1AFC18D7CC4300F10CA2 /* VideoMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72B1AFA18D7CC4300F10CA2 /* VideoMenuViewController.m */; };
 		C72B1AFD18D7CC4300F10CA2 /* VideoMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72B1AFB18D7CC4300F10CA2 /* VideoMenuViewController.xib */; };
 		C79C71D218AD78C600366258 /* crema.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C79C71CD18AD78C600366258 /* crema.jpg */; };
@@ -241,6 +242,7 @@
 		C79C71D418AD78C600366258 /* pasta.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C79C71CF18AD78C600366258 /* pasta.jpg */; };
 		C79C71D518AD78C600366258 /* purepapa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C79C71D018AD78C600366258 /* purepapa.jpg */; };
 		C79C71D618AD78C600366258 /* smoothie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C79C71D118AD78C600366258 /* smoothie.jpg */; };
+		C7AC82F318F4B82A001E23E1 /* MiMetodoCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7AC82F118F4B82A001E23E1 /* MiMetodoCellViewController.m */; };
 		C7CC8FA118CF9B8D005E1E57 /* FaqMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CC8F9F18CF9B8D005E1E57 /* FaqMenuViewController.m */; };
 		C7CC8FA218CF9B8D005E1E57 /* FaqMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CC8FA018CF9B8D005E1E57 /* FaqMenuViewController.xib */; };
 		C7CC8FAB18CFF122005E1E57 /* FaqViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CC8FA918CFF122005E1E57 /* FaqViewController.m */; };
@@ -633,6 +635,7 @@
 		33EB3AAD14F43FD900555755 /* twitter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_icon.png; sourceTree = "<group>"; };
 		33EB3AB614F4688000555755 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		33EB3AB814F4688B00555755 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
+		C7041F4018F5B375006E8A40 /* MiMetodoCellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MiMetodoCellViewController.xib; sourceTree = "<group>"; };
 		C72B1AF918D7CC4300F10CA2 /* VideoMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoMenuViewController.h; path = ../../Resources/VideoMenuViewController.h; sourceTree = "<group>"; };
 		C72B1AFA18D7CC4300F10CA2 /* VideoMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoMenuViewController.m; path = ../../Resources/VideoMenuViewController.m; sourceTree = "<group>"; };
 		C72B1AFB18D7CC4300F10CA2 /* VideoMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoMenuViewController.xib; sourceTree = "<group>"; };
@@ -641,6 +644,8 @@
 		C79C71CF18AD78C600366258 /* pasta.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pasta.jpg; sourceTree = "<group>"; };
 		C79C71D018AD78C600366258 /* purepapa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = purepapa.jpg; sourceTree = "<group>"; };
 		C79C71D118AD78C600366258 /* smoothie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smoothie.jpg; sourceTree = "<group>"; };
+		C7AC82F018F4B82A001E23E1 /* MiMetodoCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiMetodoCellViewController.h; sourceTree = "<group>"; };
+		C7AC82F118F4B82A001E23E1 /* MiMetodoCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiMetodoCellViewController.m; sourceTree = "<group>"; };
 		C7CC8F9E18CF9B8D005E1E57 /* FaqMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqMenuViewController.h; sourceTree = "<group>"; };
 		C7CC8F9F18CF9B8D005E1E57 /* FaqMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqMenuViewController.m; sourceTree = "<group>"; };
 		C7CC8FA018CF9B8D005E1E57 /* FaqMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FaqMenuViewController.xib; path = "../KOT México/classes/FaqMenuViewController.xib"; sourceTree = "<group>"; };
@@ -1089,9 +1094,12 @@
 				C7CC8F9F18CF9B8D005E1E57 /* FaqMenuViewController.m */,
 				C7CC8FA818CFF122005E1E57 /* FaqViewController.h */,
 				C7CC8FA918CFF122005E1E57 /* FaqViewController.m */,
-				3339CC6E14E1E9FC0041C9C6 /* MiMetodoKOTViewController.h */,
 				C7DFC2D2186E12D00034EBFB /* AyudaViewController.h */,
 				C7DFC2D3186E12D00034EBFB /* AyudaViewController.m */,
+				C7AC82F018F4B82A001E23E1 /* MiMetodoCellViewController.h */,
+				C7AC82F118F4B82A001E23E1 /* MiMetodoCellViewController.m */,
+				C7041F4018F5B375006E8A40 /* MiMetodoCellViewController.xib */,
+				3339CC6E14E1E9FC0041C9C6 /* MiMetodoKOTViewController.h */,
 				3339CC6F14E1E9FC0041C9C6 /* MiMetodoKOTViewController.m */,
 				3339CC7014E1E9FD0041C9C6 /* MiMetodoKOTViewController.xib */,
 				3393199C14F69E0700E91657 /* PreferencesNavigationViewController.h */,
@@ -1376,6 +1384,7 @@
 				333014E314BF4C5E00F92EC0 /* new-12.png in Resources */,
 				333014E414BF4C5E00F92EC0 /* 1.png in Resources */,
 				333014E514BF4C5E00F92EC0 /* 10.png in Resources */,
+				C7041F4118F5B375006E8A40 /* MiMetodoCellViewController.xib in Resources */,
 				C7DB2AA718D77BBD009911FA /* preguntas_frecuentes.png in Resources */,
 				333014E614BF4C5E00F92EC0 /* 11.png in Resources */,
 				333014E714BF4C5E00F92EC0 /* 12.png in Resources */,
@@ -1554,6 +1563,7 @@
 				33584F0A14C4E687001B287E /* WSCoordinate.m in Sources */,
 				33584F0B14C4E687001B287E /* WSData.m in Sources */,
 				33584F0C14C4E687001B287E /* WSDataOperations.m in Sources */,
+				C7AC82F318F4B82A001E23E1 /* MiMetodoCellViewController.m in Sources */,
 				33584F0D14C4E687001B287E /* WSDatum.m in Sources */,
 				33584F0E14C4E687001B287E /* WSFont.m in Sources */,
 				33584F0F14C4E687001B287E /* WSGraph.m in Sources */,

@@ -18,15 +18,14 @@
 
 @property(nonatomic,retain) NSDictionary *intensivo, *progresivo;
 @property(nonatomic,retain) IBOutlet UITableView *myTableView;
-@property(nonatomic,retain) IBOutlet UITableViewCell *desayuno,*comida,*colacion,*cena;
 
-@property(nonatomic,retain) IBOutlet UILabel *cerealD, *proteinasD, *vegetalesD, *frutasD, *lacteosD, *productosKotD, *cerealC, *proteinasC, *v_crudoC, *v_cocidoC, *aceiteC, *frutaCol, *productosKotCol, *cerealesCe, *proteinaCe, *v_crudoCe, *v_cocidoCe, *frutaCe, *lacteosCe, *productosKotCe, *aceiteCe, *titleSemanas;
+@property(nonatomic,retain) IBOutlet UILabel *titleSemanas;
 
 -(IBAction)changeSection:(id)sender;
 
 -(IBAction)cerealAction:(id)sender;
--(IBAction)proteinaAction:(id)sender;
--(IBAction)vegetalesAction:(id)sender;
+-(IBAction)proteinaAnimalAction:(id)sender;
+-(IBAction)proteinaVegetalAction:(id)sender;
 -(IBAction)v_crudosAction:(id)sender;
 -(IBAction)v_cocidosAction:(id)sender;
 -(IBAction)frutasAction:(id)sender;

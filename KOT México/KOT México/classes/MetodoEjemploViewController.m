@@ -232,7 +232,7 @@
             [productosKotD setText:@"1"];
             [lacteosD setText:@"1"];
             [frutasD setText:@"1"];
-            [proteinasD setText:@"0"];
+            //[proteinasD setText:@"0"];
             
             
             /********** COMIDA ********/
@@ -252,10 +252,10 @@
             [v_cocidoCe setText:@"1"];
             [v_crudoCe setText:@"1"];
             [aceiteCe setText:@"2"];
-            [proteinaCe setText:@"0"];
-            [lacteosCe setText:@"0"];
-            [frutaCe setText:@"0"];
-            [cerealesCe setText:@"0"];
+            //[proteinaCe setText:@"0"];
+            //[lacteosCe setText:@"0"];
+            //[frutaCe setText:@"0"];
+            //[cerealesCe setText:@"0"];
             break;
         case 2:
             /********** DESAYUNO ********/
@@ -263,7 +263,7 @@
             [productosKotD setText:@"1"];
             [lacteosD setText:@"1"];
             [frutasD setText:@"1"];
-            [proteinasD setText:@"0"];
+            //[proteinasD setText:@"0"];
             
             /********** COMIDA ********/
             [proteinasC setText:@"1"];
@@ -282,9 +282,9 @@
             [v_crudoCe setText:@"1"];
             [aceiteCe setText:@"2"];
             [proteinaCe setText:@"1/2"];
-            [lacteosCe setText:@"0"];
-            [frutaCe setText:@"0"];
-            [cerealesCe setText:@"0"];
+            //[lacteosCe setText:@"0"];
+            //[frutaCe setText:@"0"];
+            //[cerealesCe setText:@"0"];
             break;
         case 3:
             /********** DESAYUNO ********/
@@ -310,10 +310,10 @@
             [v_cocidoCe setText:@"1"];
             [v_crudoCe setText:@"1"];
             [aceiteCe setText:@"2"];
-            [lacteosCe setText:@"0"];
-            [proteinaCe setText:@"0"];
-            [cerealesCe setText:@"0"];
-            [frutaCe setText:@"0"];
+            //[lacteosCe setText:@"0"];
+            //[proteinaCe setText:@"0"];
+            //[cerealesCe setText:@"0"];
+            //[frutaCe setText:@"0"];
             break;
         case 4:
             /********** DESAYUNO ********/
@@ -340,9 +340,9 @@
             [v_crudoCe setText:@"1"];
             [aceiteCe setText:@"2"];
             [proteinaCe setText:@"1"];
-            [frutaCe setText:@"0"];
-            [lacteosCe setText:@"0"];
-            [cerealesCe setText:@"0"];
+            //[frutaCe setText:@"0"];
+            //[lacteosCe setText:@"0"];
+            //[cerealesCe setText:@"0"];
             
             break;
         default:
