@@ -24,6 +24,8 @@
     
     NSString *medidaActual;
     NSString *medidaMeta;
+    NSString *grasaMeta;
+    NSString *grasaActual;
     NSString *pesoActual;
     NSString *pesoMeta;
     BOOL      updateViews;
@@ -45,7 +47,8 @@
 @property(nonatomic,assign) BOOL updateViews;
 @property(nonatomic,retain) NSMutableArray *pesoList;
 @property(nonatomic,retain) NSMutableArray *medidaList;
-@property(nonatomic, retain) NSString *peso_inicio, *medida_inicio;
+@property(nonatomic,retain) NSMutableArray *grasasList;
+@property(nonatomic, retain) NSString *peso_inicio, *medida_inicio, *grasa_inicio;
 /////////  FACEBOOK //////////
 
 

@@ -14,7 +14,7 @@
 #import "Flurry.h"
 
 @implementation ProgresoViewController
-@synthesize peso_inicio, medida_inicio;
+@synthesize peso_inicio, medida_inicio, grasa_inicio;
 @synthesize updateViews;
 @synthesize actual;
 @synthesize meta;
@@ -28,6 +28,7 @@
 
 @synthesize pesoList;
 @synthesize medidaList;
+@synthesize grasasList;
 /// FACEBOOK ///
 //@synthesize session = _session;
 //@synthesize loginDialog = _loginDialog;
@@ -150,10 +151,10 @@
         [add reloadInputViews];
     } else {
         //TODO: ARREGLAR VALORES
-        dif = ([medidaMeta floatValue] - [medidaActual floatValue]);
+        dif = ([grasaMeta floatValue] - [grasaActual floatValue]);
         dif = (dif>=0?dif:-dif);
-        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f %%", ([medida_inicio floatValue] - [medidaActual floatValue] )]];
-        [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f %%", medidaActual]];
+        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f %%", ([grasa_inicio floatValue] - [grasaActual floatValue] )]];
+        [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f %%", grasaActual]];
         //[faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Centimetros para tu meta!", dif]];
         [banderaImageView setHidden:true];
         [faltanteLabel setHidden:true];
@@ -251,12 +252,12 @@
         [actual setPlaceholder:@"Ingresa tu % grasa actual"];
         [meta setPlaceholder:@"Ingresa tu % grasa meta"];
         
-        dif = ([medidaMeta floatValue] - [medidaActual floatValue]);
+        dif = ([grasaMeta floatValue] - [grasaActual floatValue]);
         dif = (dif>=0?dif:-dif);
-        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f %%", ([medida_inicio floatValue] - [medidaActual floatValue] )]];
+        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f %%", ([grasa_inicio floatValue] - [grasaActual floatValue] )]];
         //        if(![medidaMeta isEqualToString:@"0"]&&![medidaActual isEqualToString:@"0"])
         
-        [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f %%", [medidaActual floatValue]]];
+        [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f %%", [grasaActual floatValue]]];
         
         //[faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Centimetros para tu meta!", dif]];
         [banderaImageView setHidden:true];
@@ -380,6 +381,10 @@
 -(int) gcdM:(int)m N:(int)n {
     
     int t, r;
+    if (m < 0 || n < 0) {
+        return 0;
+    }
+    
     if (m < n) {
         t = m;
         m = n;
@@ -417,11 +422,11 @@
     //      [tempPoints2 addObject:[NSNumber numberWithFloat:60.0]];//[peso_inicio floatValue]]];
     //        [tempSemanas addObject:@""];
     //    }
-    for (NSString *json in pesoList) {
+    for (NSString *json in grasasList) {
         NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
         [tempSemanas addObject:[NSString stringWithFormat:@"%i sem",([[itemJSon objectForKey:@"Semana"] integerValue]-1)]];
-        [tempPoints addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
-        pesoActual = [[NSString stringWithFormat:@"%.2f",[[itemJSon objectForKey:@"kilos"]floatValue]]retain];
+        [tempPoints addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"grasa"] floatValue]]];
+        grasaActual = [[NSString stringWithFormat:@"%.2f",[[itemJSon objectForKey:@"grasa"]floatValue]]retain];
     }
     //    if([tempPoints count]>1){
     //        [tempPoints removeObjectAtIndex:0];
@@ -431,17 +436,25 @@
     float min = ceil([[tempPoints valueForKeyPath:@"@min.self"] floatValue]);
     float max = ceil([[tempPoints valueForKeyPath:@"@max.self"] floatValue]);
     
-    [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[peso_inicio floatValue]]];
-    for (NSString *json in pesoList) {
+    if (min == 0){
+        [tempPoints2 addObject:[NSNumber numberWithFloat:0]];//[peso_inicio floatValue]]];
+    } else {
+        [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[peso_inicio floatValue]]];
+    }
+    
+    for (NSString *json in grasasList) {
         NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
-        [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
+        [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"grasa"] floatValue]]];
     }
     
     // max min to plot
     max += 2;
     min -= 2;
     int diff = [self gcdM:max N:min];
-    if (diff > 12 || diff < 3){
+    
+    if (diff == 0){
+        min = 0;
+    } else if (diff > 12 || diff < 3){
         max -= 1;
         diff = [self gcdM:max N:min];
     }
@@ -762,7 +775,7 @@
         [Flurry logEvent:@"Mi Progreso" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:[user objectAtIndex:0],@"Usuario", nil] timed:YES];
         
         
-        NSString *urlConnection = [[[NSString alloc] initWithFormat:@"http://kot.mx/nuevo/WS/kotMiProgreso.php?idUserKot=%@",[[user objectAtIndex:0]objectAtIndex:0]] autorelease];
+        NSString *urlConnection = [[[NSString alloc] initWithFormat:@"http://desarrollo.sysop26.com/kot/nuevo/WS/kotMiProgreso.php?idUserKot=%@",[[user objectAtIndex:0]objectAtIndex:0]] autorelease];
         
         NSURL *url = [[[NSURL alloc] initWithString:urlConnection] autorelease];
         NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:180.0];
@@ -791,13 +804,17 @@
                 
                 peso_inicio = [contentJSON objectForKey:@"peso_inicio"];
                 medida_inicio = [contentJSON objectForKey:@"medida_inicio"];
+                grasa_inicio = [contentJSON objectForKey:@"grasa_inicio"];
                 
                 usuarioLogin = [[[[contentJSON objectForKey:@"usuario"] JSONRepresentation] JSONValue]retain];
                 pesoList= [[contentJSON mutableArrayValueForKey:@"kilos"]retain];
                 medidaList= [[contentJSON mutableArrayValueForKey:@"medidas"]retain];
-
+                grasasList= [[contentJSON mutableArrayValueForKey:@"grasas"]retain];
                 
+                // Medida y grasa sin meta, sólo por code compliance
                 medidaMeta = [[NSString stringWithFormat:@"%.1f", [[contentJSON objectForKey:@"meta_medida"]floatValue]]retain];
+                grasaMeta = [[NSString stringWithFormat:@"%.1f", [[contentJSON objectForKey:@"meta_grasa"]floatValue]]retain];
+                
                 pesoMeta   = [[NSString stringWithFormat:@"%.1f", [[contentJSON objectForKey:@"meta_peso"]floatValue]]retain];
                 
                 [banderaImageView setHidden:NO];

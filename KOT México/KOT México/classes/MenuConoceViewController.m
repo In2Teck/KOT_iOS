@@ -8,7 +8,7 @@
 
 #import "MenuConoceViewController.h"
 #import "CollapsableTableViewViewController.h"
-#import "ProductosViewController.h"
+#import "NutriologosViewController.h"
 #import "IMCViewController.h"
 #import "VideoMenuViewController.h"
 
@@ -47,8 +47,8 @@
 }
 
 -(IBAction)productosKOT:(id)sender{
-    ProductosViewController *productos = [[[ProductosViewController alloc]initWithNibName:@"ProductosViewController" bundle:nil]autorelease];
-     [self.navigationController pushViewController:productos animated:YES];
+    NutriologosViewController *contactos = [[[NutriologosViewController alloc]initWithNibName:@"NutriologosViewController" bundle:nil]autorelease];
+    [self.navigationController pushViewController:contactos animated:YES];
 }
 
 - (IBAction)especialistaKOT:(id)sender {

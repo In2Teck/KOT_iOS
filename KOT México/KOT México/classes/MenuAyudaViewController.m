@@ -7,7 +7,7 @@
 //
 
 #import "MenuAyudaViewController.h"
-#import "NutriologosViewController.h"
+#import "ProductosViewController.h"
 #import "PreferencesViewController.h"
 #import "FaqMenuViewController.h"
 
@@ -59,8 +59,8 @@
 }
 
 - (IBAction)contacto:(id)sender {
-    NutriologosViewController *contactos = [[[NutriologosViewController alloc]initWithNibName:@"NutriologosViewController" bundle:nil]autorelease];
-    [self.navigationController pushViewController:contactos animated:YES];
+    ProductosViewController *productos = [[[ProductosViewController alloc]initWithNibName:@"ProductosViewController" bundle:nil]autorelease];
+    [self.navigationController pushViewController:productos animated:YES];
 }
 
 - (IBAction)faq:(id)sender {
