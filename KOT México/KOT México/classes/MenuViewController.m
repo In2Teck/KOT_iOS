@@ -119,19 +119,13 @@
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:now];
     [components setHour:3];
-    NSDate *today3am = [calendar dateFromComponents:components];
     
-    
-    //NSLog(@"3am %@, now %@", today3am, now );
-    
-    //NSLog(@"%f", diff);
-    if ([defaults objectForKey:@"miMetodoTimestamp"]){
-        float diff = [now timeIntervalSince1970] - [today3am timeIntervalSince1970];
-        //NSLog(@"diff %f", diff );
+    if ([defaults floatForKey:@"miMetodoTimestamp"]){
+        float interval = [defaults floatForKey:@"miMetodoTimestamp"];
+        float diff = [now timeIntervalSince1970] - interval;
+        //NSLog(@"diff %f, interval %f", diff, interval );
         if (diff >= 86400) {
-            //NSLog(@"%@", @"YES" );
-            float last = [defaults floatForKey:@"miMetodoTimestamp"];
-            float next3am = last + 86400;
+            float next3am = interval + 86400;
             [defaults setFloat:next3am forKey:@"miMetodoTimestamp"];
             [defaults removeObjectForKey:@"desayuno_intensivo"];
             [defaults removeObjectForKey:@"comida_intensivo"];
@@ -143,6 +137,7 @@
             [defaults removeObjectForKey:@"cena_progresivo"];
         }
     } else {
+        NSDate *today3am = [calendar dateFromComponents:components];
         [defaults setFloat:[today3am timeIntervalSince1970] forKey:@"miMetodoTimestamp"];
     }
     
