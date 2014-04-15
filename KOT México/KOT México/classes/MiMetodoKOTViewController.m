@@ -123,15 +123,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *arrayData;
+   
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+   
+    NSString *postfix;
     
-    if(isIntensivo)
-        arrayData = intensivo;
-    else
-        arrayData = progresivo;
+    if (isIntensivo){
+        postfix = @"intensivo";
+    } else {
+        postfix = @"progresivo";
+    }
     
+    NSMutableArray *defaultsArray;
     NSDictionary *data;
-    
     //static NSString *CellIdentifier = @"MiMetodoCellViewController";
     
     //MiMetodoCellViewController *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -146,7 +150,10 @@
     //}
     
     if(indexPath.section == 0){
-        data = [[arrayData objectForKey:@"desayuno"] objectAtIndex:indexPath.row];
+        
+        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", postfix]];
+        
+        data = [defaultsArray objectAtIndex:indexPath.row];
         NSArray *internal_keys = [data allKeys];
         NSArray *components = [[data objectForKey:internal_keys[0]] componentsSeparatedByString:@"_"];
         BOOL *on = [[components objectAtIndex:0] boolValue];
@@ -176,7 +183,11 @@
         [cell.checkSwitch setTag:progressive_index];
       
     } else if (indexPath.section == 1){
-        data = [[arrayData objectForKey:@"comida"] objectAtIndex:indexPath.row];
+        
+        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
+        
+        data = [defaultsArray objectAtIndex:indexPath.row];
+        
         NSArray *internal_keys = [data allKeys];
         NSArray *components = [[data objectForKey:internal_keys[0]] componentsSeparatedByString:@"_"];
         BOOL *on = [[components objectAtIndex:0] boolValue];
@@ -206,7 +217,11 @@
         [cell.checkSwitch setTag:progressive_index];
         
     } else if (indexPath.section == 2){
-        data = [[arrayData objectForKey:@"colacion"] objectAtIndex:indexPath.row];
+        
+        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion", postfix]];
+        
+        data = [defaultsArray objectAtIndex:indexPath.row];
+        
         NSArray *internal_keys = [data allKeys];
         NSArray *components = [[data objectForKey:internal_keys[0]] componentsSeparatedByString:@"_"];
         BOOL *on = [[components objectAtIndex:0] boolValue];
@@ -227,7 +242,10 @@
         [cell.checkSwitch setTag:progressive_index];
         
     }else if (indexPath.section == 3){
-        data = [[arrayData objectForKey:@"cena"] objectAtIndex:indexPath.row];
+        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
+        
+        data = [defaultsArray objectAtIndex:indexPath.row];
+        
         NSArray *internal_keys = [data allKeys];
         NSArray *components = [[data objectForKey:internal_keys[0]] componentsSeparatedByString:@"_"];
         BOOL *on = [[components objectAtIndex:0] boolValue];
