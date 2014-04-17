@@ -381,9 +381,6 @@
 -(int) gcdM:(int)m N:(int)n {
     
     int t, r;
-    if (m < 0 || n < 0) {
-        return 0;
-    }
     
     if (m < n) {
         t = m;
@@ -435,28 +432,41 @@
     
     float min = ceil([[tempPoints valueForKeyPath:@"@min.self"] floatValue]);
     float max = ceil([[tempPoints valueForKeyPath:@"@max.self"] floatValue]);
+    int diff = 0;
     
-    if (min == 0){
-        [tempPoints2 addObject:[NSNumber numberWithFloat:0]];//[peso_inicio floatValue]]];
-    } else {
-        [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[peso_inicio floatValue]]];
-    }
-    
-    for (NSString *json in grasasList) {
-        NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
-        [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"grasa"] floatValue]]];
-    }
-    
-    // max min to plot
-    max += 2;
-    min -= 2;
-    int diff = [self gcdM:max N:min];
-    
-    if (diff == 0){
+    if (min <= 0){
+        max += 2;
         min = 0;
-    } else if (diff > 12 || diff < 3){
-        max -= 1;
+        [tempPoints2 addObject:[NSNumber numberWithFloat:max]];//[medida_inicio floatValue]]];
+        [tempPoints2 addObject:[NSNumber numberWithFloat:min]];//[medida_inicio floatValue]]];
+        diff = max;
+        if (diff > 12) {
+            diff = [self gcdM:max N:2];
+        }
+    } else if (min == max){
+        // max min to plot
+        max += 2;
+        min -= 2;
+        [tempPoints2 addObject:[NSNumber numberWithFloat:max]];//[medida_inicio floatValue]]];
+        [tempPoints2 addObject:[NSNumber numberWithFloat:min]];//[medida_inicio floatValue]]];
+        diff = 4;
+        
+    } else {
+        [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[medida_inicio floatValue]]];
+        for (NSString *json in medidaList) {
+            NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
+            [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"medida"] floatValue]]];
+        }
+        
+        // max min to plot
+        max += 2;
+        min -= 2;
+        
         diff = [self gcdM:max N:min];
+        if (diff > 12 || diff < 3){
+            max -= 1;
+            diff = [self gcdM:max N:min];
+        }
     }
     
     //float rates[1] = {0.0};
@@ -562,20 +572,41 @@
     
     float min = ceil([[tempPoints valueForKeyPath:@"@min.self"] floatValue]);
     float max = ceil([[tempPoints valueForKeyPath:@"@max.self"] floatValue]);
+    int diff = 0;
     
-    [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[peso_inicio floatValue]]];
-    for (NSString *json in pesoList) {
-        NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
-        [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
-    }
-    
-    // max min to plot
-    max += 2;
-    min -= 2;
-    int diff = [self gcdM:max N:min];
-    if (diff > 12 || diff < 3){
-        max -= 1;
+    if (min <= 0){
+        max += 2;
+        min = 0;
+        [tempPoints2 addObject:[NSNumber numberWithFloat:max]];//[medida_inicio floatValue]]];
+        [tempPoints2 addObject:[NSNumber numberWithFloat:min]];//[medida_inicio floatValue]]];
+        diff = max;
+        if (diff > 12) {
+            diff = [self gcdM:max N:2];
+        }
+    } else if (min == max){
+        // max min to plot
+        max += 2;
+        min -= 2;
+        [tempPoints2 addObject:[NSNumber numberWithFloat:max]];//[medida_inicio floatValue]]];
+        [tempPoints2 addObject:[NSNumber numberWithFloat:min]];//[medida_inicio floatValue]]];
+        diff = 4;
+        
+    } else {
+        [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[medida_inicio floatValue]]];
+        for (NSString *json in medidaList) {
+            NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
+            [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"medida"] floatValue]]];
+        }
+        
+        // max min to plot
+        max += 2;
+        min -= 2;
+        
         diff = [self gcdM:max N:min];
+        if (diff > 12 || diff < 3){
+            max -= 1;
+            diff = [self gcdM:max N:min];
+        }
     }
     
     //float rates[1] = {0.0};
@@ -681,21 +712,41 @@
     
     float min = ceil([[tempPoints valueForKeyPath:@"@min.self"] floatValue]);
     float max = ceil([[tempPoints valueForKeyPath:@"@max.self"] floatValue]);
+    int diff = 0;
     
-    [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[medida_inicio floatValue]]];
-    for (NSString *json in medidaList) {
-        NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
-        [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"medida"] floatValue]]];
-    }
-    
-    // max min to plot
-    max += 2;
-    min -= 2;
-    
-    int diff = [self gcdM:max N:min];
-    if (diff > 12 || diff < 3){
-        max -= 1;
+    if (min <= 0){
+        max += 2;
+        min = 0;
+        [tempPoints2 addObject:[NSNumber numberWithFloat:max]];//[medida_inicio floatValue]]];
+        [tempPoints2 addObject:[NSNumber numberWithFloat:min]];//[medida_inicio floatValue]]];
+        diff = max;
+        if (diff > 12) {
+            diff = [self gcdM:max N:2];
+        }
+    } else if (min == max){
+        // max min to plot
+        max += 2;
+        min -= 2;
+        [tempPoints2 addObject:[NSNumber numberWithFloat:max]];//[medida_inicio floatValue]]];
+        [tempPoints2 addObject:[NSNumber numberWithFloat:min]];//[medida_inicio floatValue]]];
+        diff = 4;
+        
+    } else {
+        [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[medida_inicio floatValue]]];
+        for (NSString *json in medidaList) {
+            NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
+            [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"medida"] floatValue]]];
+        }
+        
+        // max min to plot
+        max += 2;
+        min -= 2;
+        
         diff = [self gcdM:max N:min];
+        if (diff > 12 || diff < 3){
+            max -= 1;
+            diff = [self gcdM:max N:min];
+        }
     }
     
     //float rates[2] = {(90.0), 0.0};

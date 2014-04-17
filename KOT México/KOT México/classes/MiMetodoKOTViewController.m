@@ -89,7 +89,7 @@
     if(indexPath.section ==2)
         return 45.0;
     return 100.0;*/
-    return 50.0;
+    return 35.0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -280,7 +280,8 @@
         [cell.checkSwitch setOn:on];
         [cell.checkSwitch setTag:progressive_index];
     }
-    
+
+    cell.checkSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75);
     [cell.checkSwitch addTarget:self action:@selector(changeOnOff:) forControlEvents:UIControlEventValueChanged];
     return cell;
 }
