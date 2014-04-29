@@ -14,7 +14,6 @@
 @interface CollapsableTableViewViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,MyCLControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
     IBOutlet UITableView* myTableView;
-    MyCLController *myLocation;
     
     NSMutableArray *listNutriologos;
     NSMutableArray *dataSourseList;
@@ -34,6 +33,10 @@
 -(IBAction)callNumber:(id)sender;
 -(IBAction)addContact:(id)sender;
 -(IBAction)showMap:(id)sender;
+@property (retain, nonatomic) CLLocationManager *locationManager;
+@property (retain, nonatomic) NSString *indexStr;
+@property (retain, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+- (IBAction)segmentedControlChanged:(id)sender;
 
 //- (IBAction) toggleSection2;
 -(void)showLoadingView;

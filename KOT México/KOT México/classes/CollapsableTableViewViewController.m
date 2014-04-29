@@ -19,7 +19,7 @@
 @implementation CollapsableTableViewViewController
 @synthesize segmented;
 @synthesize myTableView;
-@synthesize selectPicker;
+@synthesize selectPicker, locationManager, segmentedControl;
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -30,13 +30,11 @@
     return self;
 }
 
-
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
 }
 */
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -53,6 +51,12 @@
     [self performSelectorInBackground:@selector(loadingJSONNutriologos) withObject:nil];
     
 //   [self loadingJSONNutriologos];
+    
+    [self.segmentedControl setHidden:YES];
+    self.indexStr = [[NSString alloc] initWithString:@"0"];
+    locationManager = [[CLLocationManager alloc] init];
+    [locationManager startUpdatingLocation];
+    
     [super viewDidLoad];
 }
 
@@ -87,41 +91,6 @@
     
     return [itemJSon objectForKey:@"nombre"];
 }
-
-//- (UILabel *) createHeaderLabel: (UITableView *) tableView :(NSString *)currentTopic {
-//    UILabel *titleLabel = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
-//    titleLabel.frame =CGRectMake(0, 0, tableView.frame.size.width - 20, 60);
-//    titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-//    titleLabel.backgroundColor = [UIColor clearColor];
-//    titleLabel.textColor = [UIColor whiteColor];
-//    titleLabel.font=[UIFont fontWithName:@"Helvetica-Bold" size:20];
-//    titleLabel.text = currentTopic;
-//    titleLabel.textAlignment = UITextAlignmentRight;
-//    return titleLabel;
-//}
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    // create the parent view that will hold header Label
-//    UIView * customView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width , 60)]autorelease];
-//    UILabel *titleLabel;
-//    titleLabel = [self createHeaderLabel: tableView :[CollapsableTableViewViewController titleForHeaderForSection:section]];
-//    
-//    [customView addSubview:titleLabel];
-//    
-//    UILabel* collapsedLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10,0,50,60)] autorelease];
-//    collapsedLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-//    collapsedLabel.backgroundColor = [UIColor clearColor];
-//    collapsedLabel.textColor = [UIColor whiteColor];
-//    collapsedLabel.text = @"-";
-//    collapsedLabel.tag = 36;
-//    [customView addSubview:collapsedLabel];
-//    
-//    customView.tag = section;
-//    customView.backgroundColor = [UIColor blackColor];
-//    return customView;
-//}
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -206,10 +175,10 @@
     [dir.titleLabel setText:[[NSString alloc]initWithFormat:@"%i",indexPath.section]];
     [map.titleLabel setText:[[NSString alloc]initWithFormat:@"%i",indexPath.section]];
 
-    NSString *latitude = [itemJSon objectForKey:@"latitud"];
+    /*NSString *latitude = [itemJSon objectForKey:@"latitud"];
     NSString *longitude = [itemJSon objectForKey:@"longitud"];
-    CLLocation *tmpLocation = [[CLLocation alloc] initWithLatitude:[latitude floatValue]  longitude:[longitude floatValue]];
-    [myDistancia setText:[NSString stringWithFormat:@"GPS:%.1f km", [self getDistance:tmpLocation]]];
+    CLLocation *tmpLocation = [[CLLocation alloc] initWithLatitude:[latitude floatValue]  longitude:[longitude floatValue]];*/
+    [myDistancia setText:[NSString stringWithFormat:@"GPS:%.1f km", [[itemJSon objectForKey:@"loc"] floatValue] ]];
     
     return cell;
 }
@@ -252,28 +221,14 @@
     
     [loadingView performSelector:@selector(removeView) withObject:nil afterDelay:1.0];
 }
+
 -(CGFloat)getDistance:(CLLocation *)lManager{
     /******************************************************/
     /******************************************************/
     /**************** Config Localitation *****************/
     /******************************************************/
     /******************************************************/
-    
-    myLocation = [[[MyCLController alloc]init]autorelease];
-    myLocation.delegate = self;
-    [myLocation.locationManager startUpdatingLocation];
-    
-    CLLocationManager *locationManager = [[[CLLocationManager alloc] init]autorelease];
-    [locationManager startUpdatingLocation];
-    
-    CLLocationDistance testDistance;
-    CLLocation *monterrey= [[CLLocation alloc] initWithLatitude:25.7776 longitude:-100.2310];
-    testDistance = [locationManager.location distanceFromLocation:lManager];
-    
-    [monterrey release];
-    
-    return (testDistance/1000.0);
-    /******************************************************/
+    return [[self.locationManager location] distanceFromLocation:lManager]/1000.0;
 }
 
 -(void)loadingJSONNutriologos{
@@ -464,6 +419,7 @@
     NSDictionary *ciudadDictionary = [[[ciudades objectAtIndex:0]JSONRepresentation]JSONValue];
     NSString *titelString = [NSString stringWithFormat:@"  %@",[ciudadDictionary valueForKey:@"nombre"]];
     [self.selectPicker setTitle:titelString forState:UIControlStateNormal];
+    self.indexStr = [ciudadDictionary valueForKey:@"id"];
     [self cargarNutriologos:[ciudadDictionary valueForKey:@"id"]];
     [self.myTableView reloadData];
     
@@ -507,10 +463,12 @@
     NSDictionary *ciudadDictionary = [[[ciudades objectAtIndex:row]JSONRepresentation]JSONValue];
     NSString *titelString = [NSString stringWithFormat:@"  %@",[ciudadDictionary valueForKey:@"nombre"]];
     [self.selectPicker setTitle:titelString forState:UIControlStateNormal];
+    self.indexStr = [ciudadDictionary valueForKey:@"id"];
     [self cargarNutriologos:[ciudadDictionary valueForKey:@"id"]];
 }
 
 -(void)cargarNutriologos:(NSString *)idCiudad{
+    [self.segmentedControl setHidden:NO];
     if(!dataSourseList)
         dataSourseList = [[NSMutableArray alloc] init];
     else{
@@ -522,14 +480,29 @@
     
     for(int i = 0; i< [listNutriologos count]; i++){
         NSDictionary *itemJSon = [[[listNutriologos objectAtIndex:i] JSONRepresentation] JSONValue];
-        NSMutableArray *objNutriologo = [[[itemJSon objectForKey:@"items"] JSONRepresentation] JSONValue];
-        for (int b = 0; b<[objNutriologo count]; b++) {
-            NSDictionary *description = [[[objNutriologo objectAtIndex:b] JSONRepresentation]JSONValue];
-            if([[description objectForKey:@"id_municipio"]intValue]== [idCiudad intValue]){
-                [dataSourseList addObject:[objNutriologo objectAtIndex:b]];
-            }
+        NSMutableArray *objNutriologos = [[[itemJSon objectForKey:@"items"] JSONRepresentation] JSONValue];
+        for (int b = 0; b<[objNutriologos count]; b++) {
+            NSMutableDictionary *description = [[[objNutriologos objectAtIndex:b] JSONRepresentation]JSONValue];
+            
+                if([[description objectForKey:@"id_municipio"]intValue]== [idCiudad intValue]){
+                    CLLocation *tmpLocation = [[CLLocation alloc] initWithLatitude:[[description objectForKey:@"latitud"] floatValue]  longitude:[[description objectForKey:@"longitud"] floatValue]];
+                    NSLog(@"LAT %.2f LONG %.2f",[[description objectForKey:@"latitud"] floatValue] , [[description objectForKey:@"longitud"] floatValue]  );
+                    NSNumber *loc = [[NSNumber alloc] initWithFloat:[self getDistance:tmpLocation]];
+                    [description setObject:loc forKey:@"loc"];
+                    [dataSourseList addObject:description];
+                }
+            
         }
     }
+    
+    if (segmentedControl.selectedSegmentIndex == 1){
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"loc" ascending:YES];
+        [dataSourseList sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+    }
+    
     [self.myTableView reloadData];
+}
+- (IBAction)segmentedControlChanged:(id)sender {
+    [self cargarNutriologos:self.indexStr];
 }
 @end

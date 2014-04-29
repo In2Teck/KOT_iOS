@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "JSON.h"
 #import "LoadingView.h"
+#import "MyCLController.h"
 @class OverlayViewController;
 
-@interface ListRestaurantesViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate>{
+@interface ListRestaurantesViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate, MyCLControllerDelegate>{
     NSMutableArray *listOfItems, *ciudades, *dataSourceList;
 	NSMutableArray *copyListOfItems;
 	
@@ -36,5 +37,9 @@
 -(void) loadJSONService;
 -(void) showSplashScrean;
 -(NSMutableArray *)loadJSONDetail:(NSString*)idRestaurante;
+@property (retain, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+- (IBAction)segmentedControlChanged:(id)sender;
+@property (retain, nonatomic) CLLocationManager *locationManager;
+@property (retain, nonatomic) NSString *indexStr;
 
 @end

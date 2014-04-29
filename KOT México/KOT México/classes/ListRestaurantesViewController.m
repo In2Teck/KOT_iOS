@@ -13,7 +13,8 @@
 
 
 @implementation ListRestaurantesViewController
-@synthesize comboButton;
+
+@synthesize comboButton, segmentedControl, locationManager, indexStr;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +43,11 @@
     //[self loadJSONService];
     
     [self.comboButton setEnabled:NO];
+    [self.segmentedControl setHidden:YES];
+    
+    self.indexStr = [[NSString alloc] initWithString:@"0"];
+    locationManager = [[CLLocationManager alloc] init];
+    [locationManager startUpdatingLocation];
 }
 
 - (void)viewDidUnload
@@ -72,11 +78,14 @@
     
 	if (searching)
 		return 1;
-	else
+	else if (segmentedControl.selectedSegmentIndex == 0) {
         if ([listOfItems count]>0)
             return [listOfItems count] - 1;
         else
             return 0;
+    } else {
+        return 1;
+    }
 }
 
 // Customize the number of rows in the table view.
@@ -85,18 +94,21 @@
 	if (searching)
 		return [copyListOfItems count];
 	else {
-		
-		//Number of rows it should expect should be based on the section
-		NSDictionary *dictionary = [listOfItems objectAtIndex:section];
-		NSArray *array = [dictionary objectForKey:@"Names"];
-		return [array count];
+		if (segmentedControl.selectedSegmentIndex == 0){
+            //Number of rows it should expect should be based on the section
+            NSDictionary *dictionary = [listOfItems objectAtIndex:section];
+            NSArray *array = [dictionary objectForKey:@"Names"];
+            return [array count];
+        } else {
+            return [listOfItems count];
+        }
 	}
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	if(searching)
 		return @"Resultados de Búsqueda:";
-	if ([listOfItems count]>0) {
+	if ([listOfItems count]>0 && segmentedControl.selectedSegmentIndex == 0) {
         NSDictionary *tempLetters = [listOfItems objectAtIndex:([listOfItems count] -1 )];
         NSArray *letters = [tempLetters objectForKey:@"letters"];
         return [letters objectAtIndex:section];
@@ -120,14 +132,19 @@
         tempDictionary = [copyListOfItems objectAtIndex:indexPath.row];
 		cell.text = [tempDictionary objectForKey:@"nombre"];
     }else {
-		
 		//First get the dictionary object
-		NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
-		NSArray *array = [dictionary objectForKey:@"Names"];
-        tempDictionary = [array objectAtIndex:indexPath.row];
-		NSString *cellValue = [tempDictionary objectForKey:@"nombre"];
-		cell.text = cellValue;
+        NSArray *array;
+        if (segmentedControl.selectedSegmentIndex == 0){
+            NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
+            //NSLog(@"SECTION %i ROW %i", indexPath.section, indexPath.row );
+            array = [dictionary objectForKey:@"Names"];
+        } else {
+            array = listOfItems;
+        }
         
+        tempDictionary = [array objectAtIndex:indexPath.row];
+        NSString *cellValue = [tempDictionary objectForKey:@"nombre"];
+        cell.text = cellValue;
 	}
     [cell.textLabel setBackgroundColor:[UIColor clearColor]];
     [cell.textLabel setTextColor:[UIColor blackColor]];
@@ -151,9 +168,13 @@
         tempDictionary = [copyListOfItems objectAtIndex:indexPath.row];
 		selectedCountry = [tempDictionary objectForKey:@"nombre"];
     }else {
-        
-		NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
-		NSArray *array = [dictionary objectForKey:@"Names"];
+        NSArray *array;
+        if (segmentedControl.selectedSegmentIndex == 0){
+            NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
+            array = [dictionary objectForKey:@"Names"];
+        } else {
+            array = listOfItems;
+        }
         tempDictionary = [array objectAtIndex:indexPath.row];
 		selectedCountry = [tempDictionary objectForKey:@"nombre"];
 	}
@@ -380,7 +401,6 @@
         
         if([ciudades count]>0 && [dataSourceList count]>0){
             [self.comboButton setEnabled:YES];
-            NSDictionary *ciudadDictionary = [[[ciudades objectAtIndex:0]JSONRepresentation]JSONValue];
             //NSString *titelString = [NSString stringWithFormat:@"  %@",[ciudadDictionary valueForKey:@"area"]];
             //[comboButton setTitle:titelString forState:UIControlStateNormal];
             self.tableView.tableHeaderView = selectCity;
@@ -471,6 +491,7 @@
     NSDictionary *ciudadDictionary = [[[ciudades objectAtIndex:0]JSONRepresentation]JSONValue];
     NSString *titelString = [NSString stringWithFormat:@"  %@",[ciudadDictionary valueForKey:@"area"]];
     [self.comboButton setTitle:titelString forState:UIControlStateNormal];
+    self.indexStr = [ciudadDictionary valueForKey:@"id_area"];
     [self cargarRestaurantes:[ciudadDictionary valueForKey:@"id_area"]];
     
     [menu addSubview:pickerView];
@@ -511,40 +532,67 @@
     NSDictionary *ciudadDictionary = [[[ciudades objectAtIndex:row]JSONRepresentation]JSONValue];
     NSString *titelString = [NSString stringWithFormat:@"  %@",[ciudadDictionary valueForKey:@"area"]];
     [self.comboButton setTitle:titelString forState:UIControlStateNormal];
+    self.indexStr = [ciudadDictionary valueForKey:@"id_area"];
     [self cargarRestaurantes:[ciudadDictionary valueForKey:@"id_area"]];
 }
 
 -(void)cargarRestaurantes:(NSString *)idCiudad{
+    [self.segmentedControl setHidden:NO];
     [listOfItems release];
     listOfItems = nil;
     [copyListOfItems release];
     copyListOfItems = nil;
     
     listOfItems = [[NSMutableArray alloc] init];
-    
-    NSDictionary *countriesLivedInDict;
-    NSMutableArray *letters = [[NSMutableArray alloc] init];
-    for(int i = 0; i< [dataSourceList count]; i++){
-        NSDictionary *itemJSon = [[[dataSourceList objectAtIndex:i] JSONRepresentation] JSONValue];
-        NSMutableArray *objRestaurant = [[[itemJSon objectForKey:@"items"] JSONRepresentation] JSONValue];
-        if([objRestaurant count]>0){
-            NSMutableArray *tempRestaurant = [[[NSMutableArray alloc] init]retain];
-            if([objRestaurant count])
-                [letters addObject:[itemJSon objectForKey:@"letra"]];
-            for (int b = 0; b<[objRestaurant count]; b++) {
-                NSDictionary *tempJsonDetail = [[[objRestaurant objectAtIndex:b] JSONRepresentation] JSONValue];
-                NSString *idArea = [tempJsonDetail valueForKey:@"id_area"];
-                if([idCiudad intValue] == [idArea intValue])
-                    [tempRestaurant addObject:tempJsonDetail];
+    if (segmentedControl.selectedSegmentIndex == 0){
+        NSDictionary *countriesLivedInDict;
+        NSMutableArray *letters = [[NSMutableArray alloc] init];
+        for(int i = 0; i< [dataSourceList count]; i++){
+            NSDictionary *itemJSon = [[[dataSourceList objectAtIndex:i] JSONRepresentation] JSONValue];
+            NSMutableArray *objRestaurant = [[[itemJSon objectForKey:@"items"] JSONRepresentation] JSONValue];
+            if([objRestaurant count]>0){
+                NSMutableArray *tempRestaurant = [[[NSMutableArray alloc] init]retain];
+                if([objRestaurant count])
+                    [letters addObject:[itemJSon objectForKey:@"letra"]];
+                for (int b = 0; b<[objRestaurant count]; b++) {
+                    NSDictionary *tempJsonDetail = [[[objRestaurant objectAtIndex:b] JSONRepresentation] JSONValue];
+                    NSString *idArea = [tempJsonDetail valueForKey:@"id_area"];
+                    if([idCiudad intValue] == [idArea intValue])
+                        [tempRestaurant addObject:tempJsonDetail];
+                }
+                NSDictionary *tempDictionary = [NSDictionary dictionaryWithObject:tempRestaurant forKey:@"Names"];
+                [listOfItems addObject:tempDictionary];
             }
-            NSArray *tempArray = [NSArray arrayWithArray:tempRestaurant];
-            NSDictionary *tempDictionary = [NSDictionary dictionaryWithObject:tempArray forKey:@"Names"];
-            [listOfItems addObject:tempDictionary];
         }
+        countriesLivedInDict = [NSDictionary dictionaryWithObject:letters forKey:@"letters"];
+        
+        [listOfItems addObject:countriesLivedInDict];
+        
+    } else {
+        // ORDER BY GPS
+        
+        for(int i = 0; i< [dataSourceList count]; i++){
+            NSDictionary *itemJSon = [[[dataSourceList objectAtIndex:i] JSONRepresentation] JSONValue];
+            NSMutableArray *objRestaurant = [[[itemJSon objectForKey:@"items"] JSONRepresentation] JSONValue];
+            if([objRestaurant count]>0){
+                for (int b = 0; b<[objRestaurant count]; b++) {
+                    NSDictionary *tempJsonDetail = [[[objRestaurant objectAtIndex:b] JSONRepresentation] JSONValue];
+                    NSString *idArea = [tempJsonDetail valueForKey:@"id_area"];
+                    if([idCiudad intValue] == [idArea intValue]) {
+                        NSMutableDictionary *restaurante = [[[objRestaurant objectAtIndex:b] JSONRepresentation] JSONValue];
+                        CLLocation *tmpLocation = [[CLLocation alloc] initWithLatitude:[[restaurante objectForKey:@"latitud"] floatValue]  longitude:[[restaurante objectForKey:@"longitud"] floatValue]];
+                        NSNumber *loc = [[NSNumber alloc] initWithFloat:[self getDistance:tmpLocation]];
+                        [restaurante setObject:loc forKey:@"loc"];
+                        [listOfItems addObject:restaurante];
+                    }
+                }
+            }
+        }
+        
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"loc" ascending:YES];
+        [listOfItems sortUsingDescriptors:[NSArray arrayWithObject:sort]];
     }
-    countriesLivedInDict = [NSDictionary dictionaryWithObject:letters forKey:@"letters"];
     
-    [listOfItems addObject:countriesLivedInDict];
     //Initialize the copy array.
     copyListOfItems = [[NSMutableArray alloc] init];
     
@@ -560,5 +608,20 @@
     
     [self.tableView reloadData];
 }
+
+-(CGFloat)getDistance:(CLLocation *)lManager{
+    /******************************************************/
+    /******************************************************/
+    /**************** Config Localitation *****************/
+    /******************************************************/
+    /******************************************************/
+    return [[self.locationManager location] distanceFromLocation:lManager]/1000.0;
+}
  
+- (void)dealloc {
+    [super dealloc];
+}
+- (IBAction)segmentedControlChanged:(id)sender {
+    [self cargarRestaurantes:self.indexStr];
+}
 @end
