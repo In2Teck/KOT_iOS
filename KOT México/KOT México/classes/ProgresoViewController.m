@@ -440,7 +440,8 @@
         [tempPoints2 addObject:[NSNumber numberWithFloat:max]];//[medida_inicio floatValue]]];
         [tempPoints2 addObject:[NSNumber numberWithFloat:min]];//[medida_inicio floatValue]]];
         diff = max;
-        if (diff > 12) {
+        while (diff > 12){
+            max += 1;
             diff = [self gcdM:max N:2];
         }
     } else if (min == max){
@@ -463,9 +464,21 @@
         min -= 2;
         
         diff = [self gcdM:max N:min];
-        if (diff > 12 || diff < 3){
-            max -= 1;
-            diff = [self gcdM:max N:min];
+        int odd = 1;
+        while (diff > 12 || diff < 3){
+            if (odd%2){
+                min -= 1;
+                if (min <= 0){
+                    min = 2;
+                }else{
+                    min -= 1;
+                }
+                diff = [self gcdM:max N:min];
+            }else{
+                max += 1;
+                diff = [self gcdM:max N:min];
+            }
+            odd++;
         }
     }
     
@@ -580,7 +593,8 @@
         [tempPoints2 addObject:[NSNumber numberWithFloat:max]];//[medida_inicio floatValue]]];
         [tempPoints2 addObject:[NSNumber numberWithFloat:min]];//[medida_inicio floatValue]]];
         diff = max;
-        if (diff > 12) {
+        while (diff > 12){
+            max += 1;
             diff = [self gcdM:max N:2];
         }
     } else if (min == max){
@@ -601,11 +615,23 @@
         // max min to plot
         max += 2;
         min -= 2;
-        
         diff = [self gcdM:max N:min];
-        if (diff > 12 || diff < 3){
-            max -= 1;
-            diff = [self gcdM:max N:min];
+        
+        int odd = 1;
+        while (diff > 12 || diff < 3){
+            if (odd%2){
+                min -= 1;
+                if (min <= 0){
+                    min = 2;
+                }else{
+                    min -= 1;
+                }
+                diff = [self gcdM:max N:min];
+            }else{
+                max += 1;
+                diff = [self gcdM:max N:min];
+            }
+            odd++;
         }
     }
     
@@ -720,7 +746,8 @@
         [tempPoints2 addObject:[NSNumber numberWithFloat:max]];//[medida_inicio floatValue]]];
         [tempPoints2 addObject:[NSNumber numberWithFloat:min]];//[medida_inicio floatValue]]];
         diff = max;
-        if (diff > 12) {
+        while (diff > 12){
+            max += 1;
             diff = [self gcdM:max N:2];
         }
     } else if (min == max){
@@ -743,9 +770,21 @@
         min -= 2;
         
         diff = [self gcdM:max N:min];
-        if (diff > 12 || diff < 3){
-            max -= 1;
-            diff = [self gcdM:max N:min];
+        int odd = 1;
+        while (diff > 12 || diff < 3){
+            if (odd%2){
+                min -= 1;
+                if (min <= 0){
+                    min = 2;
+                }else{
+                    min -= 1;
+                }
+                diff = [self gcdM:max N:min];
+            }else{
+                max += 1;
+                diff = [self gcdM:max N:min];
+            }
+            odd++;
         }
     }
     

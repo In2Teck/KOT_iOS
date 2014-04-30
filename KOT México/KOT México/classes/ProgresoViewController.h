@@ -60,6 +60,7 @@
 
 -(void)initChartPeso;
 -(void)initChartMedida;
+-(void)initChartGrasa;
 
 -(void)loadJSONDataService;
 -(void)reloadDataView;
