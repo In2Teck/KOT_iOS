@@ -22,6 +22,18 @@
     [super dealloc];
 }
 
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    
+    id presentedViewController = [window.rootViewController presentedViewController];
+    NSString *className = presentedViewController ? NSStringFromClass([presentedViewController class]) : nil;
+    
+    if (window && [className isEqualToString:@"MPInlineVideoFullscreenViewController"]) {
+        return UIInterfaceOrientationMaskAll;
+    } else {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch
