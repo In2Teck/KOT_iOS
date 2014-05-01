@@ -107,11 +107,25 @@
         } else {
             [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Kilos para tu meta!", dif]];
         }
-        
+        UIAlertView *message;
         if(dif <= 0){
-            [self publishFacebook:@"KOT México" withCaption:@"¡Haz llegado a tu meta!" withDescription:@"¡Muchas felicidades, con la ayuda del Método KOT haz llegado a tu meta!" withPicture:nil];
+            
+            message = [[UIAlertView alloc]initWithTitle:@"¡Felicidades, llegaste a tu meta!" message:@"¿Deseas compartirlo en Facebook? " delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Sí", nil];
+            [message setTag:0];
+            
+            [message show];
+            [message release];
+            message = nil;
+            
         }else if(progreso >= 10){
-            [self publishFacebook:@"KOT México" withCaption:@"Estatus del progreso del Método KOT" withDescription:[NSString stringWithFormat:@"¡Estoy en camino de cumplir mi meta y ya bajé %.0f kilos!", progreso] withPicture:nil];
+            
+            message = [[UIAlertView alloc]initWithTitle:@"¡Felicidades, has bajado más de 10 kilos!" message:@"Es un logro importante y te estás acercando a tu meta. ¿Deseas compartirlo en Facebook?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Sí", nil];
+            [message setTag:progreso];
+            
+            [message show];
+            [message release];
+            message = nil;
+            
         }
         
         [banderaImageView setHidden:false];
@@ -142,6 +156,18 @@
     }
     
     [super viewDidLoad];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if ([alertView tag] == 0) {    // alerta de META
+        if (buttonIndex == 1) {
+            [self publishFacebook:@"KOT México" withCaption:@"¡Has llegado a tu meta!" withDescription:@"¡Muchas felicidades, con la ayuda del Método KOT has llegado a tu meta!" withPicture:nil];
+        }
+    }else{
+        if (buttonIndex == 1){
+            [self publishFacebook:@"KOT México" withCaption:@"Estatus del progreso del Método KOT" withDescription:[NSString stringWithFormat:@"¡Estoy en camino de cumplir mi meta y ya bajé %i kilos!", [alertView tag]] withPicture:nil];
+        }
+    }
 }
 
 - (void)viewDidUnload
@@ -286,16 +312,16 @@
 
 -(void)publishFacebook:(NSString *)name withCaption:(NSString*)caption withDescription:(NSString *)description withPicture:(NSString*)picture {
     // Check if the Facebook app is installed and we can present the share dialog
-    FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
-    params.link = [NSURL URLWithString:@"http://www.kot.mx"];
+    /*FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
     params.caption = caption;
     params.description = description;
     params.name = name;
+    params.link = [NSURL URLWithString:@"http://www.kot.mx"];
     
     // If the Facebook app is installed and we can present the share dialog
     if ([FBDialogs canPresentShareDialogWithParams:params]) {
         // Present the share dialog
-        [FBDialogs presentShareDialogWithLink:params.link
+        [FBDialogs presentShareDialogWithParams:params clientState:nil
                                       handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
                                           if(error) {
                                               // An error occurred, we need to handle the error
@@ -306,7 +332,7 @@
                                               NSLog(@"result %@", results);
                                           }
                                       }];
-    } else {
+    } else {*/
         // Put together the dialog parameters
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        name, @"name",
@@ -344,38 +370,9 @@
                                                           }
                                                       }
                                                   }];
-    }
+    //}
     
 }
-
-/*
--(IBAction)facebookShare:(id)sender{
-    facebook = [[Facebook alloc] initWithAppId:@"251706724889890"];
-	// Otherwise, we don't have a name yet, just wait for that to come through.
-    NSString *messageFacebook;
-    
-    if([pesoList count]<=2)
-        messageFacebook = [NSString stringWithString:@"Inicio mi método personalizado con ayuda de los productos Franceses KOT. A través de mi KOT México iPhone App."];
-    else
-        messageFacebook = [NSString stringWithString:@"En camino a completar mi meta!. A través de mi KOT México iPhone App."];
-    
-    if([pesoActual isEqualToString:pesoMeta]|| [medidaActual isEqualToString:medidaMeta])
-        messageFacebook = [NSString stringWithString:@"Completé mi meta con los productos Franceses KOT!. A través de mi KOT México iPhone App."];
-    
-    NSMutableDictionary *params = 
-    [NSMutableDictionary dictionaryWithObjectsAndKeys:
-     @"KOT México.", @"name",
-     @"Método KOT", @"caption",
-     messageFacebook, @"description",
-     @"https://www.facebook.com/KOTMexico", @"link",
-     @"https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/317387_218343991561656_517906239_n.jpg", @"picture",
-     nil];  
-    [facebook dialog:@"feed"
-           andParams:params
-         andDelegate:nil];
-    
-    [Flurry logEvent:@"Mi Progreso comparte en Facebook" timed:YES];
-}*/
 
 -(IBAction)shareTwitter:(id)sender{
     NSString *messageFacebook;

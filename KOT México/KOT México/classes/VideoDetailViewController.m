@@ -150,13 +150,12 @@
         return myTableViewCell;
     }
     
-    //[self publishFacebook:@"KOT México" withCaption:@"Estatus del progreso del Método KOT" withDescription:[NSString stringWithFormat:@"¡Estoy en camino de cumplir mi meta y ya bajé %.0f kilos!", progreso] withPicture:nil];
 }
 
 -(void)publishFacebook {
     // Check if the Facebook app is installed and we can present the share dialog
     
-    FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
+    /*FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
     params.link = [NSURL URLWithString:link];
     params.caption = caption;
     //params.description = description;
@@ -179,7 +178,7 @@
                                       }];
         
         
-    } else {
+    } else {*/
         // Put together the dialog parameters
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        caption, @"caption",
@@ -216,7 +215,7 @@
                                                           }
                                                       }
                                                   }];
-    }
+    //}
     
 }
 
