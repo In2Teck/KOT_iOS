@@ -22,7 +22,6 @@
 @synthesize bannerHeader;
 @synthesize menu;
 @synthesize descripcion;
-@synthesize facebook;
 @synthesize restaurantName;
 
 @synthesize proteinaLabel, proteinasCell, frutasCell, frutasLabel, lacteosCell, lacteosLabel;
@@ -252,68 +251,6 @@
             message = nil;
         }
     }
-    return 0.0;
-}
-/************************************************************************/
-/************************************************************************/
-/*********************** FACEBOOK DELEGATE ******************************/
-/************************************************************************/
-/************************************************************************/
-
--(IBAction)facebookShare:(id)sender{
-    facebook = [[Facebook alloc] initWithAppId:@"251706724889890"];
-	// Otherwise, we don't have a name yet, just wait for that to come through.
-    NSMutableDictionary *params = 
-    [NSMutableDictionary dictionaryWithObjectsAndKeys:
-     @"KOT México.", @"name",
-     restaurantName, @"caption",
-     [NSString stringWithFormat:@"Siguiendo el Método KOT comiendo \"%@\" en \"%@\" a través de mi KOT México iPhone App.",
-      [menu objectForKey:@"nombre"], restaurantName], @"description",
-     @"https://www.facebook.com/KOTMexico", @"link",
-     [NSString stringWithFormat:@"%@",[menu objectForKey:@"img_url"]], @"picture",
-     nil];  
-    [facebook dialog:@"feed"
-           andParams:params
-         andDelegate:nil];
-
-}
-
--(IBAction)shareTwitter:(id)sender{
-    TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
-    [twitter setInitialText:[NSString stringWithFormat:@"Siguiendo el Método KOT comiendo \"%@\" en \"%@\" a través de mi KOT México iPhone App.",
-                             [menu objectForKey:@"nombre"], restaurantName]
-    ];//optional
-    [twitter addImage:bannerHeader.image];
-    [twitter addURL:[NSURL URLWithString:[NSString stringWithString:@"http://twitter.com/Kot_Mexico"]]];
-    
-    if([TWTweetComposeViewController canSendTweet]){
-        [self presentViewController:twitter animated:YES completion:nil];
-    } else {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Unable to tweet"
-                                                            message:@"You might be in Airplane Mode or not have service. Try again later."
-                                                           delegate:self cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-        return;
-    }
-    
-    twitter.completionHandler = ^(TWTweetComposeViewControllerResult res) {
-        if (TWTweetComposeViewControllerResultDone) {
-//            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Tweeted"
-//                                                                message:@"You successfully tweeted"
-//                                                               delegate:self cancelButtonTitle:@"OK"
-//                                                      otherButtonTitles:nil];
-//            [alertView show];
-        } else if (TWTweetComposeViewControllerResultCancelled) {
-            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Ooops..."
-                                                                message:@"Algo salió mal, intente más tarde"
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-            [alertView show];
-        }
-        [self dismissModalViewControllerAnimated:YES];
-    };
-    
+    return 0.0;    
 }
 @end

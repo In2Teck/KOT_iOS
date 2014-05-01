@@ -12,6 +12,7 @@
 #import "AddMedidaPesoView.h"
 #import "PreferencesViewController.h"
 #import "Flurry.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @implementation ProgresoViewController
 @synthesize peso_inicio, medida_inicio, grasa_inicio;
@@ -265,6 +266,7 @@
         //[add.titleLabel setText:@"Nuevo %"];
         [Flurry logEvent:@"Mi Progreso Grafica Medida" timed:YES];
         estado = @"grasa";
+        [self publishFacebook];
     }
     [splashLoading performSelector:@selector(removeView) withObject:nil afterDelay:1.0];
 }
@@ -274,6 +276,96 @@
 //////////////////////////// Facebook Delegate ////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    BOOL urlWasHandled = [FBAppCall handleOpenURL:url
+                                sourceApplication:sourceApplication
+                                  fallbackHandler:^(FBAppCall *call) {
+                                      NSLog(@"Unhandled deep link: %@", url);
+                                      // Here goes the code to handle the links
+                                      // Use the links to show a relevant view of your app to the user
+                                  }];
+    
+    return urlWasHandled;
+}
+
+// A function for parsing URL parameters returned by the Feed Dialog.
+- (NSDictionary*)parseURLParams:(NSString *)query {
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    for (NSString *pair in pairs) {
+        NSArray *kv = [pair componentsSeparatedByString:@"="];
+        NSString *val =
+        [kv[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        params[kv[0]] = val;
+    }
+    return params;
+}
+
+-(void)publishFacebook{
+    // Check if the Facebook app is installed and we can present the share dialog
+    FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
+    params.link = [NSURL URLWithString:@"https://developers.facebook.com/docs/ios/share/"];
+    
+    // If the Facebook app is installed and we can present the share dialog
+    if ([FBDialogs canPresentShareDialogWithParams:params]) {
+        // Present the share dialog
+        [FBDialogs presentShareDialogWithLink:params.link
+                                      handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+                                          if(error) {
+                                              // An error occurred, we need to handle the error
+                                              // See: https://developers.facebook.com/docs/ios/errors
+                                              NSLog(@"Error publicando : %@", error.description);
+                                          } else {
+                                              // Success
+                                              NSLog(@"result %@", results);
+                                          }
+                                      }];
+    } else {
+        // Put together the dialog parameters
+        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       @"Sharing Tutorial", @"name",
+                                       @"Build great social apps and get more installs.", @"caption",
+                                       @"Allow your users to share stories on Facebook from your app using the iOS SDK.", @"description",
+                                       @"https://developers.facebook.com/docs/ios/share/", @"link",
+                                       @"http://i.imgur.com/g3Qc1HN.png", @"picture",
+                                       nil];
+        
+        // Show the feed dialog
+        [FBWebDialogs presentFeedDialogModallyWithSession:nil
+                                               parameters:params
+                                                  handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                                      if (error) {
+                                                          // An error occurred, we need to handle the error
+                                                          // See: https://developers.facebook.com/docs/ios/errors
+                                                          NSLog(@"Error publishing story: %@", error.description);
+                                                      } else {
+                                                          if (result == FBWebDialogResultDialogNotCompleted) {
+                                                              // User cancelled.
+                                                              NSLog(@"User cancelled.");
+                                                          } else {
+                                                              // Handle the publish feed callback
+                                                              NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
+                                                              
+                                                              if (![urlParams valueForKey:@"post_id"]) {
+                                                                  // User cancelled.
+                                                                  NSLog(@"User cancelled.");
+                                                                  
+                                                              } else {
+                                                                  // User clicked the Share button
+                                                                  NSString *result = [NSString stringWithFormat: @"Posted story, id: %@", [urlParams valueForKey:@"post_id"]];
+                                                                  NSLog(@"result %@", result);
+                                                              }
+                                                          }
+                                                      }
+                                                  }];
+    }
+    
+}
+/*
 -(IBAction)facebookShare:(id)sender{
     facebook = [[Facebook alloc] initWithAppId:@"251706724889890"];
 	// Otherwise, we don't have a name yet, just wait for that to come through.
@@ -300,8 +392,7 @@
          andDelegate:nil];
     
     [Flurry logEvent:@"Mi Progreso comparte en Facebook" timed:YES];
-}
-
+}*/
 
 -(IBAction)shareTwitter:(id)sender{
     NSString *messageFacebook;
@@ -473,11 +564,10 @@
                 }else{
                     min -= 1;
                 }
-                diff = [self gcdM:max N:min];
             }else{
                 max += 1;
-                diff = [self gcdM:max N:min];
             }
+            diff = [self gcdM:max N:min];
             odd++;
         }
     }
@@ -616,7 +706,6 @@
         max += 2;
         min -= 2;
         diff = [self gcdM:max N:min];
-        
         int odd = 1;
         while (diff > 12 || diff < 3){
             if (odd%2){
@@ -626,11 +715,10 @@
                 }else{
                     min -= 1;
                 }
-                diff = [self gcdM:max N:min];
             }else{
                 max += 1;
-                diff = [self gcdM:max N:min];
             }
+            diff = [self gcdM:max N:min];
             odd++;
         }
     }
@@ -779,11 +867,10 @@
                 }else{
                     min -= 1;
                 }
-                diff = [self gcdM:max N:min];
             }else{
                 max += 1;
-                diff = [self gcdM:max N:min];
             }
+            diff = [self gcdM:max N:min];
             odd++;
         }
     }

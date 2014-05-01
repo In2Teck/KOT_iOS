@@ -11,17 +11,15 @@
 #import "RateView.h"
 #import "LoadingView.h"
 #import "JSON.h"
-#import "../../FBConnect.h"
-#import "Twitter/Twitter.h"
 
-@interface PlatilloViewController : UIViewController<RateViewDelegate, FBSessionDelegate, FBRequestDelegate>{
+@interface PlatilloViewController : UIViewController<RateViewDelegate>{
     RateView *rateView;
     NSDictionary *menu;
     NSString *restaurantName;
     
-    Facebook *facebook;
+    //Facebook *facebook;
 }
-@property (nonatomic, retain) Facebook *facebook;
+//@property (nonatomic, retain) Facebook *facebook;
 @property (nonatomic,retain) NSDictionary *menu;
 @property (nonatomic, retain) NSString *restaurantName;
 

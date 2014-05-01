@@ -7,19 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "../../FBConnect.h"
-#import "Twitter/Twitter.h"
-@interface ProductoViewCell : UITableViewCell <FBDialogDelegate>{
+@interface ProductoViewCell : UITableViewCell{
     
     IBOutlet UILabel *commentTextLabel;
     IBOutlet UIImageView *img;
     NSMutableArray *producto;
     
-    Facebook *facebook;
+    //Facebook *facebook;
 	BOOL login;
     
 }
-@property (nonatomic, retain) Facebook *facebook;
+//@property (nonatomic, retain) Facebook *facebook;
 @property(nonatomic,retain)UITableViewController *myTableViewController;
 
 @property(nonatomic,retain)IBOutlet UILabel *commentTextLabel;

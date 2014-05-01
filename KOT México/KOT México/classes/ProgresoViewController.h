@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "../../FBConnect.h"
 #import "Twitter/Twitter.h"
 #import "CommonDAO.h"
 #import "LoadingView.h"
 #import <MessageUI/MessageUI.h>
 #import "../../JSON/JSON.h"
 
-@interface ProgresoViewController : UIViewController <FBSessionDelegate, FBRequestDelegate,MFMailComposeViewControllerDelegate>{
+@interface ProgresoViewController : UIViewController <MFMailComposeViewControllerDelegate>{
     
     CommonDAO *sqlite;
     NSString *estado;
@@ -30,7 +29,7 @@
     NSString *pesoMeta;
     BOOL      updateViews;
     
-    Facebook *facebook;
+    //Facebook *facebook;
 }
 @property(nonatomic,retain)IBOutlet UITextField *actual;
 @property(nonatomic,retain)IBOutlet UITextField *meta;
