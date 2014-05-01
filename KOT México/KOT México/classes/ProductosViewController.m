@@ -52,7 +52,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    video_items = [[NSMutableArray alloc] init];
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = YES;
     
@@ -275,7 +275,7 @@
         
         [self.navigationController pushViewController:vdvc animated:YES];
     } else if (indexPath.row  == 1){
-        
+        // ESTÁ EN BLANCO?
     } else if(indexPath.row == 5){
         [[tableView cellForRowAtIndexPath:indexPath] setSelectionStyle:UITableViewCellSelectionStyleNone];
     } else if(indexPath.row<5){

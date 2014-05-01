@@ -10,6 +10,8 @@
 #import "CommonDAO.h"
 
 @interface VideoDetailViewController : UIViewController{
+    NSString *caption;
+    NSString *link;
 }
 
 @property(nonatomic,retain) NSMutableArray *videoDetail;

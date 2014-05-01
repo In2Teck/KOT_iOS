@@ -89,35 +89,6 @@
         [Flurry logEvent:@"Mi Progreso Grafica Grasa" timed:YES];
     }
     
-//    float dif = 0.0;
-//    if(isPeso){
-//        [self.chart setHidden:NO];
-//        [self.chartMedida setHidden:YES];
-//        [actual setPlaceholder:@"Ingresa tu peso actual"];
-//        [meta setPlaceholder:@"Ingresa tu peso meta"];
-//        
-//        [metaLabel setText:[NSString stringWithFormat:@"Meta: %@ Kg", pesoMeta]];
-//        //        if(![pesoMeta isEqualToString:@"0"]&&![pesoActual isEqualToString:@"0"])
-//        dif = ([pesoMeta floatValue] - [pesoActual floatValue]);
-//        [llevasLabel setText:[NSString stringWithFormat:@"Llevas: %.1f Kg", pesoActual]];
-//        
-//        [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Kilos para tu meta!", dif]];
-//        [add.titleLabel setText:@"Nuevo Peso"];
-//    }else{
-//        [self.chart setHidden:YES];
-//        [self.chartMedida setHidden:NO];
-//        [actual setPlaceholder:@"Ingresa tu medida actual"];
-//        [meta setPlaceholder:@"Ingresa tu medida meta"];
-//        
-//        [metaLabel setText:[NSString stringWithFormat:@"Meta: %@ cm", medidaMeta]];
-//        //        if(![medidaMeta isEqualToString:@"0"]&&![medidaActual isEqualToString:@"0"])
-//        dif = ([medidaMeta floatValue] - [medidaActual floatValue]);
-//        [llevasLabel setText:[NSString stringWithFormat:@"Llevas: %.1f cm", medidaActual]];
-//        
-//        [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Centimetros para tu meta!", dif]];
-//        [add.titleLabel setText:@"Nueva Medida"];
-//    }
-    
     if(updateViews){
         [self loadJSONDataService];
     }
@@ -125,8 +96,9 @@
     updateViews = FALSE;
     float dif;
     if([estado isEqualToString:@"peso"]){
-        
-        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f Kg", ([peso_inicio floatValue] - [pesoActual floatValue])]];
+        float progreso = ([peso_inicio floatValue] - [pesoActual floatValue]);
+        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f Kg", progreso]];
+
         dif = ([pesoActual floatValue] - [pesoMeta floatValue]);
         //dif = (dif>=0?dif:-dif);
         [llevasLabel setText:[NSString stringWithFormat:@"Actual: %.1f Kg", [pesoActual floatValue]]];
@@ -134,6 +106,12 @@
             [faltanteLabel setText:@"¡Felicidades, llegaste a tu meta!"];
         } else {
             [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Kilos para tu meta!", dif]];
+        }
+        
+        if(dif <= 0){
+            [self publishFacebook:@"KOT México" withCaption:@"¡Haz llegado a tu meta!" withDescription:@"¡Muchas felicidades, con la ayuda del Método KOT haz llegado a tu meta!" withPicture:nil];
+        }else if(progreso >= 10){
+            [self publishFacebook:@"KOT México" withCaption:@"Estatus del progreso del Método KOT" withDescription:[NSString stringWithFormat:@"¡Estoy en camino de cumplir mi meta y ya bajé %.0f kilos!", progreso] withPicture:nil];
         }
         
         [banderaImageView setHidden:false];
@@ -209,7 +187,8 @@
         [actual setPlaceholder:@"Ingresa tu peso actual"];
         [meta setPlaceholder:@"Ingresa tu peso meta"];
         
-        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f Kg", ([peso_inicio floatValue] - [pesoActual floatValue])]];
+        float progreso = ([peso_inicio floatValue] - [pesoActual floatValue]);
+        [metaLabel setText:[NSString stringWithFormat:@"Progreso: %.1f Kg", progreso]];
 //        if(![pesoMeta isEqualToString:@"0"]&&![pesoActual isEqualToString:@"0"])
             dif = ([pesoActual floatValue] - [pesoMeta floatValue]);
         //dif = (dif>=0?dif:-dif);
@@ -222,6 +201,7 @@
         } else {
             [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Kilos para tu meta!", dif]];
         }
+        
         [add.titleLabel setText:@"Nuevo Peso"];
         [Flurry logEvent:@"Mi Progreso Grafica Peso" timed:YES];
         estado = @"peso";
@@ -266,7 +246,6 @@
         //[add.titleLabel setText:@"Nuevo %"];
         [Flurry logEvent:@"Mi Progreso Grafica Medida" timed:YES];
         estado = @"grasa";
-        [self publishFacebook];
     }
     [splashLoading performSelector:@selector(removeView) withObject:nil afterDelay:1.0];
 }
@@ -305,10 +284,13 @@
     return params;
 }
 
--(void)publishFacebook{
+-(void)publishFacebook:(NSString *)name withCaption:(NSString*)caption withDescription:(NSString *)description withPicture:(NSString*)picture {
     // Check if the Facebook app is installed and we can present the share dialog
     FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
-    params.link = [NSURL URLWithString:@"https://developers.facebook.com/docs/ios/share/"];
+    params.link = [NSURL URLWithString:@"http://www.kot.mx"];
+    params.caption = caption;
+    params.description = description;
+    params.name = name;
     
     // If the Facebook app is installed and we can present the share dialog
     if ([FBDialogs canPresentShareDialogWithParams:params]) {
@@ -327,11 +309,11 @@
     } else {
         // Put together the dialog parameters
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       @"Sharing Tutorial", @"name",
-                                       @"Build great social apps and get more installs.", @"caption",
-                                       @"Allow your users to share stories on Facebook from your app using the iOS SDK.", @"description",
-                                       @"https://developers.facebook.com/docs/ios/share/", @"link",
-                                       @"http://i.imgur.com/g3Qc1HN.png", @"picture",
+                                       name, @"name",
+                                       caption, @"caption",
+                                       description, @"description",
+                                       @"http://www.kot.mx", @"link",
+                                       //@"http://i.imgur.com/g3Qc1HN.png", @"picture",
                                        nil];
         
         // Show the feed dialog
@@ -365,6 +347,7 @@
     }
     
 }
+
 /*
 -(IBAction)facebookShare:(id)sender{
     facebook = [[Facebook alloc] initWithAppId:@"251706724889890"];
