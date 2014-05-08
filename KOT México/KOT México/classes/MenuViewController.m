@@ -106,7 +106,7 @@
     
 }
 -(void)loadMiMetodoKot{
-    NSString *urlConnection = [NSString stringWithFormat:@"http://kot.mx/nuevo/WS/kotMiMetodo.php?idUserKot=%@", [[user objectAtIndex:0]objectAtIndex:0]];
+    NSString *urlConnection = [NSString stringWithFormat:@"http://desarrollo.sysop26.com/kot/nuevo/WS/kotMiMetodo.php?idUserKot=%@", [[user objectAtIndex:0]objectAtIndex:0]];
     NSURL *url = [[[NSURL alloc] initWithString:urlConnection] autorelease];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:180.0];
     // Fetch the JSON response
@@ -129,11 +129,13 @@
             [defaults setFloat:next3am forKey:@"miMetodoTimestamp"];
             [defaults removeObjectForKey:@"desayuno_intensivo"];
             [defaults removeObjectForKey:@"comida_intensivo"];
-            [defaults removeObjectForKey:@"colacion_intensivo"];
+            [defaults removeObjectForKey:@"colacion_1_intensivo"];
+            [defaults removeObjectForKey:@"colacion_2_intensivo"];
             [defaults removeObjectForKey:@"cena_intensivo"];
             [defaults removeObjectForKey:@"desayuno_progresivo"];
             [defaults removeObjectForKey:@"comida_progresivo"];
-            [defaults removeObjectForKey:@"colacion_progresivo"];
+            [defaults removeObjectForKey:@"colacion_1_progresivo"];
+            [defaults removeObjectForKey:@"colacion_2_progresivo"];
             [defaults removeObjectForKey:@"cena_progresivo"];
         }
     } else {

@@ -76,10 +76,12 @@
     if(section == 0)
         return @"Desayuno";
     if(section == 1)
-        return @"Comida";
+        return @"Colación 1";
     if(section == 2)
-        return @"Colación";
+        return @"Comida";
     if(section == 3)
+        return @"Colación 2";
+    if(section == 4)
         return @"Cena";
     return @"";
 }
@@ -95,7 +97,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if([intensivo count] >0 && [progresivo count] >0)
-        return 4;
+        return 5    ;
     
     return 0;
 }
@@ -113,10 +115,12 @@
     if(section == 0)
         return [[arrayData objectForKey:@"desayuno"] count];
     if(section == 1)
-        return [[arrayData objectForKey:@"comida"] count];
+        return [[arrayData objectForKey:@"colacion_1"] count];
     if(section == 2)
-        return [[arrayData objectForKey:@"colacion"] count];
+        return [[arrayData objectForKey:@"comida"] count];
     if(section == 3)
+        return [[arrayData objectForKey:@"colacion_2"] count];
+    if(section == 4)
         return [[arrayData objectForKey:@"cena"] count];
     return 0;
 }
@@ -181,8 +185,39 @@
         [cell.buttonLabel setTitle:text forState:UIControlStateNormal];
         [cell.checkSwitch setOn:on];
         [cell.checkSwitch setTag:progressive_index];
-      
+     
     } else if (indexPath.section == 1){
+        
+        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", postfix]];
+        
+        data = [defaultsArray objectAtIndex:indexPath.row];
+        
+        NSArray *internal_keys = [data allKeys];
+        NSArray *components = [[data objectForKey:internal_keys[0]] componentsSeparatedByString:@"_"];
+        BOOL *on = [[components objectAtIndex:0] boolValue];
+        int progressive_index =  [[NSString stringWithFormat:@"%i%@", indexPath.section, [components objectAtIndex:1]] integerValue];
+        
+        NSString *text = internal_keys[0];
+        
+        if ([text isEqualToString:@"frutas"]){
+            text = @"fruta";
+            [cell.buttonLabel addTarget:self action:@selector(frutasAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"productosKot"]){
+            text = @"productos KOT";
+            [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"proteinas_vegetales"]){
+            text = @"proteína vegetal";
+            [cell.buttonLabel addTarget:self action:@selector(proteinaVegetalAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"cereal"]){
+            text = @"cereal";
+            [cell.buttonLabel addTarget:self action:@selector(cerealAction::) forControlEvents:UIControlEventTouchUpInside];
+        }
+        
+        [cell.buttonLabel setTitle:text forState:UIControlStateNormal];
+        [cell.checkSwitch setOn:on];
+        [cell.checkSwitch setTag:progressive_index];
+        
+    } else if (indexPath.section == 2){
         
         defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
         
@@ -216,9 +251,9 @@
         [cell.checkSwitch setOn:on];
         [cell.checkSwitch setTag:progressive_index];
         
-    } else if (indexPath.section == 2){
+    } else if (indexPath.section == 3){
         
-        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion", postfix]];
+        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", postfix]];
         
         data = [defaultsArray objectAtIndex:indexPath.row];
         
@@ -229,19 +264,25 @@
         
         NSString *text = internal_keys[0];
         
-        if ([text isEqualToString:@"fruta"]){
+        if ([text isEqualToString:@"frutas"]){
             text = @"fruta";
             [cell.buttonLabel addTarget:self action:@selector(frutasAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"productosKot"]){
             text = @"productos KOT";
             [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"proteinas_vegetales"]){
+            text = @"proteína vegetal";
+            [cell.buttonLabel addTarget:self action:@selector(proteinaVegetalAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"cereal"]){
+            text = @"cereal";
+            [cell.buttonLabel addTarget:self action:@selector(cerealAction::) forControlEvents:UIControlEventTouchUpInside];
         }
         
         [cell.buttonLabel setTitle:text forState:UIControlStateNormal];
         [cell.checkSwitch setOn:on];
         [cell.checkSwitch setTag:progressive_index];
         
-    }else if (indexPath.section == 3){
+    } else if (indexPath.section == 4){
         defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
         
         data = [defaultsArray objectAtIndex:indexPath.row];
@@ -305,10 +346,10 @@
         [Flurry logEvent:@"My Método KOT Progresivo" timed:YES];
     /* TODO REPOBLAR INTENSIVO Y PROGRESIVO*/
     
-    NSArray *keys =  [[NSArray alloc] initWithObjects:@"desayuno", @"comida", @"colacion", @"cena", nil];
-    NSArray *intensivoArray = [[NSArray alloc] initWithObjects:[defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"intensivo"]], nil];
+    NSArray *keys =  [[NSArray alloc] initWithObjects:@"desayuno", @"colacion_1", @"comida", @"colacion_2", @"cena", nil];
+    NSArray *intensivoArray = [[NSArray alloc] initWithObjects:[defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"intensivo"]], nil];
     
-    NSArray *progresivoArray = [[NSArray alloc] initWithObjects:[defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"progresivo"]], nil];
+    NSArray *progresivoArray = [[NSArray alloc] initWithObjects:[defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", @"progresivo"]],  [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"progresivo"]], nil];
     
     intensivo = [[NSMutableDictionary alloc] initWithObjects:intensivoArray forKeys:keys];
     progresivo = [[NSMutableDictionary alloc] initWithObjects:progresivoArray forKeys:keys];
@@ -333,8 +374,8 @@
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     int index = sender.tag;
-    if (sender.tag >= 30){ // cena
-        index = index - 30;
+    if (sender.tag >= 40){ // cena
+        index = index - 40;
         
         NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
         NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
@@ -350,10 +391,10 @@
         
         [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
         
-    } else if (sender.tag >= 20) { // colacion
-        index = index - 20;
+    } else if (sender.tag >= 30) { // colacion_2
+        index = index - 30;
         
-        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion", postfix]];
+        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", postfix]];
         NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
         
         NSString *value;
@@ -365,10 +406,10 @@
         [dict setObject:value forKey:internal_keys[0]];
         [defaultsArray replaceObjectAtIndex:index withObject:dict];
         
-        [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"colacion", postfix]];
+        [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", postfix]];
         
-    } else if (sender.tag >= 10) { // comida
-        index = index - 10;
+    } else if (sender.tag >= 20) { // comida
+        index = index - 20;
         
         NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
         NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
@@ -383,6 +424,23 @@
         [defaultsArray replaceObjectAtIndex:index withObject:dict];
         
         [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
+    }else if (sender.tag >= 10) { // colacion_1
+        index = index - 10;
+        
+        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", postfix]];
+        NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
+        
+        NSString *value;
+        if(sender.on == 1){
+            value = [NSString stringWithFormat:@"YES_%i", index];
+        }else{
+            value = [NSString stringWithFormat:@"NO_%i", index];
+        }
+        [dict setObject:value forKey:internal_keys[0]];
+        [defaultsArray replaceObjectAtIndex:index withObject:dict];
+        
+        [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", postfix]];
+        
     } else { // desayuno
         
         NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", postfix]];

@@ -312,7 +312,7 @@
 
 -(void)publishFacebook:(NSString *)name withCaption:(NSString*)caption withDescription:(NSString *)description withPicture:(NSString*)picture {
     // Check if the Facebook app is installed and we can present the share dialog
-    /*FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
+    FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
     params.caption = caption;
     params.description = description;
     params.name = name;
@@ -332,7 +332,7 @@
                                               NSLog(@"result %@", results);
                                           }
                                       }];
-    } else {*/
+    } else {
         // Put together the dialog parameters
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        name, @"name",
@@ -370,7 +370,7 @@
                                                           }
                                                       }
                                                   }];
-    //}
+    }
     
 }
 
@@ -492,7 +492,7 @@
     //    }
     for (NSString *json in grasasList) {
         NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
-        [tempSemanas addObject:[NSString stringWithFormat:@"%i sem",([[itemJSon objectForKey:@"Semana"] integerValue]-1)]];
+        [tempSemanas addObject:[NSString stringWithFormat:@"%i sem",([[itemJSon objectForKey:@"semana"] integerValue]-1)]];
         [tempPoints addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"grasa"] floatValue]]];
         grasaActual = [[NSString stringWithFormat:@"%.2f",[[itemJSon objectForKey:@"grasa"]floatValue]]retain];
     }
@@ -644,7 +644,7 @@
 //    }
     for (NSString *json in pesoList) {
         NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
-        [tempSemanas addObject:[NSString stringWithFormat:@"%i sem",([[itemJSon objectForKey:@"Semana"] integerValue]-1)]];
+        [tempSemanas addObject:[NSString stringWithFormat:@"%i sem",([[itemJSon objectForKey:@"semana"] integerValue]-1)]];
         [tempPoints addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
         pesoActual = [[NSString stringWithFormat:@"%.2f",[[itemJSon objectForKey:@"kilos"]floatValue]]retain];
     }
@@ -795,7 +795,7 @@
 //    }
     for (NSString *json in medidaList) {
         NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
-        [tempSemanas addObject:[NSString stringWithFormat:@"%i sem",([[itemJSon objectForKey:@"Semana"] integerValue]-1)]];
+        [tempSemanas addObject:[NSString stringWithFormat:@"%i sem",([[itemJSon objectForKey:@"semana"] integerValue]-1)]];
         [tempPoints addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"medida"] floatValue]]];
         medidaActual = [[NSString stringWithFormat:@"%.2f",[[itemJSon objectForKey:@"medida"]floatValue]]retain];
     }
