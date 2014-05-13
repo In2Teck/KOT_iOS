@@ -183,31 +183,47 @@
         [cell.textLabel setText:@"El Método KOT"];
         [cell.textLabel setTextAlignment:UITextAlignmentCenter];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
-        [cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
+        [cell setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+        //[cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }else if (indexPath.row==1){
         cell.accessoryType = UITableViewCellAccessoryNone;
+        [cell setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
     } else if ( indexPath.row < 5){
         [cell.textLabel setText:[[items objectAtIndex:indexPath.row-2]objectAtIndex:1]];
         [cell.textLabel setTextAlignment:UITextAlignmentCenter];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
-        [cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        if (indexPath.row == 2){
+            [cell setBackgroundColor: [UIColor colorWithRed:171.0f/255.0f green:33.0f/255.0f blue:142.0f/255.0f alpha:1.0f]];
+        }else if(indexPath.row == 3){
+            [cell setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:45.0f/255.0f blue:145.0f/255.0f alpha:1.0f]];
+        }else if(indexPath.row == 4){
+            [cell setBackgroundColor: [UIColor colorWithRed:0.0f/255.0f green:93.0f/255.0f blue:163.0f/255.0f alpha:1.0f]];
+        }
+        //[cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
     } else if(indexPath.row == 5){
         cell.accessoryType = UITableViewCellAccessoryNone;
+        [cell setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+            cell.accessoryType = UITableViewCellAccessoryNone;
     } else if(indexPath.row > 5){
         
         if(indexPath.row == 6){
             [cell.textLabel setText:[[items objectAtIndex:indexPath.row-3]objectAtIndex:1]];
             [cell.textLabel setTextAlignment:UITextAlignmentCenter];
             [cell.contentView setBackgroundColor:[UIColor clearColor]];
-            [cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
+            [cell setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+            //[cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
             cell.selectionStyle = UITableViewCellSelectionStyleGray;
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }else{
             [cell.textLabel setText:[[items objectAtIndex:indexPath.row -3]objectAtIndex:1]];
             [cell.textLabel setTextAlignment:UITextAlignmentCenter];
             [cell.contentView setBackgroundColor:[UIColor clearColor]];
-            [cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"barra amarilla.png"]]];
+            [cell setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+            //[cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"barra amarilla.png"]]];
             cell.accessoryType = UITableViewCellAccessoryNone;
-            [cell.textLabel setTextColor:[UIColor grayColor]];
+            //[cell.textLabel setTextColor:[UIColor grayColor]];
         }
     }
     return cell;

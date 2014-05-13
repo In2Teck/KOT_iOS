@@ -150,6 +150,7 @@
         retval= [[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [pickerView rowSizeForComponent:component].width, [pickerView rowSizeForComponent:component].height)] autorelease];
     }
     
+    retval.textColor = [UIColor whiteColor];
     retval.text = [arrStatus objectAtIndex:row];
     retval.font = [UIFont systemFontOfSize:16];
     return retval;

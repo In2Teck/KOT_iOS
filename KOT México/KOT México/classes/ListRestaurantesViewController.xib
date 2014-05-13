@@ -49,12 +49,13 @@
                         <segment title="A-Z"/>
                         <segment title="Distancia"/>
                     </segments>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="segmentedControlChanged:" destination="-1" eventType="valueChanged" id="PnE-bT-bTH"/>
                     </connections>
                 </segmentedControl>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.36078431370000003" green="0.75686274509999996" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
         </view>
         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="11">
             <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>

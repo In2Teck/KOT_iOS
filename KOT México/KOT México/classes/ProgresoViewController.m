@@ -525,9 +525,9 @@
         
     } else {
         [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[medida_inicio floatValue]]];
-        for (NSString *json in medidaList) {
+        for (NSString *json in grasasList) {
             NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
-            [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"medida"] floatValue]]];
+            [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"grasa"] floatValue]]];
         }
         
         // max min to plot
@@ -583,6 +583,10 @@
     axis.ticksY.ticksStyle = kTicksLabels;
     
     axis.gridStrokeWidth = 1.0;
+    axis.labelColorX = [UIColor whiteColor];
+    axis.labelColorY = [UIColor whiteColor];
+    axis.gridColor = [UIColor whiteColor];
+    axis.axisColor = [UIColor whiteColor];
     line1.lineColor = [UIColor clearColor];
     line2.lineColor = [UIColor clearColor];
     line3.lineColor = [UIColor greenColor];
@@ -607,6 +611,8 @@
     [self.chartGrasa autoscaleAllAxisY];
     [self.chartGrasa setAllAxisLocationXD:0.0];
     [self.chartGrasa setAllAxisLocationYD:min];
+    [self.chartGrasa setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]
+];
     
     [axis release];
     [line1 release];
@@ -677,9 +683,9 @@
         
     } else {
         [tempPoints2 addObject:[NSNumber numberWithFloat:(min - 2.0)]];//[medida_inicio floatValue]]];
-        for (NSString *json in medidaList) {
+        for (NSString *json in pesoList) {
             NSDictionary *itemJSon = [[json JSONRepresentation] JSONValue];
-            [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"medida"] floatValue]]];
+            [tempPoints2 addObject:[NSNumber numberWithFloat:[[itemJSon objectForKey:@"kilos"] floatValue]]];
         }
         
         // max min to plot
@@ -734,6 +740,10 @@
     axis.ticksY.ticksStyle = kTicksLabels;
     
     axis.gridStrokeWidth = 1.0;
+    axis.labelColorX = [UIColor whiteColor];
+    axis.labelColorY = [UIColor whiteColor];
+    axis.gridColor = [UIColor whiteColor];
+    axis.axisColor = [UIColor whiteColor];
     line1.lineColor = [UIColor clearColor];
     line2.lineColor = [UIColor clearColor];
     line3.lineColor = [UIColor blueColor];
@@ -758,6 +768,7 @@
     [self.chart autoscaleAllAxisY];
     [self.chart setAllAxisLocationXD:0.0];
     [self.chart setAllAxisLocationYD:min];
+    [self.chart setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
     
     [axis release];
     [line1 release];
@@ -884,6 +895,10 @@
     axis.ticksY.ticksStyle = kTicksLabels;
     
     axis.gridStrokeWidth = 1.0;
+    axis.labelColorX = [UIColor whiteColor];
+    axis.labelColorY = [UIColor whiteColor];
+    axis.gridColor = [UIColor whiteColor];
+    axis.axisColor = [UIColor whiteColor];
     line1.lineColor = [UIColor clearColor];
     line2.lineColor = [UIColor clearColor];
     line3.lineColor = [UIColor redColor];
@@ -908,6 +923,7 @@
     [self.chartMedida autoscaleAllAxisY];
     [self.chartMedida setAllAxisLocationXD:0.0];
     [self.chartMedida setAllAxisLocationYD:min];
+    [self.chartMedida setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
     
     [axis release];
     [line1 release];

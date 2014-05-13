@@ -119,6 +119,7 @@
         [direccion setNumberOfLines:4];
         [direccion setFont:[UIFont systemFontOfSize:12.0]];
         [direccion setTextAlignment:UITextAlignmentCenter];
+        [direccion setTextColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
         [cell.contentView addSubview:direccion];
         
         

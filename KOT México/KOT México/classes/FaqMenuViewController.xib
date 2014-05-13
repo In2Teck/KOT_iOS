@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -16,67 +16,68 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" hasAttributedTitle="YES" id="C9Q-B7-JEh" userLabel="Button - Sobre Método KOT">
-                    <rect key="frame" x="86" y="93" width="148" height="58"/>
+                    <rect key="frame" x="110" y="58" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
-                    <state key="normal" backgroundImage="KOT-38.png">
-                        <attributedString key="attributedTitle">
-                            <fragment content="Sobre el                 método KOT">
-                                <attributes>
-                                    <color key="NSColor" red="0.9960784912109375" green="0.99215692281723022" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
-                                    <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                    <state key="normal" backgroundImage="circulo_azul.png">
+                        <attributedString key="attributedTitle"/>
                     </state>
                     <connections>
                         <action selector="sobreMetodo:" destination="-1" eventType="touchUpInside" id="rJT-ky-Av9"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" hasAttributedTitle="YES" id="5wH-e4-3LO" userLabel="Button - Al hacer el Método KOT">
-                    <rect key="frame" x="86" y="213" width="148" height="58"/>
+                    <rect key="frame" x="110" y="175" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
-                    <state key="normal" backgroundImage="KOT-38.png">
-                        <attributedString key="attributedTitle">
-                            <fragment content="Al hacer el           método KOT">
-                                <attributes>
-                                    <color key="NSColor" red="0.9960784912109375" green="0.99215692281723022" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
-                                    <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                    <state key="normal" backgroundImage="circulo_azul.png">
+                        <attributedString key="attributedTitle"/>
                     </state>
                     <connections>
                         <action selector="hacerMetodo:" destination="-1" eventType="touchUpInside" id="zHT-68-IoJ"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" hasAttributedTitle="YES" id="9xt-Ez-2L4" userLabel="Button - Sobre los productos">
-                    <rect key="frame" x="86" y="337" width="148" height="58"/>
+                    <rect key="frame" x="110" y="295" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
-                    <state key="normal" backgroundImage="KOT-38.png">
-                        <attributedString key="attributedTitle">
-                            <fragment content="Sobre los               productos">
-                                <attributes>
-                                    <color key="NSColor" red="0.9960784912109375" green="0.99215692281723022" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
-                                    <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                    </state>
+                    <state key="normal" backgroundImage="circulo_azul.png"/>
                     <connections>
                         <action selector="sobreProductos:" destination="-1" eventType="touchUpInside" id="PIg-5h-vyD"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sobre el método KOT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YyN-Tz-sha">
+                    <rect key="frame" x="80" y="151" width="170" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Al hacer el método KOT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iU8-Pj-GyJ">
+                    <rect key="frame" x="71" y="266" width="189" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sobre los productos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MPM-Vn-XyG">
+                    <rect key="frame" x="85" y="387" width="161" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.36078431370000003" green="0.75686274509999996" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
         </view>
+        <view contentMode="scaleToFill" id="vhY-rA-9a7">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
     </objects>
     <resources>
-        <image name="KOT-38.png" width="123" height="52"/>
+        <image name="circulo_azul.png" width="280" height="280"/>
     </resources>
 </document>
