@@ -164,18 +164,6 @@
     [super viewDidLoad];
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if ([alertView tag] == 0) {    // alerta de META
-        if (buttonIndex == 1) {
-            [self publishFacebook:@"KOT México" withCaption:@"¡Has llegado a tu meta!" withDescription:@"¡Muchas felicidades, con la ayuda del Método KOT has llegado a tu meta!" withPicture:nil];
-        }
-    }else{
-        if (buttonIndex == 1){
-            [self publishFacebook:@"KOT México" withCaption:@"Estatus del progreso del Método KOT" withDescription:[NSString stringWithFormat:@"¡Estoy en camino de cumplir mi meta y ya bajé %i kilos!", [alertView tag]] withPicture:nil];
-        }
-    }
-}
-
 - (void)viewDidUnload
 {
     [self setChartGrasa:nil];
@@ -1093,11 +1081,23 @@
         [self.navigationController pushViewController:pvc animated:YES];
         [pvc release];
         pvc = nil;
-    } else {
+    } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Cancelar"]){
         [self.navigationController dismissModalViewControllerAnimated:YES] ;
         [self performSelector:@selector(patchSelector) withObject:nil afterDelay:0.3];
     }
         
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if ([alertView tag] == 0) {    // alerta de META
+        if (buttonIndex == 1 && ![[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Registrar"]) {
+            [self publishFacebook:@"KOT México" withCaption:@"¡Has llegado a tu meta!" withDescription:@"¡Muchas felicidades, con la ayuda del Método KOT has llegado a tu meta!" withPicture:nil];
+        }
+    }else{
+        if (buttonIndex == 1){
+            [self publishFacebook:@"KOT México" withCaption:@"Estatus del progreso del Método KOT" withDescription:[NSString stringWithFormat:@"¡Estoy en camino de cumplir mi meta y ya bajé %i kilos!", [alertView tag]] withPicture:nil];
+        }
+    }
 }
 
 -(void)patchSelector{
