@@ -123,8 +123,8 @@
         [cell.contentView addSubview:direccion];
         
         
-        call = [[[UIButton alloc] initWithFrame:CGRectMake(205.0, 20.0, 40.0, 40.0)]retain];
-        [call setImage:[UIImage imageNamed:@"ElementsKOT-14.png"] forState:UIControlStateNormal];
+        call = [[[UIButton alloc] initWithFrame:CGRectMake(215.0, 15.0, 40.0, 40.0)]retain];
+        [call setImage:[UIImage imageNamed:@"telefono.png"] forState:UIControlStateNormal];
         [call setTag:BTN_CALL];
         [call setBackgroundColor:[UIColor clearColor]];
         
@@ -134,20 +134,20 @@
         
         [cell.contentView addSubview:call];
         
-        map = [[[UIButton alloc] initWithFrame:CGRectMake(242.0, 20.0, 40.0, 40.0)]retain];
+        map = [[[UIButton alloc] initWithFrame:CGRectMake(252.0, 15.0, 40.0, 40.0)]retain];
         [map setTag:BTN_MAP];
-        [map setImage:[UIImage imageNamed:@"ElementsKOT-11.png"] forState:UIControlStateNormal];
+        [map setImage:[UIImage imageNamed:@"localizador.png"] forState:UIControlStateNormal];
         [map setBackgroundColor:[UIColor clearColor]];
         
         [map addTarget:self action:@selector(showMap:) forControlEvents:UIControlEventTouchUpInside];
         [cell.contentView addSubview:map];
         
-        dir = [[[UIButton alloc] initWithFrame:CGRectMake(280.0, 20.0, 40.0, 40.0)]retain];
-        [dir setTag:BTN_DIR];
-        [dir setImage:[UIImage imageNamed:@"ElementsKOT-13.png"] forState:UIControlStateNormal];
-        [dir setBackgroundColor:[UIColor clearColor]];
+        //dir = [[[UIButton alloc] initWithFrame:CGRectMake(280.0, 20.0, 40.0, 40.0)]retain];
+        //[dir setTag:BTN_DIR];
+        //[dir setImage:[UIImage imageNamed:@"ElementsKOT-13.png"] forState:UIControlStateNormal];
+        //[dir setBackgroundColor:[UIColor clearColor]];
         
-        [dir addTarget:self action:@selector(addContact:) forControlEvents:UIControlEventTouchUpInside];
+        //[dir addTarget:self action:@selector(addContact:) forControlEvents:UIControlEventTouchUpInside];
         
         [cell.contentView addSubview:dir];
 
@@ -157,7 +157,9 @@
 //        [myDistancia setFont:[UIFont systemFontOfSize:11.0]];
         [myDistancia setTextAlignment:UITextAlignmentCenter];
         [myDistancia setBackgroundColor:[UIColor clearColor]];
+        [myDistancia setTextColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
         [cell.contentView addSubview:myDistancia];
+        [cell setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     }else{
         direccion = (UILabel*)[cell viewWithTag:LABEL_DIR];
         call = (UIButton*)[cell viewWithTag:BTN_CALL];
@@ -173,7 +175,7 @@
     [direccion setText:[[NSString alloc]initWithFormat:@"%@\nTel: %@",[itemJSon objectForKey:@"direccion"],[itemJSon objectForKey:@"telefono"]]];
     
     [call.titleLabel setText:[[NSString alloc]initWithFormat:@"%@",[itemJSon objectForKey:@"telefono"]]];
-    [dir.titleLabel setText:[[NSString alloc]initWithFormat:@"%i",indexPath.section]];
+    //[dir.titleLabel setText:[[NSString alloc]initWithFormat:@"%i",indexPath.section]];
     [map.titleLabel setText:[[NSString alloc]initWithFormat:@"%i",indexPath.section]];
 
     /*NSString *latitude = [itemJSon objectForKey:@"latitud"];

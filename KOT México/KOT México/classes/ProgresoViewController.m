@@ -11,6 +11,7 @@
 #import "../../PowerPlot.h"
 #import "AddMedidaPesoView.h"
 #import "PreferencesViewController.h"
+#import "MenuViewController.h"
 #import "Flurry.h"
 #import <FacebookSDK/FacebookSDK.h>
 
@@ -108,7 +109,12 @@
             [faltanteLabel setText:[NSString stringWithFormat:@"¡Te Faltan %.0f Kilos para tu meta!", dif]];
         }
         UIAlertView *message;
-        if(dif <= 0){
+        
+        sqlite = [[CommonDAO alloc] init];
+        NSArray *user = [sqlite select:@"SELECT id_usuario, nombre, apellidos, correo, genero, edad, altura, nutriologo FROM usuario;" keys:[NSArray arrayWithObjects:@"id_usuario",@"nombre",@"apellidos",@"correo",@"genero",@"edad",@"altura",@"nutriologo", nil]];
+        
+        
+        if(dif <= 0 && [user count]){
             
             message = [[UIAlertView alloc]initWithTitle:@"¡Felicidades, llegaste a tu meta!" message:@"¿Deseas compartirlo en Facebook? " delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Sí", nil];
             [message setTag:0];
@@ -117,7 +123,7 @@
             [message release];
             message = nil;
             
-        }else if(progreso >= 10){
+        }else if(progreso >= 10 && [user count]){
             
             message = [[UIAlertView alloc]initWithTitle:@"¡Felicidades, has bajado más de 10 kilos!" message:@"Es un logro importante y te estás acercando a tu meta. ¿Deseas compartirlo en Facebook?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Sí", nil];
             [message setTag:progreso];
@@ -1087,9 +1093,15 @@
         [self.navigationController pushViewController:pvc animated:YES];
         [pvc release];
         pvc = nil;
+    } else {
+        [self.navigationController dismissModalViewControllerAnimated:YES] ;
+        [self performSelector:@selector(patchSelector) withObject:nil afterDelay:0.3];
     }
-    if([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Cancelar"])
-        [self.navigationController popViewControllerAnimated:YES];
+        
+}
+
+-(void)patchSelector{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

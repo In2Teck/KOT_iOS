@@ -131,14 +131,14 @@
 
 -(UIView *)tableView:(UITableView*)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *header = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 25.0)]autorelease];
-    [header setBackgroundColor:[UIColor lightGrayColor]];
-    [header setAlpha:0.8];
+    [header setBackgroundColor:[UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
     
     UILabel *title;
     
     title = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 5.0, (tableView.frame.size.width * 0.7), 20.0)];
 
     [title setText:@"Platillos permitidos"];
+    [title setTextColor:[UIColor whiteColor]];
     [title setNumberOfLines:3];
     [title setBackgroundColor:[UIColor clearColor]];
     [title setFont:[UIFont systemFontOfSize:13.0]];

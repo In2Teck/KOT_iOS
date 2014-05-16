@@ -337,7 +337,7 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        menu = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 0.0, (cell.frame.size.width * 0.7), cell.frame.size.height)];
+        menu = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 0.0, (cell.frame.size.width * 0.6), cell.frame.size.height)];
         [menu setFont:[UIFont systemFontOfSize:14.0]];
         [menu setNumberOfLines:2];
         [menu setBackgroundColor:[UIColor clearColor]];
@@ -355,6 +355,7 @@
     }
     
     [menu setText:[tempMenu objectForKey:@"nombre"]];
+    [menu setTextColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
     ///////////////////////////////////////////////////
     ///////////////////////////////////////////////////
     ///////////////////////////////////////////////////

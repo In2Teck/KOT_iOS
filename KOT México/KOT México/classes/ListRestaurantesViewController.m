@@ -147,9 +147,9 @@
         cell.text = cellValue;
 	}
     [cell.textLabel setBackgroundColor:[UIColor clearColor]];
-    [cell.textLabel setTextColor:[UIColor blackColor]];
-    [cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
-    cell.backgroundView.alpha = 0.3;
+    [cell.textLabel setTextColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+    //[cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
+    //cell.backgroundView.alpha = 0.3;
     
     return cell;
 }

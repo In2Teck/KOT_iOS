@@ -66,7 +66,6 @@
     [self.navigationController pushViewController:videos animated:YES];
 }
 
-
 - (void)dealloc {
     [super dealloc];
 }

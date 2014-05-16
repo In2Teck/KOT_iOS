@@ -143,6 +143,7 @@
         //NSLog(@"LINK %@", link);
         [button addTarget:self action:@selector(publishFacebook) forControlEvents:UIControlEventTouchDown];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell setBackgroundColor:[UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
         
         [cell addSubview:button];
         return cell;

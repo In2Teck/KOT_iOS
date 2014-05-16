@@ -173,7 +173,7 @@
     
     cell.accessoryType = UITableViewCellAccessoryNone;
     
-    [cell.textLabel setBackgroundColor:[UIColor clearColor]];
+    [cell.textLabel setBackgroundColor:[UIColor whiteColor]];
     
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     

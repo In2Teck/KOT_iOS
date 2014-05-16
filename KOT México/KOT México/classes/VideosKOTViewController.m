@@ -181,12 +181,10 @@
         imageYoutube = (UIImageView *) [cell viewWithTag:IMG_TAG];
     }
     
-    
     [tituloLabel setText:[[items objectAtIndex:indexPath.row]objectAtIndex:3]];
 //    [subTituloLabel setText:[[items objectAtIndex:indexPath.row]objectAtIndex:4]];
     
     [imageYoutube setImage: [UIImage imageWithData:[items_fotos objectAtIndex:indexPath.row]]];
-    
     
     cell.accessoryType = UITableViewCellAccessoryNone;
     
@@ -252,7 +250,6 @@
     self.navigationItem.backBarButtonItem = barButton;
     
     vdvc.title = [[items objectAtIndex:indexPath.row]objectAtIndex:3];
-    
     
     [self.navigationController pushViewController:vdvc animated:YES];
 

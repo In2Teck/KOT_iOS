@@ -84,9 +84,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == 0)
-        return 120;
+        return 65;
     if(indexPath.row == 2)
-        return 189.0;
+        return 270.0;
 
     return 44.0;
 }
@@ -127,7 +127,8 @@
         return ejemKotCell;
     
     if(indexPath.row == 1){
-        [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
+        [cell setBackgroundColor: [UIColor colorWithRed:0.0f/255.0f green:93.0f/255.0f blue:163.0f/255.0f alpha:1.0f]];
+        [cell.textLabel setTextColor:[UIColor whiteColor]];
         [cell.textLabel setText:@"Especialistas KOT"];
         [cell.textLabel setBackgroundColor:[UIColor clearColor]];
         //[cell.contentView setBackgroundColor:[UIColor clearColor]];
@@ -186,7 +187,6 @@
     
     if (indexPath.row == 1) {
         CollapsableTableViewViewController *ntvc = [[CollapsableTableViewViewController alloc] initWithNibName:@"CollapsableTableViewViewController" bundle:nil];
-        
         [self.navigationController pushViewController:ntvc animated:YES];
     }
     
