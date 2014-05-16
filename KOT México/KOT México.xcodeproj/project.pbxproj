@@ -233,6 +233,10 @@
 		C74892B51911AD0E00E06385 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74892B41911AD0E00E06385 /* FacebookSDK.framework */; };
 		C74892B61911D3EE00E06385 /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 338C8E1717A0811300FAC325 /* libFlurry_4.2.2.a */; };
 		C74892B81911D43A00E06385 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74892B71911D43A00E06385 /* Twitter.framework */; };
+		C79B5889191C3BB100BD362A /* circulo_azul.png in Resources */ = {isa = PBXBuildFile; fileRef = C79B5887191C3BB100BD362A /* circulo_azul.png */; };
+		C79B588A191C3BB100BD362A /* circulo_magenta.png in Resources */ = {isa = PBXBuildFile; fileRef = C79B5888191C3BB100BD362A /* circulo_magenta.png */; };
+		C79B588E191C5A5400BD362A /* localizador.png in Resources */ = {isa = PBXBuildFile; fileRef = C79B588C191C5A5400BD362A /* localizador.png */; };
+		C79B588F191C5A5400BD362A /* telefono.png in Resources */ = {isa = PBXBuildFile; fileRef = C79B588D191C5A5400BD362A /* telefono.png */; };
 		C79C71D218AD78C600366258 /* crema.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C79C71CD18AD78C600366258 /* crema.jpg */; };
 		C79C71D318AD78C600366258 /* hotcake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C79C71CE18AD78C600366258 /* hotcake.jpg */; };
 		C79C71D418AD78C600366258 /* pasta.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C79C71CF18AD78C600366258 /* pasta.jpg */; };
@@ -625,6 +629,10 @@
 		C72B1AFB18D7CC4300F10CA2 /* VideoMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoMenuViewController.xib; sourceTree = "<group>"; };
 		C74892B41911AD0E00E06385 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		C74892B71911D43A00E06385 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		C79B5887191C3BB100BD362A /* circulo_azul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circulo_azul.png; sourceTree = "<group>"; };
+		C79B5888191C3BB100BD362A /* circulo_magenta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circulo_magenta.png; sourceTree = "<group>"; };
+		C79B588C191C5A5400BD362A /* localizador.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = localizador.png; path = ../assest/localizador.png; sourceTree = "<group>"; };
+		C79B588D191C5A5400BD362A /* telefono.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = telefono.png; path = ../assest/telefono.png; sourceTree = "<group>"; };
 		C79C71CD18AD78C600366258 /* crema.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crema.jpg; sourceTree = "<group>"; };
 		C79C71CE18AD78C600366258 /* hotcake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hotcake.jpg; sourceTree = "<group>"; };
 		C79C71CF18AD78C600366258 /* pasta.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pasta.jpg; sourceTree = "<group>"; };
@@ -919,6 +927,8 @@
 			children = (
 				C79C71CC18AD78C600366258 /* videos */,
 				33C316C01628C0C1004CC622 /* bg_menu.png */,
+				C79B5887191C3BB100BD362A /* circulo_azul.png */,
+				C79B5888191C3BB100BD362A /* circulo_magenta.png */,
 				3308CAB71607AFA50043AC9F /* btn_picker.png */,
 				3308CAB81607AFA50043AC9F /* btn_picker@2x.png */,
 				3388718114EEC3AB001F8962 /* loading.png */,
@@ -1061,9 +1071,9 @@
 				332A845F14DA19DC0071A416 /* RestauranteMenuViewController.xib */,
 				33315BD314DB0CD90034E69E /* PlatilloViewController.h */,
 				33315BD414DB0CD90034E69E /* PlatilloViewController.m */,
+				33315BD514DB0CD90034E69E /* PlatilloViewController.xib */,
 				C7DFC2DC187B78970034EBFB /* MenuAyudaViewController.h */,
 				C7DFC2DD187B78970034EBFB /* MenuAyudaViewController.m */,
-				33315BD514DB0CD90034E69E /* PlatilloViewController.xib */,
 				3314765714DC5B28002AF3ED /* VideosKOTViewController.h */,
 				3314765814DC5B28002AF3ED /* VideosKOTViewController.m */,
 				3314765914DC5B28002AF3ED /* VideosKOTViewController.xib */,
@@ -1246,6 +1256,8 @@
 		C7DB2A8D18D77BBD009911FA /* new_design */ = {
 			isa = PBXGroup;
 			children = (
+				C79B588C191C5A5400BD362A /* localizador.png */,
+				C79B588D191C5A5400BD362A /* telefono.png */,
 				C7DB2A8E18D77BBD009911FA /* ajustes.png */,
 				C7DB2A8F18D77BBD009911FA /* alimentos_permitidos.png */,
 				C7DB2A9018D77BBD009911FA /* conoce.png */,
@@ -1342,6 +1354,7 @@
 				338C8E1317A07F1E00FAC325 /* Flurry.h in Resources */,
 				C79C71D218AD78C600366258 /* crema.jpg in Resources */,
 				3330147814BF49C100F92EC0 /* InfoPlist.strings in Resources */,
+				C79B588F191C5A5400BD362A /* telefono.png in Resources */,
 				333014DA14BF4C5E00F92EC0 /* Element-05.png in Resources */,
 				333014DD14BF4C5E00F92EC0 /* KOT-01.png in Resources */,
 				C7DB2AAB18D77BBD009911FA /* videos.png in Resources */,
@@ -1359,6 +1372,7 @@
 				333014E714BF4C5E00F92EC0 /* 12.png in Resources */,
 				C72B1AFD18D7CC4300F10CA2 /* VideoMenuViewController.xib in Resources */,
 				333014E814BF4C5E00F92EC0 /* 13.png in Resources */,
+				C79B588A191C3BB100BD362A /* circulo_magenta.png in Resources */,
 				333014E914BF4C5E00F92EC0 /* 14.png in Resources */,
 				333014EA14BF4C5E00F92EC0 /* 15.png in Resources */,
 				333014EB14BF4C5E00F92EC0 /* 16.png in Resources */,
@@ -1434,8 +1448,10 @@
 				3311FEB814C7388F00E6400D /* RestaurantViewController.xib in Resources */,
 				3311FEC014C7406E00E6400D /* NutriologosViewController.xib in Resources */,
 				3311FEC514C7423200E6400D /* ContactoViewController.xib in Resources */,
+				C79B588E191C5A5400BD362A /* localizador.png in Resources */,
 				332A78DA14C8794C00FD6EB9 /* KOT19012011-36.png in Resources */,
 				332A78DB14C8794C00FD6EB9 /* KOT19012011-39.png in Resources */,
+				C79B5889191C3BB100BD362A /* circulo_azul.png in Resources */,
 				3355F42614CFA10A00C00965 /* MainWindow.xib in Resources */,
 				3347D64614D6FEC400A05B50 /* CollapsableTableViewHeaderViewGrouped.xib in Resources */,
 				3347D64714D6FEC400A05B50 /* CollapsableTableViewHeaderViewPlain.xib in Resources */,
