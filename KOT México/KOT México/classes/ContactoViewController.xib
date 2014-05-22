@@ -15,8 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="KOT-32.png" id="5">
-                    <rect key="frame" x="121" y="20" width="79" height="66"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="KOT-32.png" id="5">
+                    <rect key="frame" x="113" y="33" width="94" height="79"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ORw-2g-Khg">
@@ -95,7 +95,7 @@
         </view>
     </objects>
     <resources>
-        <image name="KOT-32.png" width="79" height="66"/>
+        <image name="KOT-32.png" width="130" height="116"/>
         <image name="facebook_icon.png" width="38" height="36"/>
         <image name="twitter_icon.png" width="38" height="36"/>
     </resources>
