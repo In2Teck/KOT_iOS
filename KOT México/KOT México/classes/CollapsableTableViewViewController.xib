@@ -40,10 +40,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="33">
-                    <rect key="frame" x="61" y="71" width="199" height="28"/>
+                    <rect key="frame" x="79" y="71" width="162" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                    <state key="normal" title="   Selecciona una ciudad                             " backgroundImage="btn_picker.png">
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                    <state key="normal" title=" Selecciona una ciudad                             " backgroundImage="btn_picker.png">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
