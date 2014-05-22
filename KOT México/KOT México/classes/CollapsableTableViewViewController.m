@@ -25,16 +25,16 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-         
+        
     }
     return self;
 }
 
 /*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
+ // Implement loadView to create a view hierarchy programmatically, without using a nib.
+ - (void)loadView {
+ }
+ */
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -50,7 +50,7 @@
     
     [self performSelectorInBackground:@selector(loadingJSONNutriologos) withObject:nil];
     
-//   [self loadingJSONNutriologos];
+    //   [self loadingJSONNutriologos];
     
     [self.segmentedControl setHidden:YES];
     self.indexStr = [[NSString alloc] initWithString:@"0"];
@@ -78,15 +78,15 @@
 + (NSString*) titleForHeaderForSection:(int) section
 {
     
-//    NSDictionary *itemJSon = [[[listNutriologos objectAtIndex:section] JSONRepresentation] JSONValue];
-//    return [itemJSon objectForKey:@"nombre"];
+    //    NSDictionary *itemJSon = [[[listNutriologos objectAtIndex:section] JSONRepresentation] JSONValue];
+    //    return [itemJSon objectForKey:@"nombre"];
     return @"";
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     //return [CollapsableTableViewViewController titleForHeaderForSection:section];
-
+    
     NSDictionary *itemJSon = [[[dataSourseList objectAtIndex:section] JSONRepresentation] JSONValue];
     
     return [itemJSon objectForKey:@"nombre"];
@@ -102,13 +102,13 @@
     NSDictionary *itemJSon = [[[dataSourseList objectAtIndex:indexPath.section] JSONRepresentation] JSONValue];
     
     static NSString *CellIdentifier = @"Cell";
- 
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     UILabel *direccion, *myDistancia;
-    UIButton *call,*map,*dir;
+    UIButton *call,*map;//,*dir;
     
-    if (cell == nil) 
+    if (cell == nil)
     {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         
@@ -128,7 +128,7 @@
         [call setTag:BTN_CALL];
         [call setBackgroundColor:[UIColor clearColor]];
         
-//        [call setTitle:[[NSString alloc] initWithFormat:@"%i",indexPath.section] forState:UIControlStateNormal];
+        //        [call setTitle:[[NSString alloc] initWithFormat:@"%i",indexPath.section] forState:UIControlStateNormal];
         [call addTarget:self action:@selector(callNumber:) forControlEvents:UIControlEventTouchUpInside];
         
         
@@ -149,12 +149,12 @@
         
         //[dir addTarget:self action:@selector(addContact:) forControlEvents:UIControlEventTouchUpInside];
         
-        [cell.contentView addSubview:dir];
-
+        //[cell.contentView addSubview:dir];
+        
         myDistancia = [[[UILabel alloc] initWithFrame:CGRectMake(180.0, 55.0, 150.0, 20.0)]retain];
         [myDistancia setTag:LBL_DST];
-//        [myDistancia setTextColor:[UIColor lightGrayColor]];
-//        [myDistancia setFont:[UIFont systemFontOfSize:11.0]];
+        //        [myDistancia setTextColor:[UIColor lightGrayColor]];
+        //        [myDistancia setFont:[UIFont systemFontOfSize:11.0]];
         [myDistancia setTextAlignment:UITextAlignmentCenter];
         [myDistancia setBackgroundColor:[UIColor clearColor]];
         [myDistancia setTextColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
@@ -164,7 +164,7 @@
         direccion = (UILabel*)[cell viewWithTag:LABEL_DIR];
         call = (UIButton*)[cell viewWithTag:BTN_CALL];
         map = (UIButton*)[cell viewWithTag:BTN_MAP];
-        dir = (UIButton*)[cell viewWithTag:BTN_DIR];
+        //dir = (UIButton*)[cell viewWithTag:BTN_DIR];
         myDistancia = (UILabel *) [cell viewWithTag:LBL_DST];
     }
     
@@ -177,10 +177,10 @@
     [call.titleLabel setText:[[NSString alloc]initWithFormat:@"%@",[itemJSon objectForKey:@"telefono"]]];
     //[dir.titleLabel setText:[[NSString alloc]initWithFormat:@"%i",indexPath.section]];
     [map.titleLabel setText:[[NSString alloc]initWithFormat:@"%i",indexPath.section]];
-
+    
     /*NSString *latitude = [itemJSon objectForKey:@"latitud"];
-    NSString *longitude = [itemJSon objectForKey:@"longitud"];
-    CLLocation *tmpLocation = [[CLLocation alloc] initWithLatitude:[latitude floatValue]  longitude:[longitude floatValue]];*/
+     NSString *longitude = [itemJSon objectForKey:@"longitud"];
+     CLLocation *tmpLocation = [[CLLocation alloc] initWithLatitude:[latitude floatValue]  longitude:[longitude floatValue]];*/
     [myDistancia setText:[NSString stringWithFormat:@"GPS:%.1f km", [[itemJSon objectForKey:@"loc"] floatValue] ]];
     
     return cell;
@@ -235,7 +235,7 @@
 }
 
 -(void)loadingJSONNutriologos{
-
+    
     NSString *urlConnection = [[[NSString alloc] initWithFormat:@"http://kot.mx/nuevo/WS/kotNutriologos.php"] autorelease];
     
     NSURL *url = [[[NSURL alloc] initWithString:urlConnection] autorelease];
@@ -277,17 +277,17 @@
         if([listNutriologos count]>0 && [ciudades count]>0){
             [selectPicker setEnabled:YES];
             /*NSDictionary *ciudadDictionary = [[[ciudades objectAtIndex:0]JSONRepresentation]JSONValue];
-            NSString *titelString = [NSString stringWithFormat:@"  %@",[ciudadDictionary valueForKey:@"nombre"]];
-            [self.selectPicker setTitle:titelString forState:UIControlStateNormal];
-            [self cargarNutriologos:[ciudadDictionary valueForKey:@"id"]];
-            [self.myTableView reloadData];*/
+             NSString *titelString = [NSString stringWithFormat:@"  %@",[ciudadDictionary valueForKey:@"nombre"]];
+             [self.selectPicker setTitle:titelString forState:UIControlStateNormal];
+             [self cargarNutriologos:[ciudadDictionary valueForKey:@"id"]];
+             [self.myTableView reloadData];*/
         }else{
             [self.selectPicker setEnabled:NO];
         }
         
     }
     
-
+    
 }
 
 
@@ -303,14 +303,14 @@
 
 -(IBAction)callNumber:(id)sender{
     UIButton *myButton = (UIButton*) sender;
-   numberPhone = [[NSString alloc] initWithFormat:@"tel://%@",myButton.titleLabel.text];
+    numberPhone = [[NSString alloc] initWithFormat:@"tel://%@",myButton.titleLabel.text];
     
     NSString *asd = [[NSString alloc]initWithFormat:@"¿Desea realizar la llamada?"];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"KOT México" message:asd
                                                    delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Llamar", nil];
     [alert show];
     [alert release];
-
+    
 }
 
 -(IBAction)addContact:(id)sender{
@@ -327,33 +327,33 @@
     [alert release];
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-//    NSLog(@"title button: %@", [alertView buttonTitleAtIndex:buttonIndex]);
+    //    NSLog(@"title button: %@", [alertView buttonTitleAtIndex:buttonIndex]);
     if([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Add"]){
         NSDictionary *itemJSon = [[[dataSourseList objectAtIndex:selectContact] JSONRepresentation] JSONValue];
-    
+        
         CFErrorRef *anError;
-        ABAddressBookRef addressBook = ABAddressBookCreate(); // create address book record 
-        ABRecordRef person = ABPersonCreate(); // create a person  
+        ABAddressBookRef addressBook = ABAddressBookCreate(); // create address book record
+        ABRecordRef person = ABPersonCreate(); // create a person
         
-        NSString *phone = [[NSString alloc]initWithFormat:@"%@",[itemJSon objectForKey:@"telefono"]]; // the phone number to add  
+        NSString *phone = [[NSString alloc]initWithFormat:@"%@",[itemJSon objectForKey:@"telefono"]]; // the phone number to add
         
-        //Phone number is a list of phone number, so create a multivalue  
-        ABMutableMultiValueRef phoneNumberMultiValue = ABMultiValueCreateMutable(kABPersonPhoneProperty); 
+        //Phone number is a list of phone number, so create a multivalue
+        ABMutableMultiValueRef phoneNumberMultiValue = ABMultiValueCreateMutable(kABPersonPhoneProperty);
         ABMultiValueAddValueAndLabel(phoneNumberMultiValue ,phone,kABPersonPhoneMobileLabel, NULL);
         
-        ABRecordSetValue(person, kABPersonFirstNameProperty, [itemJSon objectForKey:@"nombre"] , nil); // first name of the new person 
-        ABRecordSetValue(person, kABPersonLastNameProperty, @"", nil); // his last name 
-        ABRecordSetValue(person, kABPersonPhoneProperty, phoneNumberMultiValue, &anError); // set the phone number property 
+        ABRecordSetValue(person, kABPersonFirstNameProperty, [itemJSon objectForKey:@"nombre"] , nil); // first name of the new person
+        ABRecordSetValue(person, kABPersonLastNameProperty, @"", nil); // his last name
+        ABRecordSetValue(person, kABPersonPhoneProperty, phoneNumberMultiValue, &anError); // set the phone number property
         ABAddressBookAddRecord(addressBook, person, nil); //add the new person to the record
-        ABAddressBookSave(addressBook, nil); //save the record  
-    
+        ABAddressBookSave(addressBook, nil); //save the record
+        
         CFRelease(person); // relase the ABRecordRef  variable
     }
     
     if([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Llamar"]){
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:numberPhone]];
         
-        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:numberPhone]]) { 
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:numberPhone]]) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:numberPhone]]; }
         else{
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"KOT México" message:@"Tu dispositivo no puede hacer llamadas." delegate:nil cancelButtonTitle:@"Cancelar" otherButtonTitles: nil];
@@ -367,11 +367,11 @@
     NSDictionary *itemJSon = [[[dataSourseList objectAtIndex:[myButton.titleLabel.text intValue]] JSONRepresentation] JSONValue];
     NSString *latitude = [itemJSon objectForKey:@"latitud"];
     NSString *longitude = [itemJSon objectForKey:@"longitud"];
-//    
-//    NSLog(@"%@, %@", latitude, longitude);
-//    
+    //
+    //    NSLog(@"%@, %@", latitude, longitude);
+    //
     if ([latitude length] >0 && [longitude length]>0) {
-//        
+        //
         MKMapView *mapView = [[[MKMapView alloc] initWithFrame:self.view.bounds]autorelease];
         mapView.mapType = MKMapTypeStandard;
         
@@ -381,12 +381,12 @@
         
         
         MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
-//        annotationPoint.coordinate = coord;
+        //        annotationPoint.coordinate = coord;
         annotationPoint.title = [itemJSon objectForKey:@"nombre"];
         annotationPoint.subtitle = [itemJSon objectForKey:@"direccion"];
         [annotationPoint setCoordinate:coord];
-        [mapView addAnnotation:annotationPoint]; 
-
+        [mapView addAnnotation:annotationPoint];
+        
         [mapView setRegion:region];
         
         UIViewController  *mapViewController = [[[UIViewController alloc]init]autorelease];
@@ -400,11 +400,11 @@
         [message show];
         [message release];
         message = nil;
-    }   
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-
+    
 }
 
 -(IBAction)showPicker:(id)sender{
@@ -426,7 +426,7 @@
     [self cargarNutriologos:[ciudadDictionary valueForKey:@"id"]];
     [self.myTableView reloadData];
     
-//    [pickerView selectRow:0 inComponent:0 animated:YES];
+    //    [pickerView selectRow:0 inComponent:0 animated:YES];
     
     [menu addSubview:pickerView];
     [menu showInView:self.view];
@@ -487,13 +487,13 @@
         for (int b = 0; b<[objNutriologos count]; b++) {
             NSMutableDictionary *description = [[[objNutriologos objectAtIndex:b] JSONRepresentation]JSONValue];
             
-                if([[description objectForKey:@"id_municipio"]intValue]== [idCiudad intValue]){
-                    CLLocation *tmpLocation = [[CLLocation alloc] initWithLatitude:[[description objectForKey:@"latitud"] floatValue]  longitude:[[description objectForKey:@"longitud"] floatValue]];
-                    NSLog(@"LAT %.2f LONG %.2f",[[description objectForKey:@"latitud"] floatValue] , [[description objectForKey:@"longitud"] floatValue]  );
-                    NSNumber *loc = [[NSNumber alloc] initWithFloat:[self getDistance:tmpLocation]];
-                    [description setObject:loc forKey:@"loc"];
-                    [dataSourseList addObject:description];
-                }
+            if([[description objectForKey:@"id_municipio"]intValue]== [idCiudad intValue]){
+                CLLocation *tmpLocation = [[CLLocation alloc] initWithLatitude:[[description objectForKey:@"latitud"] floatValue]  longitude:[[description objectForKey:@"longitud"] floatValue]];
+                NSLog(@"LAT %.2f LONG %.2f",[[description objectForKey:@"latitud"] floatValue] , [[description objectForKey:@"longitud"] floatValue]  );
+                NSNumber *loc = [[NSNumber alloc] initWithFloat:[self getDistance:tmpLocation]];
+                [description setObject:loc forKey:@"loc"];
+                [dataSourseList addObject:description];
+            }
             
         }
     }
