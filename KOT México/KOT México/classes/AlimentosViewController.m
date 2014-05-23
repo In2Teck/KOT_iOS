@@ -119,7 +119,7 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
-    [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Element-04.png"]]];
+    //[cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Element-04.png"]]];
     
     [cell setBackgroundColor:[UIColor clearColor]];
     NSString *textoCelda = [[alimentosList objectAtIndex:indexPath.row] objectAtIndex:1];
@@ -130,7 +130,7 @@
         [cell.textLabel setText:textoCelda];
     }
     //[cell.textLabel setBackgroundColor:[UIColor redColor]];
-    [cell.textLabel setTextColor:[UIColor whiteColor]];
+    [cell.textLabel setTextColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
     [cell.textLabel setTextAlignment:UITextAlignmentCenter];
     
     return cell;
