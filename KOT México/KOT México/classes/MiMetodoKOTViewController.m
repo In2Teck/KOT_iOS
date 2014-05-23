@@ -203,7 +203,7 @@
             text = @"fruta";
             [cell.buttonLabel addTarget:self action:@selector(frutasAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"productosKot"]){
-            text = @"productos KOT";
+            text = @"producto KOT";
             [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"proteinas_vegetales"]){
             text = @"proteína vegetal";
@@ -237,13 +237,13 @@
             text = @"proteína animal";
             [cell.buttonLabel addTarget:self action:@selector(proteinaAnimalAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"vegetales_crudo"]){
-            text = @"vegetales crudos";
+            text = @"vegetal crudo";
             [cell.buttonLabel addTarget:self action:@selector(v_crudosAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"vegetales_cocidas"]){
-            text = @"vegetales cocidos";
+            text = @"vegetal cocido";
             [cell.buttonLabel addTarget:self action:@selector(v_cocidosAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"cucharadas_aceite"]){
-            text = @"cucharadas de aceite";
+            text = @"cucharada de aceite";
             [cell.buttonLabel addTarget:self action:@selector(aceiteAction:) forControlEvents:UIControlEventTouchUpInside];
         }
         
@@ -268,7 +268,7 @@
             text = @"fruta";
             [cell.buttonLabel addTarget:self action:@selector(frutasAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"productosKot"]){
-            text = @"productos KOT";
+            text = @"producto KOT";
             [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"proteinas_vegetales"]){
             text = @"proteína vegetal";
@@ -301,10 +301,10 @@
             text = @"proteína animal";
             [cell.buttonLabel addTarget:self action:@selector(proteinaAnimalAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"vegetales_crudo"]){
-            text = @"vegetales crudos";
+            text = @"vegetal crudo";
             [cell.buttonLabel addTarget:self action:@selector(v_crudosAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"vegetales_cocidas"]){
-            text = @"vegetales cocidos";
+            text = @"vegetal cocido";
             [cell.buttonLabel addTarget:self action:@selector(v_cocidosAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"frutas"]){
             text = @"fruta";
@@ -315,6 +315,9 @@
         } else if ([text isEqualToString:@"productosKot"]){
             text = @"producto KOT";
             [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([text isEqualToString:@"cucharadas_aceite"]){
+            text = @"cucharada de aceite";
+            [cell.buttonLabel addTarget:self action:@selector(aceiteAction:) forControlEvents:UIControlEventTouchUpInside];
         }
         
         [cell.buttonLabel setTitle:text forState:UIControlStateNormal];

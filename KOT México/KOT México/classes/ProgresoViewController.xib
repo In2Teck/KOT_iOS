@@ -69,17 +69,17 @@
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" id="37" customClass="WSChart">
-                    <rect key="frame" x="0.0" y="171" width="320" height="198"/>
+                    <rect key="frame" x="0.0" y="171" width="320" height="260"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.75686274509999996" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="45" customClass="WSChart">
-                    <rect key="frame" x="0.0" y="171" width="320" height="198"/>
+                    <rect key="frame" x="0.0" y="171" width="320" height="260"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.75686274509999996" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="au2-kB-iwD" customClass="WSChart">
-                    <rect key="frame" x="0.0" y="171" width="320" height="198"/>
+                    <rect key="frame" x="0.0" y="171" width="320" height="260"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.75686274509999996" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                 </view>

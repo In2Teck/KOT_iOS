@@ -190,9 +190,11 @@
                                 progressive_position++;
                             }
                         }
-                        
+                        //NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:internal_aKey ascending:NO];
+                        //[intensivoArray sortUsingDescriptors:[NSArray arrayWithObject:sort]];
                     }
                 }
+                
                 [intensivo setObject:intensivoArray forKey:aKey];
                 [defaults setObject:intensivoArray forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
             }
@@ -229,6 +231,8 @@
                             }
                         }
                     }
+                    //NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:internal_aKey ascending:NO];
+                    //[progresivoArray sortUsingDescriptors:[NSArray arrayWithObject:sort]];
                 }
                 [progresivo setObject:progresivoArray forKey:aKey];
                 [defaults setObject:progresivoArray forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
