@@ -243,7 +243,7 @@
             text = @"vegetal cocido";
             [cell.buttonLabel addTarget:self action:@selector(v_cocidosAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"cucharadas_aceite"]){
-            text = @"cucharada de aceite";
+            text = @"2 cucharadas de aceite";
             [cell.buttonLabel addTarget:self action:@selector(aceiteAction:) forControlEvents:UIControlEventTouchUpInside];
         }
         
@@ -316,7 +316,7 @@
             text = @"producto KOT";
             [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"cucharadas_aceite"]){
-            text = @"cucharada de aceite";
+            text = @"2 cucharadas de aceite";
             [cell.buttonLabel addTarget:self action:@selector(aceiteAction:) forControlEvents:UIControlEventTouchUpInside];
         }
         

@@ -124,7 +124,7 @@
         
         
         call = [[[UIButton alloc] initWithFrame:CGRectMake(215.0, 15.0, 40.0, 40.0)]retain];
-        [call setImage:[UIImage imageNamed:@"telefono.png"] forState:UIControlStateNormal];
+        [call setImage:[UIImage imageNamed:@"telefono_2.png"] forState:UIControlStateNormal];
         [call setTag:BTN_CALL];
         [call setBackgroundColor:[UIColor clearColor]];
         
@@ -136,7 +136,7 @@
         
         map = [[[UIButton alloc] initWithFrame:CGRectMake(252.0, 15.0, 40.0, 40.0)]retain];
         [map setTag:BTN_MAP];
-        [map setImage:[UIImage imageNamed:@"localizador.png"] forState:UIControlStateNormal];
+        [map setImage:[UIImage imageNamed:@"localizador_2.png"] forState:UIControlStateNormal];
         [map setBackgroundColor:[UIColor clearColor]];
         
         [map addTarget:self action:@selector(showMap:) forControlEvents:UIControlEventTouchUpInside];
