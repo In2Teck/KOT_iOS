@@ -105,7 +105,8 @@
         [self.navigationController pushViewController:progreso animated:YES];
     
 }
--(void)loadMiMetodoKot{
+
+-(void)cargaMetodo:(BOOL)isProgresivo{
     NSString *urlConnection = [NSString stringWithFormat:@"http://desarrollo.sysop26.com/kot/nuevo/WS/kotMiMetodo.php?idUserKot=%@", [[user objectAtIndex:0]objectAtIndex:0]];
     NSURL *url = [[[NSURL alloc] initWithString:urlConnection] autorelease];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:180.0];
@@ -113,6 +114,280 @@
 	NSData *urlData;
 	NSURLResponse *response;
 	NSError *error;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+	// Make synchronous request
+	urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+    NSString *jsonData = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
+    
+    NSError *jsonError;
+    SBJSON *json = [[SBJSON new] autorelease];
+    NSDictionary *contentJSON = [json objectWithString:jsonData error:&jsonError];
+    
+    if (contentJSON==nil) {
+        NSString *text = [[NSString alloc] initWithFormat:@"%@", [error localizedDescription]];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:text delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+    }else{
+        NSString *messageError = [contentJSON objectForKey:@"mensaje_error"];
+        if([messageError length]==0){
+            
+            if(!isProgresivo){
+             
+                intensivo  = [[[contentJSON objectForKey:@"intensivo"]JSONRepresentation]JSONValue];
+                NSArray *keys = [intensivo allKeys];
+                
+                for (int position=0; position < keys.count; position++){
+                    id aKey = [keys objectAtIndex:position];
+                    NSMutableDictionary *anObject = [intensivo objectForKey:aKey];
+                    NSArray *internal_keys = [anObject allKeys];
+                    
+                    NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
+                    NSMutableArray *intensivoArray = [[NSMutableArray alloc] init];
+                    int progressive_position = 0;
+                    for (int internal_position = 0; internal_position < internal_keys.count; internal_position++){
+                        id internal_aKey = [internal_keys objectAtIndex:internal_position];
+                        
+                        if([[anObject objectForKey:internal_aKey] isEqualToString:@"0"]){
+                            [anObject removeObjectForKey:internal_aKey];
+                        }else if([[anObject objectForKey:internal_aKey] integerValue] >= 1){
+                            if([defaultsArray count] > 0){
+                                @try{
+                                    for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
+                                        NSMutableDictionary *dict = [defaultsArray objectAtIndex:progressive_position];
+                                        [intensivoArray addObject:dict];
+                                        progressive_position++;
+                                    }
+                                }@catch (NSException *exception) {
+                                    // BORRAMOS ANTERIOR
+                                    [self resetMetodo:NO];
+                                    return;
+                                }
+                                
+                            }else{
+                                //iteramos por numero de elementos en el json
+                                for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
+                                    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+                                    [dict setObject:[NSString stringWithFormat:@"NO_%i", progressive_position] forKey:internal_aKey];
+                                    
+                                    [intensivoArray addObject:dict];
+                                    progressive_position++;
+                                }
+                            }
+                        }
+                    }
+                    
+                    [intensivo setObject:intensivoArray forKey:aKey];
+                    [defaults setObject:intensivoArray forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
+                }
+            } else {
+                progresivo = [[[contentJSON objectForKey:@"progresivo"]JSONRepresentation]JSONValue];
+                NSArray *keys = [progresivo allKeys];
+                
+                for (int position=0; position < keys.count; position++){
+                    id aKey = [keys objectAtIndex:position];
+                    NSMutableDictionary *anObject = [progresivo objectForKey:aKey];
+                    NSArray *internal_keys = [anObject allKeys];
+                    
+                    NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
+                    NSMutableArray *progresivoArray = [[NSMutableArray alloc] init];
+                    int progressive_position = 0;
+                    for (int internal_position=0; internal_position < internal_keys.count; internal_position++){
+                        id internal_aKey = [internal_keys objectAtIndex:internal_position];
+                        
+                        if([[anObject objectForKey:internal_aKey] isEqualToString:@"0"]){
+                            [anObject removeObjectForKey:internal_aKey];
+                        }else if([[anObject objectForKey:internal_aKey] integerValue] >= 1){
+                            if([defaultsArray count] > 0){
+                                @try {
+                                    for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
+                                        NSMutableDictionary *dict = [defaultsArray objectAtIndex:progressive_position];
+                                        [progresivoArray addObject:dict];
+                                        progressive_position++;
+                                    }
+                                } @catch (NSException *exception) {
+                                    [self resetMetodo:YES];
+                                    return;
+                                }
+                            }else{
+                                //iteramos por numero de elementos en el json
+                                for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
+                                    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+                                    [dict setObject:[NSString stringWithFormat:@"NO_%i", progressive_position] forKey:internal_aKey];
+                                    
+                                    [progresivoArray addObject:dict];
+                                    progressive_position++;
+                                }
+                            }
+                        }
+                        
+                    }
+                    
+                    [progresivo setObject:progresivoArray forKey:aKey];
+                    [defaults setObject:progresivoArray forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
+                }
+            }
+            
+            [defaults synchronize];
+            
+            semanas = [contentJSON objectForKey:@"semana"];
+            NSLog(@"Semana %@", semanas);
+            //NSDictionary *data = [[[intensivo objectForKey:@"desayuno"]JSONRepresentation]JSONValue];
+            NSNull *null = [[NSNull alloc] init];
+            if([intensivo objectForKey:@"desayuno"] == null){
+                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"Aún no tienes un método asignado, acude con uno de nuestros especialistas KOT." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                [message show];
+                [message release];
+                message = nil;
+                intensivo = nil;
+                progresivo = nil;
+            }
+        }else{
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            [message show];
+            [message release];
+            message = nil;
+        }
+    }
+}
+
+-(void)resetMetodo:(BOOL)isProgresivo{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *urlConnection = [NSString stringWithFormat:@"http://desarrollo.sysop26.com/kot/nuevo/WS/kotMiMetodo.php?idUserKot=%@", [[user objectAtIndex:0]objectAtIndex:0]];
+    NSURL *url = [[[NSURL alloc] initWithString:urlConnection] autorelease];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:180.0];
+    // Fetch the JSON response
+	NSData *urlData;
+	NSURLResponse *response;
+	NSError *error;
+    
+    urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+    NSString *jsonData = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
+    
+    NSError *jsonError;
+    SBJSON *json = [[SBJSON new] autorelease];
+    NSDictionary *contentJSON = [json objectWithString:jsonData error:&jsonError];
+    if (contentJSON==nil) {
+        NSString *text = [[NSString alloc] initWithFormat:@"%@", [error localizedDescription]];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:text delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+    }else{
+        NSString *messageError = [contentJSON objectForKey:@"mensaje_error"];
+        if([messageError length]==0){
+            
+            if (!isProgresivo) {
+                
+                [defaults removeObjectForKey:@"desayuno_intensivo"];
+                [defaults removeObjectForKey:@"comida_intensivo"];
+                [defaults removeObjectForKey:@"colacion_1_intensivo"];
+                [defaults removeObjectForKey:@"colacion_2_intensivo"];
+                [defaults removeObjectForKey:@"cena_intensivo"];
+            
+                intensivo  = [[[contentJSON objectForKey:@"intensivo"]JSONRepresentation]JSONValue];
+                NSArray *keys = [intensivo allKeys];
+            
+                for (int position=0; position < keys.count; position++){
+                    id aKey = [keys objectAtIndex:position];
+                    NSMutableDictionary *anObject = [intensivo objectForKey:aKey];
+                    NSArray *internal_keys = [anObject allKeys];
+                
+                    NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
+                    NSMutableArray *intensivoArray = [[NSMutableArray alloc] init];
+                    int progressive_position = 0;
+                    for (int internal_position = 0; internal_position < internal_keys.count; internal_position++){
+                        id internal_aKey = [internal_keys objectAtIndex:internal_position];
+                    
+                        if([[anObject objectForKey:internal_aKey] isEqualToString:@"0"]){
+                            [anObject removeObjectForKey:internal_aKey];
+                        }else if([[anObject objectForKey:internal_aKey] integerValue] >= 1){
+                            //iteramos por numero de elementos en el json
+                            for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
+                                NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+                                [dict setObject:[NSString stringWithFormat:@"NO_%i", progressive_position] forKey:internal_aKey];
+                                
+                                [intensivoArray addObject:dict];
+                                progressive_position++;
+                            }
+                        }
+                    }
+                
+                    [intensivo setObject:intensivoArray forKey:aKey];
+                    [defaults setObject:intensivoArray forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
+                }
+                
+            }else{
+                
+                [defaults removeObjectForKey:@"desayuno_progresivo"];
+                [defaults removeObjectForKey:@"comida_progresivo"];
+                [defaults removeObjectForKey:@"colacion_1_progresivo"];
+                [defaults removeObjectForKey:@"colacion_2_progresivo"];
+                [defaults removeObjectForKey:@"cena_progresivo"];
+            
+                progresivo = [[[contentJSON objectForKey:@"progresivo"]JSONRepresentation]JSONValue];
+                NSArray *keys = [progresivo allKeys];
+            
+                for (int position=0; position < keys.count; position++){
+                    id aKey = [keys objectAtIndex:position];
+                    NSMutableDictionary *anObject = [progresivo objectForKey:aKey];
+                    NSArray *internal_keys = [anObject allKeys];
+                
+                    NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
+                    NSMutableArray *progresivoArray = [[NSMutableArray alloc] init];
+                    int progressive_position = 0;
+                    for (int internal_position=0; internal_position < internal_keys.count; internal_position++){
+                        id internal_aKey = [internal_keys objectAtIndex:internal_position];
+                    
+                        if([[anObject objectForKey:internal_aKey] isEqualToString:@"0"]){
+                            [anObject removeObjectForKey:internal_aKey];
+                        }else if([[anObject objectForKey:internal_aKey] integerValue] >= 1){
+                            //iteramos por numero de elementos en el json
+                            for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
+                                NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+                                [dict setObject:[NSString stringWithFormat:@"NO_%i", progressive_position] forKey:internal_aKey];
+                                
+                                [progresivoArray addObject:dict];
+                                progressive_position++;
+                            }
+                        
+                        }
+                    }
+                    [progresivo setObject:progresivoArray forKey:aKey];
+                    [defaults setObject:progresivoArray forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
+                }
+                
+            }
+            [defaults synchronize];
+            
+            semanas = [contentJSON objectForKey:@"semana"];
+            NSLog(@"Semana %@", semanas);
+            //NSDictionary *data = [[[intensivo objectForKey:@"desayuno"]JSONRepresentation]JSONValue];
+            NSNull *null = [[NSNull alloc] init];
+            if([intensivo objectForKey:@"desayuno"] == null){
+                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"Aún no tienes un método asignado, acude con uno de nuestros especialistas KOT." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                [message show];
+                [message release];
+                message = nil;
+                intensivo = nil;
+                progresivo = nil;
+            }
+            
+        }else{
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            [message show];
+            [message release];
+            message = nil;
+        }
+    }
+    
+}
+
+-(void)loadMiMetodoKot{
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     NSDate *now = [NSDate date];
@@ -143,126 +418,9 @@
         [defaults setFloat:[today3am timeIntervalSince1970] forKey:@"miMetodoTimestamp"];
     }
     
-	// Make synchronous request
-	urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
-    NSString *jsonData = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
+    [self cargaMetodo:NO];
+    [self cargaMetodo:YES];
     
-    NSError *jsonError;
-    SBJSON *json = [[SBJSON new] autorelease];
-    NSDictionary *contentJSON = [json objectWithString:jsonData error:&jsonError];
-    if (contentJSON==nil) {
-        NSString *text = [[NSString alloc] initWithFormat:@"%@", [error localizedDescription]];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:text delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
-        [alert show];
-        [alert release];
-    }else{
-        NSString *messageError = [contentJSON objectForKey:@"mensaje_error"];
-        if([messageError length]==0){
-            
-            intensivo  = [[[contentJSON objectForKey:@"intensivo"]JSONRepresentation]JSONValue];
-            NSArray *keys = [intensivo allKeys];
-            
-            for (int position=0; position < keys.count; position++){
-                id aKey = [keys objectAtIndex:position];
-                NSMutableDictionary *anObject = [intensivo objectForKey:aKey];
-                NSArray *internal_keys = [anObject allKeys];
-                
-                NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
-                NSMutableArray *intensivoArray = [[NSMutableArray alloc] init];
-                int progressive_position = 0;
-                for (int internal_position = 0; internal_position < internal_keys.count; internal_position++){
-                    id internal_aKey = [internal_keys objectAtIndex:internal_position];
-                    
-                    if([[anObject objectForKey:internal_aKey] isEqualToString:@"0"]){
-                        [anObject removeObjectForKey:internal_aKey];
-                    }else if([[anObject objectForKey:internal_aKey] integerValue] >= 1){
-                        if([defaultsArray count] > 0){
-                            for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
-                                NSMutableDictionary *dict = [defaultsArray objectAtIndex:progressive_position];
-                                [intensivoArray addObject:dict];
-                                progressive_position++;
-                            }
-                        }else{
-                            //iteramos por numero de elementos en el json
-                            for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
-                                NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-                                [dict setObject:[NSString stringWithFormat:@"NO_%i", progressive_position] forKey:internal_aKey];
-                            
-                                [intensivoArray addObject:dict];
-                                progressive_position++;
-                            }
-                        }
-                        //NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:internal_aKey ascending:NO];
-                        //[intensivoArray sortUsingDescriptors:[NSArray arrayWithObject:sort]];
-                    }
-                }
-                
-                [intensivo setObject:intensivoArray forKey:aKey];
-                [defaults setObject:intensivoArray forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
-            }
-            
-            progresivo = [[[contentJSON objectForKey:@"progresivo"]JSONRepresentation]JSONValue];
-            keys = [progresivo allKeys];
-            
-            for (int position=0; position < keys.count; position++){
-                id aKey = [keys objectAtIndex:position];
-                NSMutableDictionary *anObject = [progresivo objectForKey:aKey];
-                NSArray *internal_keys = [anObject allKeys];
-                
-                NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
-                NSMutableArray *progresivoArray = [[NSMutableArray alloc] init];
-                int progressive_position = 0;
-                for (int internal_position=0; internal_position < internal_keys.count; internal_position++){
-                    id internal_aKey = [internal_keys objectAtIndex:internal_position];
-                    
-                    if([[anObject objectForKey:internal_aKey] isEqualToString:@"0"]){
-                        [anObject removeObjectForKey:internal_aKey];
-                    }else if([[anObject objectForKey:internal_aKey] integerValue] >= 1){
-                        if([defaultsArray count] > 0){
-                            for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
-                                NSMutableDictionary *dict = [defaultsArray objectAtIndex:progressive_position];
-                                [progresivoArray addObject:dict];
-                                progressive_position++;
-                            }
-                        }else{
-                            //iteramos por numero de elementos en el json
-                            for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
-                                NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-                                [dict setObject:[NSString stringWithFormat:@"NO_%i", progressive_position] forKey:internal_aKey];
-                                
-                                [progresivoArray addObject:dict];
-                                progressive_position++;
-                            }
-                        }
-                    }
-                    //NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:internal_aKey ascending:NO];
-                    //[progresivoArray sortUsingDescriptors:[NSArray arrayWithObject:sort]];
-                }
-                [progresivo setObject:progresivoArray forKey:aKey];
-                [defaults setObject:progresivoArray forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
-            }
-            
-            [defaults synchronize];
-            
-            semanas = [contentJSON objectForKey:@"semana"];
-            NSLog(@"Semana %@", semanas);
-            //NSDictionary *data = [[[intensivo objectForKey:@"desayuno"]JSONRepresentation]JSONValue];
-            NSNull *null = [[NSNull alloc] init];
-            if([intensivo objectForKey:@"desayuno"] == null){
-                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"Aún no tienes un método asignado, acude con uno de nuestros especialistas KOT." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
-                [message show];
-                [message release];
-                message = nil;
-                intensivo = nil;
-                progresivo = nil;
-            }
-        }else{
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
-            [message show];
-            [message release];
-            message = nil;
-        }
-    }
 }
 
 @end
