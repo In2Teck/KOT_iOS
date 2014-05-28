@@ -177,9 +177,11 @@
                         [anObject removeObjectForKey:internal_aKey];
                     }else if([[anObject objectForKey:internal_aKey] integerValue] >= 1){
                         if([defaultsArray count] > 0){
-                            NSMutableDictionary *dict = [defaultsArray objectAtIndex:progressive_position];
-                            [intensivoArray addObject:dict];
-                            progressive_position++;
+                            for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
+                                NSMutableDictionary *dict = [defaultsArray objectAtIndex:progressive_position];
+                                [intensivoArray addObject:dict];
+                                progressive_position++;
+                            }
                         }else{
                             //iteramos por numero de elementos en el json
                             for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
@@ -217,9 +219,11 @@
                         [anObject removeObjectForKey:internal_aKey];
                     }else if([[anObject objectForKey:internal_aKey] integerValue] >= 1){
                         if([defaultsArray count] > 0){
-                            NSMutableDictionary *dict = [defaultsArray objectAtIndex:progressive_position];
-                            [progresivoArray addObject:dict];
-                            progressive_position++;
+                            for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){
+                                NSMutableDictionary *dict = [defaultsArray objectAtIndex:progressive_position];
+                                [progresivoArray addObject:dict];
+                                progressive_position++;
+                            }
                         }else{
                             //iteramos por numero de elementos en el json
                             for (int num=0; num < [[anObject objectForKey:internal_aKey] integerValue];     num++){

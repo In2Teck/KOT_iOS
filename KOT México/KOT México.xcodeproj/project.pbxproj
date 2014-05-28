@@ -276,6 +276,8 @@
 		C7DFC2E0187B78970034EBFB /* MenuAyudaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DFC2DE187B78970034EBFB /* MenuAyudaViewController.xib */; };
 		C7F80D6F18846A9300ABFF5F /* MenuAlimentosPermitidosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F80D6D18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.m */; };
 		C7F80D7018846A9300ABFF5F /* MenuAlimentosPermitidosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F80D6E18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.xib */; };
+		C7F98ACF193550C20016416C /* telefono_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C7F98ACE193550C20016416C /* telefono_2.png */; };
+		C7F98AD2193554960016416C /* localizador_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C7F98AD1193554960016416C /* localizador_2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -681,6 +683,8 @@
 		C7F80D6C18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuAlimentosPermitidosViewController.h; sourceTree = "<group>"; };
 		C7F80D6D18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuAlimentosPermitidosViewController.m; sourceTree = "<group>"; };
 		C7F80D6E18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuAlimentosPermitidosViewController.xib; path = "../KOT México/classes/MenuAlimentosPermitidosViewController.xib"; sourceTree = "<group>"; };
+		C7F98ACE193550C20016416C /* telefono_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = telefono_2.png; sourceTree = "<group>"; };
+		C7F98AD1193554960016416C /* localizador_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = localizador_2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -925,6 +929,8 @@
 		3330149B14BF4C5E00F92EC0 /* assest */ = {
 			isa = PBXGroup;
 			children = (
+				C7F98AD1193554960016416C /* localizador_2.png */,
+				C7F98ACE193550C20016416C /* telefono_2.png */,
 				C79C71CC18AD78C600366258 /* videos */,
 				33C316C01628C0C1004CC622 /* bg_menu.png */,
 				C79B5887191C3BB100BD362A /* circulo_azul.png */,
@@ -1437,8 +1443,10 @@
 				33250B5E14C08FCB006667E2 /* MetodoEjemploViewController.xib in Resources */,
 				33250B6614C099CA006667E2 /* infoCellBkg.png in Resources */,
 				33250B6714C099CA006667E2 /* KOT-36.png in Resources */,
+				C7F98ACF193550C20016416C /* telefono_2.png in Resources */,
 				C7DB2A9D18D77BBD009911FA /* ajustes.png in Resources */,
 				33250B6814C099CA006667E2 /* KOT-37.png in Resources */,
+				C7F98AD2193554960016416C /* localizador_2.png in Resources */,
 				33250B6914C099CA006667E2 /* KOT-38.png in Resources */,
 				33250B7314C09F71006667E2 /* ProgresoViewController.xib in Resources */,
 				C7CC8FAC18CFF122005E1E57 /* FaqViewController.xib in Resources */,
@@ -1680,8 +1688,8 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "FFE1EFB2-09EF-4825-B5B8-AB4DAD6CBDF4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FFE1EFB2-09EF-4825-B5B8-AB4DAD6CBDF4";
+				PROVISIONING_PROFILE = "C5E3A658-B5EC-474A-9620-C5AF07341718";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C5E3A658-B5EC-474A-9620-C5AF07341718";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1729,7 +1737,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jorge Benjamin Hernandez Zetter (U7443L5ZBL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jorge Benjamin Hernandez Zetter (U7443L5ZBL)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1752,8 +1760,8 @@
 					"$(PROJECT_DIR)/FlurryAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FFE1EFB2-09EF-4825-B5B8-AB4DAD6CBDF4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FFE1EFB2-09EF-4825-B5B8-AB4DAD6CBDF4";
+				PROVISIONING_PROFILE = "58ACD6D7-F52C-46FE-8279-D83B5DA27760";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "58ACD6D7-F52C-46FE-8279-D83B5DA27760";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

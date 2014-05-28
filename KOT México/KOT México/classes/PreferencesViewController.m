@@ -397,6 +397,19 @@
     [sqlite release];
     sqlite = nil;
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"miMetodoTimestamp"];
+    [defaults removeObjectForKey:@"desayuno_intensivo"];
+    [defaults removeObjectForKey:@"comida_intensivo"];
+    [defaults removeObjectForKey:@"colacion_1_intensivo"];
+    [defaults removeObjectForKey:@"colacion_2_intensivo"];
+    [defaults removeObjectForKey:@"cena_intensivo"];
+    [defaults removeObjectForKey:@"desayuno_progresivo"];
+    [defaults removeObjectForKey:@"comida_progresivo"];
+    [defaults removeObjectForKey:@"colacion_1_progresivo"];
+    [defaults removeObjectForKey:@"colacion_2_progresivo"];
+    [defaults removeObjectForKey:@"cena_progresivo"];
+    
     [self.myTableView reloadData];
     [self setTitle:@"Perfil No Registrado"];
     [splashLoading performSelector:@selector(removeView) withObject:nil afterDelay:1.0];
