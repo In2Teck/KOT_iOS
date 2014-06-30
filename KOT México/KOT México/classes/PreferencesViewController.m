@@ -417,7 +417,7 @@
 -(void)loginUserAction{
     LoadingView *splashLoading = [LoadingView loadingViewInView:self.tabBarController.view];
     
-    NSString *urlConnection = [[[NSString alloc] initWithFormat:@"http://desarrollo.sysop26.com/kot/nuevo/WS/kotLogin.php?mail=%@&code=%@&password=%@",correo.text,codigo.text,codigo.text ]autorelease];
+    NSString *urlConnection = [[[NSString alloc] initWithFormat:@"http://kot.mx/nuevo/WS/kotLogin.php?mail=%@&code=%@&password=%@",correo.text,codigo.text,codigo.text ]autorelease];
     
     NSLog(@"url Login: %@",urlConnection);
     NSURL *url = [[[NSURL alloc] initWithString:urlConnection] autorelease];

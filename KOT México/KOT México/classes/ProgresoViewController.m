@@ -942,7 +942,7 @@
         [Flurry logEvent:@"Mi Progreso" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:[user objectAtIndex:0],@"Usuario", nil] timed:YES];
         
         
-        NSString *urlConnection = [[[NSString alloc] initWithFormat:@"http://desarrollo.sysop26.com/kot/nuevo/WS/kotMiProgreso.php?idUserKot=%@",[[user objectAtIndex:0]objectAtIndex:0]] autorelease];
+        NSString *urlConnection = [[[NSString alloc] initWithFormat:@"http://kot.mx/nuevo/WS/kotMiProgreso.php?idUserKot=%@",[[user objectAtIndex:0]objectAtIndex:0]] autorelease];
         
         NSURL *url = [[[NSURL alloc] initWithString:urlConnection] autorelease];
         NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:180.0];

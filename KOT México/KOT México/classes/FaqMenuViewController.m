@@ -45,7 +45,7 @@
 }
 
 -(void)loadFAQ{
-    NSString *urlConnection = @"http://desarrollo.sysop26.com/kot/nuevo/WS/kotPreguntas.php";
+    NSString *urlConnection = @"http://kot.mx/nuevo/WS/kotPreguntas.php";
     NSURL *url = [[[NSURL alloc] initWithString:urlConnection] autorelease];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:180.0];
     // Fetch the JSON response

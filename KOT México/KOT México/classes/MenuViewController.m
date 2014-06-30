@@ -107,7 +107,7 @@
 }
 
 -(void)cargaMetodo:(BOOL)isProgresivo{
-    NSString *urlConnection = [NSString stringWithFormat:@"http://desarrollo.sysop26.com/kot/nuevo/WS/kotMiMetodo.php?idUserKot=%@", [[user objectAtIndex:0]objectAtIndex:0]];
+    NSString *urlConnection = [NSString stringWithFormat:@"http://kot.mx/nuevo/WS/kotMiMetodo.php?idUserKot=%@", [[user objectAtIndex:0]objectAtIndex:0]];
     NSURL *url = [[[NSURL alloc] initWithString:urlConnection] autorelease];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:180.0];
     // Fetch the JSON response
@@ -257,7 +257,7 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *urlConnection = [NSString stringWithFormat:@"http://desarrollo.sysop26.com/kot/nuevo/WS/kotMiMetodo.php?idUserKot=%@", [[user objectAtIndex:0]objectAtIndex:0]];
+    NSString *urlConnection = [NSString stringWithFormat:@"http://kot.mx/nuevo/WS/kotMiMetodo.php?idUserKot=%@", [[user objectAtIndex:0]objectAtIndex:0]];
     NSURL *url = [[[NSURL alloc] initWithString:urlConnection] autorelease];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:180.0];
     // Fetch the JSON response
