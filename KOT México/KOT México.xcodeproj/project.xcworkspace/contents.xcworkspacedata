@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../KOT Me&#769;xico/classes/VideoDetailViewController.h">
+   </FileRef>
+   <FileRef
+      location = "group:../KOT Me&#769;xico/classes/VideoDetailViewController.m">
+   </FileRef>
+   <FileRef
+      location = "group:../KOT Me&#769;xico/classes/VideoDetailViewController.xib">
+   </FileRef>
+   <FileRef
+      location = "group:../KOT Me&#769;xico/classes/VideoDetailViewController.h">
+   </FileRef>
+   <FileRef
+      location = "group:../KOT Me&#769;xico/classes/VideoDetailViewController.m">
+   </FileRef>
+   <FileRef
+      location = "group:../KOT Me&#769;xico/classes/VideoDetailViewController.xib">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../../Downloads/rs-SDWebImage-b207dcc/SDWebImage.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "self:KOT Me&#769;xico.xcodeproj">
+   </FileRef>
+</Workspace>
