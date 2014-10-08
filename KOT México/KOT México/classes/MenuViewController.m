@@ -144,7 +144,11 @@
                     NSMutableDictionary *anObject = [intensivo objectForKey:aKey];
                     NSArray *internal_keys = [anObject allKeys];
                     
-                    NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
+                    NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
+                    NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+                    
+//                    NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
+                    
                     NSMutableArray *intensivoArray = [[NSMutableArray alloc] init];
                     int progressive_position = 0;
                     for (int internal_position = 0; internal_position < internal_keys.count; internal_position++){
@@ -180,7 +184,7 @@
                     }
                     
                     [intensivo setObject:intensivoArray forKey:aKey];
-                    [defaults setObject:intensivoArray forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
+                    [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:intensivoArray] forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
                 }
             } else {
                 progresivo = [[[contentJSON objectForKey:@"progresivo"]JSONRepresentation]JSONValue];
@@ -191,7 +195,11 @@
                     NSMutableDictionary *anObject = [progresivo objectForKey:aKey];
                     NSArray *internal_keys = [anObject allKeys];
                     
-                    NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
+                    NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
+                    NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+                    
+//                    NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
+                    
                     NSMutableArray *progresivoArray = [[NSMutableArray alloc] init];
                     int progressive_position = 0;
                     for (int internal_position=0; internal_position < internal_keys.count; internal_position++){
@@ -226,7 +234,7 @@
                     }
                     
                     [progresivo setObject:progresivoArray forKey:aKey];
-                    [defaults setObject:progresivoArray forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
+                    [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:progresivoArray] forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
                 }
             }
             
@@ -296,7 +304,11 @@
                     NSMutableDictionary *anObject = [intensivo objectForKey:aKey];
                     NSArray *internal_keys = [anObject allKeys];
                 
-                    NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
+                    NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
+                    NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+                    
+//                    NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
+                    
                     NSMutableArray *intensivoArray = [[NSMutableArray alloc] init];
                     int progressive_position = 0;
                     for (int internal_position = 0; internal_position < internal_keys.count; internal_position++){
@@ -317,7 +329,7 @@
                     }
                 
                     [intensivo setObject:intensivoArray forKey:aKey];
-                    [defaults setObject:intensivoArray forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
+                    [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:intensivoArray] forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"intensivo"]];
                 }
                 
             }else{
@@ -336,7 +348,12 @@
                     NSMutableDictionary *anObject = [progresivo objectForKey:aKey];
                     NSArray *internal_keys = [anObject allKeys];
                 
-                    NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
+                    
+                    NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
+                    NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+                    
+//                    NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
+                    
                     NSMutableArray *progresivoArray = [[NSMutableArray alloc] init];
                     int progressive_position = 0;
                     for (int internal_position=0; internal_position < internal_keys.count; internal_position++){
@@ -357,7 +374,7 @@
                         }
                     }
                     [progresivo setObject:progresivoArray forKey:aKey];
-                    [defaults setObject:progresivoArray forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
+                    [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:progresivoArray] forKey:[NSString stringWithFormat:@"%@_%@", aKey, @"progresivo"]];
                 }
                 
             }

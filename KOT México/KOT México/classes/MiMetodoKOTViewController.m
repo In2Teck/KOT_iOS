@@ -155,7 +155,10 @@
     
     if(indexPath.section == 0){
         
-        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", postfix]];
+        NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", postfix]];
+        NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+        
+//        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", postfix]];
         
         data = [defaultsArray objectAtIndex:indexPath.row];
         NSArray *internal_keys = [data allKeys];
@@ -188,7 +191,10 @@
      
     } else if (indexPath.section == 1){
         
-        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", postfix]];
+        NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", postfix]];
+        NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+        
+//        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", postfix]];
         
         data = [defaultsArray objectAtIndex:indexPath.row];
         
@@ -219,7 +225,10 @@
         
     } else if (indexPath.section == 2){
         
-        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
+        NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
+        NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+
+//        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
         
         data = [defaultsArray objectAtIndex:indexPath.row];
         
@@ -253,7 +262,10 @@
         
     } else if (indexPath.section == 3){
         
-        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", postfix]];
+        NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", postfix]];
+        NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+        
+//        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", postfix]];
         
         data = [defaultsArray objectAtIndex:indexPath.row];
         
@@ -283,7 +295,10 @@
         [cell.checkSwitch setTag:progressive_index];
         
     } else if (indexPath.section == 4){
-        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
+        
+        NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
+        NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+//        defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
         
         data = [defaultsArray objectAtIndex:indexPath.row];
         
@@ -350,14 +365,45 @@
     /* TODO REPOBLAR INTENSIVO Y PROGRESIVO*/
     
     NSArray *keys =  [[NSArray alloc] initWithObjects:@"desayuno", @"colacion_1", @"comida", @"colacion_2", @"cena", nil];
-    NSArray *intensivoArray = [[NSArray alloc] initWithObjects:[defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", @"intensivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"intensivo"]], nil];
     
-    NSArray *progresivoArray = [[NSArray alloc] initWithObjects:[defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", @"progresivo"]],  [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"progresivo"]], nil];
+    NSData *encodedDataDesayunoIntensivo = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", @"intensivo"]];
+    NSMutableArray *desayunoIntensivoArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedDataDesayunoIntensivo];
+    
+    NSData *encodedDataColacion1Intensivo = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", @"intensivo"]];
+    NSMutableArray *colacion1IntensivoArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedDataColacion1Intensivo];
+    
+    NSData *encodedDataComidaIntensivo = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"comida", @"intensivo"]];
+    NSMutableArray *comidaIntensivoArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedDataComidaIntensivo];
+    
+    NSData *encodedDataColacion2Intensivo = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", @"intensivo"]];
+    NSMutableArray *colacion2IntensivoArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedDataColacion2Intensivo];
+    
+    NSData *encodedDataCenaIntensivo = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"intensivo"]];
+    NSMutableArray *cenaIntensivoArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedDataComidaIntensivo];
+    
+    NSArray *intensivoArray = [[NSArray alloc] initWithObjects:desayunoIntensivoArray, colacion1IntensivoArray, comidaIntensivoArray, colacion2IntensivoArray, cenaIntensivoArray, nil];
+ 
+    NSData *encodedDataDesayunoProgresivo = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", @"progresivo"]];
+    NSMutableArray *desayunoProgresivoArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedDataDesayunoProgresivo];
+    
+    NSData *encodedDataColacion1Progresivo = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", @"progresivo"]];
+    NSMutableArray *colacion1ProgresivoArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedDataColacion1Progresivo];
+    
+    NSData *encodedDataComidaProgresivo = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"comida", @"progresivo"]];
+    NSMutableArray *comidaProgresivoArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedDataComidaProgresivo];
+    
+    NSData *encodedDataColacion2Progresivo = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", @"progresivo"]];
+    NSMutableArray *colacion2ProgresivoArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedDataColacion2Progresivo];
+    
+    NSData *encodedDataCenaProgresivo = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"progresivo"]];
+    NSMutableArray *cenaProgresivoArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedDataComidaProgresivo];
+    
+    NSArray *progresivoArray = [[NSArray alloc] initWithObjects:desayunoProgresivoArray, colacion1ProgresivoArray, comidaProgresivoArray, colacion2ProgresivoArray, cenaProgresivoArray, nil];
+    
+//    NSArray *progresivoArray = [[NSArray alloc] initWithObjects:[defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", @"progresivo"]],  [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", @"progresivo"]], [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"progresivo"]], nil];
     
     intensivo = [[NSMutableDictionary alloc] initWithObjects:intensivoArray forKeys:keys];
     progresivo = [[NSMutableDictionary alloc] initWithObjects:progresivoArray forKeys:keys];
-    
-    //[defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", @"progresivo"]]
     
     [myTableView reloadData];
     [myLoadingView performSelector:@selector(removeView) withObject:nil afterDelay:1.0];
@@ -380,7 +426,9 @@
     if (sender.tag >= 40){ // cena
         index = index - 40;
         
-        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
+        NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
+        NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+//        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
         NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
         
         NSString *value;
@@ -392,12 +440,15 @@
         [dict setObject:value forKey:internal_keys[0]];
         [defaultsArray replaceObjectAtIndex:index withObject:dict];
         
-        [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
+        [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:defaultsArray] forKey:[NSString stringWithFormat:@"%@_%@", @"cena", postfix]];
         
     } else if (sender.tag >= 30) { // colacion_2
         index = index - 30;
         
-        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", postfix]];
+        NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", postfix]];
+        NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+
+//        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", postfix]];
         NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
         
         NSString *value;
@@ -409,12 +460,14 @@
         [dict setObject:value forKey:internal_keys[0]];
         [defaultsArray replaceObjectAtIndex:index withObject:dict];
         
-        [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", postfix]];
+        [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:defaultsArray] forKey:[NSString stringWithFormat:@"%@_%@", @"colacion_2", postfix]];
         
     } else if (sender.tag >= 20) { // comida
         index = index - 20;
         
-        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
+        NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
+        NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+//        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
         NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
         
         NSString *value;
@@ -426,11 +479,13 @@
         [dict setObject:value forKey:internal_keys[0]];
         [defaultsArray replaceObjectAtIndex:index withObject:dict];
         
-        [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
+        [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:defaultsArray] forKey:[NSString stringWithFormat:@"%@_%@", @"comida", postfix]];
     }else if (sender.tag >= 10) { // colacion_1
         index = index - 10;
         
-        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", postfix]];
+        NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", postfix]];
+        NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+//        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", postfix]];
         NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
         
         NSString *value;
@@ -442,11 +497,14 @@
         [dict setObject:value forKey:internal_keys[0]];
         [defaultsArray replaceObjectAtIndex:index withObject:dict];
         
-        [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", postfix]];
+        [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:defaultsArray] forKey:[NSString stringWithFormat:@"%@_%@", @"colacion_1", postfix]];
         
     } else { // desayuno
+//        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", postfix]];
         
-        NSMutableArray *defaultsArray = [defaults mutableArrayValueForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", postfix]];
+        NSData *encodedData = [defaults objectForKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", postfix]];
+        NSMutableArray *defaultsArray = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+
         NSArray *internal_keys = [[defaultsArray objectAtIndex:index] allKeys];
         
         NSString *value;
@@ -455,11 +513,16 @@
         }else{
             value = [NSString stringWithFormat:@"NO_%i", index];
         }
+        NSLog(@"Internal Keys: %@", internal_keys[0]);
+        
         [dict setObject:value forKey:internal_keys[0]];
         [defaultsArray replaceObjectAtIndex:index withObject:dict];
+
+        NSLog(@"ARRAY %@", [NSArray arrayWithObjects: @{@"proteinas_vegetales": @"YES_1"}, @{@"proteina_vegetale": @"YES_1"}, nil]);
         
         NSLog(@"Defaults Array: %@", defaultsArray);
-        [defaults setObject:defaultsArray forKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", postfix]];
+        
+        [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:defaultsArray] forKey:[NSString stringWithFormat:@"%@_%@", @"desayuno", postfix]];
     }
 }
 

@@ -14,9 +14,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3330146814BF49C100F92EC0"
-               BuildableName = "KOT Me&#769;xico.app"
-               BlueprintName = "KOT Me&#769;xico"
-               ReferencedContainer = "container:KOT Me&#769;xico.xcodeproj">
+               BuildableName = "KOT Me&#x301;xico.app"
+               BlueprintName = "KOT Me&#x301;xico"
+               ReferencedContainer = "container:KOT Me&#x301;xico.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,9 +32,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3330146814BF49C100F92EC0"
-            BuildableName = "KOT Me&#769;xico.app"
-            BlueprintName = "KOT Me&#769;xico"
-            ReferencedContainer = "container:KOT Me&#769;xico.xcodeproj">
+            BuildableName = "KOT Me&#x301;xico.app"
+            BlueprintName = "KOT Me&#x301;xico"
+            ReferencedContainer = "container:KOT Me&#x301;xico.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -43,7 +43,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
@@ -51,9 +51,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3330146814BF49C100F92EC0"
-            BuildableName = "KOT Me&#769;xico.app"
-            BlueprintName = "KOT Me&#769;xico"
-            ReferencedContainer = "container:KOT Me&#769;xico.xcodeproj">
+            BuildableName = "KOT Me&#x301;xico.app"
+            BlueprintName = "KOT Me&#x301;xico"
+            ReferencedContainer = "container:KOT Me&#x301;xico.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3330146814BF49C100F92EC0"
-            BuildableName = "KOT Me&#769;xico.app"
-            BlueprintName = "KOT Me&#769;xico"
-            ReferencedContainer = "container:KOT Me&#769;xico.xcodeproj">
+            BuildableName = "KOT Me&#x301;xico.app"
+            BlueprintName = "KOT Me&#x301;xico"
+            ReferencedContainer = "container:KOT Me&#x301;xico.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
