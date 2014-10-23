@@ -53,6 +53,7 @@
     [self.segmentedControl setEnabled:NO];
     self.indexStr = [[NSString alloc] initWithString:@"0"];
     locationManager = [[CLLocationManager alloc] init];
+    [locationManager requestWhenInUseAuthorization];
     [locationManager startUpdatingLocation];
     
     locationPicker.delegate = self;
