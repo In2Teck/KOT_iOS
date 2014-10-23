@@ -102,6 +102,19 @@
     return @"";
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UILabel *myLabel = [[UILabel alloc] init];
+    myLabel.frame = CGRectMake(0, 0, 320, 20);
+    myLabel.font = [UIFont boldSystemFontOfSize:12];
+    myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    
+    UIView *headerView = [[UIView alloc] init];
+    [headerView addSubview:myLabel];
+    
+    return headerView;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     //return [CollapsableTableViewViewController titleForHeaderForSection:section];
@@ -109,6 +122,7 @@
     NSDictionary *itemJSon = [[[dataSourseList objectAtIndex:section] JSONRepresentation] JSONValue];
     
     return [itemJSon objectForKey:@"nombre"];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -456,7 +470,6 @@
 //    menu.frame = menuRect;
 //    [menu setAutoresizesSubviews:NO];
     
-    
     CGRect pickerRect = pickerView.frame;
     pickerRect.origin.y = 90;
     pickerView.frame = pickerRect;
@@ -483,11 +496,17 @@
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
     
+    //UILabel *label = (id)view;
+    /*if (!label) {
+        label = [[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [pickerView rowSizeForComponent:component].width, [pickerView rowSizeForComponent:component].height)] autorelease];
+    }*/
+    
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, pickerView.frame.size.width, 44)];
     //label.backgroundColor = [UIColor grayColor];
     label.textColor = [UIColor whiteColor];
 //    label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18];
     label.text = [self pickerView:locationPicker titleForRow:row forComponent:component];
+    label.font = [UIFont systemFontOfSize:14];
     return label;
 }
 
