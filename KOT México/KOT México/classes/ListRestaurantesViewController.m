@@ -74,7 +74,6 @@
     label.textColor = [UIColor whiteColor];
     //    label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18];
     label.text = [self pickerView:locationPicker titleForRow:row forComponent:component];
-    label.font = [UIFont systemFontOfSize:14];
     return label;
 }
 
@@ -460,8 +459,7 @@
     SBJSON *json = [[SBJSON new] autorelease];
     NSDictionary *contentJSON = [json objectWithString:jsonData error:&jsonError];
     if (contentJSON==nil) {
-        //NSString *text = [[NSString alloc] initWithFormat:@"%@", [error localizedDescription]];
-        NSString *text = @"Prueba otro restaurante";
+        NSString *text = [[NSString alloc] initWithFormat:@"%@", [error localizedDescription]];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:text delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
         [alert show];
         [alert release];
