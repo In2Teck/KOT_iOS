@@ -502,12 +502,15 @@
         label = [[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [pickerView rowSizeForComponent:component].width, [pickerView rowSizeForComponent:component].height)] autorelease];
     }*/
     
+    
+    
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, pickerView.frame.size.width, 44)];
     //label.backgroundColor = [UIColor grayColor];
     label.textColor = [UIColor whiteColor];
 //    label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18];
     label.text = [self pickerView:locationPicker titleForRow:row forComponent:component];
-    label.font = [UIFont systemFontOfSize:14];
+    //label.font = [UIFont systemFontOfSize:14];
+    [label setTextAlignment:NSTextAlignmentCenter];
     return label;
 }
 

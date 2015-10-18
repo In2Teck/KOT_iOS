@@ -531,7 +531,7 @@
         diff = [self gcdM:max N:min];
         int odd = 1;
         while (diff > 12 || diff < 3){
-            if (odd%2){
+            if (odd%2==0){
                 min -= 1;
                 if (min <= 0){
                     min = 2;
@@ -688,7 +688,7 @@
         diff = [self gcdM:max N:min];
         int odd = 1;
         while (diff > 12 || diff < 3){
-            if (odd%2){
+            if (odd%2==0){
                 min -= 1;
                 if (min <= 0){
                     min = 2;
@@ -845,7 +845,7 @@
         diff = [self gcdM:max N:min];
         int odd = 1;
         while (diff > 12 || diff < 3){
-            if (odd%2){
+            if (odd%2==0){
                 min -= 1;
                 if (min <= 0){
                     min = 2;

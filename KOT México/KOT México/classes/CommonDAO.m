@@ -109,6 +109,7 @@
     NSMutableArray *all = [[NSMutableArray alloc]init];
     
     const char *select_stmt = [sql UTF8String];
+    [self init];
     if(sqlite3_open([databasePath UTF8String], &dataBase) == SQLITE_OK) {
         
         if(sqlite3_prepare_v2(dataBase, select_stmt, -1, &compiledStatement, NULL) == SQLITE_OK) {
@@ -131,7 +132,7 @@
         }
         
     }else{
-        NSLog(@"error data bace acces");
+        NSLog(@"error data base access");
     }
     
     [self clossResource];

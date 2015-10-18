@@ -125,7 +125,6 @@
 		3330154D14BF519B00F92EC0 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3330154B14BF519B00F92EC0 /* HomeViewController.xib */; };
 		3330155114BF57EC00F92EC0 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3330154F14BF57EC00F92EC0 /* MenuViewController.m */; };
 		3330155214BF57EC00F92EC0 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3330155014BF57EC00F92EC0 /* MenuViewController.xib */; };
-		3330155D14BF874200F92EC0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3330155C14BF874100F92EC0 /* libsqlite3.0.dylib */; };
 		3330155F14BF889A00F92EC0 /* Element-04.png in Resources */ = {isa = PBXBuildFile; fileRef = 3330155E14BF889A00F92EC0 /* Element-04.png */; };
 		3330156314BF8B6100F92EC0 /* AlimentoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3330156114BF8B6000F92EC0 /* AlimentoDetailViewController.m */; };
 		3330156414BF8B6100F92EC0 /* AlimentoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3330156214BF8B6000F92EC0 /* AlimentoDetailViewController.xib */; };
@@ -211,8 +210,6 @@
 		337C31E416F248A2003FEA4C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 337C31E316F248A2003FEA4C /* Default@2x.png */; };
 		337C31E616F248AE003FEA4C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 337C31E516F248AE003FEA4C /* Default-568h@2x.png */; };
 		3388718214EEC3AB001F8962 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 3388718114EEC3AB001F8962 /* loading.png */; };
-		338C8E1317A07F1E00FAC325 /* Flurry.h in Resources */ = {isa = PBXBuildFile; fileRef = 338C8E0C17A07AF400FAC325 /* Flurry.h */; };
-		338C8E1917A0815A00FAC325 /* libFlurry_4.2.2.a in Resources */ = {isa = PBXBuildFile; fileRef = 338C8E1717A0811300FAC325 /* libFlurry_4.2.2.a */; };
 		338C8E1B17A0820000FAC325 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338C8E1A17A0820000FAC325 /* SystemConfiguration.framework */; };
 		338DBBA514D707CB00352E6F /* CollapsableTableViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 338DBBA414D707CB00352E6F /* CollapsableTableViewViewController.xib */; };
 		3393199A14F69BD900E91657 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3393199714F69BD900E91657 /* AboutViewController.xib */; };
@@ -227,11 +224,9 @@
 		33C471A914F5467A00A1835A /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 33C471A814F5467A00A1835A /* iTunesArtwork */; };
 		33EB3AAE14F43FD900555755 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EB3AAC14F43FD900555755 /* facebook_icon.png */; };
 		33EB3AAF14F43FD900555755 /* twitter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EB3AAD14F43FD900555755 /* twitter_icon.png */; };
-		33F1C2BE14DEE3730069EBB3 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3314769B14DCA740002AF3ED /* libSDWebImage.a */; };
 		C7041F4118F5B375006E8A40 /* MiMetodoCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7041F4018F5B375006E8A40 /* MiMetodoCellViewController.xib */; };
 		C72B1AFC18D7CC4300F10CA2 /* VideoMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72B1AFA18D7CC4300F10CA2 /* VideoMenuViewController.m */; };
 		C72B1AFD18D7CC4300F10CA2 /* VideoMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72B1AFB18D7CC4300F10CA2 /* VideoMenuViewController.xib */; };
-		C74892B61911D3EE00E06385 /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 338C8E1717A0811300FAC325 /* libFlurry_4.2.2.a */; };
 		C74892B81911D43A00E06385 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74892B71911D43A00E06385 /* Twitter.framework */; };
 		C79B5889191C3BB100BD362A /* circulo_azul.png in Resources */ = {isa = PBXBuildFile; fileRef = C79B5887191C3BB100BD362A /* circulo_azul.png */; };
 		C79B588A191C3BB100BD362A /* circulo_magenta.png in Resources */ = {isa = PBXBuildFile; fileRef = C79B5888191C3BB100BD362A /* circulo_magenta.png */; };
@@ -243,6 +238,11 @@
 		C79C71D518AD78C600366258 /* purepapa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C79C71D018AD78C600366258 /* purepapa.jpg */; };
 		C79C71D618AD78C600366258 /* smoothie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C79C71D118AD78C600366258 /* smoothie.jpg */; };
 		C7AC82F318F4B82A001E23E1 /* MiMetodoCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7AC82F118F4B82A001E23E1 /* MiMetodoCellViewController.m */; };
+		C7C69EF41BD30AF900F75BCB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C69EF31BD30AF900F75BCB /* Security.framework */; };
+		C7C69EF61BD30C0200F75BCB /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C69EF51BD30C0200F75BCB /* libFlurry_7.2.1.a */; settings = {ASSET_TAGS = (); }; };
+		C7C69EF81BD30EC400F75BCB /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C69EF71BD30EC400F75BCB /* libSDWebImage.a */; settings = {ASSET_TAGS = (); }; };
+		C7C69EF91BD313BE00F75BCB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C7EA95191BBB17F400693CC1 /* libsqlite3.0.tbd */; };
+		C7C69EFC1BD3140B00F75BCB /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C69EFB1BD3140B00F75BCB /* libsqlite3.tbd */; };
 		C7CC8FA118CF9B8D005E1E57 /* FaqMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CC8F9F18CF9B8D005E1E57 /* FaqMenuViewController.m */; };
 		C7CC8FA218CF9B8D005E1E57 /* FaqMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CC8FA018CF9B8D005E1E57 /* FaqMenuViewController.xib */; };
 		C7CC8FAB18CFF122005E1E57 /* FaqViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CC8FA918CFF122005E1E57 /* FaqViewController.m */; };
@@ -453,7 +453,6 @@
 		3330154E14BF57EC00F92EC0 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		3330154F14BF57EC00F92EC0 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		3330155014BF57EC00F92EC0 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = "../KOT México/classes/MenuViewController.xib"; sourceTree = "<group>"; };
-		3330155C14BF874100F92EC0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		3330155E14BF889A00F92EC0 /* Element-04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Element-04.png"; sourceTree = "<group>"; };
 		3330156014BF8B6000F92EC0 /* AlimentoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlimentoDetailViewController.h; sourceTree = "<group>"; };
 		3330156114BF8B6000F92EC0 /* AlimentoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlimentoDetailViewController.m; sourceTree = "<group>"; };
@@ -608,7 +607,6 @@
 		337C31E516F248AE003FEA4C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3388718114EEC3AB001F8962 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		338C8E0C17A07AF400FAC325 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		338C8E1717A0811300FAC325 /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_4.2.2.a; path = FlurryAnalytics/libFlurry_4.2.2.a; sourceTree = "<group>"; };
 		338C8E1A17A0820000FAC325 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		338DBBA414D707CB00352E6F /* CollapsableTableViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollapsableTableViewViewController.xib; sourceTree = "<group>"; };
 		3393199714F69BD900E91657 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -640,8 +638,13 @@
 		C79C71CF18AD78C600366258 /* pasta.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pasta.jpg; sourceTree = "<group>"; };
 		C79C71D018AD78C600366258 /* purepapa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = purepapa.jpg; sourceTree = "<group>"; };
 		C79C71D118AD78C600366258 /* smoothie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smoothie.jpg; sourceTree = "<group>"; };
+		C7A95F3519FB1B6600F144D2 /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_4.2.2.a; path = FlurryAnalytics/libFlurry_4.2.2.a; sourceTree = "<group>"; };
 		C7AC82F018F4B82A001E23E1 /* MiMetodoCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiMetodoCellViewController.h; sourceTree = "<group>"; };
 		C7AC82F118F4B82A001E23E1 /* MiMetodoCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiMetodoCellViewController.m; sourceTree = "<group>"; };
+		C7C69EF31BD30AF900F75BCB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C7C69EF51BD30C0200F75BCB /* libFlurry_7.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.2.1.a; sourceTree = "<group>"; };
+		C7C69EF71BD30EC400F75BCB /* libSDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDWebImage.a; sourceTree = "<group>"; };
+		C7C69EFB1BD3140B00F75BCB /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		C7CC8F9E18CF9B8D005E1E57 /* FaqMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqMenuViewController.h; sourceTree = "<group>"; };
 		C7CC8F9F18CF9B8D005E1E57 /* FaqMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqMenuViewController.m; sourceTree = "<group>"; };
 		C7CC8FA018CF9B8D005E1E57 /* FaqMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FaqMenuViewController.xib; path = "../KOT México/classes/FaqMenuViewController.xib"; sourceTree = "<group>"; };
@@ -680,6 +683,7 @@
 		C7DFC2DC187B78970034EBFB /* MenuAyudaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuAyudaViewController.h; sourceTree = "<group>"; };
 		C7DFC2DD187B78970034EBFB /* MenuAyudaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuAyudaViewController.m; sourceTree = "<group>"; };
 		C7DFC2DE187B78970034EBFB /* MenuAyudaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuAyudaViewController.xib; path = "../KOT México/classes/MenuAyudaViewController.xib"; sourceTree = "<group>"; };
+		C7EA95191BBB17F400693CC1 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		C7F80D6C18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuAlimentosPermitidosViewController.h; sourceTree = "<group>"; };
 		C7F80D6D18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuAlimentosPermitidosViewController.m; sourceTree = "<group>"; };
 		C7F80D6E18846A9200ABFF5F /* MenuAlimentosPermitidosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuAlimentosPermitidosViewController.xib; path = "../KOT México/classes/MenuAlimentosPermitidosViewController.xib"; sourceTree = "<group>"; };
@@ -692,18 +696,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7C69EF91BD313BE00F75BCB /* libsqlite3.0.tbd in Frameworks */,
+				C7C69EFC1BD3140B00F75BCB /* libsqlite3.tbd in Frameworks */,
+				C7C69EF41BD30AF900F75BCB /* Security.framework in Frameworks */,
 				C74892B81911D43A00E06385 /* Twitter.framework in Frameworks */,
-				C74892B61911D3EE00E06385 /* libFlurry_4.2.2.a in Frameworks */,
 				C7CC8FB218D119A6005E1E57 /* CoreText.framework in Frameworks */,
 				338C8E1B17A0820000FAC325 /* SystemConfiguration.framework in Frameworks */,
 				33AC02C5166D160E00F3F042 /* MediaPlayer.framework in Frameworks */,
 				3339CC5414E186710041C9C6 /* MessageUI.framework in Frameworks */,
-				33F1C2BE14DEE3730069EBB3 /* libSDWebImage.a in Frameworks */,
 				33408A6F14D8AE2800A1F175 /* MapKit.framework in Frameworks */,
 				33408A6D14D89D4000A1F175 /* AddressBook.framework in Frameworks */,
+				C7C69EF61BD30C0200F75BCB /* libFlurry_7.2.1.a in Frameworks */,
 				330EED9F14C9D6710026A1B8 /* CoreLocation.framework in Frameworks */,
 				332A78E614C87FB700FD6EB9 /* QuartzCore.framework in Frameworks */,
-				3330155D14BF874200F92EC0 /* libsqlite3.0.dylib in Frameworks */,
+				C7C69EF81BD30EC400F75BCB /* libSDWebImage.a in Frameworks */,
 				3330146E14BF49C100F92EC0 /* UIKit.framework in Frameworks */,
 				228E88C019E46BE90096AEE3 /* FacebookSDK.framework in Frameworks */,
 				3330147014BF49C100F92EC0 /* Foundation.framework in Frameworks */,
@@ -852,10 +858,12 @@
 		3330146C14BF49C100F92EC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7C69EFB1BD3140B00F75BCB /* libsqlite3.tbd */,
+				C7C69EF31BD30AF900F75BCB /* Security.framework */,
+				C7EA95191BBB17F400693CC1 /* libsqlite3.0.tbd */,
 				228E88BF19E46BE90096AEE3 /* FacebookSDK.framework */,
 				C74892B71911D43A00E06385 /* Twitter.framework */,
 				C7CC8FB118D119A6005E1E57 /* CoreText.framework */,
-				3330155C14BF874100F92EC0 /* libsqlite3.0.dylib */,
 				338C8E1A17A0820000FAC325 /* SystemConfiguration.framework */,
 				33AC02C4166D160E00F3F042 /* MediaPlayer.framework */,
 				3339CC5314E186700041C9C6 /* MessageUI.framework */,
@@ -898,6 +906,7 @@
 				C7DB2A8D18D77BBD009911FA /* new_design */,
 				33C471A814F5467A00A1835A /* iTunesArtwork */,
 				33EB3AB814F4688B00555755 /* Icon@2x.png */,
+				C7C69EF71BD30EC400F75BCB /* libSDWebImage.a */,
 				C7DFC2D4186E12D00034EBFB /* AyudaViewController.xib */,
 				C7DFC2CF186E10820034EBFB /* ConoceViewController.xib */,
 				C7DFC2DE187B78970034EBFB /* MenuAyudaViewController.xib */,
@@ -1241,7 +1250,8 @@
 		338C8E0617A07A8600FAC325 /* FlurryAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				338C8E1717A0811300FAC325 /* libFlurry_4.2.2.a */,
+				C7C69EF51BD30C0200F75BCB /* libFlurry_7.2.1.a */,
+				C7A95F3519FB1B6600F144D2 /* libFlurry_4.2.2.a */,
 				338C8E0C17A07AF400FAC325 /* Flurry.h */,
 			);
 			name = FlurryAnalytics;
@@ -1356,8 +1366,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7DFC2D6186E12D00034EBFB /* AyudaViewController.xib in Resources */,
-				338C8E1917A0815A00FAC325 /* libFlurry_4.2.2.a in Resources */,
-				338C8E1317A07F1E00FAC325 /* Flurry.h in Resources */,
 				C79C71D218AD78C600366258 /* crema.jpg in Resources */,
 				3330147814BF49C100F92EC0 /* InfoPlist.strings in Resources */,
 				C79B588F191C5A5400BD362A /* telefono.png in Resources */,
@@ -1641,10 +1649,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jorge Benjamin Hernandez Zetter (Z9C27FZ69G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jorge Benjamin Hernandez Zetter (Z9C27FZ69G)";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1662,10 +1671,12 @@
 					include/,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PROVISIONING_PROFILE = "6C095031-E0F1-4C26-8447-4D0416180FF5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6C095031-E0F1-4C26-8447-4D0416180FF5";
+				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "1bf46d31-6972-4b54-8368-fe7e860bcf21";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1bf46d31-6972-4b54-8368-fe7e860bcf21";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 arm64 armv7s";
 			};
 			name = Debug;
 		};
@@ -1673,10 +1684,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jorge Benjamin Hernandez Zetter (U7443L5ZBL)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jorge Benjamin Hernandez Zetter (U7443L5ZBL)";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -1687,11 +1699,13 @@
 					include/,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "2C38A465-576F-41A5-9EB1-04ED64E0FFF5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C38A465-576F-41A5-9EB1-04ED64E0FFF5";
+				PROVISIONING_PROFILE = "7309915b-ce64-41dc-8925-52a77772cc5d";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7309915b-ce64-41dc-8925-52a77772cc5d";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 arm64 armv7s";
 			};
 			name = Release;
 		};
@@ -1699,8 +1713,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jorge Benjamin Hernandez Zetter (Z9C27FZ69G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jorge Benjamin Hernandez Zetter (Z9C27FZ69G)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1722,13 +1736,18 @@
 					"\"$(SRCROOT)/Developer/Flurry iPhone SDK v3.0.9/FlurryAppCircle\"",
 					"\"$(SRCROOT)/../../../Flurry iPhone SDK viPhone 4.2.2/Flurry-iOS-4.2.2/FlurryAnalytics\"",
 					"$(PROJECT_DIR)/FlurryAnalytics",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Resources",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				"OTHER_CFLAGS[arch=*]" = "";
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mx.naranya.KOT-Me-xico";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6C095031-E0F1-4C26-8447-4D0416180FF5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6C095031-E0F1-4C26-8447-4D0416180FF5";
+				PROVISIONING_PROFILE = "b9e66bc2-a714-4ffc-ab5e-eb8b74b295f1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b9e66bc2-a714-4ffc-ab5e-eb8b74b295f1";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1737,8 +1756,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jorge Benjamin Hernandez Zetter (U7443L5ZBL)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jorge Benjamin Hernandez Zetter (U7443L5ZBL)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1760,12 +1779,17 @@
 					"\"$(SRCROOT)/Developer/Flurry iPhone SDK v3.0.9/FlurryAppCircle\"",
 					"\"$(SRCROOT)/../../../Flurry iPhone SDK viPhone 4.2.2/Flurry-iOS-4.2.2/FlurryAnalytics\"",
 					"$(PROJECT_DIR)/FlurryAnalytics",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Resources",
 				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mx.naranya.KOT-Me-xico";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2C38A465-576F-41A5-9EB1-04ED64E0FFF5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C38A465-576F-41A5-9EB1-04ED64E0FFF5";
+				PROVISIONING_PROFILE = "b9e66bc2-a714-4ffc-ab5e-eb8b74b295f1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b9e66bc2-a714-4ffc-ab5e-eb8b74b295f1";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

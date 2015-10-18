@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CollapsableTableViewViewController">
@@ -26,25 +26,30 @@
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="KSr-he-iVM">
                             <rect key="frame" x="275" y="8" width="37" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                         </activityIndicatorView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecciona tu Ciudad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gj1-Fl-P1O">
                             <rect key="frame" x="56" y="8" width="211" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <color key="backgroundColor" red="0.36078431370000003" green="0.75686274509999996" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <pickerView contentMode="scaleToFill" id="ivc-Sx-76m">
-                            <rect key="frame" x="47" y="0.0" width="225" height="48"/>
+                            <rect key="frame" x="47" y="30" width="225" height="48"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <animations/>
                         </pickerView>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.75686274509999996" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Comienza tu método KOT con el especialista       de tu preferencia." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="17">
                     <rect key="frame" x="0.0" y="189" width="320" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <animations/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.75686274509999996" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -53,6 +58,7 @@
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Esh-ut-xEu">
                     <rect key="frame" x="99" y="243" width="123" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <animations/>
                     <segments>
                         <segment title="A-Z"/>
                         <segment title="Distancia"/>
@@ -65,6 +71,7 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8">
                     <rect key="frame" x="0.0" y="279" width="320" height="201"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="50"/>
                     <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="50"/>
@@ -74,14 +81,10 @@
                     </connections>
                 </tableView>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="0.36078431370000003" green="0.75686274509999996" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="139" y="158"/>
         </view>
     </objects>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
