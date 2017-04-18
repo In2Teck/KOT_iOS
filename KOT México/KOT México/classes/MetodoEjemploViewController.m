@@ -10,7 +10,6 @@
 #import "DTCustomColoredAccessory.h"
 #import "AlimentoDetailViewController.h"
 #import "ProductosViewController.h"
-#import "Flurry.h"
 
 
 @implementation MetodoEjemploViewController
@@ -32,23 +31,6 @@
     if (!expandedSections)
     {
         expandedSections = [[NSMutableIndexSet alloc] init];
-    }
-    
-    switch (self.type) {
-        case 1:
-            [Flurry logEvent:@"Método Mujer Intensiva" timed:YES];
-            break;
-        case 2:
-            [Flurry logEvent:@"Método Mujer Progresiva" timed:YES];
-            break;
-        case 3:
-            [Flurry logEvent:@"Método Hombre Intensivo" timed:YES];
-            break;
-        case 4:
-            [Flurry logEvent:@"Método Hombre Progresivo" timed:YES];
-            break;
-        default:
-            break;
     }
     
     [self changeMethod:self.type];
@@ -137,7 +119,7 @@
             
             [cell.textLabel setTextAlignment:UITextAlignmentCenter];
             [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"barra amarilla.png"]]];
-            [cell.textLabel setTextColor:[UIColor grayColor]];
+            [cell.textLabel setTextColor:[UIColor whiteColor]];
             [cell.textLabel setBackgroundColor:[UIColor clearColor]];
             [cell.accessoryView setBackgroundColor:[UIColor clearColor]];
         }else{

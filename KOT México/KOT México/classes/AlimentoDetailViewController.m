@@ -7,7 +7,6 @@
 //
 
 #import "AlimentoDetailViewController.h"
-#import "Flurry.h"
 
 #define TITLE_LABEL 1
 #define DESC_LABEL  2
@@ -56,32 +55,6 @@
                        select: [[NSString alloc] initWithFormat:
                                 @"SELECT id_alimento, id_cat_alimento, alimento, descripcion FROM alimentos WHERE id_cat_alimento = %@ ORDER BY alimento ASC;", [alimentoDetail objectAtIndex:0]]
                        keys:[[NSArray alloc] initWithObjects:@"id_alimento",@"id_cat_alimento",@"alimento",@"descripcion", nil]];
-    }
-    
-    switch (self.type) {
-        case 1:
-            [Flurry logEvent:@"Método Mujer Intensiva Selección" 
-                             withParameters: [NSDictionary dictionaryWithObjectsAndKeys:[alimentoDetail objectAtIndex:1],@"alimento_seleccionado", nil]
-                            timed:YES];
-            break;
-        case 2:
-            [Flurry logEvent:@"Método Mujer Progresiva Selección" withParameters: [NSDictionary dictionaryWithObjectsAndKeys:[alimentoDetail objectAtIndex:1],@"alimento_seleccionado", nil]
-                                timed:YES];
-            break;
-        case 3:
-            [Flurry logEvent:@"Método Hombre Intensivo Selección" withParameters: [NSDictionary dictionaryWithObjectsAndKeys:[alimentoDetail objectAtIndex:1],@"alimento_seleccionado", nil]
-                                timed:YES];
-            break;
-        case 4:
-            [Flurry logEvent:@"Método Hombre Progresivo Selección" withParameters: [NSDictionary dictionaryWithObjectsAndKeys:[alimentoDetail objectAtIndex:1],@"alimento_seleccionado", nil]
-                                timed:YES];
-            break;
-        case 5:
-            [Flurry logEvent:@"My Método KOT  Selección" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:[alimentoDetail objectAtIndex:1],@"alimento_seleccionado", nil] timed:YES];
-            break;
-        default:
-            [Flurry logEvent:@"Alimentos Permitidos Selección" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:[alimentoDetail objectAtIndex:1],@"alimento_seleccionado", nil] timed:YES];
-            break;
     }
     
     //self.title = [alimentoDetail objectAtIndex:1];

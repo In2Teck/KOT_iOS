@@ -10,7 +10,6 @@
 #import "ProductoDetailViewController.h"
 #import "VideosKOTViewController.h"
 #import "CollapsableTableViewViewController.h"
-#import "Flurry.h"
 #import "VideoDetailViewController.h"
 
 @implementation ProductosViewController
@@ -60,7 +59,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.navigationItem.backBarButtonItem setImage:[UIImage imageNamed:@"back-26.png"]];
     
-    [Flurry logEvent:@"Productos Kot Home" withParameters:nil timed:YES];
     
     [self loadVideos];
     
@@ -153,7 +151,7 @@
                 }
             }
         }else{
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [message show];
             [message release];
             message = nil;
@@ -177,18 +175,18 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     [cell.textLabel setBackgroundColor:[UIColor clearColor]];
-    [cell.textLabel setTextColor:[UIColor whiteColor]];
+    [cell.textLabel setTextColor:[UIColor blackColor]];
     
     if (indexPath.row == 0){
-        [cell.textLabel setText:@"El Método KOT"];
+        [cell.textLabel setText:@"El Método Zélé"];
         [cell.textLabel setTextAlignment:UITextAlignmentCenter];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
-        [cell setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+        [cell setBackgroundColor: [UIColor whiteColor]];
         //[cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
         cell.accessoryType = UITableViewCellAccessoryNone;
     }else if (indexPath.row==1){
         cell.accessoryType = UITableViewCellAccessoryNone;
-        [cell setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+        [cell setBackgroundColor: [UIColor whiteColor]];
     } else if ( indexPath.row < 5){
         [cell.textLabel setText:[[items objectAtIndex:indexPath.row-2]objectAtIndex:1]];
         [cell.textLabel setTextAlignment:UITextAlignmentCenter];
@@ -204,7 +202,7 @@
         //[cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
     } else if(indexPath.row == 5){
         cell.accessoryType = UITableViewCellAccessoryNone;
-        [cell setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+        [cell setBackgroundColor: [UIColor whiteColor]];
             cell.accessoryType = UITableViewCellAccessoryNone;
     } else if(indexPath.row > 5){
         
@@ -212,7 +210,7 @@
             [cell.textLabel setText:[[items objectAtIndex:indexPath.row-3]objectAtIndex:1]];
             [cell.textLabel setTextAlignment:UITextAlignmentCenter];
             [cell.contentView setBackgroundColor:[UIColor clearColor]];
-            [cell setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+            [cell setBackgroundColor: [UIColor whiteColor]];
             //[cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
             cell.selectionStyle = UITableViewCellSelectionStyleGray;
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -220,7 +218,7 @@
             [cell.textLabel setText:[[items objectAtIndex:indexPath.row -3]objectAtIndex:1]];
             [cell.textLabel setTextAlignment:UITextAlignmentCenter];
             [cell.contentView setBackgroundColor:[UIColor clearColor]];
-            [cell setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+            [cell setBackgroundColor: [UIColor whiteColor]];
             //[cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"barra amarilla.png"]]];
             cell.accessoryType = UITableViewCellAccessoryNone;
             //[cell.textLabel setTextColor:[UIColor grayColor]];

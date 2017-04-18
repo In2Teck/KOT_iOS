@@ -245,7 +245,7 @@
             //NSDictionary *data = [[[intensivo objectForKey:@"desayuno"]JSONRepresentation]JSONValue];
             NSNull *null = [[NSNull alloc] init];
             if([intensivo objectForKey:@"desayuno"] == null){
-                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"Aún no tienes un método asignado, acude con uno de nuestros especialistas KOT." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"Aún no tienes un método asignado, acude con uno de nuestros especialistas Zélé." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                 [message show];
                 [message release];
                 message = nil;
@@ -253,7 +253,7 @@
                 progresivo = nil;
             }
         }else{
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [message show];
             [message release];
             message = nil;
@@ -385,7 +385,7 @@
             //NSDictionary *data = [[[intensivo objectForKey:@"desayuno"]JSONRepresentation]JSONValue];
             NSNull *null = [[NSNull alloc] init];
             if([intensivo objectForKey:@"desayuno"] == null){
-                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"Aún no tienes un método asignado, acude con uno de nuestros especialistas KOT." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"Aún no tienes un método asignado, acude con uno de nuestros especialistas Zélé." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                 [message show];
                 [message release];
                 message = nil;
@@ -394,7 +394,7 @@
             }
             
         }else{
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [message show];
             [message release];
             message = nil;

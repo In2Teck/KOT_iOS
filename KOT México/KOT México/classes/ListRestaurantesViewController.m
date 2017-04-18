@@ -9,7 +9,6 @@
 #import "ListRestaurantesViewController.h"
 #import "OverlayViewController.h"
 #import "RestauranteMenuViewController.h"
-#import "Flurry.h"
 
 
 @implementation ListRestaurantesViewController
@@ -39,7 +38,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [Flurry logEvent:@"Guia de Restaurantes" withParameters:nil timed:YES];
 //    [self performSelectorInBackground:@selector(loadJSONService) withObject:nil];
     
     [self.comboButton setEnabled:NO];
@@ -174,7 +172,7 @@
         cell.text = cellValue;
 	}
     [cell.textLabel setBackgroundColor:[UIColor clearColor]];
-    [cell.textLabel setTextColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+    [cell.textLabel setTextColor: [UIColor blackColor]];
     //[cell setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Element-05.png"]]];
     //cell.backgroundView.alpha = 0.3;
     

@@ -8,7 +8,6 @@
 
 #import "RestauranteMenuViewController.h"
 #import "PlatilloViewController.h"
-#import "Flurry.h"
 
 #define LABEL_MENU_TAG 1
 #define VIEW_IMAGE_TAG 2
@@ -52,7 +51,6 @@
     [direccion setText:[itemMenu objectForKey:@"direccion"]];
     
     self.title = [itemMenu objectForKey:@"nombre"];
-    [Flurry logEvent:[NSString stringWithFormat:@"Restaurante: %@",self.title] withParameters:nil timed:YES];
     
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
     barButton.title = @"Regresar";
@@ -83,7 +81,7 @@
 
 -(IBAction)callContact:(id)sender{
     NSString *asd = [[NSString alloc]initWithFormat:@"¿Llamar a %@ ?",[itemMenu objectForKey:@"nombre"]];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"KOT México" message:asd
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:asd
                                                    delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Llamar", nil];
     [alert show];
     [alert release];
@@ -118,7 +116,7 @@
     }else{
         
         NSString *stringMessage = [[NSString alloc] initWithFormat:@"Ubicación no disponible."];
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:stringMessage delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:stringMessage delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
         [message show];
         [message release];
         message = nil;
@@ -127,7 +125,7 @@
 }
 -(IBAction)addToContacts:(id)sender{
     NSString *asd = [[NSString alloc]initWithFormat:@"Agregar %@ a la lista de contactos?",[itemMenu objectForKey:@"nombre"]];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"KOT México" message:asd
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:asd
                                                    delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
     [alert show];
     [alert release];
@@ -163,7 +161,7 @@
         if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]]) { 
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]]; }
         else{
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"KOT México" message:@"Tu dispositivo no puede hacer llamadas." delegate:nil cancelButtonTitle:@"Cancelar" otherButtonTitles: nil];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Zélé Móvil" message:@"Tu dispositivo no puede hacer llamadas." delegate:nil cancelButtonTitle:@"Cancelar" otherButtonTitles: nil];
             [alert show];
             [alert release];
         }
@@ -182,7 +180,7 @@
     [splashLoading performSelector:@selector(removeView) withObject:nil afterDelay:1.0];
 }
 -(void)loadImageView{
-    bannerView.frame = CGRectMake(0.0, 0.0, 320.0, 220.0);
+/*    bannerView.frame = CGRectMake(0.0, 0.0, 320.0, 220.0);
     
     LoadingView *splashLoading = [LoadingView loadingViewInView:bannerView];
     
@@ -197,7 +195,7 @@
 		[img release]; // Release the image now that we have a UIImageView that contains it.
         [splashLoading performSelector:@selector(removeView) withObject:nil afterDelay:1.0];
 	}
-    
+*/
     
 }
 -(void)loadJSONContent{
@@ -278,7 +276,7 @@
             menuDescription = [[[[contentJSON objectForKey:@"menu"] JSONRepresentation] JSONValue]retain];
             return menuDescription;
         }else{
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [message show];
             [message release];
             message = nil;
@@ -312,7 +310,7 @@
     
     [header addSubview:title];
     [header addSubview:votos];
-//    tableView.tableHeaderView = header;
+    tableView.tableHeaderView = header;
     
     return header;
 }
@@ -355,7 +353,7 @@
     }
     
     [menu setText:[tempMenu objectForKey:@"nombre"]];
-    [menu setTextColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+    [menu setTextColor: [UIColor blackColor]];
     ///////////////////////////////////////////////////
     ///////////////////////////////////////////////////
     ///////////////////////////////////////////////////

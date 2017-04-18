@@ -8,7 +8,6 @@
 
 #import "AlimentosViewController.h"
 #import "AlimentoDetailViewController.h"
-#import "Flurry.h"
 
 @implementation AlimentosViewController
 @synthesize myTableViewController, isMujerIntensivo;
@@ -53,7 +52,6 @@
     
     alimentosList = [sqlite select:@"SELECT id_cat_alimento, cat_alimento FROM cat_alimentos WHERE vegetariano IN (0,3) ORDER BY cat_alimento ASC" keys:[[NSMutableArray alloc]initWithObjects:@"idAlimento",@"name", nil]];
     
-    [Flurry logEvent:@"Alimentos Permitidos" timed:YES];
 }
 
 - (void)viewDidUnload
@@ -130,7 +128,7 @@
         [cell.textLabel setText:textoCelda];
     }
     //[cell.textLabel setBackgroundColor:[UIColor redColor]];
-    [cell.textLabel setTextColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+    [cell.textLabel setTextColor: [UIColor blackColor]];
     [cell.textLabel setTextAlignment:UITextAlignmentCenter];
     
     return cell;

@@ -12,7 +12,6 @@
 #import "AlimentoDetailViewController.h"
 #import "CommonDAO.h"
 #import "ProductosViewController.h"
-#import "Flurry.h"
 #import "MiMetodoCellViewController.h"
 
 @implementation MiMetodoKOTViewController
@@ -44,11 +43,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"Mi Método KOT";
+    self.title = @"Mi Método Zélé";
     isIntensivo = YES;
-    [titleSemanas setText:[NSString stringWithFormat:@"Llevas %@ semanas en el método KOT.", semanasUsuario]];
-    if(isIntensivo)
-        [Flurry logEvent:@"My Método KOT Intensivo" timed:YES];
+    [titleSemanas setText:[NSString stringWithFormat:@"Llevas %@ semanas en el método Zélé.", semanasUsuario]];
     
     //[self.myTableView registerNib:[UINib nibWithNibName:@"MiMetodoCellViewController" bundle:nil] forCellReuseIdentifier:@"MiMetodoCellViewController"];
 }
@@ -181,11 +178,12 @@
             text = @"lácteo";
             [cell.buttonLabel addTarget:self action:@selector(lacteosAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"productosKot"]){
-            text = @"producto KOT";
+            text = @"producto Zélé";
             [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
         }
         
         [cell.buttonLabel setTitle:text forState:UIControlStateNormal];
+        [cell.buttonLabel setTintColor:[UIColor blackColor]];
         [cell.checkSwitch setOn:on];
         [cell.checkSwitch setTag:progressive_index];
      
@@ -209,7 +207,7 @@
             text = @"fruta";
             [cell.buttonLabel addTarget:self action:@selector(frutasAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"productosKot"]){
-            text = @"producto KOT";
+            text = @"producto Zélé";
             [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"proteinas_vegetales"]){
             text = @"proteína vegetal";
@@ -220,6 +218,7 @@
         }
         
         [cell.buttonLabel setTitle:text forState:UIControlStateNormal];
+        [cell.buttonLabel setTintColor:[UIColor blackColor]];
         [cell.checkSwitch setOn:on];
         [cell.checkSwitch setTag:progressive_index];
         
@@ -257,6 +256,7 @@
         }
         
         [cell.buttonLabel setTitle:text forState:UIControlStateNormal];
+        [cell.buttonLabel setTintColor:[UIColor blackColor]];
         [cell.checkSwitch setOn:on];
         [cell.checkSwitch setTag:progressive_index];
         
@@ -280,7 +280,7 @@
             text = @"fruta";
             [cell.buttonLabel addTarget:self action:@selector(frutasAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"productosKot"]){
-            text = @"producto KOT";
+            text = @"producto Zélé";
             [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"proteinas_vegetales"]){
             text = @"proteína vegetal";
@@ -291,6 +291,7 @@
         }
         
         [cell.buttonLabel setTitle:text forState:UIControlStateNormal];
+        [cell.buttonLabel setTintColor:[UIColor blackColor]];
         [cell.checkSwitch setOn:on];
         [cell.checkSwitch setTag:progressive_index];
         
@@ -328,7 +329,7 @@
             text = @"lácteo";
             [cell.buttonLabel addTarget:self action:@selector(lacteosAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"productosKot"]){
-            text = @"producto KOT";
+            text = @"producto Zélé";
             [cell.buttonLabel addTarget:self action:@selector(productosKotAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if ([text isEqualToString:@"cucharadas_aceite"]){
             text = @"2 cucharadas de aceite";
@@ -336,6 +337,7 @@
         }
         
         [cell.buttonLabel setTitle:text forState:UIControlStateNormal];
+        [cell.buttonLabel setTintColor:[UIColor blackColor]];
         [cell.checkSwitch setOn:on];
         [cell.checkSwitch setTag:progressive_index];
     }
@@ -358,10 +360,6 @@
     LoadingView *myLoadingView = [LoadingView loadingViewInView:self.navigationController.view];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     isIntensivo = (isIntensivo?NO:YES);
-    if(isIntensivo)
-        [Flurry logEvent:@"My Método KOT Intensivo" timed:YES];
-    else
-        [Flurry logEvent:@"My Método KOT Progresivo" timed:YES];
     /* TODO REPOBLAR INTENSIVO Y PROGRESIVO*/
     
     NSArray *keys =  [[NSArray alloc] initWithObjects:@"desayuno", @"colacion_1", @"comida", @"colacion_2", @"cena", nil];

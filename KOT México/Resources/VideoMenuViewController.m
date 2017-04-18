@@ -89,7 +89,7 @@
                 }
             }
         }else{
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [message show];
             [message release];
             message = nil;

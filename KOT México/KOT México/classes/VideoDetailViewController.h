@@ -18,6 +18,6 @@
 @property(nonatomic,retain) IBOutlet UITextView *descripcion;
 @property(nonatomic,retain) IBOutlet UITableViewCell *myTableViewCell;
 //-(IBaction)viewVideo:(id)sender;
--(IBAction)watchVideo:(id)sender;
+//-(IBAction)watchVideo:(id)sender;
 -(void)moviePlayerPlaybackDidFinish:(NSNotification*)notification ;
 @end

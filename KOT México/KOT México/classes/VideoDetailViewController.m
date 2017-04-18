@@ -10,7 +10,6 @@
 #import "../../rs-SDWebImage-b207dcc/UIImageView+WebCache.h"
 #import "YouTubeView.h"
 #import "UIButton+WebCache.h"
-#import "Flurry.h"
 #import "CustomMPMoviePlayerViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
 
@@ -41,7 +40,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     NSString *video = [NSString stringWithFormat:@"Video: %@",[videoDetail objectAtIndex:3]];
-    [Flurry logEvent:video withParameters:nil timed:YES];
 }
 
 - (void)viewDidUnload
@@ -64,6 +62,8 @@
 /************************************************************************/
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 260.0)];
+    header.translatesAutoresizingMaskIntoConstraints = false;
+
     /*
     UIButton *headerImageView = [[UIButton alloc] init];
     
@@ -75,11 +75,20 @@
     [headerImageView addTarget:self action:@selector(watchVideo:) forControlEvents:UIControlEventTouchUpInside];
 */
     
-    
     YouTubeView *video = [[YouTubeView alloc] initWithStringAsURL:[videoDetail objectAtIndex:5] frame:CGRectMake(10.0, 10.0, header.frame.size.width - 20, header.frame.size.height-20)];
-     
-    [header addSubview:video];
     
+    [header addSubview:video];
+    [self.view addSubview:header];
+    
+    NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:header attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:header attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+    
+    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:header attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:tableView.frame.size.height];
+    NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:header attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:tableView.frame.size.width];
+    
+    [self.view addConstraints:@[left, top]];
+    [header addConstraints:@[height, width]];
+
     
 //    [header addSubview:headerImageView];
     return header;
@@ -138,14 +147,17 @@
         [button setFrame:CGRectMake(40, 0, 250, 50)];
         [button setTitle:@"Compartir en Facebook" forState:UIControlStateNormal];
         // set action/target you want
-        caption = @"KOT México";
+        caption = @"Zélé Móvil";
         link = [videoDetail objectAtIndex:1];
         //NSLog(@"LINK %@", link);
         [button addTarget:self action:@selector(publishFacebook) forControlEvents:UIControlEventTouchDown];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell setBackgroundColor:[UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+        [cell setBackgroundColor: [UIColor whiteColor]];
+        //[cell setBackgroundColor:[UIColor colorWithRed:171.0f/255.0f green:0.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
+        //[cell setBackgroundColor:[UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
         
         [cell addSubview:button];
+        
         return cell;
     }else{
         return myTableViewCell;
@@ -184,7 +196,7 @@
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        caption, @"caption",
                                        link, @"link",
-                                       @"[{ name: 'KOT México', link: 'http://kot.mx' }]", @"actions",
+                                       @"[{ name: 'Zélé México', link: 'http://zele.mx' }]", @"actions",
                                        //@"http://i.imgur.com/g3Qc1HN.png", @"picture",
                                        nil];
         

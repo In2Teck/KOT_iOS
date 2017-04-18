@@ -131,7 +131,7 @@
 
 -(UIView *)tableView:(UITableView*)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *header = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 25.0)]autorelease];
-    [header setBackgroundColor:[UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+    [header setBackgroundColor:[UIColor blackColor]];
     
     UILabel *title;
     
@@ -245,7 +245,7 @@
             NSLog(@"rating actual: %@",[menuDescription objectForKey:@"rating"]);
             return [[menuDescription objectForKey:@"rating"] floatValue];
         }else{
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [message show];
             [message release];
             message = nil;

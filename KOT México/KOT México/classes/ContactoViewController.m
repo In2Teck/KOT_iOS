@@ -55,11 +55,11 @@
 }
 
 - (IBAction)paginaKot:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.kot.mx"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://zele.mx"]];
 }
 
 - (IBAction)telefonoDF:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:63894219"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:62743100"]];
 }
 
 - (IBAction)telefonoProvincia:(id)sender {
@@ -67,11 +67,11 @@
 }
 
 - (IBAction)correoKOT:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:info@kot.mx"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:contacto@zele.mx"]];
 }
 
 - (IBAction)facebookKOT:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.facebook.com/KOTMexico"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.facebook.com/ZeleMX"]];
 }
 
 - (IBAction)twitterKOT:(id)sender {

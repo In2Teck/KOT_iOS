@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "Flurry.h"
 
 @implementation AppDelegate
 
@@ -52,14 +51,6 @@
 //    [myLocation.locationManager startUpdatingLocation];
     
     [self performSelector:@selector(hideSplash) withObject:nil afterDelay:5.0];
-    
-    [Flurry setAppVersion:@"1.0.6"];
-    [Flurry startSession:@"JDT6RSZJYB6SC98H7BPB"];
-    [Flurry setSessionReportsOnCloseEnabled:YES];
-    [Flurry setSessionReportsOnPauseEnabled:YES];
-    [Flurry logEvent:@"initAppp" timed:YES];
-    [Flurry logPageView];
-//    [Flurry setDebugLogEnabled:YES];
     
     return YES;
 }
@@ -146,11 +137,7 @@
 
 - (void)locationUpdate:(CLLocation *)location {
 	//locationLabel.text = [location description];
-    [Flurry setLatitude:location.coordinate.latitude
-                       longitude:location.coordinate.longitude
-              horizontalAccuracy:location.horizontalAccuracy 
-                verticalAccuracy:location.verticalAccuracy];
-
+    
     myLocation.delegate = nil;
     [myLocation release];
 }
@@ -158,7 +145,7 @@
 
 - (void)locationError:(NSError *)error {
 	//locationLabel.text = [error description];
-    UIAlertView *alert= [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"La localización KOT México no está activada, ve a configuración y en localización activar KOT México" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    UIAlertView *alert= [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"La localización Zélé Móvil no está activada, ve a configuración y en localización activar Zélé Móvil" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     [alert release];
     alert = nil;
@@ -171,7 +158,6 @@
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application { 
-    //[Flurry startSession:@"XIN21VKKUP734C6YJ3KI"];
     //your code
 }
 

@@ -8,7 +8,6 @@
 
 #import "CollapsableTableViewViewController.h"
 #import "CollapsableTableView.h"
-#import "Flurry.h"
 
 #define LABEL_DIR 1
 #define BTN_CALL  2
@@ -39,8 +38,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     
-    self.title = @"Especialistas KOT";
-    [Flurry logEvent:self.title withParameters:nil timed:YES];
+    self.title = @"Especialistas Zélé";
     
     isMonterrey = YES;
     
@@ -153,7 +151,7 @@
         [direccion setNumberOfLines:4];
         [direccion setFont:[UIFont systemFontOfSize:12.0]];
         [direccion setTextAlignment:UITextAlignmentCenter];
-        [direccion setTextColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+        [direccion setTextColor: [UIColor blackColor]];
         [cell.contentView addSubview:direccion];
         
         
@@ -191,7 +189,7 @@
         //        [myDistancia setFont:[UIFont systemFontOfSize:11.0]];
         [myDistancia setTextAlignment:UITextAlignmentCenter];
         [myDistancia setBackgroundColor:[UIColor clearColor]];
-        [myDistancia setTextColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+        [myDistancia setTextColor: [UIColor blackColor]];
         [cell.contentView addSubview:myDistancia];
         [cell setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     }else{
@@ -343,7 +341,7 @@
     numberPhone = [[NSString alloc] initWithFormat:@"tel://%@",myButton.titleLabel.text];
     
     NSString *asd = [[NSString alloc]initWithFormat:@"¿Desea realizar la llamada?"];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"KOT México" message:asd
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:asd
                                                    delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Llamar", nil];
     [alert show];
     [alert release];
@@ -358,7 +356,7 @@
     NSDictionary *itemJSon = [[[dataSourseList objectAtIndex:selectContact] JSONRepresentation] JSONValue];
     
     NSString *asd = [[NSString alloc]initWithFormat:@"Agregar %@ a la lista de contactos?",[itemJSon objectForKey:@"nombre"]];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"KOT México" message:asd
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:asd
                                                    delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
     [alert show];
     [alert release];
@@ -394,7 +392,7 @@
         if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:numberPhone]]) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:numberPhone]]; }
         else{
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"KOT México" message:@"Tu dispositivo no puede hacer llamadas." delegate:nil cancelButtonTitle:@"Cancelar" otherButtonTitles: nil];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Zélé Móvil" message:@"Tu dispositivo no puede hacer llamadas." delegate:nil cancelButtonTitle:@"Cancelar" otherButtonTitles: nil];
             [alert show];
             [alert release];
         }
@@ -434,7 +432,7 @@
     }else{
         
         NSString *stringMessage = [[NSString alloc] initWithFormat:@"Ubicación no disponible."];
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:stringMessage delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:stringMessage delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
         [message show];
         [message release];
         message = nil;

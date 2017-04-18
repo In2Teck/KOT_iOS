@@ -9,7 +9,6 @@
 #import "PreferencesViewController.h"
 #import "../AppDelegate.h"
 #import "AboutViewController.h"
-#import "Flurry.h"
 
 @implementation PreferencesViewController
 
@@ -152,16 +151,31 @@
 /************************************************************************/
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
     UIView *footerView = [[UIView alloc] init];
+    footerView.translatesAutoresizingMaskIntoConstraints = false;
+    
     if (isLoged) {
-        footerView.frame = CGRectMake(0.0, 0.0, tableView.frame.size.width, 60.0);
+        footerView.frame = CGRectMake(0.0, 0.0, myTableView.frame.size.width, 60.0);
+        
         UIButton *logout = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         logout.frame = CGRectMake(10.0, 10.0, (footerView.frame.size.width*0.9), 40.0);
+        
         [logout setTitle:@"Desconectar Cuenta" forState:UIControlStateNormal];
         [logout.titleLabel setTextColor:[UIColor redColor]];
         [logout addTarget:self action:@selector(logoutUserAction) forControlEvents:UIControlEventTouchUpInside];
         
         [footerView addSubview:logout];
+        [myTableView addSubview:footerView];
+        
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:footerView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:myTableView attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:footerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:myTableView attribute:NSLayoutAttributeTop multiplier:1 constant:myTableView.contentSize.height];
+        
+        NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:footerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:60];
+        NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:footerView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:myTableView.contentSize.width];
+        
+        [myTableView addConstraints:@[left, top]];
+        [footerView addConstraints:@[height, width]];
     }
     return footerView;
 }
@@ -176,9 +190,9 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if (!isLoged) {
         if(section)
-            return @"Si no has acudido con tu especialista KOT registra tus datos.";
+            return @"Si no has acudido con tu especialista Zélé registra tus datos.";
         else
-            return @"Si ya acudiste con tu especialista KOT enlaza tu información.";
+            return @"Si ya acudiste con tu especialista Zélé enlaza tu información.";
     }else{
         return @"Información Personal";
     }
@@ -234,7 +248,7 @@
     }
     [cell.textLabel setNumberOfLines:2];
     if(indexPath.row == 0)
-        [cell.textLabel setText:[NSString stringWithFormat:@"Número para tu especialista KOT: %@",[[user objectAtIndex:0] objectAtIndex:0]]];
+        [cell.textLabel setText:[NSString stringWithFormat:@"Número para tu especialista Zélé: %@",[[user objectAtIndex:0] objectAtIndex:0]]];
     
     if(indexPath.row == 1)
         [cell.textLabel setText:[NSString stringWithFormat:@"%@ %@",[[user objectAtIndex:0] objectAtIndex:1],[[user objectAtIndex:0] objectAtIndex:2]]];
@@ -251,9 +265,9 @@
     if(indexPath.row == 5)
         [cell.textLabel setText:[NSString stringWithFormat:@"Especialista: %@",[[user objectAtIndex:0] objectAtIndex:7]]];
     
-    [cell.textLabel setTextColor:[UIColor grayColor]];
+    [cell.textLabel setTextColor:[UIColor blackColor]];
     [cell.textLabel setBackgroundColor:[UIColor clearColor]];
-    [cell setBackgroundColor:[UIColor lightTextColor]];
+    [cell setBackgroundColor:[UIColor clearColor]];
     return cell;
 }
 
@@ -309,13 +323,13 @@
 -(IBAction)loginUser:(id)sender{
     UIAlertView *message;
     if([codigo.text length]<2){
-        message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"El Codigo/Password es requerido, minimo 2 caracteres." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"El Codigo/Password es requerido, minimo 2 caracteres." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
         [message show];
         [message release];
         message = nil;
     }else{
         if([correo.text length]<=5){
-            message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"El Correo es requerido, minimo 5 caracteres." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"El Correo es requerido, minimo 5 caracteres." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [message show];
             [message release];
             message = nil;
@@ -327,19 +341,19 @@
 -(IBAction)registroUser:(id)sender{
     UIAlertView *message;
     if([nombre.text length]<3){
-        message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"El nombre debe contar con mínimo 3 caracteres." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"El nombre debe contar con mínimo 3 caracteres." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
         [message show];
         [message release];
         message = nil;
     }else{
         if([apellido.text length]<3){
-            message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"El apellido debe contar con mínimo 3 caracteres." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"El apellido debe contar con mínimo 3 caracteres." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [message show];
             [message release];
             message = nil;
         }else{
             if([edad.text length]<2){
-                message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"La fecha de nacimiento es necesaria." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"La fecha de nacimiento es necesaria." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                 [message show];
                 [message release];
                 message = nil;
@@ -347,26 +361,26 @@
                 NSCharacterSet *decimalSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789."];
                 
                 if([altura.text length]<2 && [[altura.text stringByTrimmingCharactersInSet:decimalSet] length]>0){
-                    message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"La altura no es Valida." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                    message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"La altura no es válida." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                     [message show];
                     [message release];
                     message = nil;
                 }else{
                     if([password.text length]<3){
-                        message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"El Password es requerido, minimo 3 caracteres." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                        message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"El Password es requerido, minimo 3 caracteres." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                         [message show];
                         [message release];
                         message = nil;
                     }else{
                         if([email.text length]<5){
-                            message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"El Correo es requerido, minimo 5 caracteres." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                            message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"El Correo es requerido, minimo 5 caracteres." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                             [message show];
                             [message release];
                             message = nil;
                         }else{
                             
                             if([[generoButton.titleLabel.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@"Sexo"]){
-                                message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"Selecciona tu sexo." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                                message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"Selecciona tu sexo." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                                 [message show];
                                 [message release];
                                 message = nil;
@@ -374,7 +388,7 @@
                                 if([password.text isEqualToString:repitPassword.text]){
                                     [self registroUserAction];
                                 }else{
-                                    message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:@"El Password no coincide." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                                    message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:@"El Password no coincide." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                                     [message show];
                                     [message release];
                                     message = nil;
@@ -459,12 +473,6 @@
             if(age<0)
                 age=-(age);
 
-            [Flurry setAge:age];
-            [Flurry setUserID:[usuarioLogin objectForKey:@"id"]];
-
-            [Flurry logEvent:@"Login User" withParameters:usuarioLogin timed:YES];
-            
-
             sqlite = [[[CommonDAO alloc] init]autorelease];
             
             [sqlite insert:query];
@@ -476,7 +484,7 @@
             [self setTitle:@"Perfil Enlazado"];
             
         }else{
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [message show];
             [message release];
             message = nil;
@@ -530,11 +538,6 @@
             int age=trunc(dateDiff/(60*60*24))/365;
             if(age<0)
                 age=-(age);
-            [Flurry setAge:age];
-            [Flurry setGender:[generoButton.titleLabel.text substringToIndex:1]];
-            [Flurry setUserID:[usuarioLogin objectForKey:@"id"]];
-            
-            [Flurry logEvent:@"Registro User" withParameters:usuarioLogin timed:YES];
             
             NSString *query = [NSString stringWithFormat:@"INSERT INTO usuario (id_usuario, nombre, apellidos, correo, genero, edad, altura, nutriologo) VALUES ('%@','%@','%@','%@','%@','%@','%@','%@');",[usuarioLogin objectForKey:@"id"],[usuarioLogin objectForKey:@"nombre"],apellido.text,[usuarioLogin objectForKey:@"correo"],[generoButton.titleLabel.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],[usuarioLogin objectForKey:@"edad"],[usuarioLogin objectForKey:@"altura"],[usuarioLogin objectForKey:@"nutriologo"]];
             
@@ -549,7 +552,7 @@
             [self setTitle:@"Perfil Enlazado"];
             
         }else{
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [message show];
             [message release];
             message = nil;

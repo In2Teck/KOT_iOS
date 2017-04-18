@@ -9,7 +9,6 @@
 #import "VideosKOTViewController.h"
 #import "../../rs-SDWebImage-b207dcc/UIImageView+WebCache.h"
 #import "VideoDetailViewController.h"
-#import "Flurry.h"
 #import "Json.h"
 
 #define LBL_TITULO      1
@@ -74,7 +73,7 @@
                 }
             }
         }else{
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [message show];
             [message release];
             message = nil;
@@ -98,7 +97,6 @@
     // Do any additional setup after loading the view from its nib.
     
     [self loadVideos];
-    [Flurry logEvent:@"Videos de los Productos" withParameters:nil timed:YES];
 }
 
 - (void)viewDidUnload

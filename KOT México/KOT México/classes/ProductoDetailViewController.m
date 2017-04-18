@@ -8,7 +8,6 @@
 
 #import "ProductoDetailViewController.h"
 #import "ProductoViewCell.h"
-#import "Flurry.h"
 
 #define COMMENT_LABEL_WIDTH 200
 #define COMMENT_LABEL_MIN_HEIGHT 115
@@ -48,7 +47,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     NSString *stringProducto = [NSString stringWithFormat:@"Productos Kot %@",[productoDetail objectAtIndex:1]];
-    [Flurry logEvent:stringProducto withParameters:nil timed:YES];
     
     producto =  [sqlite 
                  select:[[NSString alloc] initWithFormat:@"SELECT id_producto, id_cat_productos, titulo, descripcion, img FROM productos WHERE id_cat_productos = %@;",[productoDetail objectAtIndex:0]] 

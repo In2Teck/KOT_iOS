@@ -12,7 +12,6 @@
 #import "AddMedidaPesoView.h"
 #import "PreferencesViewController.h"
 #import "MenuViewController.h"
-#import "Flurry.h"
 #import <FacebookSDK/FacebookSDK.h>
 
 @implementation ProgresoViewController
@@ -77,17 +76,14 @@
         [self.chart setHidden:NO];
         [self.chartMedida setHidden:YES];
         [self.chartGrasa setHidden:YES];
-        [Flurry logEvent:@"Mi Progreso Grafica Peso" timed:YES];
     }else if([estado isEqualToString:@"medida"]){
         [self.chart setHidden:YES];
         [self.chartMedida setHidden:NO];
         [self.chartGrasa setHidden:YES];
-        [Flurry logEvent:@"Mi Progreso Grafica Medida" timed:YES];
     }else {
         [self.chart setHidden:YES];
         [self.chartMedida setHidden:YES];
         [self.chartGrasa setHidden:NO];
-        [Flurry logEvent:@"Mi Progreso Grafica Grasa" timed:YES];
     }
     
     if(updateViews){
@@ -223,7 +219,6 @@
         }
         
         [add.titleLabel setText:@"Nuevo Peso"];
-        [Flurry logEvent:@"Mi Progreso Grafica Peso" timed:YES];
         estado = @"peso";
     }else if([title isEqualToString:@"Medidas"]){
         [self.chart setHidden:YES];
@@ -243,7 +238,6 @@
         [banderaImageView setHidden:true];
         [faltanteLabel setHidden:true];
         //[add.titleLabel setText:@"Nueva Medida"];
-        [Flurry logEvent:@"Mi Progreso Grafica Medida" timed:YES];
         estado = @"medida";
     } else {
         // TODO: Modificar a parámetros con % grasa
@@ -264,7 +258,6 @@
         [banderaImageView setHidden:true];
         [faltanteLabel setHidden:true];
         //[add.titleLabel setText:@"Nuevo %"];
-        [Flurry logEvent:@"Mi Progreso Grafica Medida" timed:YES];
         estado = @"grasa";
     }
     [splashLoading performSelector:@selector(removeView) withObject:nil afterDelay:1.0];
@@ -372,12 +365,12 @@
     NSString *messageFacebook;
     
     if([pesoList count]<=2)
-        messageFacebook = [NSString stringWithString:@"Inicio mi método personalizado con ayuda de los productos Franceses KOT. A través de mi KOT México iPhone App."];
+        messageFacebook = [NSString stringWithString:@"Inicio mi método personalizado con ayuda de los productos Franceses Zélé. A través de mi Zélé Móvil iPhone App."];
     else
-        messageFacebook = [NSString stringWithString:@"En camino a completar mi meta!. A través de mi KOT México iPhone App."];
+        messageFacebook = [NSString stringWithString:@"En camino a completar mi meta!. A través de mi Zélé Móvil iPhone App."];
     
     if([pesoActual isEqualToString:pesoMeta]|| [medidaActual isEqualToString:medidaMeta])
-        messageFacebook = [NSString stringWithString:@"Completé mi meta con los productos Franceses KOT!. A través de mi KOT México iPhone App."];
+        messageFacebook = [NSString stringWithString:@"Completé mi meta con los productos Franceses Zélé!. A través de mi Zélé Móvil iPhone App."];
     
     TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
     [twitter setInitialText:messageFacebook];//optional
@@ -412,17 +405,16 @@
         }
         [self dismissModalViewControllerAnimated:YES];
     };
-    [Flurry logEvent:@"Mi Progreso comparte en Twitter" timed:YES];
 }
 -(IBAction)sendEmail:(id)sender{
     NSString *messageFacebook;
     if([pesoList count]<=2)
-        messageFacebook = [NSString stringWithString:@"Inicio mi método personalizado con ayuda de los productos Franceses KOT. A través de mi KOT México iPhone App."];
+        messageFacebook = [NSString stringWithString:@"Inicio mi método personalizado con ayuda de los productos Franceses Zélé. A través de mi Zélé Móvil iPhone App."];
     else
-        messageFacebook = [NSString stringWithString:@"En camino a completar mi meta!. A través de mi KOT México iPhone App."];
+        messageFacebook = [NSString stringWithString:@"En camino a completar mi meta!. A través de mi Zélé Móvil iPhone App."];
     
     if([pesoActual isEqualToString:pesoMeta]|| [medidaActual isEqualToString:medidaMeta])
-        messageFacebook = [NSString stringWithString:@"Completé mi meta con los productos Franceses KOT!. A través de mi KOT México iPhone App."];
+        messageFacebook = [NSString stringWithString:@"Completé mi meta con los productos Franceses Zélé!. A través de mi Zélé Móvil iPhone App."];
     
     MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
     controller.mailComposeDelegate = self;
@@ -430,7 +422,6 @@
     [controller setMessageBody:messageFacebook isHTML:NO]; 
     [self presentModalViewController:controller animated:YES];
     [controller release];
-    [Flurry logEvent:@"Mi Progreso comparte por correo" timed:YES];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller  
@@ -577,10 +568,10 @@
     axis.ticksY.ticksStyle = kTicksLabels;
     
     axis.gridStrokeWidth = 1.0;
-    axis.labelColorX = [UIColor whiteColor];
-    axis.labelColorY = [UIColor whiteColor];
-    axis.gridColor = [UIColor whiteColor];
-    axis.axisColor = [UIColor whiteColor];
+    axis.labelColorX = [UIColor blackColor];
+    axis.labelColorY = [UIColor blackColor];
+    axis.gridColor = [UIColor grayColor];
+    axis.axisColor = [UIColor blackColor];
     line1.lineColor = [UIColor clearColor];
     line2.lineColor = [UIColor clearColor];
     line3.lineColor = [UIColor greenColor];
@@ -605,7 +596,7 @@
     [self.chartGrasa autoscaleAllAxisY];
     [self.chartGrasa setAllAxisLocationXD:0.0];
     [self.chartGrasa setAllAxisLocationYD:min];
-    [self.chartGrasa setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]
+    [self.chartGrasa setBackgroundColor: [UIColor clearColor]
 ];
     
     [axis release];
@@ -734,10 +725,10 @@
     axis.ticksY.ticksStyle = kTicksLabels;
     
     axis.gridStrokeWidth = 1.0;
-    axis.labelColorX = [UIColor whiteColor];
-    axis.labelColorY = [UIColor whiteColor];
-    axis.gridColor = [UIColor whiteColor];
-    axis.axisColor = [UIColor whiteColor];
+    axis.labelColorX = [UIColor blackColor];
+    axis.labelColorY = [UIColor blackColor];
+    axis.gridColor = [UIColor grayColor];
+    axis.axisColor = [UIColor blackColor];
     line1.lineColor = [UIColor clearColor];
     line2.lineColor = [UIColor clearColor];
     line3.lineColor = [UIColor blueColor];
@@ -762,7 +753,7 @@
     [self.chart autoscaleAllAxisY];
     [self.chart setAllAxisLocationXD:0.0];
     [self.chart setAllAxisLocationYD:min];
-    [self.chart setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+    [self.chart setBackgroundColor: [UIColor clearColor]];
     
     [axis release];
     [line1 release];
@@ -889,10 +880,10 @@
     axis.ticksY.ticksStyle = kTicksLabels;
     
     axis.gridStrokeWidth = 1.0;
-    axis.labelColorX = [UIColor whiteColor];
-    axis.labelColorY = [UIColor whiteColor];
-    axis.gridColor = [UIColor whiteColor];
-    axis.axisColor = [UIColor whiteColor];
+    axis.labelColorX = [UIColor blackColor];
+    axis.labelColorY = [UIColor blackColor];
+    axis.gridColor = [UIColor grayColor];
+    axis.axisColor = [UIColor blackColor];
     line1.lineColor = [UIColor clearColor];
     line2.lineColor = [UIColor clearColor];
     line3.lineColor = [UIColor redColor];
@@ -917,7 +908,7 @@
     [self.chartMedida autoscaleAllAxisY];
     [self.chartMedida setAllAxisLocationXD:0.0];
     [self.chartMedida setAllAxisLocationYD:min];
-    [self.chartMedida setBackgroundColor: [UIColor colorWithRed:92.0f/255.0f green:193.0f/255.0f blue:166.0f/255.0f alpha:1.0f]];
+    [self.chartMedida setBackgroundColor: [UIColor clearColor]];
     
     [axis release];
     [line1 release];
@@ -937,10 +928,6 @@
     NSArray *user = [sqlite select:@"SELECT id_usuario, nombre, apellidos, correo, genero, edad, altura, nutriologo FROM usuario;" keys:[NSArray arrayWithObjects:@"id_usuario",@"nombre",@"apellidos",@"correo",@"genero",@"edad",@"altura",@"nutriologo", nil]];
     
     if([user count]){
-        
-        
-        [Flurry logEvent:@"Mi Progreso" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:[user objectAtIndex:0],@"Usuario", nil] timed:YES];
-        
         
         NSString *urlConnection = [[[NSString alloc] initWithFormat:@"http://kot.mx/nuevo/WS/kotMiProgreso.php?idUserKot=%@",[[user objectAtIndex:0]objectAtIndex:0]] autorelease];
         
@@ -994,7 +981,7 @@
                 [self initChartGrasa];
                 
             }else{
-                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KOT México" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Zélé Móvil" message:messageError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                 [message show];
                 [message release];
                 message = nil;
@@ -1007,7 +994,7 @@
         [metaLabel setHidden:YES];
         [faltanteLabel setHidden:YES];
         
-        UIAlertView *message = [[UIAlertView alloc]initWithTitle:@"KOT México" message:@"Aún no te has registrado en KOT, ¿Registrar ahora?" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Registrar", nil];
+        UIAlertView *message = [[UIAlertView alloc]initWithTitle:@"Zélé Móvil" message:@"Aún no te has registrado en Zélé, ¿Registrar ahora?" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Registrar", nil];
         [message show];
         [message release];
         message = nil;
@@ -1091,11 +1078,11 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if ([alertView tag] == 0) {    // alerta de META
         if (buttonIndex == 1 && ![[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Registrar"]) {
-            [self publishFacebook:@"KOT México" withCaption:@"¡Has llegado a tu meta!" withDescription:@"¡Muchas felicidades, con la ayuda del Método KOT has llegado a tu meta!" withPicture:nil];
+            [self publishFacebook:@"Zélé Móvil" withCaption:@"¡Has llegado a tu meta!" withDescription:@"¡Muchas felicidades, con la ayuda del Método Zélé has llegado a tu meta!" withPicture:nil];
         }
     }else{
         if (buttonIndex == 1){
-            [self publishFacebook:@"KOT México" withCaption:@"Estatus del progreso del Método KOT" withDescription:[NSString stringWithFormat:@"¡Estoy en camino de cumplir mi meta y ya bajé %i kilos!", [alertView tag]] withPicture:nil];
+            [self publishFacebook:@"Zélé Móvil" withCaption:@"Estatus del progreso del Método Zélé" withDescription:[NSString stringWithFormat:@"¡Estoy en camino de cumplir mi meta y ya bajé %i kilos!", [alertView tag]] withPicture:nil];
         }
     }
 }
