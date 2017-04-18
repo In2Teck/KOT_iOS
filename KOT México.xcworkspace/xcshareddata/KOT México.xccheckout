@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>436A7421-F820-43A3-BF9D-6F0DFB707BFB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>KOT México</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1F3AA91DE4749550091C3668AA39A8A18202D918</key>
+		<string>ssh://github.com/In2Teck/KOT_iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>KOT México.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1F3AA91DE4749550091C3668AA39A8A18202D918</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/In2Teck/KOT_iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1F3AA91DE4749550091C3668AA39A8A18202D918</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1F3AA91DE4749550091C3668AA39A8A18202D918</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KOT_iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
