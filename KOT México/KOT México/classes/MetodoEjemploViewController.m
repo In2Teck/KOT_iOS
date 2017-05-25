@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad
 {
-    self.title = @"Ejemplo método KOT";
+    self.title = @"Ejemplo método Zélé";
     if (!expandedSections)
     {
         expandedSections = [[NSMutableIndexSet alloc] init];

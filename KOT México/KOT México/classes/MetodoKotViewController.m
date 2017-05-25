@@ -114,6 +114,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        [cell setSelectionStyle: UITableViewCellSelectionStyleNone];
     }
 
     // Configure the cell...
@@ -123,14 +124,15 @@
     if(indexPath.row == 2)
         return ejemKotCell;
     
-    if(indexPath.row == 1){
+    // Especialistas en método integral zélé
+    /*if(indexPath.row == 1){
         [cell setBackgroundColor: [UIColor colorWithRed:171.0f/255.0f green:0.0/255.0f blue:129.0f/255.0f alpha:1.0f]];
         [cell.textLabel setTextColor:[UIColor whiteColor]];
         [cell.textLabel setText:@"Especialistas Zélé"];
         [cell.textLabel setBackgroundColor:[UIColor clearColor]];
         //[cell.contentView setBackgroundColor:[UIColor clearColor]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
+    }*/
     
     
     return cell;
@@ -182,10 +184,11 @@
     NSLog(@"select item : %i", indexPath.row);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row == 1) {
+    // Especialistas en método integral zélé
+    /*if (indexPath.row == 1) {
         CollapsableTableViewViewController *ntvc = [[CollapsableTableViewViewController alloc] initWithNibName:@"CollapsableTableViewViewController" bundle:nil];
         [self.navigationController pushViewController:ntvc animated:YES];
-    }
+    }*/
     
     // Navigation logic may go here. Create and push another view controller.
     /*
